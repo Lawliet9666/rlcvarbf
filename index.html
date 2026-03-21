@@ -162,13 +162,13 @@
   </div>
 </section>
 
-<section class="section" style="padding-top: 0; padding-bottom: 1rem;">
+<!-- <section class="section" style="padding-top: 0; padding-bottom: 1rem;">
   <div class="container is-widescreen mme-wide">
     <p class="has-text-centered mme-tldr">
       <strong>TL;DR:</strong> Risk-adaptive CVaR barrier functions let a robot trade off safety and feasibility in crowded uncertain environments by adjusting its risk level online while keeping probabilistic safety guarantees.
     </p>
   </div>
-</section>
+</section> -->
 
 <section id="sec-abstract" class="section" style="padding-top: 0;">
   <div class="container is-max-desktop">
@@ -177,21 +177,7 @@
         <h2 class="title is-3">Abstract</h2>
         <div class="content has-text-justified" style="font-size: 1.1rem;">
           <p>
-            We propose a 
-            <span style="color: #e74c3c; font-weight: bold;">risk-adaptive approach</span>
-            based on the Conditional Value-at-Risk Barrier Function (CVaR-BF), where the risk level  
-            is automatically adjusted to accept the minimum necessary risk, 
-            ensuring 
-            <span style="color: #e74c3c; font-weight: bold;">CVaR safety is guaranteed</span>
-            at least a pre-defined threshold while improving optimization feasibility under uncertainty.
-            Additionally, we introduce a 
-            <span style="color: #e74c3c; font-weight: bold;">dynamic zone-based barrier function</span>
-            which characterizes the collision likelihood by evaluating the relative state  
-            between the robot and the obstacle. It 
-            <span style="color: #e74c3c; font-weight: bold;">expands the available adjustment space for the risk level</span>
-            while maintaining the desired probabilistic safety guarantee.
-            By integrating risk adaptation with this new function, our approach  
-            enables the robot to proactively avoid obstacles in highly dynamic environments.
+            In dense dynamic crowds, robots navigate in real time under uncertain obstacle motion. The main challenge is handling dense, uncertain interactions while preserving safety without becoming overly conservative or sacrificing efficiency. To solve this challenge, we propose an end-to-end risk-adaptive framework that integrates reinforcement learning with a differentiable CVaR-BF-QP safety layer under Gaussian-mixture motion uncertainty. The policy jointly outputs nominal control, risk level, and safety margin, while the safety layer enforces probabilistic constraints and remains differentiable for gradient-based training. This joint design lets the robot act cautiously in advance when interactions tighten, and relax conservatism only when needed to keep the QP feasible. We evaluate both single-integrator and unicycle robots in dynamic crowd simulations with up to 20 moving obstacles, and assess generalization under out-of-distribution crowd shifts. Compared with three type of policy: optimization, RL, and RL with optimization policies, the proposed method achieves higher safety and efficiency with more robust performance.
           </p>
         </div>
       </div>
@@ -397,55 +383,46 @@
 </section> -->
 
 
-<section id="sec-sim-rollouts" class="section sim-rollout-section">
+<section class="section demo-parallel-section">
   <div class="container is-widescreen mme-wide">
-    <h2 class="title is-3 has-text-centered sim-rollout-title">Simulation Rollout Demos</h2>
-    <p class="has-text-centered sim-rollout-intro">
-      Format adapted from <a href="https://robomme.github.io/" target="_blank" rel="noopener">RoboMME</a>.
-      Switch suites and scenes to inspect your navigation rollouts; controller dropdowns only appear when multiple methods are available on the same reference setup.
-    </p>
-    <div id="simRolloutApp" class="sim-rollout-app" aria-live="polite"></div>
-  </div>
-</section>
-
-
-<section id="sec-realworld" class="hero is-light is-small">
-  <h2 class="title is-4 has-text-centered">Real-World Dataset Validation</h2>
-  <div class="hero-body">
-    <div class="container">
-      <div style="max-width: 1200px; margin: 0 auto 2rem auto; padding: 1.2rem 2.5rem; background: #f7f8fa; border-radius: 18px; border: 1px solid #e3e5ee; color: #2e3454; font-size: 1.14rem; text-align: center; box-shadow: 0 2px 10px #f1f1f7;">
-        We evaluated the proposed <b>CVaR-BF optimization</b> as a safety filter for RL-based methods, such as <b>CrowdNav++</b> (serving as the nominal controller), on a real-world pedestrian trajectory dataset (Univ Scenario)&nbsp;
-        <a href="https://github.com/CMU-TBD/SocNavBench" target="_blank" style="color:#1a60c6; text-decoration:underline;">[1]</a>.
-        Experimental results demonstrate that the RL agent alone frequently failed to avoid collisions in out-of-distribution (OOD) scenarios, where the robot radius was larger than during training.
-        <b>In contrast, with our safety filter, the RL agent navigated safely even in these challenging OOD settings.</b>
-        <br>
-        <span style="color: #777;">
-          #Obs. = 36 &nbsp; | &nbsp; <i>r</i><sub>robot</sub> = 0.6m, <i>r</i><sub>obs</sub> = 0.2m &nbsp; | &nbsp; <i>v</i><sub>max</sub> = 1 m/s, <i>v</i><sub>max</sub><sup>obs</sup> = 1.7 m/s
-        </span>
-        <br>
-        <span style="font-size:0.98em; color:#aaa; font-style:italic;">
-          [1] Biswas, S. et al., SocNavBench: A Grounded Simulation Testing Framework for Evaluating Social Navigation.
-        </span>
+    <div class="demo-parallel-grid">
+      <div id="sec-sim-rollouts" class="demo-parallel-panel demo-parallel-panel-sim">
+        <h2 class="title is-3 has-text-centered sim-rollout-title">Simulation Demos</h2>
+        <p class="has-text-centered sim-rollout-intro">
+          Format adapted from <a href="https://robomme.github.io/" target="_blank" rel="noopener">RoboMME</a>.
+          Switch suites and scenes to inspect your navigation rollouts; controller dropdowns only appear when multiple methods are available on the same reference setup.
+        </p>
+        <div id="simRolloutApp" class="sim-rollout-app" aria-live="polite"></div>
       </div>
 
-
-        <!-- Larger GIFs (side by side) -->
-      <div style="display: flex; justify-content: center; align-items: flex-start; gap: 48px; flex-wrap: wrap; margin-top: 1.2rem;">
-        <div style="text-align: center;">
-          <img src="./static/videos/dataset/rl_beta0.99_hdist.gif"
-               alt="CrowdNav++"
-               style="max-width: 360px; width: 100%; height: auto; border-radius: 10px; border: 1px solid #ddd; box-shadow: 0 2px 8px #eee;">
-          <div style="margin-top: 0.7rem; font-size: 1.08rem; font-weight: bold; color: #22336c;">
-            CrowdNav++
-          </div>
+      <div id="sec-realworld" class="demo-parallel-panel demo-parallel-panel-real">
+        <h2 class="title is-4 has-text-centered demo-side-title">Real-World Dataset Validation</h2>
+        <div class="realworld-card">
+          <p class="realworld-copy">
+            We evaluated the proposed <b>CVaR-BF optimization</b> as a safety filter for RL-based methods, such as <b>CrowdNav++</b> (serving as the nominal controller), on a real-world pedestrian trajectory dataset (Univ Scenario)
+            <a href="https://github.com/CMU-TBD/SocNavBench" target="_blank" rel="noopener">[1]</a>.
+            Experimental results demonstrate that the RL agent alone frequently failed to avoid collisions in out-of-distribution (OOD) scenarios, where the robot radius was larger than during training.
+            <b>In contrast, with our safety filter, the RL agent navigated safely even in these challenging OOD settings.</b>
+          </p>
+          <p class="realworld-meta">
+            #Obs. = 36 | <i>r</i><sub>robot</sub> = 0.6m, <i>r</i><sub>obs</sub> = 0.2m | <i>v</i><sub>max</sub> = 1 m/s, <i>v</i><sub>max</sub><sup>obs</sup> = 1.7 m/s
+          </p>
+          <p class="realworld-ref">
+            [1] Biswas, S. et al., <i>SocNavBench: A Grounded Simulation Testing Framework for Evaluating Social Navigation.</i>
+          </p>
         </div>
-        <div style="text-align: center;">
-          <img src="./static/videos/dataset/rl_cvar_beta_dt_beta0.99_hdist.gif"
-               alt="CrowdNav++ &amp; CVaR-BF (Distance)"
-               style="max-width: 360px; width: 100%; height: auto; border-radius: 10px; border: 1px solid #ddd; box-shadow: 0 2px 8px #eee;">
-          <div style="margin-top: 0.7rem; font-size: 1.08rem; font-weight: bold; color: #22336c;">
-            CrowdNav++ &amp; Proposed
-          </div>
+
+        <div class="realworld-grid">
+          <figure class="realworld-item">
+            <img src="./static/videos/dataset/rl_beta0.99_hdist.gif"
+                 alt="CrowdNav++">
+            <figcaption>CrowdNav++</figcaption>
+          </figure>
+          <figure class="realworld-item">
+            <img src="./static/videos/dataset/rl_cvar_beta_dt_beta0.99_hdist.gif"
+                 alt="CrowdNav++ and proposed CVaR-BF">
+            <figcaption>CrowdNav++ &amp; Proposed</figcaption>
+          </figure>
         </div>
       </div>
     </div>
