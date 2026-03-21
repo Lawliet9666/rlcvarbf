@@ -342,13 +342,27 @@
 
 <section id="sec-sim-rollouts" class="section demo-parallel-section">
   <div class="container is-widescreen mme-wide">
-    <h2 class="title is-3 has-text-centered sim-rollout-title">OOD Demos</h2>
-    <p class="has-text-centered sim-rollout-intro">
-      Each browser below repeats the same three OOD cases for both robot models: ORCA-based human policy, high obstacle density, and increased human radius.
-    </p>
-    <div class="sim-rollout-stack">
-      <div id="simRolloutAppSingle" class="sim-rollout-app" aria-live="polite"></div>
-      <div id="simRolloutAppUnicycle" class="sim-rollout-app" aria-live="polite"></div>
+    <div class="sim-demo-grid">
+      <div class="sim-demo-column">
+        <h2 class="title is-3 has-text-centered sim-rollout-title">ID Demos</h2>
+        <p class="has-text-centered sim-rollout-intro">
+          In-distribution demos use one shared reference setup per robot, so this side keeps a single comparison case without extra case tabs.
+        </p>
+        <div class="sim-rollout-stack">
+          <div id="simIdRolloutAppSingle" class="sim-rollout-app" aria-live="polite"></div>
+          <div id="simIdRolloutAppUnicycle" class="sim-rollout-app" aria-live="polite"></div>
+        </div>
+      </div>
+      <div class="sim-demo-column">
+        <h2 class="title is-3 has-text-centered sim-rollout-title">OOD Demos</h2>
+        <p class="has-text-centered sim-rollout-intro">
+          Each browser below repeats the same three OOD cases for both robot models: ORCA-based human policy, high obstacle density, and increased human radius.
+        </p>
+        <div class="sim-rollout-stack">
+          <div id="simRolloutAppSingle" class="sim-rollout-app" aria-live="polite"></div>
+          <div id="simRolloutAppUnicycle" class="sim-rollout-app" aria-live="polite"></div>
+        </div>
+      </div>
     </div>
   </div>
 </section>

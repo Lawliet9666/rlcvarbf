@@ -180,6 +180,37 @@
     ];
   }
 
+  function buildIdSuites(robotLabel, robotPhrase) {
+    return [
+      {
+        id: 'id-reference',
+        label: 'Reference scene',
+        title: robotLabel + ' ID comparison',
+        overview: 'In-distribution comparison for the ' + robotPhrase + ' on the shared reference scene.',
+        cases: [
+          {
+            label: 'Reference',
+            goal: 'Compare available local baselines on the in-distribution reference rollout.',
+            columns: [
+              {
+                kind: 'select',
+                heading: 'Method A',
+                options: METHOD_OPTIONS,
+                defaultValue: 'rcbf'
+              },
+              {
+                kind: 'select',
+                heading: 'Method B',
+                options: METHOD_OPTIONS,
+                defaultValue: 'proposed'
+              }
+            ]
+          }
+        ]
+      }
+    ];
+  }
+
   function findMethod(value) {
     for (var i = 0; i < METHOD_OPTIONS.length; i++) {
       if (METHOD_OPTIONS[i].value === value) {
@@ -209,12 +240,18 @@
   function renderApp(root, suites) {
     if (!root) return;
 
+    var tabsMarkup = '';
+    if (suites.length > 1) {
+      tabsMarkup =
+        '<div class="tabs-container sim-suite-tabs-wrap">' +
+          '<div class="sim-suite-tabs" role="tablist">' +
+            renderSuiteTabs(suites) +
+          '</div>' +
+        '</div>';
+    }
+
     root.innerHTML =
-      '<div class="tabs-container sim-suite-tabs-wrap">' +
-        '<div class="sim-suite-tabs" role="tablist">' +
-          renderSuiteTabs(suites) +
-        '</div>' +
-      '</div>' +
+      tabsMarkup +
       '<div class="sim-suite-panels">' +
         renderSuitePanels(suites) +
       '</div>';
@@ -406,6 +443,14 @@
   }
 
   document.addEventListener('DOMContentLoaded', function () {
+    renderApp(
+      document.getElementById('simIdRolloutAppSingle'),
+      buildIdSuites('Single Integrator', 'single-integrator robot')
+    );
+    renderApp(
+      document.getElementById('simIdRolloutAppUnicycle'),
+      buildIdSuites('Unicycle', 'unicycle robot')
+    );
     renderApp(
       document.getElementById('simRolloutAppSingle'),
       buildSuites('Single Integrator', 'single-integrator robot')
