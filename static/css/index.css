@@ -492,11 +492,19 @@ table.rq-table-paper .rq-cell-highlight {
 .mme-finding-summary {
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  gap: 1rem;
+  justify-content: flex-start;
+  gap: 0.7rem;
   padding: 1.25rem 1.5rem;
   cursor: pointer;
   list-style: none;
+}
+
+.mme-finding-summary::before {
+  content: '\25B6';
+  flex: 0 0 auto;
+  color: #3273dc;
+  font-size: 0.95rem;
+  line-height: 1;
 }
 
 .mme-finding-summary::-webkit-details-marker {
@@ -504,17 +512,7 @@ table.rq-table-paper .rq-cell-highlight {
 }
 
 .mme-finding-chevron {
-  flex: 0 0 auto;
-  width: 0.7rem;
-  height: 0.7rem;
-  border-right: 2px solid #3273dc;
-  border-bottom: 2px solid #3273dc;
-  transform: rotate(45deg);
-  transition: transform 0.2s ease;
-}
-
-.mme-finding[open] .mme-finding-chevron {
-  transform: rotate(225deg);
+  display: none;
 }
 
 .mme-finding-body {
