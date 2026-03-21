@@ -399,7 +399,7 @@ table.rq-table-paper .rq-cell-highlight {
 
 .page-home-row {
   display: flex;
-  justify-content: flex-start;
+  justify-content: center;
   margin-bottom: 1rem;
 }
 
