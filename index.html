@@ -53,7 +53,6 @@
     <a class="section-nav-link" href="#sec-teaser" data-target="sec-teaser">Teaser</a>
     <a class="section-nav-link" href="#sec-baseline-si" data-target="sec-baseline-si">Baselines (SI)</a>
     <a class="section-nav-link" href="#sec-sim-rollouts" data-target="sec-sim-rollouts">Sim rollouts</a>
-    <a class="section-nav-link" href="#sec-realworld" data-target="sec-realworld">Real-world</a>
     <a class="section-nav-link" href="#sec-results" data-target="sec-results">Experiments</a>
     <a class="section-nav-link" href="#sec-video" data-target="sec-video">Video</a>
     <a class="section-nav-link" href="#sec-bib" data-target="sec-bib">BibTeX</a>
@@ -348,84 +347,14 @@
   </div>
 </section>
 
-<!-- <section class="hero is-light is-small">
-  <h2 class="title is-4 has-text-centered">Real-World Dataset Validation</h2>
-  <div class="hero-body">
-    <div class="container">
-      <div style="display: flex; justify-content: center; align-items: flex-start; gap: 36px; flex-wrap: wrap;">
-        <div style="text-align: center;">
-          <img src="./static/videos/dataset/rl_beta0.99_hdist.gif"
-               alt="CrowdNav++"
-               style="max-width: 280px; height: auto; border-radius: 10px; border: 1px solid #ddd; box-shadow: 0 2px 8px #eee;">
-          <div style="margin-top: 0.5rem; font-size: 1rem; font-weight: bold; color: #22336c;">
-            CrowdNav++
-          </div>
-        </div>
-        <div style="text-align: center;">
-          <img src="./static/videos/dataset/cvar_beta_dt_beta0.99_hdist.gif"
-               alt="CVaR-BF (Distance)"
-               style="max-width: 280px; height: auto; border-radius: 10px; border: 1px solid #ddd; box-shadow: 0 2px 8px #eee;">
-          <div style="margin-top: 0.5rem; font-size: 1rem; font-weight: bold; color: #22336c;">
-            CVaR-BF (Distance)
-          </div>
-        </div>
-        <div style="text-align: center;">
-          <img src="./static/videos/dataset/rl_cvar_beta_dt_beta0.99_hdist.gif"
-               alt="CrowdNav++ &amp; CVaR-BF (Distance)"
-               style="max-width: 280px; height: auto; border-radius: 10px; border: 1px solid #ddd; box-shadow: 0 2px 8px #eee;">
-          <div style="margin-top: 0.5rem; font-size: 1rem; font-weight: bold; color: #22336c;">
-            CrowdNav++ &amp; CVaR-BF (Distance) 
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section> -->
-
-
-<section class="section demo-parallel-section">
+<section id="sec-sim-rollouts" class="section demo-parallel-section">
   <div class="container is-widescreen mme-wide">
-    <div class="demo-parallel-grid">
-      <div id="sec-sim-rollouts" class="demo-parallel-panel demo-parallel-panel-sim">
-        <h2 class="title is-3 has-text-centered sim-rollout-title">Simulation Demos</h2>
-        <p class="has-text-centered sim-rollout-intro">
-          Format adapted from <a href="https://robomme.github.io/" target="_blank" rel="noopener">RoboMME</a>.
-          Switch suites and scenes to inspect your navigation rollouts; controller dropdowns only appear when multiple methods are available on the same reference setup.
-        </p>
-        <div id="simRolloutApp" class="sim-rollout-app" aria-live="polite"></div>
-      </div>
-
-      <div id="sec-realworld" class="demo-parallel-panel demo-parallel-panel-real">
-        <h2 class="title is-4 has-text-centered demo-side-title">Real-World Dataset Validation</h2>
-        <div class="realworld-card">
-          <p class="realworld-copy">
-            We evaluated the proposed <b>CVaR-BF optimization</b> as a safety filter for RL-based methods, such as <b>CrowdNav++</b> (serving as the nominal controller), on a real-world pedestrian trajectory dataset (Univ Scenario)
-            <a href="https://github.com/CMU-TBD/SocNavBench" target="_blank" rel="noopener">[1]</a>.
-            Experimental results demonstrate that the RL agent alone frequently failed to avoid collisions in out-of-distribution (OOD) scenarios, where the robot radius was larger than during training.
-            <b>In contrast, with our safety filter, the RL agent navigated safely even in these challenging OOD settings.</b>
-          </p>
-          <p class="realworld-meta">
-            #Obs. = 36 | <i>r</i><sub>robot</sub> = 0.6m, <i>r</i><sub>obs</sub> = 0.2m | <i>v</i><sub>max</sub> = 1 m/s, <i>v</i><sub>max</sub><sup>obs</sup> = 1.7 m/s
-          </p>
-          <p class="realworld-ref">
-            [1] Biswas, S. et al., <i>SocNavBench: A Grounded Simulation Testing Framework for Evaluating Social Navigation.</i>
-          </p>
-        </div>
-
-        <div class="realworld-grid">
-          <figure class="realworld-item">
-            <img src="./static/videos/dataset/rl_beta0.99_hdist.gif"
-                 alt="CrowdNav++">
-            <figcaption>CrowdNav++</figcaption>
-          </figure>
-          <figure class="realworld-item">
-            <img src="./static/videos/dataset/rl_cvar_beta_dt_beta0.99_hdist.gif"
-                 alt="CrowdNav++ and proposed CVaR-BF">
-            <figcaption>CrowdNav++ &amp; Proposed</figcaption>
-          </figure>
-        </div>
-      </div>
-    </div>
+    <h2 class="title is-3 has-text-centered sim-rollout-title">Simulation Demos</h2>
+    <p class="has-text-centered sim-rollout-intro">
+      Format adapted from <a href="https://robomme.github.io/" target="_blank" rel="noopener">RoboMME</a>.
+      Switch suites and scenes to inspect your navigation rollouts; controller dropdowns only appear when multiple methods are available on the same reference setup.
+    </p>
+    <div id="simRolloutApp" class="sim-rollout-app" aria-live="polite"></div>
   </div>
 </section>
 
@@ -433,9 +362,6 @@
 <section id="sec-results" class="section mme-section-muted">
   <div class="container is-max-desktop content">
     <h2 class="title is-3 has-text-centered">Experiments &amp; Research Questions</h2>
-    <p class="has-text-centered mme-results-intro">
-      Accordion-style framing adapted from <a href="https://robomme.github.io/" target="_blank" rel="noopener">RoboMME</a>, rewritten here for the CVaR-BF story in this paper.
-    </p>
 
     <div class="mme-findings-col">
       <details class="mme-finding" open>
@@ -503,26 +429,6 @@
         </div>
       </details>
 
-      <details class="mme-finding">
-        <summary class="mme-finding-summary">
-          <span class="mme-finding-chevron">▶</span>
-          RQ4: Does the safety filter still help when attached to a learned policy on real pedestrian trajectories?
-        </summary>
-        <div class="mme-finding-body">
-          <p class="mme-key-line">
-            The dataset validation section treats CVaR-BF as a safety layer on top of CrowdNav++, rather than as a replacement for the learned controller.
-          </p>
-          <ul class="mme-insight-list">
-            <li>The evaluation intentionally stresses out-of-distribution behavior by increasing the robot radius relative to training.</li>
-            <li>This isolates the question of whether the safety filter can recover safer behavior when the nominal policy alone is no longer reliable.</li>
-            <li>The paired Univ-scenario GIFs let visitors inspect the RL-only rollout and the filtered rollout side by side on the same pedestrian trajectory data.</li>
-          </ul>
-          <div class="mme-evidence-row">
-            <a class="mme-evidence-chip" href="#sec-realworld">Real-world dataset validation</a>
-            <a class="mme-evidence-chip" href="#sec-video">Talk video</a>
-          </div>
-        </div>
-      </details>
     </div>
   </div>
 </section>
@@ -608,7 +514,7 @@
   if (!nav) return;
   var links = nav.querySelectorAll('.section-nav-link');
   var triggerEl = document.getElementById('sec-abstract');
-  var sectionIds = ['sec-abstract', 'sec-motivation', 'sec-method', 'sec-teaser', 'sec-baseline-si', 'sec-sim-rollouts', 'sec-realworld', 'sec-results', 'sec-video', 'sec-bib'];
+  var sectionIds = ['sec-abstract', 'sec-motivation', 'sec-method', 'sec-teaser', 'sec-baseline-si', 'sec-sim-rollouts', 'sec-results', 'sec-video', 'sec-bib'];
   var sections = sectionIds.map(function (id) { return document.getElementById(id); });
   var navHeight = 52;
 
