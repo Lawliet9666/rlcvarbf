@@ -109,25 +109,25 @@
 
   var SUITES = [
     {
-      id: 'matched-baselines',
-      label: 'Suite 1: Matched baselines',
-      title: 'Matched-scene controller comparison',
-      overview: 'Compare any two controllers on the same reference rollout.',
+      id: 'case-orca-policy',
+      label: 'Case I: ORCA-based human policy',
+      title: 'Unicycle OOD generalization',
+      overview: 'Out-of-distribution generalization performance of the unicycle robot under ORCA-based human policy.',
       cases: [
         {
-          label: 'Reference scene',
-          goal: 'Shared seed-13 setup for the classical filters, fixed-risk CVaR baselines, ORCA, RL methods, and the adaptive CVaR-BF controller.',
+          label: 'Case I',
+          goal: 'Compare available local baseline rollouts for the ORCA-based human-policy shift.',
           columns: [
             {
               kind: 'select',
-              heading: 'Controller A',
-              options: METHOD_OPTIONS,
-              defaultValue: 'rcbf'
+              heading: 'Method A',
+              options: LEARNED_OPTIONS,
+              defaultValue: 'orca'
             },
             {
               kind: 'select',
-              heading: 'Controller B',
-              options: METHOD_OPTIONS,
+              heading: 'Method B',
+              options: LEARNED_OPTIONS,
               defaultValue: 'proposed'
             }
           ]
@@ -135,89 +135,41 @@
       ]
     },
     {
-      id: 'noise-sweep',
-      label: 'Suite 2: Noise sweep',
-      title: 'Proposed controller under increasing noise',
-      overview: 'Keep the controller fixed and inspect how the rollout changes as scene uncertainty rises.',
+      id: 'case-high-density',
+      label: 'Case II: High obstacle density (30 obstacles)',
+      title: 'Unicycle OOD generalization',
+      overview: 'Out-of-distribution generalization performance of the unicycle robot under higher obstacle density.',
       cases: [
         {
-          label: 'Obs 6: low vs mid',
-          goal: 'Hold obstacle count fixed at 6 and compare low noise against moderate noise.',
+          label: 'Case II',
+          goal: 'Current local rollout slots show the densest comparison scenes available in this repo.',
           columns: [
-            fixedColumn('Lower noise', PROPOSED_SCENES.seed18),
-            fixedColumn('Moderate noise', PROPOSED_SCENES.seed100)
-          ]
-        },
-        {
-          label: 'Obs 6: mid vs high',
-          goal: 'Same 6-obstacle setup, now compare moderate noise against the highest-noise rollout.',
-          columns: [
-            fixedColumn('Moderate noise', PROPOSED_SCENES.seed100),
-            fixedColumn('Higher noise', PROPOSED_SCENES.seed21)
-          ]
-        },
-        {
-          label: 'Obs 8: mid vs high',
-          goal: 'Dense scene comparison under moderate and higher noise using the adaptive controller only.',
-          columns: [
-            fixedColumn('Moderate noise', PROPOSED_SCENES.seed13),
-            fixedColumn('Higher noise', PROPOSED_SCENES.seed14)
+            fixedColumn('Reference density', PROPOSED_SCENES.seed100),
+            fixedColumn('Higher density', PROPOSED_SCENES.seed13)
           ]
         }
       ]
     },
     {
-      id: 'density-sweep',
-      label: 'Suite 3: Density sweep',
-      title: 'Proposed controller across crowd densities',
-      overview: 'Switch cases to inspect how the adaptive controller behaves as the number of nearby obstacles increases.',
+      id: 'case-increased-radius',
+      label: 'Case III: Increased human radius (0.5 m)',
+      title: 'Unicycle OOD generalization',
+      overview: 'Out-of-distribution generalization performance of the unicycle robot under increased human radius.',
       cases: [
         {
-          label: '2 vs 4 obstacles',
-          goal: 'Moderate-noise comparison from a sparse scene to a mid-density scene.',
-          columns: [
-            fixedColumn('Sparser scene', PROPOSED_SCENES.seed19),
-            fixedColumn('Mid-density scene', PROPOSED_SCENES.seed20)
-          ]
-        },
-        {
-          label: '4 vs 5 obstacles',
-          goal: 'Small density increase at the same nominal noise level.',
-          columns: [
-            fixedColumn('4 obstacles', PROPOSED_SCENES.seed20),
-            fixedColumn('5 obstacles', PROPOSED_SCENES.seed4)
-          ]
-        },
-        {
-          label: '6 vs 8 obstacles',
-          goal: 'Moderate-noise comparison between a 6-obstacle rollout and a denser 8-obstacle rollout.',
-          columns: [
-            fixedColumn('6 obstacles', PROPOSED_SCENES.seed100),
-            fixedColumn('8 obstacles', PROPOSED_SCENES.seed13)
-          ]
-        }
-      ]
-    },
-    {
-      id: 'learned-vs-filtered',
-      label: 'Suite 4: Learned vs filtered',
-      title: 'Learned and social-navigation baselines',
-      overview: 'Focus the comparison on ORCA and the RL planners against the adaptive filter.',
-      cases: [
-        {
-          label: 'Reference scene',
-          goal: 'Shared reference rollout for ORCA, CrowdNav, CrowdNav++, and the adaptive CVaR-BF controller.',
+          label: 'Case III',
+          goal: 'Compare available local methods for the increased-human-radius shift.',
           columns: [
             {
               kind: 'select',
-              heading: 'Baseline policy',
-              options: LEARNED_OPTIONS,
-              defaultValue: 'crowdnavpp'
+              heading: 'Method A',
+              options: METHOD_OPTIONS,
+              defaultValue: 'cvar_hi'
             },
             {
               kind: 'select',
-              heading: 'Filtered / comparison policy',
-              options: LEARNED_OPTIONS,
+              heading: 'Method B',
+              options: METHOD_OPTIONS,
               defaultValue: 'proposed'
             }
           ]
