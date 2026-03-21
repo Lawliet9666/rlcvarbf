@@ -283,143 +283,60 @@
 
 
 <section class="hero is-light is-small">
-  <h2 class="title is-4 has-text-centered">Animations for different number of obstacles</h2>
+  <h2 class="title is-4 has-text-centered">In distribution: obstacle number 20 baselines comparison for unicycle</h2>
+  <p class="subtitle is-6 has-text-centered" style="margin-top: -0.5rem;">20 obstacles, noise σ = 0.025</p>
   <div class="hero-body">
     <div class="container">
-      <div id="results-carousel" class="carousel results-carousel">
-        <div class="item item-steve has-text-centered">
-          <img src="./static/videos/seed100_noise0.025_obs6_umax0.9_besfm_umax0.9_besfm_cvar_beta_dt_doubleint_v2_gamma0.1_betaNone_hdist_cone.gif"
-               id="steve"
-               alt="Steve GIF"
-               style="max-width: 100%; height: auto;">
-            <div style="margin-top: 0.5rem; font-size: 1rem; font-weight: bold; color: #22336c;">
-            # Obs. = 15, σ = 0.025
-            </div>
-        </div>
-        <div class="item item-chair-tp has-text-centered">
-          <img src="./static/videos/seed13_noise0.025_obs8_umax0.9_besfm_umax0.3_besfm_cvar_beta_dt_doubleint_v2_gamma0.1_betaNone_hdist_cone.gif"
-               id="chair-tp"
-               alt="Chair TP GIF"
-               style="max-width: 100%; height: auto;">
-            <div style="margin-top: 0.5rem; font-size: 1rem; font-weight: bold; color: #22336c;">
-            # Obs. = 20, σ = 0.025
-            </div>
-        </div>
-        <div class="item item-shiba has-text-centered">
-          <img src="./static/videos/seed14_noise0.05_obs8_umax0.9_besfm_umax0.9_besfm_cvar_beta_dt_doubleint_v2_gamma0.1_betaNone_hdist_cone.gif"
-               id="shiba"
-               alt="Shiba GIF"
-               style="max-width: 100%; height: auto;">
-          <div style="margin-top: 0.5rem; font-size: 1rem; font-weight: bold; color: #22336c;">
-            # Obs. = 20, σ = 0.05
-          </div>
-        </div>
-        <div class="item item-fullbody has-text-centered">
-          <img src="./static/videos/seed18_noise0.0_obs6_umax0.9_besfm_umax0.9_besfm_cvar_beta_dt_doubleint_v2_gamma0.1_betaNone_hdist_cone.gif"
-               id="fullbody"
-               alt="Fullbody GIF"
-               style="max-width: 100%; height: auto;">
-          <div style="margin-top: 0.5rem; font-size: 1rem; font-weight: bold; color: #22336c;">
-            # Obs. = 15, σ = 0.0
-          </div>
-        </div>
-        <div class="item item-blueshirt has-text-centered">
-          <img src="./static/videos/seed19_noise0.05_obs2_umax0.9_besfm_umax0.9_besfm_cvar_beta_dt_doubleint_v2_gamma0.1_betaNone_hdist_cone.gif"
-               id="blueshirt"
-               alt="Blueshirt GIF"
-               style="max-width: 100%; height: auto;">
-          <div style="margin-top: 0.5rem; font-size: 1rem; font-weight: bold; color: #22336c;">
-            # Obs. = 5, σ = 0.05
-          </div>
-        </div>
-        <div class="item item-mask has-text-centered">
-          <img src="./static/videos/seed20_noise0.05_obs4_umax0.9_besfm_umax0.3_besfm_cvar_beta_dt_doubleint_v2_gamma0.1_betaNone_hdist_cone.gif"
-               id="mask"
-               alt="Mask GIF"
-               style="max-width: 100%; height: auto;">
-          <div style="margin-top: 0.5rem; font-size: 1rem; font-weight: bold; color: #22336c;">
-            # Obs. = 10, σ = 0.05
-          </div>
-        </div>
-        <div class="item item-coffee has-text-centered">
-          <img src="./static/videos/seed21_noise0.075_obs6_umax0.9_besfm_umax0.9_besfm_cvar_beta_dt_doubleint_v2_gamma0.1_betaNone_hdist_cone.gif"
-               id="coffee"
-               alt="Coffee GIF"
-               style="max-width: 100%; height: auto;">
-          <div style="margin-top: 0.5rem; font-size: 1rem; font-weight: bold; color: #22336c;">
-            # Obs. = 15, σ = 0.075
-          </div>
-        </div>
-        <div class="item item-toby has-text-centered">
-          <img src="./static/videos/seed4_noise0.05_obs5_umax0.9_besfm_umax0.9_besfm_cvar_beta_dt_doubleint_v2_gamma0.1_betaNone_hdist_cone.gif"
-               id="toby"
-               alt="Toby GIF"
-               style="max-width: 100%; height: auto;">
-          <div style="margin-top: 0.5rem; font-size: 1rem; font-weight: bold; color: #22336c;">
-            # Obs. = 15, σ = 0.05
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-
-
-<section class="hero is-light is-small">
-  <h2 class="title is-4 has-text-centered">Comparison results on 20 obstacles with noise σ=0.025</h2>
-  <div class="hero-body">
-    <div class="container">
-      <div id="results-carousel" class="carousel results-carousel">
+      <div id="carousel-baselines-unicycle" class="carousel results-carousel">
         <div class="item item-chair-tp has-text-centered">
           <img src="./static/videos/compare/seed13_noise0.025_obs8_umax0.9_besfm_umax0.3_besfm_rcbf_doubleint_v2_gamma0.1_betaNone_hcone.gif"
-               id="chair-tp"
-               alt="Chair TP GIF"
+               id="baseline-uni-rcbf"
+               alt="RCBF (Collision Cone), unicycle"
                style="max-width: 100%; height: auto;">
-            <div style="margin-top: 0.5rem; font-size: 1rem; font-weight: bold; color: #22336c;">
+          <div style="margin-top: 0.5rem; font-size: 1rem; font-weight: bold; color: #22336c;">
             RCBF (Collision Cone)
-            </div>
+          </div>
         </div>
         <div class="item item-steve has-text-centered">
           <img src="./static/videos/compare/seed13_noise0.025_obs8_umax0.9_besfm_umax0.3_besfm_cbf_doubleint_v2_gamma0.1_betaNone_hcone.gif"
-               id="steve"
-               alt="Steve GIF"
+               id="baseline-uni-cbf"
+               alt="CBF (Collision Cone), unicycle"
                style="max-width: 100%; height: auto;">
-            <div style="margin-top: 0.5rem; font-size: 1rem; font-weight: bold; color: #22336c;">
+          <div style="margin-top: 0.5rem; font-size: 1rem; font-weight: bold; color: #22336c;">
             CBF (Collision Cone)
-            </div>
+          </div>
         </div>
         <div class="item item-steve has-text-centered">
           <img src="./static/videos/compare/seed13_noise0.025_obs8_umax0.9_besfm_umax0.3_besfm_cvar_doubleint_v2_gamma0.1_beta0.01_hdist.gif"
-               id="steve"
-               alt="Steve GIF"
+               id="baseline-uni-cvar-b01"
+               alt="CVaR distance β=0.01, unicycle"
                style="max-width: 100%; height: auto;">
-            <div style="margin-top: 0.5rem; font-size: 1rem; font-weight: bold; color: #22336c;">
-            CVaR (Distance) β = 0.1  
-            </div>
+          <div style="margin-top: 0.5rem; font-size: 1rem; font-weight: bold; color: #22336c;">
+            CVaR (Distance) β = 0.1
+          </div>
         </div>
         <div class="item item-chair-tp has-text-centered">
           <img src="./static/videos/compare/seed13_noise0.025_obs8_umax0.9_besfm_umax0.3_besfm_cvar_doubleint_v2_gamma0.1_beta0.99_hdist.gif"
-               id="chair-tp"
-               alt="Chair TP GIF"
+               id="baseline-uni-cvar-b99"
+               alt="CVaR distance β=0.99, unicycle"
                style="max-width: 100%; height: auto;">
-            <div style="margin-top: 0.5rem; font-size: 1rem; font-weight: bold; color: #22336c;">
+          <div style="margin-top: 0.5rem; font-size: 1rem; font-weight: bold; color: #22336c;">
             CVaR (Distance) β = 0.99
-            </div>
+          </div>
         </div>
         <div class="item item-chair-tp has-text-centered">
           <img src="./static/videos/compare/seed13_noise0.025_obs8_umax0.9_besfm_umax0.3_besfm_orca_plus_doubleint_v2_gamma0.1_betaNone_hdist.gif"
-               id="chair-tp"
-               alt="Chair TP GIF"
+               id="baseline-uni-orca"
+               alt="ORCA, unicycle"
                style="max-width: 100%; height: auto;">
-            <div style="margin-top: 0.5rem; font-size: 1rem; font-weight: bold; color: #22336c;">
-            ORCA 
-            </div>
+          <div style="margin-top: 0.5rem; font-size: 1rem; font-weight: bold; color: #22336c;">
+            ORCA
+          </div>
         </div>
         <div class="item item-shiba has-text-centered">
           <img src="./static/videos/compare/seed13_noise0.025_obs8_umax0.9_besfm_umax0.3_besfm_trajectory_animation.gif"
-               id="shiba"
-               alt="Shiba GIF"
+               id="baseline-uni-crowdnav"
+               alt="CrowdNav RL, unicycle"
                style="max-width: 100%; height: auto;">
           <div style="margin-top: 0.5rem; font-size: 1rem; font-weight: bold; color: #22336c;">
             CrowdNav (RL)
@@ -427,8 +344,8 @@
         </div>
         <div class="item item-fullbody has-text-centered">
           <img src="./static/videos/compare/seed13_noise0.025_obs8_umax0.9_besfm_umax0.3_besfm_trajectory_animation_crowd++.gif"
-               id="fullbody"
-               alt="Fullbody GIF"
+               id="baseline-uni-crowdnavpp"
+               alt="CrowdNav++ RL, unicycle"
                style="max-width: 100%; height: auto;">
           <div style="margin-top: 0.5rem; font-size: 1rem; font-weight: bold; color: #22336c;">
             CrowdNav++ (RL)
@@ -436,12 +353,96 @@
         </div>
         <div class="item item-blueshirt has-text-centered">
           <img src="./static/videos/compare/seed13_noise0.025_obs8_umax0.9_besfm_umax0.3_besfm_cvar_beta_dt_doubleint_v2_gamma0.1_betaNone_hdist_cone.gif"
-               id="blueshirt"
-               alt="Blueshirt GIF"
+               id="baseline-uni-proposed"
+               alt="Proposed method, unicycle"
                style="max-width: 100%; height: auto;">
           <div style="margin-top: 0.5rem; font-size: 1rem; font-weight: bold; color: #22336c;">
-            Proposed method 
+            Proposed method
           </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="hero is-light is-small">
+  <h2 class="title is-4 has-text-centered">In distribution: obstacle number 20 baselines comparison for single integrator</h2>
+  <p class="subtitle is-6 has-text-centered" style="margin-top: -0.5rem;">20 obstacles, noise σ = 0.025</p>
+  <div class="hero-body">
+    <div class="container">
+      <div id="carousel-baselines-single-integrator" class="carousel results-carousel">
+        <div class="item item-chair-tp has-text-centered">
+          <img src="./static/videos/compare/seed13_noise0.025_obs8_umax0.9_besfm_umax0.3_besfm_rcbf_doubleint_v2_gamma0.1_betaNone_hcone.gif"
+               id="baseline-si-rcbf"
+               alt="RCBF (Collision Cone), single integrator"
+               style="max-width: 100%; height: auto;">
+          <div style="margin-top: 0.5rem; font-size: 1rem; font-weight: bold; color: #22336c;">
+            RCBF (Collision Cone)
+          </div>
+        </div>
+        <div class="item item-steve has-text-centered">
+          <img src="./static/videos/compare/seed13_noise0.025_obs8_umax0.9_besfm_umax0.3_besfm_cbf_doubleint_v2_gamma0.1_betaNone_hcone.gif"
+               id="baseline-si-cbf"
+               alt="CBF (Collision Cone), single integrator"
+               style="max-width: 100%; height: auto;">
+          <div style="margin-top: 0.5rem; font-size: 1rem; font-weight: bold; color: #22336c;">
+            CBF (Collision Cone)
+          </div>
+        </div>
+        <div class="item item-steve has-text-centered">
+          <img src="./static/videos/compare/seed13_noise0.025_obs8_umax0.9_besfm_umax0.3_besfm_cvar_doubleint_v2_gamma0.1_beta0.01_hdist.gif"
+               id="baseline-si-cvar-b01"
+               alt="CVaR distance β=0.01, single integrator"
+               style="max-width: 100%; height: auto;">
+          <div style="margin-top: 0.5rem; font-size: 1rem; font-weight: bold; color: #22336c;">
+            CVaR (Distance) β = 0.1
+          </div>
+        </div>
+        <div class="item item-chair-tp has-text-centered">
+          <img src="./static/videos/compare/seed13_noise0.025_obs8_umax0.9_besfm_umax0.3_besfm_cvar_doubleint_v2_gamma0.1_beta0.99_hdist.gif"
+               id="baseline-si-cvar-b99"
+               alt="CVaR distance β=0.99, single integrator"
+               style="max-width: 100%; height: auto;">
+          <div style="margin-top: 0.5rem; font-size: 1rem; font-weight: bold; color: #22336c;">
+            CVaR (Distance) β = 0.99
+          </div>
+        </div>
+        <div class="item item-chair-tp has-text-centered">
+          <img src="./static/videos/compare/seed13_noise0.025_obs8_umax0.9_besfm_umax0.3_besfm_orca_plus_doubleint_v2_gamma0.1_betaNone_hdist.gif"
+               id="baseline-si-orca"
+               alt="ORCA, single integrator"
+               style="max-width: 100%; height: auto;">
+          <div style="margin-top: 0.5rem; font-size: 1rem; font-weight: bold; color: #22336c;">
+            ORCA
+          </div>
+        </div>
+        <div class="item item-shiba has-text-centered">
+          <img src="./static/videos/compare/seed13_noise0.025_obs8_umax0.9_besfm_umax0.3_besfm_trajectory_animation.gif"
+               id="baseline-si-crowdnav"
+               alt="CrowdNav RL, single integrator"
+               style="max-width: 100%; height: auto;">
+          <div style="margin-top: 0.5rem; font-size: 1rem; font-weight: bold; color: #22336c;">
+            CrowdNav (RL)
+          </div>
+        </div>
+        <div class="item item-fullbody has-text-centered">
+          <img src="./static/videos/compare/seed13_noise0.025_obs8_umax0.9_besfm_umax0.3_besfm_trajectory_animation_crowd++.gif"
+               id="baseline-si-crowdnavpp"
+               alt="CrowdNav++ RL, single integrator"
+               style="max-width: 100%; height: auto;">
+          <div style="margin-top: 0.5rem; font-size: 1rem; font-weight: bold; color: #22336c;">
+            CrowdNav++ (RL)
+          </div>
+        </div>
+        <div class="item item-blueshirt has-text-centered">
+          <img src="./static/videos/compare/seed13_noise0.025_obs8_umax0.9_besfm_umax0.3_besfm_cvar_beta_dt_doubleint_v2_gamma0.1_betaNone_hdist_cone.gif"
+               id="baseline-si-proposed"
+               alt="Proposed method, single integrator"
+               style="max-width: 100%; height: auto;">
+          <div style="margin-top: 0.5rem; font-size: 1rem; font-weight: bold; color: #22336c;">
+            Proposed method
+          </div>
+        </div>
       </div>
     </div>
   </div>
