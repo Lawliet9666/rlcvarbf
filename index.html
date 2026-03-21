@@ -525,101 +525,167 @@
 </section>
 
 
-<!-- TEMPLATE: research question → bullet takeaways → hierarchical results table (replace all placeholder text & numbers) -->
+<!-- TEMPLATE: same layout as reference figure — replace text/numbers; use tr.rq-major / tr.rq-dash / rq-row-alt for rules & striping -->
 <section class="section" id="research-questions-template">
   <div class="container is-max-desktop content">
     <h2 class="title is-3 has-text-centered">Ablations &amp; research questions</h2>
-    <p class="has-text-centered is-size-6" style="max-width: 42rem; margin-left: auto; margin-right: auto;">
-      Collapsible blocks below mirror a common paper layout: <strong>question bar</strong>, short <strong>bullet conclusions</strong>, then a <strong>nested table</strong>. Edit copy, column names, <code>rowspan</code>/<code>colspan</code>, and cell classes (<code>rq-best</code>, <code>rq-cell-highlight</code>) as needed.
-    </p>
 
     <details class="rq-block" open>
-      <summary>RQ1: [Your research question — e.g. which design choices yield the strongest performance?]</summary>
+      <summary>RQ1: Which memory representations and integration mechanisms yield the strongest performance?</summary>
       <div class="rq-block-body">
-        <p>Across all <strong>[method / condition]</strong> variants:</p>
+        <p>Across all MME-VLA variants:</p>
         <ul class="rq-takeaways">
-          <li><strong>Factor A:</strong> Setting X &gt; Setting Y &gt; Setting Z.</li>
-          <li><strong>Factor B:</strong> Short takeaway with <span class="rq-best">best option in red</span> if you like.</li>
-          <li><strong>Factor C:</strong> Another ranked or qualitative conclusion.</li>
-          <li><strong>Interaction:</strong> Optional note on combined effects.</li>
-          <li><strong>Overall:</strong> One-line summary pointing readers to the table.</li>
+          <li><strong>Memory Representation:</strong> Symbolic &gt; Perceptual &gt; Recurrent.</li>
+          <li><strong>Integration Mechanism:</strong> Oracle &gt; Gemini &gt; QwenVL (example ranking — replace with your results).</li>
+          <li><strong>Recurrent Memory</strong> performs worst likely due to training instability.</li>
+          <li><strong>Overall:</strong> See table below for full breakdown.</li>
         </ul>
 
         <div class="rq-table-wrap">
-          <table class="rq-table">
+          <table class="rq-table-paper">
             <thead>
               <tr>
-                <th scope="col">Major axis</th>
-                <th scope="col">Sub-axis</th>
-                <th scope="col">Variant</th>
-                <th scope="col">Metric 1</th>
-                <th scope="col">Metric 2</th>
-                <th scope="col">Metric 3</th>
-                <th scope="col">AVG</th>
+                <th scope="col">Representation</th>
+                <th scope="col">Policy</th>
+                <th scope="col">Integration/VLM</th>
+                <th scope="col" class="rq-split-metrics">Counting</th>
+                <th scope="col">Permanence</th>
+                <th scope="col">Reference</th>
+                <th scope="col">Imitation</th>
+                <th scope="col" class="rq-split-avg">AVG</th>
               </tr>
             </thead>
             <tbody>
-              <tr>
-                <th scope="rowgroup" rowspan="2">No memory<br><span style="font-weight:400;font-style:normal;font-size:0.9em;">(baseline)</span></th>
-                <td class="rq-left" colspan="2">Single configuration</td>
-                <td>0.00</td>
-                <td>0.00</td>
-                <td>0.00</td>
-                <td>0.00 ± 0.00</td>
+              <tr class="rq-baseline">
+                <td class="rq-left" colspan="3">No Memory (<i>π</i><sub>0.5</sub>)</td>
+                <td class="rq-split-metrics rq-num">14.20</td>
+                <td class="rq-num">11.05</td>
+                <td class="rq-num">16.80</td>
+                <td class="rq-num">9.92</td>
+                <td class="rq-split-avg rq-num">12.99 ± 0.52</td>
               </tr>
-              <tr>
-                <td class="rq-left" colspan="2">…</td>
-                <td>—</td>
-                <td>—</td>
-                <td>—</td>
-                <td>—</td>
+
+              <tr class="rq-major rq-row-alt">
+                <th scope="row" rowspan="6" class="rq-rep">Symbolic</th>
+                <td class="rq-policy" rowspan="3">SIMPLESG</td>
+                <td class="rq-integ">Oracle</td>
+                <td class="rq-split-metrics rq-num">18.40</td>
+                <td class="rq-num rq-best">22.10</td>
+                <td class="rq-num">19.05</td>
+                <td class="rq-num">14.20</td>
+                <td class="rq-split-avg rq-num">18.44 ± 0.48</td>
               </tr>
-              <tr class="rq-major-sep">
-                <th scope="rowgroup" rowspan="4">Group A</th>
-                <td class="rq-left" rowspan="2">Branch 1</td>
-                <td class="rq-left">Setting α</td>
-                <td>12.3</td>
-                <td>45.6</td>
-                <td>7.8</td>
-                <td><span class="rq-best">22.1 ± 0.3</span></td>
+              <tr class="rq-dash">
+                <td class="rq-integ">Gemini</td>
+                <td class="rq-split-metrics rq-num">16.20</td>
+                <td class="rq-num">18.30</td>
+                <td class="rq-num">17.10</td>
+                <td class="rq-num">12.50</td>
+                <td class="rq-split-avg rq-num">16.03 ± 0.41</td>
               </tr>
-              <tr>
-                <td class="rq-left">Setting β</td>
-                <td>10.1</td>
-                <td>40.2</td>
-                <td>6.5</td>
-                <td>18.9 ± 0.4</td>
+              <tr class="rq-dash">
+                <td class="rq-integ">QwenVL</td>
+                <td class="rq-split-metrics rq-num">15.10</td>
+                <td class="rq-num">17.20</td>
+                <td class="rq-num">15.80</td>
+                <td class="rq-num">11.90</td>
+                <td class="rq-split-avg rq-num">15.00 ± 0.39</td>
               </tr>
-              <tr>
-                <td class="rq-left" rowspan="2">Branch 2</td>
-                <td class="rq-left">Setting γ</td>
-                <td>9.8</td>
-                <td>39.0</td>
-                <td>6.1</td>
-                <td class="rq-cell-highlight">18.0 ± 0.2</td>
+              <tr class="rq-dash rq-row-alt">
+                <td class="rq-policy" rowspan="3">GROUNDSG</td>
+                <td class="rq-integ">Oracle</td>
+                <td class="rq-split-metrics rq-num">17.50</td>
+                <td class="rq-num">20.40</td>
+                <td class="rq-num">18.20</td>
+                <td class="rq-num">13.60</td>
+                <td class="rq-split-avg rq-num">17.43 ± 0.45</td>
               </tr>
-              <tr>
-                <td class="rq-left">Setting δ</td>
-                <td>8.2</td>
-                <td>35.4</td>
-                <td>5.9</td>
-                <td>16.2 ± 0.5</td>
+              <tr class="rq-dash">
+                <td class="rq-integ">Gemini</td>
+                <td class="rq-split-metrics rq-num">15.80</td>
+                <td class="rq-num">17.90</td>
+                <td class="rq-num">16.40</td>
+                <td class="rq-num">12.10</td>
+                <td class="rq-split-avg rq-num">15.55 ± 0.38</td>
               </tr>
-              <tr class="rq-major-sep">
-                <th scope="rowgroup" rowspan="2">Group B</th>
-                <td class="rq-left" rowspan="2">Branch 3</td>
-                <td class="rq-left">Setting ε</td>
-                <td>…</td>
-                <td>…</td>
-                <td>…</td>
-                <td>…</td>
+              <tr class="rq-dash">
+                <td class="rq-integ">QwenVL</td>
+                <td class="rq-split-metrics rq-num">14.60</td>
+                <td class="rq-num">16.50</td>
+                <td class="rq-num">15.20</td>
+                <td class="rq-num">11.20</td>
+                <td class="rq-split-avg rq-num">14.38 ± 0.36</td>
               </tr>
-              <tr>
-                <td class="rq-left">Setting ζ</td>
-                <td>…</td>
-                <td>…</td>
-                <td>…</td>
-                <td>…</td>
+
+              <tr class="rq-major">
+                <th scope="row" rowspan="5" class="rq-rep">Perceptual</th>
+                <td class="rq-policy" rowspan="2">TOKEN DROP</td>
+                <td class="rq-integ">Context</td>
+                <td class="rq-split-metrics rq-num">13.20</td>
+                <td class="rq-num">14.80</td>
+                <td class="rq-num">13.50</td>
+                <td class="rq-num">10.40</td>
+                <td class="rq-split-avg rq-num">12.98 ± 0.33</td>
+              </tr>
+              <tr class="rq-dash rq-row-alt">
+                <td class="rq-integ">Expert</td>
+                <td class="rq-split-metrics rq-num">12.90</td>
+                <td class="rq-num">14.10</td>
+                <td class="rq-num">13.00</td>
+                <td class="rq-num">10.10</td>
+                <td class="rq-split-avg rq-num">12.53 ± 0.31</td>
+              </tr>
+              <tr class="rq-dash">
+                <td class="rq-policy" rowspan="3">FRAME SAMP</td>
+                <td class="rq-integ">Context</td>
+                <td class="rq-split-metrics rq-num">14.00</td>
+                <td class="rq-num">15.60</td>
+                <td class="rq-num">14.20</td>
+                <td class="rq-num">10.80</td>
+                <td class="rq-split-avg rq-num">13.65 ± 0.34</td>
+              </tr>
+              <tr class="rq-dash rq-row-alt">
+                <td class="rq-integ">Modul</td>
+                <td class="rq-split-metrics rq-num">15.30</td>
+                <td class="rq-num">17.10</td>
+                <td class="rq-num">15.90</td>
+                <td class="rq-num">11.50</td>
+                <td class="rq-split-avg rq-num rq-cell-highlight">14.95 ± 0.29</td>
+              </tr>
+              <tr class="rq-dash">
+                <td class="rq-integ">Expert</td>
+                <td class="rq-split-metrics rq-num">13.50</td>
+                <td class="rq-num">15.20</td>
+                <td class="rq-num">14.00</td>
+                <td class="rq-num">10.60</td>
+                <td class="rq-split-avg rq-num">13.33 ± 0.32</td>
+              </tr>
+
+              <tr class="rq-major rq-row-alt">
+                <th scope="row" rowspan="3" class="rq-rep">Recurrent</th>
+                <td class="rq-policy" rowspan="3">LSTM-SEQ</td>
+                <td class="rq-integ">Oracle</td>
+                <td class="rq-split-metrics rq-num">10.20</td>
+                <td class="rq-num">11.40</td>
+                <td class="rq-num">10.80</td>
+                <td class="rq-num">8.60</td>
+                <td class="rq-split-avg rq-num">10.25 ± 0.44</td>
+              </tr>
+              <tr class="rq-dash">
+                <td class="rq-integ">Gemini</td>
+                <td class="rq-split-metrics rq-num">9.50</td>
+                <td class="rq-num">10.60</td>
+                <td class="rq-num">10.10</td>
+                <td class="rq-num">8.10</td>
+                <td class="rq-split-avg rq-num">9.58 ± 0.42</td>
+              </tr>
+              <tr class="rq-dash">
+                <td class="rq-integ">QwenVL</td>
+                <td class="rq-split-metrics rq-num">8.90</td>
+                <td class="rq-num">9.80</td>
+                <td class="rq-num">9.40</td>
+                <td class="rq-num">7.50</td>
+                <td class="rq-split-avg rq-num"><span class="rq-best">8.90 ± 0.51</span></td>
               </tr>
             </tbody>
           </table>
@@ -628,32 +694,53 @@
     </details>
 
     <details class="rq-block">
-      <summary>RQ2: [Second question — starts collapsed; remove the <code>open</code> attribute on RQ1 if you want both closed by default]</summary>
+      <summary>RQ2: [Your second research question — reuse the same table format as RQ1 and trim rows]</summary>
       <div class="rq-block-body">
-        <p>Short intro for this question.</p>
+        <p>Across all <strong>[your setting]</strong>:</p>
         <ul class="rq-takeaways">
-          <li><strong>Point one:</strong> …</li>
-          <li><strong>Point two:</strong> …</li>
+          <li><strong>Takeaway one:</strong> A &gt; B &gt; C.</li>
+          <li><strong>Takeaway two:</strong> …</li>
         </ul>
         <div class="rq-table-wrap">
-          <table class="rq-table">
+          <table class="rq-table-paper">
             <thead>
               <tr>
-                <th scope="col">Condition</th>
-                <th scope="col">Details</th>
-                <th scope="col">Score</th>
+                <th scope="col">Representation</th>
+                <th scope="col">Policy</th>
+                <th scope="col">Integration/VLM</th>
+                <th scope="col" class="rq-split-metrics">Counting</th>
+                <th scope="col">Permanence</th>
+                <th scope="col">Reference</th>
+                <th scope="col">Imitation</th>
+                <th scope="col" class="rq-split-avg">AVG</th>
               </tr>
             </thead>
             <tbody>
-              <tr>
-                <td class="rq-left">A</td>
-                <td class="rq-left">…</td>
-                <td>0.0</td>
+              <tr class="rq-baseline">
+                <td class="rq-left" colspan="3">Baseline (replace label)</td>
+                <td class="rq-split-metrics rq-num">—</td>
+                <td class="rq-num">—</td>
+                <td class="rq-num">—</td>
+                <td class="rq-num">—</td>
+                <td class="rq-split-avg rq-num">— ± —</td>
               </tr>
-              <tr>
-                <td class="rq-left">B</td>
-                <td class="rq-left">…</td>
-                <td><span class="rq-best">0.0</span></td>
+              <tr class="rq-major rq-row-alt">
+                <th scope="row" rowspan="2" class="rq-rep">Group A</th>
+                <td class="rq-policy" rowspan="2">Policy 1</td>
+                <td class="rq-integ">Variant α</td>
+                <td class="rq-split-metrics rq-num">…</td>
+                <td class="rq-num">…</td>
+                <td class="rq-num">…</td>
+                <td class="rq-num">…</td>
+                <td class="rq-split-avg rq-num">… ± …</td>
+              </tr>
+              <tr class="rq-dash">
+                <td class="rq-integ">Variant β</td>
+                <td class="rq-split-metrics rq-num">…</td>
+                <td class="rq-num">…</td>
+                <td class="rq-num">…</td>
+                <td class="rq-num">…</td>
+                <td class="rq-split-avg rq-num">… ± …</td>
               </tr>
             </tbody>
           </table>

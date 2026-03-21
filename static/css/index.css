@@ -271,3 +271,88 @@ table.rq-table .rq-cell-highlight {
   outline: 2px solid #dc2626;
   outline-offset: -2px;
 }
+
+/* Paper-style table (figure layout: thick header rule, metric bands, zebra, dashed sub-rules) */
+table.rq-table-paper {
+  width: 100%;
+  min-width: 880px;
+  border-collapse: collapse;
+  font-size: 0.8rem;
+  color: #111;
+  border: 1px solid #222;
+}
+
+table.rq-table-paper thead th {
+  background: #fff;
+  font-weight: 700;
+  text-align: center;
+  padding: 0.5rem 0.45rem;
+  border: 1px solid #222;
+  border-bottom: 3px solid #000;
+  vertical-align: middle;
+}
+
+table.rq-table-paper tbody th,
+table.rq-table-paper tbody td {
+  border: 1px solid #333;
+  padding: 0.38rem 0.45rem;
+  vertical-align: middle;
+}
+
+table.rq-table-paper th.rq-rep {
+  font-weight: 700;
+  font-style: italic;
+  text-align: left;
+  background: #fff;
+}
+
+table.rq-table-paper td.rq-policy,
+table.rq-table-paper td.rq-integ,
+table.rq-table-paper td.rq-left {
+  text-align: left;
+}
+
+table.rq-table-paper td.rq-num,
+table.rq-table-paper th.rq-num {
+  text-align: center;
+}
+
+/* Vertical rules: metric block + AVG column */
+table.rq-table-paper th.rq-split-metrics,
+table.rq-table-paper td.rq-split-metrics {
+  border-left: 2px solid #000;
+}
+
+table.rq-table-paper th.rq-split-avg,
+table.rq-table-paper td.rq-split-avg {
+  border-left: 2px solid #000;
+}
+
+table.rq-table-paper tr.rq-major > th,
+table.rq-table-paper tr.rq-major > td {
+  border-top: 3px solid #000;
+}
+
+table.rq-table-paper tr.rq-dash > th,
+table.rq-table-paper tr.rq-dash > td {
+  border-top: 1px dashed #444;
+}
+
+table.rq-table-paper tr.rq-row-alt > th,
+table.rq-table-paper tr.rq-row-alt > td {
+  background: #ececee;
+}
+
+table.rq-table-paper tr.rq-baseline > th,
+table.rq-table-paper tr.rq-baseline > td {
+  background: #f7f7f8;
+}
+
+table.rq-table-paper .rq-best {
+  color: #c00;
+  font-weight: 700;
+}
+
+table.rq-table-paper .rq-cell-highlight {
+  box-shadow: inset 0 0 0 2px #c00;
+}
