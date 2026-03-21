@@ -50,7 +50,6 @@
     <a class="section-nav-link" href="#sec-abstract" data-target="sec-abstract">Abstract</a>
     <a class="section-nav-link" href="#sec-motivation" data-target="sec-motivation">Motivation</a>
     <a class="section-nav-link" href="#sec-method" data-target="sec-method">Method</a>
-    <a class="section-nav-link" href="#sec-teaser" data-target="sec-teaser">Teaser</a>
     <a class="section-nav-link" href="#sec-id-demos" data-target="sec-id-demos">ID Demos</a>
     <a class="section-nav-link" href="#sec-ood-demos" data-target="sec-ood-demos">OOD Demos</a>
     <a class="section-nav-link" href="#sec-results" data-target="sec-results">Statistical Results</a>
@@ -217,36 +216,6 @@
     </div>
   </div>
 </section>
-
-
-<section id="sec-teaser" class="hero teaser">
-  <div class="container is-max-desktop">
-    <div class="hero-body">
-      <!-- <video id="teaser" autoplay muted loop playsinline height="100%">
-        <source src="./static/videos/wangiros2025v2.gif"
-                type="video/mp4">
-      </video> -->
-      <img
-        id="teaser"
-        src="./static/videos/wang2025irosv2.gif"
-        alt="Teaser GIF"
-        style="max-width: 100%; height: auto;"
-      />
-  <!-- <figcaption class="has-text-centered" style="margin-top: 1.5rem; font-size: 1.15rem;">
-        <b>Figure:</b> Visualization of robot trajectories and associated metrics for the whole trajectory in an environment with 20 uncooperative obstacles.
-      </figcaption> -->
-      <!-- <h2 class="subtitle has-text-centered">
-        <span class="dnerf">Nerfies</span> turns selfie videos from your phone into
-        free-viewpoint
-        portraits.
-      </h2> -->
-    </div>
-  </div>
-</section>
-
-<!-- <body>
-  <img src="./static/videos/dataset/rl_cvar_beta_dt_beta0.99_hdist.gif" style="max-width:100%;height:auto;">
-</body> -->
 
 
 <!-- <section id="sec-baseline-si" class="hero is-light is-small">
@@ -552,7 +521,7 @@
   if (!nav) return;
   var links = nav.querySelectorAll('.section-nav-link');
   var triggerEl = document.getElementById('sec-abstract');
-  var sectionIds = ['sec-abstract', 'sec-motivation', 'sec-method', 'sec-teaser', 'sec-id-demos', 'sec-ood-demos', 'sec-results', 'sec-video', 'acknowledgement', 'sec-bib'];
+  var sectionIds = ['sec-abstract', 'sec-motivation', 'sec-method', 'sec-id-demos', 'sec-ood-demos', 'sec-results', 'sec-video', 'acknowledgement', 'sec-bib'];
   var sections = sectionIds.map(function (id) { return document.getElementById(id); });
   var navHeight = 52;
 
