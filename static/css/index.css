@@ -605,7 +605,7 @@ table.rq-table-paper .rq-cell-highlight {
   border-color: transparent;
 }
 
-/* --- Simulation Demos (RoboMME-style, https://robomme.github.io/) --- */
+/* --- OOD Demos (RoboMME-style, https://robomme.github.io/) --- */
 .demo-parallel-section {
   background-color: #fafafa;
   padding-top: 2.5rem;
@@ -626,6 +626,12 @@ table.rq-table-paper .rq-cell-highlight {
 .sim-rollout-app {
   max-width: 1100px;
   margin: 0 auto;
+}
+
+.sim-rollout-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
 }
 
 .sim-suite-tabs-wrap {

@@ -107,76 +107,78 @@
     }
   };
 
-  var SUITES = [
-    {
-      id: 'case-orca-policy',
-      label: 'Case I: ORCA-based human policy',
-      title: 'Unicycle OOD generalization',
-      overview: 'Out-of-distribution generalization performance of the unicycle robot under ORCA-based human policy.',
-      cases: [
-        {
-          label: 'Case I',
-          goal: 'Compare available local baseline rollouts for the ORCA-based human-policy shift.',
-          columns: [
-            {
-              kind: 'select',
-              heading: 'Method A',
-              options: LEARNED_OPTIONS,
-              defaultValue: 'orca'
-            },
-            {
-              kind: 'select',
-              heading: 'Method B',
-              options: LEARNED_OPTIONS,
-              defaultValue: 'proposed'
-            }
-          ]
-        }
-      ]
-    },
-    {
-      id: 'case-high-density',
-      label: 'Case II: High obstacle density (30 obstacles)',
-      title: 'Unicycle OOD generalization',
-      overview: 'Out-of-distribution generalization performance of the unicycle robot under higher obstacle density.',
-      cases: [
-        {
-          label: 'Case II',
-          goal: 'Current local rollout slots show the densest comparison scenes available in this repo.',
-          columns: [
-            fixedColumn('Reference density', PROPOSED_SCENES.seed100),
-            fixedColumn('Higher density', PROPOSED_SCENES.seed13)
-          ]
-        }
-      ]
-    },
-    {
-      id: 'case-increased-radius',
-      label: 'Case III: Increased human radius (0.5 m)',
-      title: 'Unicycle OOD generalization',
-      overview: 'Out-of-distribution generalization performance of the unicycle robot under increased human radius.',
-      cases: [
-        {
-          label: 'Case III',
-          goal: 'Compare available local methods for the increased-human-radius shift.',
-          columns: [
-            {
-              kind: 'select',
-              heading: 'Method A',
-              options: METHOD_OPTIONS,
-              defaultValue: 'cvar_hi'
-            },
-            {
-              kind: 'select',
-              heading: 'Method B',
-              options: METHOD_OPTIONS,
-              defaultValue: 'proposed'
-            }
-          ]
-        }
-      ]
-    }
-  ];
+  function buildSuites(robotLabel, robotPhrase) {
+    return [
+      {
+        id: 'case-orca-policy',
+        label: 'Case I: ORCA-based human policy',
+        title: robotLabel + ' OOD generalization',
+        overview: 'Out-of-distribution generalization performance of the ' + robotPhrase + ' under ORCA-based human policy.',
+        cases: [
+          {
+            label: 'Case I',
+            goal: 'Compare available local baseline rollouts for the ORCA-based human-policy shift.',
+            columns: [
+              {
+                kind: 'select',
+                heading: 'Method A',
+                options: LEARNED_OPTIONS,
+                defaultValue: 'orca'
+              },
+              {
+                kind: 'select',
+                heading: 'Method B',
+                options: LEARNED_OPTIONS,
+                defaultValue: 'proposed'
+              }
+            ]
+          }
+        ]
+      },
+      {
+        id: 'case-high-density',
+        label: 'Case II: High obstacle density (30 obstacles)',
+        title: robotLabel + ' OOD generalization',
+        overview: 'Out-of-distribution generalization performance of the ' + robotPhrase + ' under higher obstacle density.',
+        cases: [
+          {
+            label: 'Case II',
+            goal: 'Current local rollout slots show the densest comparison scenes available in this repo.',
+            columns: [
+              fixedColumn('Reference density', PROPOSED_SCENES.seed100),
+              fixedColumn('Higher density', PROPOSED_SCENES.seed13)
+            ]
+          }
+        ]
+      },
+      {
+        id: 'case-increased-radius',
+        label: 'Case III: Increased human radius (0.5 m)',
+        title: robotLabel + ' OOD generalization',
+        overview: 'Out-of-distribution generalization performance of the ' + robotPhrase + ' under increased human radius.',
+        cases: [
+          {
+            label: 'Case III',
+            goal: 'Compare available local methods for the increased-human-radius shift.',
+            columns: [
+              {
+                kind: 'select',
+                heading: 'Method A',
+                options: METHOD_OPTIONS,
+                defaultValue: 'cvar_hi'
+              },
+              {
+                kind: 'select',
+                heading: 'Method B',
+                options: METHOD_OPTIONS,
+                defaultValue: 'proposed'
+              }
+            ]
+          }
+        ]
+      }
+    ];
+  }
 
   function findMethod(value) {
     for (var i = 0; i < METHOD_OPTIONS.length; i++) {
@@ -204,25 +206,25 @@
       .replace(/'/g, '&#39;');
   }
 
-  function renderApp(root) {
+  function renderApp(root, suites) {
     if (!root) return;
 
     root.innerHTML =
       '<div class="tabs-container sim-suite-tabs-wrap">' +
         '<div class="sim-suite-tabs" role="tablist">' +
-          renderSuiteTabs() +
+          renderSuiteTabs(suites) +
         '</div>' +
       '</div>' +
       '<div class="sim-suite-panels">' +
-        renderSuitePanels() +
+        renderSuitePanels(suites) +
       '</div>';
 
-    wireSuiteTabs(root);
-    wireAllPanels(root);
+    wireSuiteTabs(root, suites);
+    wireAllPanels(root, suites);
   }
 
-  function renderSuiteTabs() {
-    return SUITES.map(function (suite, index) {
+  function renderSuiteTabs(suites) {
+    return suites.map(function (suite, index) {
       return '' +
         '<button type="button" class="sim-suite-tab' + (index === 0 ? ' active' : '') + '"' +
         ' data-suite-id="' + escapeHtml(suite.id) + '"' +
@@ -232,14 +234,14 @@
     }).join('');
   }
 
-  function renderSuitePanels() {
-    return SUITES.map(function (suite, index) {
+  function renderSuitePanels(suites) {
+    return suites.map(function (suite, index) {
       return '' +
         '<div class="sim-suite-panel' + (index === 0 ? ' active' : '') + '" data-suite-panel="' + escapeHtml(suite.id) + '"></div>';
     }).join('');
   }
 
-  function wireSuiteTabs(root) {
+  function wireSuiteTabs(root, suites) {
     var tabs = root.querySelectorAll('.sim-suite-tab');
     var panels = root.querySelectorAll('.sim-suite-panel');
 
@@ -258,8 +260,8 @@
     });
   }
 
-  function wireAllPanels(root) {
-    SUITES.forEach(function (suite) {
+  function wireAllPanels(root, suites) {
+    suites.forEach(function (suite) {
       suite.activeCaseIndex = 0;
       var panel = root.querySelector('[data-suite-panel="' + suite.id + '"]');
       if (panel) {
@@ -404,6 +406,13 @@
   }
 
   document.addEventListener('DOMContentLoaded', function () {
-    renderApp(document.getElementById('simRolloutApp'));
+    renderApp(
+      document.getElementById('simRolloutAppSingle'),
+      buildSuites('Single Integrator', 'single-integrator robot')
+    );
+    renderApp(
+      document.getElementById('simRolloutAppUnicycle'),
+      buildSuites('Unicycle', 'unicycle robot')
+    );
   });
 })();

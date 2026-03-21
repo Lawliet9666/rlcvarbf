@@ -349,11 +349,14 @@
 
 <section id="sec-sim-rollouts" class="section demo-parallel-section">
   <div class="container is-widescreen mme-wide">
-    <h2 class="title is-3 has-text-centered sim-rollout-title">Simulation Demos</h2>
+    <h2 class="title is-3 has-text-centered sim-rollout-title">OOD Demos</h2>
     <p class="has-text-centered sim-rollout-intro">
-      Tabs now correspond to the three unicycle OOD cases: ORCA-based human policy, high obstacle density, and increased human radius.
+      Each browser below repeats the same three OOD cases for both robot models: ORCA-based human policy, high obstacle density, and increased human radius.
     </p>
-    <div id="simRolloutApp" class="sim-rollout-app" aria-live="polite"></div>
+    <div class="sim-rollout-stack">
+      <div id="simRolloutAppSingle" class="sim-rollout-app" aria-live="polite"></div>
+      <div id="simRolloutAppUnicycle" class="sim-rollout-app" aria-live="polite"></div>
+    </div>
   </div>
 </section>
 
@@ -624,7 +627,7 @@
           </p>
           <div class="mme-evidence-row">
             <a class="mme-evidence-chip" href="#exp-table-i">Table I</a>
-            <a class="mme-evidence-chip" href="#sec-sim-rollouts">Simulation demos</a>
+            <a class="mme-evidence-chip" href="#sec-sim-rollouts">OOD Demos</a>
           </div>
         </div>
       </details>
