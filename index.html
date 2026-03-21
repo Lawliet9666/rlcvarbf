@@ -525,6 +525,146 @@
 </section>
 
 
+<!-- TEMPLATE: research question → bullet takeaways → hierarchical results table (replace all placeholder text & numbers) -->
+<section class="section" id="research-questions-template">
+  <div class="container is-max-desktop content">
+    <h2 class="title is-3 has-text-centered">Ablations &amp; research questions</h2>
+    <p class="has-text-centered is-size-6" style="max-width: 42rem; margin-left: auto; margin-right: auto;">
+      Collapsible blocks below mirror a common paper layout: <strong>question bar</strong>, short <strong>bullet conclusions</strong>, then a <strong>nested table</strong>. Edit copy, column names, <code>rowspan</code>/<code>colspan</code>, and cell classes (<code>rq-best</code>, <code>rq-cell-highlight</code>) as needed.
+    </p>
+
+    <details class="rq-block" open>
+      <summary>RQ1: [Your research question — e.g. which design choices yield the strongest performance?]</summary>
+      <div class="rq-block-body">
+        <p>Across all <strong>[method / condition]</strong> variants:</p>
+        <ul class="rq-takeaways">
+          <li><strong>Factor A:</strong> Setting X &gt; Setting Y &gt; Setting Z.</li>
+          <li><strong>Factor B:</strong> Short takeaway with <span class="rq-best">best option in red</span> if you like.</li>
+          <li><strong>Factor C:</strong> Another ranked or qualitative conclusion.</li>
+          <li><strong>Interaction:</strong> Optional note on combined effects.</li>
+          <li><strong>Overall:</strong> One-line summary pointing readers to the table.</li>
+        </ul>
+
+        <div class="rq-table-wrap">
+          <table class="rq-table">
+            <thead>
+              <tr>
+                <th scope="col">Major axis</th>
+                <th scope="col">Sub-axis</th>
+                <th scope="col">Variant</th>
+                <th scope="col">Metric 1</th>
+                <th scope="col">Metric 2</th>
+                <th scope="col">Metric 3</th>
+                <th scope="col">AVG</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="rowgroup" rowspan="2">No memory<br><span style="font-weight:400;font-style:normal;font-size:0.9em;">(baseline)</span></th>
+                <td class="rq-left" colspan="2">Single configuration</td>
+                <td>0.00</td>
+                <td>0.00</td>
+                <td>0.00</td>
+                <td>0.00 ± 0.00</td>
+              </tr>
+              <tr>
+                <td class="rq-left" colspan="2">…</td>
+                <td>—</td>
+                <td>—</td>
+                <td>—</td>
+                <td>—</td>
+              </tr>
+              <tr class="rq-major-sep">
+                <th scope="rowgroup" rowspan="4">Group A</th>
+                <td class="rq-left" rowspan="2">Branch 1</td>
+                <td class="rq-left">Setting α</td>
+                <td>12.3</td>
+                <td>45.6</td>
+                <td>7.8</td>
+                <td><span class="rq-best">22.1 ± 0.3</span></td>
+              </tr>
+              <tr>
+                <td class="rq-left">Setting β</td>
+                <td>10.1</td>
+                <td>40.2</td>
+                <td>6.5</td>
+                <td>18.9 ± 0.4</td>
+              </tr>
+              <tr>
+                <td class="rq-left" rowspan="2">Branch 2</td>
+                <td class="rq-left">Setting γ</td>
+                <td>9.8</td>
+                <td>39.0</td>
+                <td>6.1</td>
+                <td class="rq-cell-highlight">18.0 ± 0.2</td>
+              </tr>
+              <tr>
+                <td class="rq-left">Setting δ</td>
+                <td>8.2</td>
+                <td>35.4</td>
+                <td>5.9</td>
+                <td>16.2 ± 0.5</td>
+              </tr>
+              <tr class="rq-major-sep">
+                <th scope="rowgroup" rowspan="2">Group B</th>
+                <td class="rq-left" rowspan="2">Branch 3</td>
+                <td class="rq-left">Setting ε</td>
+                <td>…</td>
+                <td>…</td>
+                <td>…</td>
+                <td>…</td>
+              </tr>
+              <tr>
+                <td class="rq-left">Setting ζ</td>
+                <td>…</td>
+                <td>…</td>
+                <td>…</td>
+                <td>…</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </details>
+
+    <details class="rq-block">
+      <summary>RQ2: [Second question — starts collapsed; remove the <code>open</code> attribute on RQ1 if you want both closed by default]</summary>
+      <div class="rq-block-body">
+        <p>Short intro for this question.</p>
+        <ul class="rq-takeaways">
+          <li><strong>Point one:</strong> …</li>
+          <li><strong>Point two:</strong> …</li>
+        </ul>
+        <div class="rq-table-wrap">
+          <table class="rq-table">
+            <thead>
+              <tr>
+                <th scope="col">Condition</th>
+                <th scope="col">Details</th>
+                <th scope="col">Score</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="rq-left">A</td>
+                <td class="rq-left">…</td>
+                <td>0.0</td>
+              </tr>
+              <tr>
+                <td class="rq-left">B</td>
+                <td class="rq-left">…</td>
+                <td><span class="rq-best">0.0</span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </details>
+
+  </div>
+</section>
+
+
 <section class="section">
   <div class="container is-max-desktop">
     <!-- Paper video. -->

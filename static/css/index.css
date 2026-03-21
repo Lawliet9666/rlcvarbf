@@ -155,3 +155,119 @@ body {
 #interpolation-image-wrapper img {
   border-radius: 5px;
 }
+
+/* --- Research question blocks (collapsible + table template) --- */
+.rq-block {
+  border: 1px solid #c5d9f5;
+  border-radius: 10px;
+  margin-bottom: 1.75rem;
+  background: #fff;
+  box-shadow: 0 1px 4px rgba(30, 64, 175, 0.06);
+}
+
+.rq-block > summary {
+  list-style: none;
+  cursor: pointer;
+  padding: 0.85rem 1.1rem;
+  background: linear-gradient(180deg, #e8f2fc 0%, #dceaf9 100%);
+  color: #1e40af;
+  font-weight: 700;
+  font-size: 1.05rem;
+  border-radius: 10px;
+}
+
+.rq-block[open] > summary {
+  border-radius: 10px 10px 0 0;
+}
+
+.rq-block > summary::-webkit-details-marker {
+  display: none;
+}
+
+.rq-block > summary::before {
+  content: '\25BC\00a0';
+  display: inline-block;
+  color: #2563eb;
+  font-size: 0.75em;
+  margin-right: 0.25rem;
+  transition: transform 0.15s ease;
+}
+
+.rq-block:not([open]) > summary::before {
+  transform: rotate(-90deg);
+}
+
+.rq-block-body {
+  padding: 1rem 1.25rem 1.25rem;
+  border-top: 1px solid #c5d9f5;
+}
+
+.rq-block-body > p:first-child {
+  margin-top: 0;
+}
+
+.rq-takeaways {
+  margin: 0.75rem 0 1rem 1.1rem;
+  padding: 0;
+}
+
+.rq-takeaways li {
+  margin-bottom: 0.45rem;
+}
+
+.rq-table-wrap {
+  overflow-x: auto;
+  margin-top: 0.5rem;
+}
+
+table.rq-table {
+  width: 100%;
+  min-width: 640px;
+  border-collapse: collapse;
+  font-size: 0.88rem;
+  color: #1e293b;
+}
+
+table.rq-table th,
+table.rq-table td {
+  border: 1px solid #cbd5e1;
+  padding: 0.5rem 0.65rem;
+  vertical-align: middle;
+}
+
+table.rq-table thead th {
+  background: #f1f5f9;
+  font-weight: 600;
+  text-align: center;
+}
+
+table.rq-table tbody th[scope='row'],
+table.rq-table tbody th[scope='rowgroup'] {
+  text-align: left;
+  font-weight: 700;
+  font-style: italic;
+  background: #f8fafc;
+}
+
+table.rq-table td {
+  text-align: center;
+}
+
+table.rq-table td.rq-left {
+  text-align: left;
+}
+
+table.rq-table tr.rq-major-sep td,
+table.rq-table tr.rq-major-sep th {
+  border-top: 3px solid #64748b;
+}
+
+table.rq-table .rq-best {
+  color: #dc2626;
+  font-weight: 600;
+}
+
+table.rq-table .rq-cell-highlight {
+  outline: 2px solid #dc2626;
+  outline-offset: -2px;
+}
