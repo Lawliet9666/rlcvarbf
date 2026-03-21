@@ -315,6 +315,27 @@
     }).join('');
   }
 
+  function wireStaticModePanels(root) {
+    if (!root) return;
+
+    var tabs = root.querySelectorAll('.sim-mode-tab');
+    var panels = root.querySelectorAll('.sim-mode-panel');
+
+    tabs.forEach(function (tab) {
+      tab.addEventListener('click', function () {
+        var modeId = tab.getAttribute('data-mode-id');
+        tabs.forEach(function (item) {
+          var isActive = item === tab;
+          item.classList.toggle('active', isActive);
+          item.setAttribute('aria-selected', isActive ? 'true' : 'false');
+        });
+        panels.forEach(function (panel) {
+          panel.classList.toggle('active', panel.getAttribute('data-mode-panel') === modeId);
+        });
+      });
+    });
+  }
+
   function renderSuiteTabs(suites) {
     return suites.map(function (suite, index) {
       return '' +
@@ -498,22 +519,16 @@
   }
 
   document.addEventListener('DOMContentLoaded', function () {
-    renderModeApp(
-      document.getElementById('simIdRolloutModeApp'),
-      [
-        {
-          id: 'single-integrator',
-          label: 'Single Integrator',
-          suites: buildIdSuites('Single Integrator', 'single-integrator robot')
-        },
-        {
-          id: 'unicycle',
-          label: 'Unicycle',
-          suites: buildIdSuites('Unicycle', 'unicycle robot')
-        }
-      ],
-      'unicycle'
+    renderApp(
+      document.getElementById('simIdRolloutAppSingle'),
+      buildIdSuites('Single Integrator', 'single-integrator robot')
     );
+    renderApp(
+      document.getElementById('simIdRolloutAppUnicycle'),
+      buildIdSuites('Unicycle', 'unicycle robot')
+    );
+    wireStaticModePanels(document.getElementById('simIdRolloutModeApp'));
+
     renderModeApp(
       document.getElementById('simRolloutModeApp'),
       [

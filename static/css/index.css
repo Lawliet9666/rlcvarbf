@@ -719,6 +719,19 @@ table.rq-table-paper .rq-cell-highlight {
   width: 100%;
 }
 
+.sim-mode-panels {
+  width: 100%;
+}
+
+.sim-mode-panel {
+  display: none;
+  width: 100%;
+}
+
+.sim-mode-panel.active {
+  display: block;
+}
+
 .sim-suite-tabs-wrap {
   margin-bottom: 1.5rem;
 }

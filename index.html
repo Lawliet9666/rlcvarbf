@@ -305,7 +305,22 @@
         <p class="has-text-centered sim-rollout-intro">
           Choose the robot mode below. The default view shows the unicycle in-distribution reference comparison.
         </p>
-        <div id="simIdRolloutModeApp" class="sim-rollout-app" aria-live="polite"></div>
+        <div id="simIdRolloutModeApp" class="sim-rollout-app" aria-live="polite">
+          <div class="sim-mode-tabs-wrap">
+            <div class="sim-mode-tabs" role="tablist" aria-label="ID robot mode">
+              <button type="button" class="sim-mode-tab" data-mode-id="single-integrator" role="tab" aria-selected="false">Single Integrator</button>
+              <button type="button" class="sim-mode-tab active" data-mode-id="unicycle" role="tab" aria-selected="true">Unicycle</button>
+            </div>
+          </div>
+          <div class="sim-mode-panels">
+            <div class="sim-mode-panel" data-mode-panel="single-integrator">
+              <div id="simIdRolloutAppSingle" class="sim-rollout-app"></div>
+            </div>
+            <div class="sim-mode-panel active" data-mode-panel="unicycle">
+              <div id="simIdRolloutAppUnicycle" class="sim-rollout-app"></div>
+            </div>
+          </div>
+        </div>
       </div>
       <div id="sec-ood-demos" class="sim-demo-column">
         <h2 class="title is-3 has-text-centered sim-rollout-title">OOD Demos</h2>
