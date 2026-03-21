@@ -524,10 +524,17 @@ table.rq-table-paper .rq-cell-highlight {
 
 .mme-finding-summary::before {
   content: '\25B6';
+  display: inline-block;
   flex: 0 0 auto;
   color: #3273dc;
   font-size: 0.95rem;
   line-height: 1;
+  transform-origin: center;
+  transition: transform 0.2s ease;
+}
+
+.mme-finding[open] .mme-finding-summary::before {
+  transform: rotate(90deg);
 }
 
 .mme-finding-summary::-webkit-details-marker {
