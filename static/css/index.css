@@ -357,6 +357,13 @@ table.rq-table-paper .rq-cell-highlight {
   box-shadow: inset 0 0 0 2px #c00;
 }
 
+.rq-caption {
+  margin: 0.85rem 0 0;
+  font-size: 0.95rem;
+  line-height: 1.55;
+  color: #3c4356;
+}
+
 /* --- RoboMME-style page chrome (https://robomme.github.io/) --- */
 .hero .container.is-max-desktop {
   max-width: 1200px;
@@ -502,6 +509,13 @@ table.rq-table-paper .rq-cell-highlight {
 
 .mme-key-line {
   margin: 0 0 0.9rem;
+  font-size: 1.02rem;
+  line-height: 1.7;
+  color: #2e3454;
+}
+
+.mme-body-copy {
+  margin: 0.9rem 0 0;
   font-size: 1.02rem;
   line-height: 1.7;
   color: #2e3454;

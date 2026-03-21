@@ -367,68 +367,486 @@
       <details class="mme-finding" open>
         <summary class="mme-finding-summary">
           <span class="mme-finding-chevron">▶</span>
-          RQ1: Why adapt the risk level online instead of fixing one CVaR level?
+          Q1: How do different method types compare in dynamic environments?
         </summary>
         <div class="mme-finding-body">
           <p class="mme-key-line">
-            Fixed-risk controllers expose a hard safety-versus-feasibility tradeoff. The proposed controller is designed to move along that tradeoff online instead of committing to one global risk level before the rollout starts.
+            Optimization-based methods generally struggle in highly dynamic environments due to frequent infeasibility of the underlying control problems, resulting in lower success rates.
           </p>
-          <ul class="mme-insight-list">
-            <li>A conservative fixed risk level can preserve safety margin but may make the optimization infeasible when the crowd closes in quickly.</li>
-            <li>An aggressive fixed risk level can keep the problem solvable, but it accepts unnecessary risk in easier parts of the trajectory.</li>
-            <li>The adaptive controller raises the accepted risk only when needed and relaxes it again once the scene becomes less constrained.</li>
-          </ul>
+          <p class="mme-body-copy">
+            In contrast, pure RL methods improve task performance in some cases but still exhibit relatively high collision rates without explicit safety mechanisms, indicating that efficiency alone is insufficient. Hybrid RL with optimization approaches leverage the strengths of both types of methods and achieve more reliable performance overall, highlighting the benefit of combining learning with explicit safety mechanisms.
+          </p>
           <div class="mme-evidence-row">
-            <a class="mme-evidence-chip" href="#sec-motivation">Motivation</a>
-            <a class="mme-evidence-chip" href="#sec-baseline-si">Matched baselines</a>
+            <a class="mme-evidence-chip" href="#exp-table-i">Table I</a>
+          </div>
+          <div id="exp-table-i" class="rq-table-wrap">
+            <table class="rq-table-paper">
+              <thead>
+                <tr>
+                  <th scope="col">Robot</th>
+                  <th scope="col">Type</th>
+                  <th scope="col">Policy</th>
+                  <th scope="col" class="rq-split-metrics">SR</th>
+                  <th scope="col">CR</th>
+                  <th scope="col">Avg Return</th>
+                  <th scope="col">Avg Length</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr class="rq-major">
+                  <th scope="rowgroup" rowspan="12" class="rq-rep">Single Integrator</th>
+                  <td class="rq-left" rowspan="4">Opt.</td>
+                  <td class="rq-left">ORCA [35]</td>
+                  <td class="rq-split-metrics rq-num">0.502 &plusmn; 0.023</td>
+                  <td class="rq-num">0.498 &plusmn; 0.023</td>
+                  <td class="rq-num">-0.331 &plusmn; 0.103</td>
+                  <td class="rq-num"><span class="rq-best">50.364 &plusmn; 1.046</span></td>
+                </tr>
+                <tr>
+                  <td class="rq-left">CBF-QP [24]</td>
+                  <td class="rq-split-metrics rq-num">0.620 &plusmn; 0.043</td>
+                  <td class="rq-num">0.380 &plusmn; 0.043</td>
+                  <td class="rq-num">1.772 &plusmn; 0.190</td>
+                  <td class="rq-num">77.224 &plusmn; 0.892</td>
+                </tr>
+                <tr>
+                  <td class="rq-left">CVaR-BF-QP [9]</td>
+                  <td class="rq-split-metrics rq-num">0.592 &plusmn; 0.023</td>
+                  <td class="rq-num">0.408 &plusmn; 0.023</td>
+                  <td class="rq-num">1.645 &plusmn; 0.111</td>
+                  <td class="rq-num">80.290 &plusmn; 1.115</td>
+                </tr>
+                <tr>
+                  <td class="rq-left">Adaptive-CVaR-BF [10]</td>
+                  <td class="rq-split-metrics rq-num">0.538 &plusmn; 0.032</td>
+                  <td class="rq-num">0.462 &plusmn; 0.032</td>
+                  <td class="rq-num">1.441 &plusmn; 0.156</td>
+                  <td class="rq-num">80.220 &plusmn; 1.304</td>
+                </tr>
+
+                <tr class="rq-dash">
+                  <td class="rq-left" rowspan="3">RL</td>
+                  <td class="rq-left">Vanilla RL</td>
+                  <td class="rq-split-metrics rq-num">0.628 &plusmn; 0.043</td>
+                  <td class="rq-num">0.372 &plusmn; 0.043</td>
+                  <td class="rq-num">1.935 &plusmn; 0.186</td>
+                  <td class="rq-num">82.992 &plusmn; 2.868</td>
+                </tr>
+                <tr>
+                  <td class="rq-left">CrowdNav++ (const vel) [13]</td>
+                  <td class="rq-split-metrics rq-num">0.700 &plusmn; 0.062</td>
+                  <td class="rq-num">0.300 &plusmn; 0.062</td>
+                  <td class="rq-num">1.472 &plusmn; 0.236</td>
+                  <td class="rq-num">82.15 &plusmn; 3.89</td>
+                </tr>
+                <tr>
+                  <td class="rq-left">CrowdNav++ (inferred) [13]</td>
+                  <td class="rq-split-metrics rq-num">0.626 &plusmn; 0.066</td>
+                  <td class="rq-num">0.372 &plusmn; 0.066</td>
+                  <td class="rq-num">1.340 &plusmn; 0.218</td>
+                  <td class="rq-num">82.68 &plusmn; 5.19</td>
+                </tr>
+
+                <tr class="rq-dash">
+                  <td class="rq-left" rowspan="5">RL+Opt.</td>
+                  <td class="rq-left">Vanilla RL + Safety Filter</td>
+                  <td class="rq-split-metrics rq-num">0.688 &plusmn; 0.032</td>
+                  <td class="rq-num">0.312 &plusmn; 0.032</td>
+                  <td class="rq-num">2.187 &plusmn; 0.140</td>
+                  <td class="rq-num">87.590 &plusmn; 2.144</td>
+                </tr>
+                <tr>
+                  <td class="rq-left">CrowdNav++ (const vel) + Safety Filter</td>
+                  <td class="rq-split-metrics rq-num">0.720 &plusmn; 0.055</td>
+                  <td class="rq-num">0.280 &plusmn; 0.055</td>
+                  <td class="rq-num">1.569 &plusmn; 0.197</td>
+                  <td class="rq-num">92.81 &plusmn; 5.92</td>
+                </tr>
+                <tr>
+                  <td class="rq-left">CrowdNav++ (inferred) + Safety Filter</td>
+                  <td class="rq-split-metrics rq-num">0.658 &plusmn; 0.039</td>
+                  <td class="rq-num">0.340 &plusmn; 0.042</td>
+                  <td class="rq-num">1.415 &plusmn; 0.129</td>
+                  <td class="rq-num">87.68 &plusmn; 6.18</td>
+                </tr>
+                <tr>
+                  <td class="rq-left">BarrierNet [22]</td>
+                  <td class="rq-split-metrics rq-num">0.682 &plusmn; 0.033</td>
+                  <td class="rq-num">0.318 &plusmn; 0.033</td>
+                  <td class="rq-num">2.174 &plusmn; 0.133</td>
+                  <td class="rq-num">71.700 &plusmn; 0.606</td>
+                </tr>
+                <tr>
+                  <td class="rq-left">Proposed</td>
+                  <td class="rq-split-metrics rq-num"><span class="rq-best">0.740 &plusmn; 0.030</span></td>
+                  <td class="rq-num"><span class="rq-best">0.260 &plusmn; 0.030</span></td>
+                  <td class="rq-num"><span class="rq-best">2.455 &plusmn; 0.125</span></td>
+                  <td class="rq-num">77.402 &plusmn; 1.079</td>
+                </tr>
+
+                <tr class="rq-major">
+                  <th scope="rowgroup" rowspan="12" class="rq-rep">Unicycle</th>
+                  <td class="rq-left" rowspan="4">Opt.</td>
+                  <td class="rq-left">ORCA [35]</td>
+                  <td class="rq-split-metrics rq-num">0.526 &plusmn; 0.052</td>
+                  <td class="rq-num">0.474 &plusmn; 0.052</td>
+                  <td class="rq-num">1.442 &plusmn; 0.265</td>
+                  <td class="rq-num"><span class="rq-best">55.216 &plusmn; 1.763</span></td>
+                </tr>
+                <tr>
+                  <td class="rq-left">CBF-QP [24]</td>
+                  <td class="rq-split-metrics rq-num">0.550 &plusmn; 0.045</td>
+                  <td class="rq-num">0.450 &plusmn; 0.045</td>
+                  <td class="rq-num">1.434 &plusmn; 0.213</td>
+                  <td class="rq-num">66.248 &plusmn; 1.051</td>
+                </tr>
+                <tr>
+                  <td class="rq-left">CVaR-BF-QP [9]</td>
+                  <td class="rq-split-metrics rq-num">0.520 &plusmn; 0.051</td>
+                  <td class="rq-num">0.480 &plusmn; 0.051</td>
+                  <td class="rq-num">1.301 &plusmn; 0.243</td>
+                  <td class="rq-num">66.870 &plusmn; 0.945</td>
+                </tr>
+                <tr>
+                  <td class="rq-left">Adaptive-CVaR-BF [10]</td>
+                  <td class="rq-split-metrics rq-num">0.552 &plusmn; 0.049</td>
+                  <td class="rq-num">0.448 &plusmn; 0.049</td>
+                  <td class="rq-num">2.011 &plusmn; 0.256</td>
+                  <td class="rq-num">62.998 &plusmn; 1.407</td>
+                </tr>
+
+                <tr class="rq-dash">
+                  <td class="rq-left" rowspan="3">RL</td>
+                  <td class="rq-left">Vanilla RL</td>
+                  <td class="rq-split-metrics rq-num">0.558 &plusmn; 0.039</td>
+                  <td class="rq-num">0.442 &plusmn; 0.039</td>
+                  <td class="rq-num">2.071 &plusmn; 0.196</td>
+                  <td class="rq-num">61.700 &plusmn; 1.006</td>
+                </tr>
+                <tr>
+                  <td class="rq-left">CrowdNav++ (const vel) [14]</td>
+                  <td class="rq-split-metrics rq-num">0.466 &plusmn; 0.039</td>
+                  <td class="rq-num">0.534 &plusmn; 0.039</td>
+                  <td class="rq-num">0.592 &plusmn; 0.158</td>
+                  <td class="rq-num">78.41 &plusmn; 3.71</td>
+                </tr>
+                <tr>
+                  <td class="rq-left">CrowdNav++ (inferred) [14]</td>
+                  <td class="rq-split-metrics rq-num">0.472 &plusmn; 0.057</td>
+                  <td class="rq-num">0.528 &plusmn; 0.057</td>
+                  <td class="rq-num">0.726 &plusmn; 0.201</td>
+                  <td class="rq-num">77.17 &plusmn; 3.68</td>
+                </tr>
+
+                <tr class="rq-dash">
+                  <td class="rq-left" rowspan="5">RL+Opt.</td>
+                  <td class="rq-left">Vanilla RL + Safety Filter</td>
+                  <td class="rq-split-metrics rq-num">0.580 &plusmn; 0.039</td>
+                  <td class="rq-num">0.420 &plusmn; 0.039</td>
+                  <td class="rq-num">2.101 &plusmn; 0.198</td>
+                  <td class="rq-num">65.448 &plusmn; 0.831</td>
+                </tr>
+                <tr>
+                  <td class="rq-left">CrowdNav++ (const vel) + Safety Filter</td>
+                  <td class="rq-split-metrics rq-num">0.530 &plusmn; 0.041</td>
+                  <td class="rq-num">0.470 &plusmn; 0.041</td>
+                  <td class="rq-num">0.856 &plusmn; 0.208</td>
+                  <td class="rq-num">84.43 &plusmn; 5.04</td>
+                </tr>
+                <tr>
+                  <td class="rq-left">CrowdNav++ (inferred) + Safety Filter</td>
+                  <td class="rq-split-metrics rq-num">0.511 &plusmn; 0.078</td>
+                  <td class="rq-num">0.489 &plusmn; 0.078</td>
+                  <td class="rq-num">1.015 &plusmn; 0.297</td>
+                  <td class="rq-num">76.46 &plusmn; 2.29</td>
+                </tr>
+                <tr>
+                  <td class="rq-left">BarrierNet [22]</td>
+                  <td class="rq-split-metrics rq-num">0.616 &plusmn; 0.031</td>
+                  <td class="rq-num">0.384 &plusmn; 0.031</td>
+                  <td class="rq-num">2.143 &plusmn; 0.177</td>
+                  <td class="rq-num">63.616 &plusmn; 1.304</td>
+                </tr>
+                <tr>
+                  <td class="rq-left">Proposed</td>
+                  <td class="rq-split-metrics rq-num"><span class="rq-best">0.644 &plusmn; 0.050</span></td>
+                  <td class="rq-num"><span class="rq-best">0.356 &plusmn; 0.050</span></td>
+                  <td class="rq-num"><span class="rq-best">2.308 &plusmn; 0.286</span></td>
+                  <td class="rq-num">71.952 &plusmn; 2.440</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <p class="rq-caption">
+            <strong>Table I.</strong> Performance comparison of baseline methods in environments with 20 obstacles. Results are averaged over 10 independent runs, each evaluated on 50 episodes with randomized initial conditions.
+          </p>
+        </div>
+      </details>
+
+      <details class="mme-finding" open>
+        <summary class="mme-finding-summary">
+          <span class="mme-finding-chevron">▶</span>
+          Q2: How do different ways of integrating safety into RL affect performance?
+        </summary>
+        <div class="mme-finding-body">
+          <p class="mme-key-line">
+            Incorporating safety into RL policies generally improves performance compared to pure RL methods. These results indicate that post-hoc safety filtering is effective in enhancing policy reliability.
+          </p>
+          <p class="mme-body-copy">
+            However, such decoupled approaches remain suboptimal compared to methods that integrate safety directly into the training process. In contrast, the proposed method and BarrierNet jointly optimize the policy and safety constraints through a differentiable safety layer, enabling adaptive risk-aware behavior.
+          </p>
+          <p class="mme-body-copy">
+            Unlike BarrierNet, which employs a deterministic differentiable safety layer, the proposed method explicitly models stochastic uncertainty and learns adaptive risk parameters, leading to improved performance in dynamic and uncertain environments.
+          </p>
+          <div class="mme-evidence-row">
+            <a class="mme-evidence-chip" href="#exp-table-i">Table I</a>
+          </div>
+        </div>
+      </details>
+
+      <details class="mme-finding">
+        <summary class="mme-finding-summary">
+          <span class="mme-finding-chevron">▶</span>
+          Q3: How robust are the methods across different robot models and obstacle densities?
+        </summary>
+        <div class="mme-finding-body">
+          <p class="mme-key-line">
+            Similar performance trends are observed for both the single-integrator and unicycle models. While all methods experience some degradation under the more challenging unicycle dynamics, this is expected due to its more constrained control dynamics.
+          </p>
+          <p class="mme-body-copy">
+            The relative performance ordering remains largely consistent across robot models. As obstacle density grows, all methods exhibit a clear decline in success rate, reflecting the increased difficulty of navigation in dense environments.
+          </p>
+          <p class="mme-body-copy">
+            However, the rate of degradation varies across methods: hybrid approaches are comparatively more stable, while other methods degrade more rapidly. Notably, the proposed method consistently outperforms all baselines across both robot models and varying obstacle densities, demonstrating strong robustness.
+          </p>
+          <div class="mme-evidence-row">
+            <a class="mme-evidence-chip" href="#exp-table-i">Table I</a>
             <a class="mme-evidence-chip" href="#sec-sim-rollouts">Simulation demos</a>
           </div>
         </div>
       </details>
 
-      <details class="mme-finding">
+      <details class="mme-finding" open>
         <summary class="mme-finding-summary">
           <span class="mme-finding-chevron">▶</span>
-          RQ2: What does the dynamic zone-based barrier add in uncertain crowded scenes?
+          Q4: How robust are different type of methods under out-of-distribution (OOD) environment changes?
         </summary>
         <div class="mme-finding-body">
           <p class="mme-key-line">
-            The dynamic zone-based barrier uses relative geometry and motion to characterize how threatening an obstacle is before the interaction becomes critical.
+            Under OOD shifts, vanilla RL exhibits a noticeable degradation in performance, often performing worse than optimization-based methods such as CVaR-BF-QP. This suggests that optimization-based approaches provide greater robustness to environmental variations compared to purely learned policies.
           </p>
-          <ul class="mme-insight-list">
-            <li>By enlarging the admissible adjustment window, the controller has more room to trade risk for feasibility while still respecting the user-defined safety threshold.</li>
-            <li>This makes it easier to react proactively in fast or unpredictable scenes instead of waiting for a last-second correction.</li>
-            <li>In the rollout sweeps, the intended effect is earlier and smoother rerouting when uncertainty or crowd density increases.</li>
-          </ul>
+          <p class="mme-body-copy">
+            At the same time, incorporating optimization-based safety mechanisms into RL, such as RL + Safety Filter, significantly mitigates this degradation, recovering much of the lost performance and bringing it closer to that of optimization-based methods, although a performance gap still remains.
+          </p>
+          <p class="mme-body-copy">
+            To further address this gap, the proposed method consistently outperforms the safety-filtered baseline, achieving higher success rates and returns while maintaining competitive safety. This robustness arises from the end-to-end learning of adaptive risk parameters, which enables the policy to adjust its behavior in response to changing scenarios.
+          </p>
           <div class="mme-evidence-row">
-            <a class="mme-evidence-chip" href="#sec-method">Method overview</a>
-            <a class="mme-evidence-chip" href="#sec-sim-rollouts">Noise and density sweeps</a>
+            <a class="mme-evidence-chip" href="#exp-table-iii">Table III</a>
           </div>
+          <div id="exp-table-iii" class="rq-table-wrap">
+            <table class="rq-table-paper">
+              <thead>
+                <tr>
+                  <th scope="col">Robot</th>
+                  <th scope="col">OOD Scenario</th>
+                  <th scope="col">Method</th>
+                  <th scope="col" class="rq-split-metrics">SR</th>
+                  <th scope="col">CR</th>
+                  <th scope="col">Avg Return</th>
+                  <th scope="col">Avg Length</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr class="rq-major">
+                  <th scope="rowgroup" rowspan="12" class="rq-rep">Single Integrator</th>
+                  <td class="rq-left" rowspan="4">ORCA-based human policy</td>
+                  <td class="rq-left">CVaR-BF-QP</td>
+                  <td class="rq-split-metrics rq-num">0.630 &plusmn; 0.042</td>
+                  <td class="rq-num">0.370 &plusmn; 0.042</td>
+                  <td class="rq-num">1.837 &plusmn; 0.186</td>
+                  <td class="rq-num">73.034 &plusmn; 1.616</td>
+                </tr>
+                <tr>
+                  <td class="rq-left">Vanilla RL</td>
+                  <td class="rq-split-metrics rq-num">0.580 &plusmn; 0.042</td>
+                  <td class="rq-num">0.420 &plusmn; 0.042</td>
+                  <td class="rq-num">1.686 &plusmn; 0.182</td>
+                  <td class="rq-num">80.788 &plusmn; 3.143</td>
+                </tr>
+                <tr>
+                  <td class="rq-left">RL + Safety Filter</td>
+                  <td class="rq-split-metrics rq-num">0.642 &plusmn; 0.047</td>
+                  <td class="rq-num">0.358 &plusmn; 0.047</td>
+                  <td class="rq-num">1.958 &plusmn; 0.198</td>
+                  <td class="rq-num">86.252 &plusmn; 4.244</td>
+                </tr>
+                <tr>
+                  <td class="rq-left">Proposed</td>
+                  <td class="rq-split-metrics rq-num"><span class="rq-best">0.666 &plusmn; 0.037</span></td>
+                  <td class="rq-num"><span class="rq-best">0.334 &plusmn; 0.037</span></td>
+                  <td class="rq-num"><span class="rq-best">2.083 &plusmn; 0.171</span></td>
+                  <td class="rq-num"><span class="rq-best">72.480 &plusmn; 1.064</span></td>
+                </tr>
+
+                <tr class="rq-dash">
+                  <td class="rq-left" rowspan="4">High obstacle density<br>(30 obstacles)</td>
+                  <td class="rq-left">CVaR-BF-QP</td>
+                  <td class="rq-split-metrics rq-num">0.414 &plusmn; 0.038</td>
+                  <td class="rq-num">0.586 &plusmn; 0.038</td>
+                  <td class="rq-num">0.855 &plusmn; 0.147</td>
+                  <td class="rq-num">70.180 &plusmn; 0.588</td>
+                </tr>
+                <tr>
+                  <td class="rq-left">Vanilla RL</td>
+                  <td class="rq-split-metrics rq-num">0.338 &plusmn; 0.039</td>
+                  <td class="rq-num">0.662 &plusmn; 0.039</td>
+                  <td class="rq-num">0.612 &plusmn; 0.153</td>
+                  <td class="rq-num">71.152 &plusmn; 2.927</td>
+                </tr>
+                <tr>
+                  <td class="rq-left">RL + Safety Filter</td>
+                  <td class="rq-split-metrics rq-num">0.398 &plusmn; 0.039</td>
+                  <td class="rq-num">0.602 &plusmn; 0.039</td>
+                  <td class="rq-num">0.864 &plusmn; 0.161</td>
+                  <td class="rq-num">74.934 &plusmn; 2.491</td>
+                </tr>
+                <tr>
+                  <td class="rq-left">Proposed</td>
+                  <td class="rq-split-metrics rq-num"><span class="rq-best">0.446 &plusmn; 0.038</span></td>
+                  <td class="rq-num"><span class="rq-best">0.554 &plusmn; 0.038</span></td>
+                  <td class="rq-num"><span class="rq-best">1.072 &plusmn; 0.167</span></td>
+                  <td class="rq-num"><span class="rq-best">69.904 &plusmn; 1.105</span></td>
+                </tr>
+
+                <tr class="rq-dash">
+                  <td class="rq-left" rowspan="4">Increased human radius<br>(0.5 m)</td>
+                  <td class="rq-left">CVaR-BF-QP</td>
+                  <td class="rq-split-metrics rq-num">0.582 &plusmn; 0.065</td>
+                  <td class="rq-num">0.418 &plusmn; 0.065</td>
+                  <td class="rq-num">1.599 &plusmn; 0.278</td>
+                  <td class="rq-num"><span class="rq-best">74.322 &plusmn; 1.697</span></td>
+                </tr>
+                <tr>
+                  <td class="rq-left">Vanilla RL</td>
+                  <td class="rq-split-metrics rq-num">0.514 &plusmn; 0.052</td>
+                  <td class="rq-num">0.486 &plusmn; 0.052</td>
+                  <td class="rq-num">1.420 &plusmn; 0.222</td>
+                  <td class="rq-num">75.876 &plusmn; 2.643</td>
+                </tr>
+                <tr>
+                  <td class="rq-left">RL + Safety Filter</td>
+                  <td class="rq-split-metrics rq-num">0.574 &plusmn; 0.047</td>
+                  <td class="rq-num">0.426 &plusmn; 0.047</td>
+                  <td class="rq-num">1.674 &plusmn; 0.210</td>
+                  <td class="rq-num">81.282 &plusmn; 2.238</td>
+                </tr>
+                <tr>
+                  <td class="rq-left">Proposed</td>
+                  <td class="rq-split-metrics rq-num"><span class="rq-best">0.616 &plusmn; 0.039</span></td>
+                  <td class="rq-num"><span class="rq-best">0.384 &plusmn; 0.039</span></td>
+                  <td class="rq-num"><span class="rq-best">1.874 &plusmn; 0.177</span></td>
+                  <td class="rq-num">74.874 &plusmn; 1.304</td>
+                </tr>
+
+                <tr class="rq-major">
+                  <th scope="rowgroup" rowspan="12" class="rq-rep">Unicycle</th>
+                  <td class="rq-left" rowspan="4">ORCA-based human policy</td>
+                  <td class="rq-left">CVaR-BF-QP</td>
+                  <td class="rq-split-metrics rq-num">0.440 &plusmn; 0.038</td>
+                  <td class="rq-num">0.560 &plusmn; 0.038</td>
+                  <td class="rq-num">1.423 &plusmn; 0.184</td>
+                  <td class="rq-num">59.100 &plusmn; 1.262</td>
+                </tr>
+                <tr>
+                  <td class="rq-left">Vanilla RL</td>
+                  <td class="rq-split-metrics rq-num">0.454 &plusmn; 0.051</td>
+                  <td class="rq-num">0.546 &plusmn; 0.051</td>
+                  <td class="rq-num">1.505 &plusmn; 0.259</td>
+                  <td class="rq-num"><span class="rq-best">58.240 &plusmn; 1.334</span></td>
+                </tr>
+                <tr>
+                  <td class="rq-left">RL + Safety Filter</td>
+                  <td class="rq-split-metrics rq-num">0.474 &plusmn; 0.046</td>
+                  <td class="rq-num">0.526 &plusmn; 0.046</td>
+                  <td class="rq-num">1.525 &plusmn; 0.243</td>
+                  <td class="rq-num">63.298 &plusmn; 1.201</td>
+                </tr>
+                <tr>
+                  <td class="rq-left">Proposed</td>
+                  <td class="rq-split-metrics rq-num"><span class="rq-best">0.568 &plusmn; 0.039</span></td>
+                  <td class="rq-num"><span class="rq-best">0.432 &plusmn; 0.039</span></td>
+                  <td class="rq-num"><span class="rq-best">1.894 &plusmn; 0.192</span></td>
+                  <td class="rq-num">64.366 &plusmn; 1.715</td>
+                </tr>
+
+                <tr class="rq-dash">
+                  <td class="rq-left" rowspan="4">High obstacle density<br>(30 obstacles)</td>
+                  <td class="rq-left">CVaR-BF-QP</td>
+                  <td class="rq-split-metrics rq-num">0.438 &plusmn; 0.038</td>
+                  <td class="rq-num">0.562 &plusmn; 0.038</td>
+                  <td class="rq-num">1.350 &plusmn; 0.208</td>
+                  <td class="rq-num">63.398 &plusmn; 1.194</td>
+                </tr>
+                <tr>
+                  <td class="rq-left">Vanilla RL</td>
+                  <td class="rq-split-metrics rq-num">0.422 &plusmn; 0.044</td>
+                  <td class="rq-num">0.578 &plusmn; 0.044</td>
+                  <td class="rq-num">1.403 &plusmn; 0.215</td>
+                  <td class="rq-num"><span class="rq-best">58.284 &plusmn; 0.923</span></td>
+                </tr>
+                <tr>
+                  <td class="rq-left">RL + Safety Filter</td>
+                  <td class="rq-split-metrics rq-num">0.432 &plusmn; 0.039</td>
+                  <td class="rq-num">0.568 &plusmn; 0.039</td>
+                  <td class="rq-num">1.259 &plusmn; 0.190</td>
+                  <td class="rq-num">64.158 &plusmn; 1.192</td>
+                </tr>
+                <tr>
+                  <td class="rq-left">Proposed</td>
+                  <td class="rq-split-metrics rq-num"><span class="rq-best">0.476 &plusmn; 0.042</span></td>
+                  <td class="rq-num"><span class="rq-best">0.524 &plusmn; 0.042</span></td>
+                  <td class="rq-num"><span class="rq-best">1.513 &plusmn; 0.214</span></td>
+                  <td class="rq-num">63.270 &plusmn; 0.779</td>
+                </tr>
+
+                <tr class="rq-dash">
+                  <td class="rq-left" rowspan="4">Increased human radius<br>(0.5 m)</td>
+                  <td class="rq-left">CVaR-BF-QP</td>
+                  <td class="rq-split-metrics rq-num">0.488 &plusmn; 0.037</td>
+                  <td class="rq-num">0.512 &plusmn; 0.037</td>
+                  <td class="rq-num">1.704 &plusmn; 0.155</td>
+                  <td class="rq-num">61.772 &plusmn; 0.991</td>
+                </tr>
+                <tr>
+                  <td class="rq-left">Vanilla RL</td>
+                  <td class="rq-split-metrics rq-num">0.496 &plusmn; 0.052</td>
+                  <td class="rq-num">0.504 &plusmn; 0.052</td>
+                  <td class="rq-num">1.767 &plusmn; 0.253</td>
+                  <td class="rq-num"><span class="rq-best">60.646 &plusmn; 1.402</span></td>
+                </tr>
+                <tr>
+                  <td class="rq-left">RL + Safety Filter</td>
+                  <td class="rq-split-metrics rq-num">0.502 &plusmn; 0.034</td>
+                  <td class="rq-num">0.498 &plusmn; 0.034</td>
+                  <td class="rq-num">1.714 &plusmn; 0.175</td>
+                  <td class="rq-num">63.852 &plusmn; 0.963</td>
+                </tr>
+                <tr>
+                  <td class="rq-left">Proposed</td>
+                  <td class="rq-split-metrics rq-num"><span class="rq-best">0.584 &plusmn; 0.052</span></td>
+                  <td class="rq-num"><span class="rq-best">0.416 &plusmn; 0.052</span></td>
+                  <td class="rq-num"><span class="rq-best">2.035 &plusmn; 0.244</span></td>
+                  <td class="rq-num">65.496 &plusmn; 1.832</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <p class="rq-caption">
+            <strong>Table III.</strong> Out-of-distribution generalization performance under diverse environment shifts, including changes in robot dynamics, human behavior models, and obstacle density.
+          </p>
         </div>
       </details>
-
-      <details class="mme-finding">
-        <summary class="mme-finding-summary">
-          <span class="mme-finding-chevron">▶</span>
-          RQ3: How does the proposed controller compare with classical filters and learned baselines?
-        </summary>
-        <div class="mme-finding-body">
-          <p class="mme-key-line">
-            The interactive rollout gallery places RCBF, CBF, fixed-risk CVaR, ORCA, CrowdNav, CrowdNav++, and the adaptive controller on shared reference scenes so the tradeoffs are visible without digging through filenames.
-          </p>
-          <ul class="mme-insight-list">
-            <li>Conservative filters can overconstrain motion and sacrifice progress when the scene tightens.</li>
-            <li>Less conservative planners can preserve motion but lose safety margin in dense interactions.</li>
-            <li>The proposed CVaR-BF controller is designed to sit between those extremes by preserving feasibility while keeping the probabilistic safety interpretation explicit.</li>
-          </ul>
-          <div class="mme-evidence-row">
-            <a class="mme-evidence-chip" href="#sec-baseline-si">Baseline carousel</a>
-            <a class="mme-evidence-chip" href="#sec-baseline-si">Baselines (single integrator)</a>
-            <a class="mme-evidence-chip" href="#sec-sim-rollouts">Interactive comparisons</a>
-          </div>
-        </div>
-      </details>
-
     </div>
   </div>
 </section>
