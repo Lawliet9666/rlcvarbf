@@ -43,43 +43,43 @@
 </head>
 <body>
 
+<!-- Sticky section nav (RoboMME-style); appears after scrolling past the abstract -->
+<div class="section-nav" id="sectionNav">
+  <div class="section-nav-inner">
+    <a class="section-nav-link" href="#sec-abstract" data-target="sec-abstract">Abstract</a>
+    <a class="section-nav-link" href="#sec-motivation" data-target="sec-motivation">Motivation</a>
+    <a class="section-nav-link" href="#sec-method" data-target="sec-method">Method</a>
+    <a class="section-nav-link" href="#sec-teaser" data-target="sec-teaser">Teaser</a>
+    <a class="section-nav-link" href="#sec-baseline-uni" data-target="sec-baseline-uni">Baselines (Unicycle)</a>
+    <a class="section-nav-link" href="#sec-baseline-si" data-target="sec-baseline-si">Baselines (SI)</a>
+    <a class="section-nav-link" href="#sec-realworld" data-target="sec-realworld">Real-world</a>
+    <a class="section-nav-link" href="#sec-results" data-target="sec-results">Results</a>
+    <a class="section-nav-link" href="#sec-video" data-target="sec-video">Video</a>
+    <a class="section-nav-link" href="#sec-bib" data-target="sec-bib">BibTeX</a>
+  </div>
+</div>
+
 <nav class="navbar" role="navigation" aria-label="main navigation">
   <div class="navbar-brand">
-    <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+    <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navMenu">
       <span aria-hidden="true"></span>
       <span aria-hidden="true"></span>
       <span aria-hidden="true"></span>
     </a>
   </div>
-  <div class="navbar-menu">
-    <div class="navbar-start" style="flex-grow: 1; justify-content: center;">
-      <a class="navbar-item" href="https://lawliet9666.github.io">
-      <span class="icon">
-          <i class="fas fa-home"></i>
-      </span>
+  <div id="navMenu" class="navbar-menu">
+    <div class="navbar-start" style="flex-grow: 1; justify-content: center; flex-wrap: wrap;">
+      <a class="navbar-item" href="https://lawliet9666.github.io" title="Home">
+        <span class="icon"><i class="fas fa-home"></i></span>
       </a>
-
-      <!-- <div class="navbar-item has-dropdown is-hoverable">
-        <a class="navbar-link">
-          More Research
-        </a>
-        <div class="navbar-dropdown">
-          <a class="navbar-item" href="https://hypernerf.github.io">
-            HyperNeRF
-          </a>
-          <a class="navbar-item" href="https://nerfies.github.io">
-            Nerfies
-          </a>
-          <a class="navbar-item" href="https://latentfusion.github.io">
-            LatentFusion
-          </a>
-          <a class="navbar-item" href="https://photoshape.github.io">
-            PhotoShape
-          </a>
-        </div>
-      </div> -->
+      <a class="navbar-item" href="#sec-abstract">Abstract</a>
+      <a class="navbar-item" href="#sec-teaser">Teaser</a>
+      <a class="navbar-item" href="#sec-baseline-uni">Baselines</a>
+      <a class="navbar-item" href="#sec-realworld">Real-world</a>
+      <a class="navbar-item" href="#sec-results">Results</a>
+      <a class="navbar-item" href="#sec-video">Video</a>
+      <a class="navbar-item" href="https://github.com/Lawliet9666/cvarbf" target="_blank" rel="noopener">Code (cvarbf)</a>
     </div>
-
   </div>
 </nav>
 
@@ -89,7 +89,9 @@
     <div class="container is-max-desktop">
       <div class="columns is-centered">
         <div class="column has-text-centered">
-          <h1 class="title is-1 publication-title">Safe Navigation in Uncertain Crowded Environments Using Risk Adaptive CVaR Barrier Functions
+          <h1 class="title is-1 publication-title">
+            <span class="publication-title-line">Safe Navigation in Uncertain Crowded Environments Using</span>
+            <span class="publication-title-line">Risk Adaptive CVaR Barrier Functions</span>
           </h1>
           <div class="is-size-5 publication-authors">
             <span class="author-block">
@@ -112,12 +114,17 @@
             <span class="author-block"><sup>2</sup>Toyota North America Research & Development</span>
           </div>
 
-          <div class="column has-text-centered">
+          <div class="announcement-banner">
+            <span>📄</span>
+            <span>Presented at <b>IROS 2025</b> — layout inspired by <a href="https://robomme.github.io/" target="_blank" rel="noopener">RoboMME</a>.</span>
+          </div>
+
+          <div class="has-text-centered" style="margin-top: 1.25rem;">
             <div class="publication-links">
               <!-- PDF Link. -->
               <span class="link-block">
                 <a href="https://arxiv.org/abs/2504.06513"
-                   class="external-link button is-normal is-rounded is-dark">
+                   class="external-link button is-link is-normal is-rounded">
                   <span class="icon">
                       <i class="fas fa-file-pdf"></i>
                   </span>
@@ -136,7 +143,7 @@
               <!-- Video Link. -->
               <span class="link-block">
                 <a href="https://youtu.be/VHRnmXToLN8?si=k4FZuKNiIMhsD3uN"
-                   class="external-link button is-normal is-rounded is-dark">
+                   class="external-link button is-link is-normal is-rounded">
                   <span class="icon">
                       <i class="fab fa-youtube"></i>
                   </span>
@@ -146,22 +153,13 @@
               <!-- Code Link. -->
               <span class="link-block">
                 <a href="https://github.com/Lawliet9666/Adaptive-CVaR-Barrier-Function.git"
-                   class="external-link button is-normal is-rounded is-dark">
+                   class="external-link button is-link is-normal is-rounded">
                   <span class="icon">
                       <i class="fab fa-github"></i>
                   </span>
                   <span>Code</span>
                   </a>
               </span>
-              <!-- Dataset Link. -->
-              <!-- <span class="link-block">
-                <a href="https://github.com/google/nerfies/releases/tag/0.1"
-                   class="external-link button is-normal is-rounded is-dark">
-                  <span class="icon">
-                      <i class="far fa-images"></i>
-                  </span>
-              <span>Data</span> -->
-                  </a>
             </div>
 
           </div>
@@ -171,13 +169,20 @@
   </div>
 </section>
 
-    <!--/ Abstract. -->
-<section id="abstract-section" style="padding: 2.5rem 0;">
+<section class="section" style="padding-top: 0; padding-bottom: 1rem;">
+  <div class="container is-widescreen mme-wide">
+    <p class="has-text-centered mme-tldr">
+      <strong>TL;DR:</strong> Risk-adaptive CVaR barrier functions let a robot trade off safety and feasibility in crowded uncertain environments by adjusting its risk level online while keeping probabilistic safety guarantees.
+    </p>
+  </div>
+</section>
+
+<section id="sec-abstract" class="section" style="padding-top: 0;">
   <div class="container is-max-desktop">
     <div class="columns is-centered has-text-centered">
       <div class="column is-four-fifths">
         <h2 class="title is-3">Abstract</h2>
-        <div class="content has-text-justified">
+        <div class="content has-text-justified" style="font-size: 1.1rem;">
           <p>
             We propose a 
             <span style="color: #e74c3c; font-weight: bold;">risk-adaptive approach</span>
@@ -201,7 +206,7 @@
   </div>
 </section>
 
-<section class="section">
+<section id="sec-motivation" class="section mme-section-muted">
   <div class="container is-max-desktop">
     <h2 class="title is-3 has-text-centered">Motivation</h2>
     <div class="columns is-centered">
@@ -236,7 +241,7 @@
 </section>
 
 <!-- Method Overview Section -->
-<section class="section">
+<section id="sec-method" class="section">
   <div class="container is-max-desktop">
     <h2 class="title is-3 has-text-centered">Method Overview</h2>
     <div class="columns is-centered">
@@ -252,7 +257,7 @@
 </section>
 
 
-<section class="hero teaser">
+<section id="sec-teaser" class="hero teaser">
   <div class="container is-max-desktop">
     <div class="hero-body">
       <!-- <video id="teaser" autoplay muted loop playsinline height="100%">
@@ -282,7 +287,7 @@
 </body> -->
 
 
-<section class="hero is-light is-small">
+<section id="sec-baseline-uni" class="hero is-light is-small">
   <h2 class="title is-4 has-text-centered">In distribution: obstacle number 20 baselines comparison for unicycle</h2>
   <div class="hero-body">
     <div class="container">
@@ -364,7 +369,7 @@
   </div>
 </section>
 
-<section class="hero is-light is-small">
+<section id="sec-baseline-si" class="hero is-light is-small">
   <h2 class="title is-4 has-text-centered">In distribution: obstacle number 20 baselines comparison for single integrator</h2>
   <div class="hero-body">
     <div class="container">
@@ -481,7 +486,7 @@
 </section> -->
 
 
-<section class="hero is-light is-small">
+<section id="sec-realworld" class="hero is-light is-small">
   <h2 class="title is-4 has-text-centered">Real-World Dataset Validation</h2>
   <div class="hero-body">
     <div class="container">
@@ -526,14 +531,18 @@
 
 
 <!-- TEMPLATE: same layout as reference figure — replace text/numbers; use tr.rq-major / tr.rq-dash / rq-row-alt for rules & striping -->
-<section class="section" id="research-questions-template">
+<section id="sec-results" class="section mme-section-muted">
   <div class="container is-max-desktop content">
     <h2 class="title is-3 has-text-centered">Ablations &amp; research questions</h2>
 
-    <details class="rq-block" open>
-      <summary>RQ1: Which memory representations and integration mechanisms yield the strongest performance?</summary>
-      <div class="rq-block-body">
-        <p>Across all MME-VLA variants:</p>
+    <div class="mme-findings-col">
+    <details class="mme-finding" open>
+      <summary class="mme-finding-summary">
+        <span class="mme-finding-chevron">▶</span>
+        RQ1: Which memory representations and integration mechanisms yield the strongest performance?
+      </summary>
+      <div class="mme-finding-body">
+        <p><b>Across all MME-VLA variants:</b></p>
         <ul class="rq-takeaways">
           <li><strong>Memory Representation:</strong> Symbolic &gt; Perceptual &gt; Recurrent.</li>
           <li><strong>Integration Mechanism:</strong> Oracle &gt; Gemini &gt; QwenVL (example ranking — replace with your results).</li>
@@ -693,9 +702,12 @@
       </div>
     </details>
 
-    <details class="rq-block">
-      <summary>RQ2: [Your second research question — reuse the same table format as RQ1 and trim rows]</summary>
-      <div class="rq-block-body">
+    <details class="mme-finding">
+      <summary class="mme-finding-summary">
+        <span class="mme-finding-chevron">▶</span>
+        RQ2: [Your second research question — reuse the same table format as RQ1 and trim rows]
+      </summary>
+      <div class="mme-finding-body">
         <p>Across all <strong>[your setting]</strong>:</p>
         <ul class="rq-takeaways">
           <li><strong>Takeaway one:</strong> A &gt; B &gt; C.</li>
@@ -747,12 +759,13 @@
         </div>
       </div>
     </details>
+    </div>
 
   </div>
 </section>
 
 
-<section class="section">
+<section id="sec-video" class="section">
   <div class="container is-max-desktop">
     <!-- Paper video. -->
     <div class="columns is-centered has-text-centered">
@@ -779,81 +792,8 @@
   </div>
 </section>
 
-    <!-- Animation. -->
-    <!-- <div class="columns is-centered">
-      <div class="column is-full-width">
-        <h2 class="title is-3">Animation</h2> -->
 
-        <!-- Interpolating. -->
-        <!-- <h3 class="title is-4">Interpolating states</h3>
-        <div class="content has-text-justified">
-          <p>
-            We can also animate the scene by interpolating the deformation latent codes of two input
-            frames. Use the slider here to linearly interpolate between the left frame and the right
-            frame.
-          </p>
-        </div>
-        <div class="columns is-vcentered interpolation-panel">
-          <div class="column is-3 has-text-centered">
-            <img src="./static/images/wang2025irosv1.png"
-                 class="interpolation-image"
-                 alt="Interpolate start reference image."/>
-            <p>Start Frame</p>
-          </div>
-          <div class="column interpolation-video-column">
-            <div id="interpolation-image-wrapper">
-              Loading...
-            </div>
-            <input class="slider is-fullwidth is-large is-info"
-                   id="interpolation-slider"
-                   step="1" min="0" max="100" value="0" type="range">
-          </div>
-          <div class="column is-3 has-text-centered">
-            <img src="./static/images/interpolate_end.jpg"
-                 class="interpolation-image"
-                 alt="Interpolation end reference image."/>
-            <p class="is-bold">End Frame</p>
-          </div>
-        </div>
-        <br/> -->
-        <!--/ Interpolating. -->
-      <!-- </div>
-    </div> -->
-    <!--/ Animation. -->
-
-
-    <!-- Concurrent Work. -->
-    <!-- <div class="columns is-centered">
-      <div class="column is-full-width">
-        <h2 class="title is-3">Related Links</h2>
-
-        <div class="content has-text-justified">
-          <p>
-            There's a lot of excellent work that was introduced around the same time as ours.
-          </p>
-          <p>
-            <a href="https://arxiv.org/abs/2104.09125">Progressive Encoding for Neural Optimization</a> introduces an idea similar to our windowed position encoding for coarse-to-fine optimization.
-          </p>
-          <p>
-            <a href="https://www.albertpumarola.com/research/D-NeRF/index.html">D-NeRF</a> and <a href="https://gvv.mpi-inf.mpg.de/projects/nonrigid_nerf/">NR-NeRF</a>
-            both use deformation fields to model non-rigid scenes.
-          </p>
-          <p>
-            Some works model videos with a NeRF by directly modulating the density, such as <a href="https://video-nerf.github.io/">Video-NeRF</a>, <a href="https://www.cs.cornell.edu/~zl548/NSFF/">NSFF</a>, and <a href="https://neural-3d-video.github.io/">DyNeRF</a>
-          </p>
-          <p>
-            There are probably many more by the time you are reading this. Check out <a href="https://dellaert.github.io/NeRF/">Frank Dellart's survey on recent NeRF papers</a>, and <a href="https://github.com/yenchenlin/awesome-NeRF">Yen-Chen Lin's curated list of NeRF papers</a>.
-          </p>
-        </div>
-      </div> -->
-    </div>
-    <!--/ Concurrent Work. -->
-
-  </div>
-</section>
-
-
-<section class="section" id="BibTeX">
+<section class="section" id="sec-bib">
   <div class="container is-max-desktop content">
     <h2 class="title">BibTeX</h2>
     <pre><code>@article{wang2025safe,
@@ -898,6 +838,64 @@
     </div>
   </div>
 </footer>
+
+<script>
+(function () {
+  var nav = document.getElementById('sectionNav');
+  if (!nav) return;
+  var links = nav.querySelectorAll('.section-nav-link');
+  var triggerEl = document.getElementById('sec-abstract');
+  var sectionIds = ['sec-abstract', 'sec-motivation', 'sec-method', 'sec-teaser', 'sec-baseline-uni', 'sec-baseline-si', 'sec-realworld', 'sec-results', 'sec-video', 'sec-bib'];
+  var sections = sectionIds.map(function (id) { return document.getElementById(id); });
+  var navHeight = 52;
+
+  links.forEach(function (link) {
+    link.addEventListener('click', function (e) {
+      e.preventDefault();
+      var id = this.getAttribute('data-target');
+      var target = id ? document.getElementById(id) : null;
+      if (target) {
+        var top = target.getBoundingClientRect().top + window.pageYOffset - navHeight;
+        window.scrollTo({ top: top, behavior: 'smooth' });
+      }
+    });
+  });
+
+  var ticking = false;
+  window.addEventListener('scroll', function () {
+    if (!ticking) {
+      window.requestAnimationFrame(function () {
+        if (triggerEl) {
+          var triggerTop = triggerEl.getBoundingClientRect().top;
+          if (triggerTop <= navHeight) {
+            nav.classList.add('visible');
+          } else {
+            nav.classList.remove('visible');
+          }
+        }
+
+        var current = '';
+        for (var i = sections.length - 1; i >= 0; i--) {
+          if (sections[i] && sections[i].getBoundingClientRect().top <= navHeight + 60) {
+            current = sectionIds[i];
+            break;
+          }
+        }
+        links.forEach(function (link) {
+          if (link.getAttribute('data-target') === current) {
+            link.classList.add('active');
+          } else {
+            link.classList.remove('active');
+          }
+        });
+
+        ticking = false;
+      });
+      ticking = true;
+    }
+  });
+})();
+</script>
 
 </body>
 </html>
