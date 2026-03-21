@@ -678,6 +678,49 @@ table.rq-table-paper .rq-cell-highlight {
   gap: 2rem;
 }
 
+.sim-mode-tabs-wrap {
+  margin: 0 auto 1.1rem;
+}
+
+.sim-mode-tabs {
+  display: flex;
+  justify-content: center;
+  gap: 0.65rem;
+  flex-wrap: wrap;
+}
+
+.sim-mode-tab {
+  padding: 0.55rem 1rem;
+  border-radius: 999px;
+  border: 1px solid #d3dcec;
+  background: #fff;
+  color: #42506f;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.sim-mode-tab:hover {
+  border-color: #90b5ee;
+  color: #2259ad;
+  background: #eef5ff;
+}
+
+.sim-mode-tab.active {
+  border-color: #3273dc;
+  background: rgba(50, 115, 220, 0.1);
+  color: #1d56ae;
+}
+
+.sim-mode-panel {
+  display: none;
+}
+
+.sim-mode-panel.active {
+  display: block;
+}
+
 .sim-suite-tabs-wrap {
   margin-bottom: 1.5rem;
 }

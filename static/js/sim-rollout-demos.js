@@ -260,6 +260,72 @@
     wireAllPanels(root, suites);
   }
 
+  function renderModeApp(root, modes, initialModeId) {
+    if (!root) return;
+
+    var activeModeId = initialModeId || (modes[0] && modes[0].id);
+
+    root.innerHTML =
+      '<div class="sim-mode-tabs-wrap">' +
+        '<div class="sim-mode-tabs" role="tablist" aria-label="Robot mode">' +
+          renderModeTabs(modes, activeModeId) +
+        '</div>' +
+      '</div>' +
+      '<div class="sim-mode-panels">' +
+        renderModePanels(modes, activeModeId) +
+      '</div>';
+
+    modes.forEach(function (mode) {
+      var panel = root.querySelector('[data-mode-panel="' + mode.id + '"]');
+      if (!panel) return;
+      var appRoot = panel.querySelector('[data-mode-app="' + mode.id + '"]');
+      renderApp(appRoot, mode.suites);
+    });
+
+    wireModeTabs(root);
+  }
+
+  function renderModeTabs(modes, activeModeId) {
+    return modes.map(function (mode) {
+      var isActive = mode.id === activeModeId;
+      return '' +
+        '<button type="button" class="sim-mode-tab' + (isActive ? ' active' : '') + '"' +
+        ' data-mode-id="' + escapeHtml(mode.id) + '"' +
+        ' role="tab" aria-selected="' + (isActive ? 'true' : 'false') + '">' +
+          escapeHtml(mode.label) +
+        '</button>';
+    }).join('');
+  }
+
+  function renderModePanels(modes, activeModeId) {
+    return modes.map(function (mode) {
+      var isActive = mode.id === activeModeId;
+      return '' +
+        '<div class="sim-mode-panel' + (isActive ? ' active' : '') + '" data-mode-panel="' + escapeHtml(mode.id) + '">' +
+          '<div class="sim-rollout-app" data-mode-app="' + escapeHtml(mode.id) + '"></div>' +
+        '</div>';
+    }).join('');
+  }
+
+  function wireModeTabs(root) {
+    var tabs = root.querySelectorAll('.sim-mode-tab');
+    var panels = root.querySelectorAll('.sim-mode-panel');
+
+    tabs.forEach(function (tab) {
+      tab.addEventListener('click', function () {
+        var modeId = tab.getAttribute('data-mode-id');
+        tabs.forEach(function (item) {
+          var isActive = item === tab;
+          item.classList.toggle('active', isActive);
+          item.setAttribute('aria-selected', isActive ? 'true' : 'false');
+        });
+        panels.forEach(function (panel) {
+          panel.classList.toggle('active', panel.getAttribute('data-mode-panel') === modeId);
+        });
+      });
+    });
+  }
+
   function renderSuiteTabs(suites) {
     return suites.map(function (suite, index) {
       return '' +
@@ -451,13 +517,21 @@
       document.getElementById('simIdRolloutAppUnicycle'),
       buildIdSuites('Unicycle', 'unicycle robot')
     );
-    renderApp(
-      document.getElementById('simRolloutAppSingle'),
-      buildSuites('Single Integrator', 'single-integrator robot')
-    );
-    renderApp(
-      document.getElementById('simRolloutAppUnicycle'),
-      buildSuites('Unicycle', 'unicycle robot')
+    renderModeApp(
+      document.getElementById('simRolloutModeApp'),
+      [
+        {
+          id: 'single-integrator',
+          label: 'Single Integrator',
+          suites: buildSuites('Single Integrator', 'single-integrator robot')
+        },
+        {
+          id: 'unicycle',
+          label: 'Unicycle',
+          suites: buildSuites('Unicycle', 'unicycle robot')
+        }
+      ],
+      'unicycle'
     );
   });
 })();
