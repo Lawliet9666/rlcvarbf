@@ -50,6 +50,7 @@
     <a class="section-nav-link" href="#sec-id-demos" data-target="sec-id-demos">ID Demos</a>
     <a class="section-nav-link" href="#sec-ood-demos" data-target="sec-ood-demos">OOD Demos</a>
     <a class="section-nav-link" href="#sec-results" data-target="sec-results">Statistical Results</a>
+    <!-- <a class="section-nav-link" href="#sec-video" data-target="sec-video">Video</a> -->
     <a class="section-nav-link" href="#acknowledgement" data-target="acknowledgement">Acknowledgement</a>
     <a class="section-nav-link" href="#sec-bib" data-target="sec-bib">BibTeX</a>
   </div>
@@ -111,7 +112,17 @@
                   <span>arXiv</span>
                 </a>
               </span> -->
-              <!-- Video link temporarily hidden until the new video is ready. -->
+              <!-- Video link temporarily hidden until the new video is ready.
+              <span class="link-block">
+                <a href="https://youtu.be/VHRnmXToLN8?si=k4FZuKNiIMhsD3uN"
+                   class="external-link button is-link is-normal is-rounded">
+                  <span class="icon">
+                      <i class="fab fa-youtube"></i>
+                  </span>
+                  <span>Video</span>
+                </a>
+              </span>
+              -->
               <!-- Code Link. -->
               <span class="link-block">
                 <a href="https://github.com/Lawliet9666/Adaptive-CVaR-Barrier-Function.git"
@@ -437,6 +448,21 @@
 </section>
 
 
+<!-- <section id="sec-video" class="section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Video</h2>
+        <div class="publication-video">
+          <iframe src="https://www.youtube.com/embed/VHRnmXToLN8?si=CifUAystyr5iiycB"
+                  frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+        </div>
+      </div>
+    </div>
+  </div>
+</section> -->
+
+
 <section class="section" id="acknowledgement">
   <div class="container is-max-desktop content">
     <h2 class="title">Acknowledgement</h2>
@@ -500,7 +526,7 @@
   if (!nav) return;
   var links = nav.querySelectorAll('.section-nav-link');
   var triggerEl = document.getElementById('sec-abstract');
-  var sectionIds = ['sec-id-demos', 'sec-ood-demos', 'sec-results', 'acknowledgement', 'sec-bib'];
+  var sectionIds = ['sec-id-demos', 'sec-ood-demos', 'sec-results', /* 'sec-video', */ 'acknowledgement', 'sec-bib'];
   var sections = sectionIds.map(function (id) { return document.getElementById(id); });
   var navHeight = 52;
 
