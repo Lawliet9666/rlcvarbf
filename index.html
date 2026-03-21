@@ -40,6 +40,7 @@
   <script src="./static/js/bulma-carousel.min.js"></script>
   <script src="./static/js/bulma-slider.min.js"></script>
   <script src="./static/js/index.js"></script>
+  <script defer src="./static/js/sim-rollout-demos.js"></script>
 </head>
 <body>
 
@@ -52,6 +53,7 @@
     <a class="section-nav-link" href="#sec-teaser" data-target="sec-teaser">Teaser</a>
     <a class="section-nav-link" href="#sec-baseline-uni" data-target="sec-baseline-uni">Baselines (Unicycle)</a>
     <a class="section-nav-link" href="#sec-baseline-si" data-target="sec-baseline-si">Baselines (SI)</a>
+    <a class="section-nav-link" href="#sec-sim-rollouts" data-target="sec-sim-rollouts">Sim rollouts</a>
     <a class="section-nav-link" href="#sec-realworld" data-target="sec-realworld">Real-world</a>
     <a class="section-nav-link" href="#sec-results" data-target="sec-results">Results</a>
     <a class="section-nav-link" href="#sec-video" data-target="sec-video">Video</a>
@@ -75,6 +77,7 @@
       <a class="navbar-item" href="#sec-abstract">Abstract</a>
       <a class="navbar-item" href="#sec-teaser">Teaser</a>
       <a class="navbar-item" href="#sec-baseline-uni">Baselines</a>
+      <a class="navbar-item" href="#sec-sim-rollouts">Sim rollouts</a>
       <a class="navbar-item" href="#sec-realworld">Real-world</a>
       <a class="navbar-item" href="#sec-results">Results</a>
       <a class="navbar-item" href="#sec-video">Video</a>
@@ -486,6 +489,133 @@
 </section> -->
 
 
+<section id="sec-sim-rollouts" class="section sim-rollout-section">
+  <div class="container is-widescreen mme-wide">
+    <h2 class="title is-3 has-text-centered sim-rollout-title">Simulation Rollout Demos</h2>
+    <p class="has-text-centered is-size-6" style="max-width: 40rem; margin: -0.5rem auto 1.25rem;">
+      Interactive comparison layout after <a href="https://robomme.github.io/" target="_blank" rel="noopener">RoboMME</a>: pick suite, episode (where wired), and two methods. Swap GIF paths in <code>static/js/sim-rollout-demos.js</code> for your own rollouts.
+    </p>
+
+    <div class="tabs-container sim-suite-tabs-wrap">
+      <div class="sim-suite-tabs" role="tablist">
+        <button type="button" class="sim-suite-tab active" data-sim-suite-tab="suite1">Suite 1: 20 obstacles</button>
+        <button type="button" class="sim-suite-tab" data-sim-suite-tab="suite2">Suite 2: Scenario pairs</button>
+        <button type="button" class="sim-suite-tab" data-sim-suite-tab="suite3">Suite 3: Proposed sweeps</button>
+        <button type="button" class="sim-suite-tab" data-sim-suite-tab="suite4">Suite 4: RL baselines</button>
+      </div>
+    </div>
+
+    <div data-sim-suite-panel="suite1" class="sim-suite-panel active">
+      <div class="sim-rollout-card">
+        <div class="sim-task-header">
+          <span class="demo-task-name">Task: In-distribution (20 obstacles, σ = 0.025)</span>
+          <label class="sim-ep-label">Episode
+            <select class="sim-select sim-episode-select" data-sim-episode aria-label="Episode">
+              <option value="0">Episode 1</option>
+              <option value="1">Episode 2</option>
+              <option value="2">Episode 3</option>
+            </select>
+          </label>
+          <p class="demo-task-goal"><strong>Task goal:</strong> Navigate from start to goal in a crowded planar workspace with stochastic obstacle motion; compare safety filters and planners on the same seed-13 scene (episodes are placeholders until you add more seeds).</p>
+        </div>
+        <div class="sim-compare-row">
+          <div class="sim-compare-col" data-sim-column>
+            <select class="sim-select sim-model-select sim-model-select-wide" aria-label="Left method"></select>
+            <img class="sim-demo-img" src="./static/videos/compare/seed13_noise0.025_obs8_umax0.9_besfm_umax0.3_besfm_rcbf_doubleint_v2_gamma0.1_betaNone_hcone.gif" alt="Left rollout">
+            <span class="result-label success">Success</span>
+          </div>
+          <div class="sim-compare-col" data-sim-column>
+            <select class="sim-select sim-model-select sim-model-select-wide" aria-label="Right method"></select>
+            <img class="sim-demo-img" src="./static/videos/compare/seed13_noise0.025_obs8_umax0.9_besfm_umax0.3_besfm_cvar_beta_dt_doubleint_v2_gamma0.1_betaNone_hdist_cone.gif" alt="Right rollout">
+            <span class="result-label success">Success</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div data-sim-suite-panel="suite2" class="sim-suite-panel">
+      <div class="sim-rollout-card">
+        <div class="sim-task-header">
+          <span class="demo-task-name">Task: Proposed-only scenario pairs</span>
+          <label class="sim-ep-label">Episode
+            <select class="sim-select sim-episode-select" data-sim-episode aria-label="Episode">
+              <option value="0">Episode 1</option>
+              <option value="1">Episode 2</option>
+              <option value="2">Episode 3</option>
+            </select>
+          </label>
+          <p class="demo-task-goal"><strong>Task goal:</strong> <span data-sim-task-goal></span></p>
+        </div>
+        <div class="sim-compare-row">
+          <div class="sim-compare-col" data-sim-column>
+            <select class="sim-select sim-model-select sim-model-select-wide" style="display:none" aria-hidden="true"></select>
+            <img class="sim-demo-img" src="./static/videos/seed13_noise0.025_obs8_umax0.9_besfm_umax0.3_besfm_cvar_beta_dt_doubleint_v2_gamma0.1_betaNone_hdist_cone.gif" alt="Left scenario">
+            <span class="result-label success">Success</span>
+          </div>
+          <div class="sim-compare-col" data-sim-column>
+            <select class="sim-select sim-model-select sim-model-select-wide" style="display:none" aria-hidden="true"></select>
+            <img class="sim-demo-img" src="./static/videos/seed14_noise0.05_obs8_umax0.9_besfm_umax0.9_besfm_cvar_beta_dt_doubleint_v2_gamma0.1_betaNone_hdist_cone.gif" alt="Right scenario">
+            <span class="result-label success">Success</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div data-sim-suite-panel="suite3" class="sim-suite-panel">
+      <div class="sim-rollout-card">
+        <div class="sim-task-header">
+          <span class="demo-task-name">Task: Proposed controller across seeds</span>
+          <label class="sim-ep-label">Episode
+            <select class="sim-select sim-episode-select" aria-label="Episode" disabled title="Optional: wire episodes in JS">
+              <option>Episode 1</option>
+            </select>
+          </label>
+          <p class="demo-task-goal"><strong>Task goal:</strong> Inspect proposed-method rollouts under different obstacle counts and noise levels (each column picks a seed / scenario).</p>
+        </div>
+        <div class="sim-compare-row">
+          <div class="sim-compare-col" data-sim-column>
+            <select class="sim-select sim-model-select sim-model-select-wide" aria-label="Left scenario"></select>
+            <img class="sim-demo-img" src="./static/videos/seed13_noise0.025_obs8_umax0.9_besfm_umax0.3_besfm_cvar_beta_dt_doubleint_v2_gamma0.1_betaNone_hdist_cone.gif" alt="Left proposed rollout">
+            <span class="result-label success">Success</span>
+          </div>
+          <div class="sim-compare-col" data-sim-column>
+            <select class="sim-select sim-model-select sim-model-select-wide" aria-label="Right scenario"></select>
+            <img class="sim-demo-img" src="./static/videos/seed100_noise0.025_obs6_umax0.9_besfm_umax0.9_besfm_cvar_beta_dt_doubleint_v2_gamma0.1_betaNone_hdist_cone.gif" alt="Right proposed rollout">
+            <span class="result-label success">Success</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div data-sim-suite-panel="suite4" class="sim-suite-panel">
+      <div class="sim-rollout-card">
+        <div class="sim-task-header">
+          <span class="demo-task-name">Task: RL + social navigation baselines</span>
+          <label class="sim-ep-label">Episode
+            <select class="sim-select sim-episode-select" aria-label="Episode" disabled title="Uses seed-13 comparison set">
+              <option>Episode 1</option>
+            </select>
+          </label>
+          <p class="demo-task-goal"><strong>Task goal:</strong> Same 20-obstacle seed-13 scene; compare RL policies and the proposed CVaR-BF filter trajectory.</p>
+        </div>
+        <div class="sim-compare-row">
+          <div class="sim-compare-col" data-sim-column>
+            <select class="sim-select sim-model-select sim-model-select-wide" aria-label="Left method"></select>
+            <img class="sim-demo-img" src="./static/videos/compare/seed13_noise0.025_obs8_umax0.9_besfm_umax0.3_besfm_trajectory_animation_crowd++.gif" alt="Left rollout">
+            <span class="result-label success">Success</span>
+          </div>
+          <div class="sim-compare-col" data-sim-column>
+            <select class="sim-select sim-model-select sim-model-select-wide" aria-label="Right method"></select>
+            <img class="sim-demo-img" src="./static/videos/compare/seed13_noise0.025_obs8_umax0.9_besfm_umax0.3_besfm_cvar_beta_dt_doubleint_v2_gamma0.1_betaNone_hdist_cone.gif" alt="Right rollout">
+            <span class="result-label success">Success</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
 <section id="sec-realworld" class="hero is-light is-small">
   <h2 class="title is-4 has-text-centered">Real-World Dataset Validation</h2>
   <div class="hero-body">
@@ -845,7 +975,7 @@
   if (!nav) return;
   var links = nav.querySelectorAll('.section-nav-link');
   var triggerEl = document.getElementById('sec-abstract');
-  var sectionIds = ['sec-abstract', 'sec-motivation', 'sec-method', 'sec-teaser', 'sec-baseline-uni', 'sec-baseline-si', 'sec-realworld', 'sec-results', 'sec-video', 'sec-bib'];
+  var sectionIds = ['sec-abstract', 'sec-motivation', 'sec-method', 'sec-teaser', 'sec-baseline-uni', 'sec-baseline-si', 'sec-sim-rollouts', 'sec-realworld', 'sec-results', 'sec-video', 'sec-bib'];
   var sections = sectionIds.map(function (id) { return document.getElementById(id); });
   var navHeight = 52;
 
