@@ -3,10 +3,10 @@
 <head>
   <meta charset="utf-8">
   <meta name="description"
-        content="Safe Navigation in Uncertain Crowded Environments Using Risk Adaptive CVaR Barrier Functions">
+        content="Learning to Adapt Risk via Differentiable CVaR Barrier Functions">
   <meta name="keywords" content="CVaR, Barrier Functions, Risk Adaptive Control,">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Safe Navigation in Uncertain Crowded Environments Using Risk Adaptive CVaR Barrier Functions
+  <title>Learning to Adapt Risk via Differentiable CVaR Barrier Functions
 </title>
 
   <!-- Global site tag (gtag.js) - Google Analytics -->
@@ -51,11 +51,10 @@
     <a class="section-nav-link" href="#sec-motivation" data-target="sec-motivation">Motivation</a>
     <a class="section-nav-link" href="#sec-method" data-target="sec-method">Method</a>
     <a class="section-nav-link" href="#sec-teaser" data-target="sec-teaser">Teaser</a>
-    <a class="section-nav-link" href="#sec-baseline-uni" data-target="sec-baseline-uni">Baselines (Unicycle)</a>
     <a class="section-nav-link" href="#sec-baseline-si" data-target="sec-baseline-si">Baselines (SI)</a>
     <a class="section-nav-link" href="#sec-sim-rollouts" data-target="sec-sim-rollouts">Sim rollouts</a>
     <a class="section-nav-link" href="#sec-realworld" data-target="sec-realworld">Real-world</a>
-    <a class="section-nav-link" href="#sec-results" data-target="sec-results">Results</a>
+    <a class="section-nav-link" href="#sec-results" data-target="sec-results">Experiments</a>
     <a class="section-nav-link" href="#sec-video" data-target="sec-video">Video</a>
     <a class="section-nav-link" href="#sec-bib" data-target="sec-bib">BibTeX</a>
   </div>
@@ -75,13 +74,9 @@
         <span class="icon"><i class="fas fa-home"></i></span>
       </a>
       <a class="navbar-item" href="#sec-abstract">Abstract</a>
-      <a class="navbar-item" href="#sec-teaser">Teaser</a>
-      <a class="navbar-item" href="#sec-baseline-uni">Baselines</a>
-      <a class="navbar-item" href="#sec-sim-rollouts">Sim rollouts</a>
-      <a class="navbar-item" href="#sec-realworld">Real-world</a>
-      <a class="navbar-item" href="#sec-results">Results</a>
+      <a class="navbar-item" href="#sec-baseline-si">Baselines</a>
+      <a class="navbar-item" href="#sec-results">Experiments</a>
       <a class="navbar-item" href="#sec-video">Video</a>
-      <a class="navbar-item" href="https://github.com/Lawliet9666/cvarbf" target="_blank" rel="noopener">Code (cvarbf)</a>
     </div>
   </div>
 </nav>
@@ -93,8 +88,8 @@
       <div class="columns is-centered">
         <div class="column has-text-centered">
           <h1 class="title is-1 publication-title">
-            <span class="publication-title-line">Safe Navigation in Uncertain Crowded Environments Using</span>
-            <span class="publication-title-line">Risk Adaptive CVaR Barrier Functions</span>
+            <span class="publication-title-line">Learning to Adapt Risk via</span>
+            <span class="publication-title-line">Differentiable CVaR Barrier Functions</span>
           </h1>
           <div class="is-size-5 publication-authors">
             <span class="author-block">
@@ -114,12 +109,7 @@
 
           <div class="is-size-5 publication-authors">
             <span class="author-block"><sup>1</sup>Department of Robotics, University of Michigan,</span>
-            <span class="author-block"><sup>2</sup>Toyota North America Research & Development</span>
-          </div>
-
-          <div class="announcement-banner">
-            <span>📄</span>
-            <span>Presented at <b>IROS 2025</b> — layout inspired by <a href="https://robomme.github.io/" target="_blank" rel="noopener">RoboMME</a>.</span>
+            <span class="author-block"><sup>2</sup>Toyota North America Research &amp; Development</span>
           </div>
 
           <div class="has-text-centered" style="margin-top: 1.25rem;">
@@ -290,88 +280,6 @@
 </body> -->
 
 
-<section id="sec-baseline-uni" class="hero is-light is-small">
-  <h2 class="title is-4 has-text-centered">In distribution: obstacle number 20 baselines comparison for unicycle</h2>
-  <div class="hero-body">
-    <div class="container">
-      <div id="carousel-baselines-unicycle" class="carousel results-carousel">
-        <div class="item item-chair-tp has-text-centered">
-          <img src="./static/videos/compare/seed13_noise0.025_obs8_umax0.9_besfm_umax0.3_besfm_rcbf_doubleint_v2_gamma0.1_betaNone_hcone.gif"
-               id="baseline-uni-rcbf"
-               alt="RCBF (Collision Cone), unicycle"
-               style="max-width: 100%; height: auto;">
-          <div style="margin-top: 0.5rem; font-size: 1rem; font-weight: bold; color: #22336c;">
-            RCBF (Collision Cone)
-          </div>
-        </div>
-        <div class="item item-steve has-text-centered">
-          <img src="./static/videos/compare/seed13_noise0.025_obs8_umax0.9_besfm_umax0.3_besfm_cbf_doubleint_v2_gamma0.1_betaNone_hcone.gif"
-               id="baseline-uni-cbf"
-               alt="CBF (Collision Cone), unicycle"
-               style="max-width: 100%; height: auto;">
-          <div style="margin-top: 0.5rem; font-size: 1rem; font-weight: bold; color: #22336c;">
-            CBF (Collision Cone)
-          </div>
-        </div>
-        <div class="item item-steve has-text-centered">
-          <img src="./static/videos/compare/seed13_noise0.025_obs8_umax0.9_besfm_umax0.3_besfm_cvar_doubleint_v2_gamma0.1_beta0.01_hdist.gif"
-               id="baseline-uni-cvar-b01"
-               alt="CVaR distance β=0.01, unicycle"
-               style="max-width: 100%; height: auto;">
-          <div style="margin-top: 0.5rem; font-size: 1rem; font-weight: bold; color: #22336c;">
-            CVaR (Distance) β = 0.1
-          </div>
-        </div>
-        <div class="item item-chair-tp has-text-centered">
-          <img src="./static/videos/compare/seed13_noise0.025_obs8_umax0.9_besfm_umax0.3_besfm_cvar_doubleint_v2_gamma0.1_beta0.99_hdist.gif"
-               id="baseline-uni-cvar-b99"
-               alt="CVaR distance β=0.99, unicycle"
-               style="max-width: 100%; height: auto;">
-          <div style="margin-top: 0.5rem; font-size: 1rem; font-weight: bold; color: #22336c;">
-            CVaR (Distance) β = 0.99
-          </div>
-        </div>
-        <div class="item item-chair-tp has-text-centered">
-          <img src="./static/videos/compare/seed13_noise0.025_obs8_umax0.9_besfm_umax0.3_besfm_orca_plus_doubleint_v2_gamma0.1_betaNone_hdist.gif"
-               id="baseline-uni-orca"
-               alt="ORCA, unicycle"
-               style="max-width: 100%; height: auto;">
-          <div style="margin-top: 0.5rem; font-size: 1rem; font-weight: bold; color: #22336c;">
-            ORCA
-          </div>
-        </div>
-        <div class="item item-shiba has-text-centered">
-          <img src="./static/videos/compare/seed13_noise0.025_obs8_umax0.9_besfm_umax0.3_besfm_trajectory_animation.gif"
-               id="baseline-uni-crowdnav"
-               alt="CrowdNav RL, unicycle"
-               style="max-width: 100%; height: auto;">
-          <div style="margin-top: 0.5rem; font-size: 1rem; font-weight: bold; color: #22336c;">
-            CrowdNav (RL)
-          </div>
-        </div>
-        <div class="item item-fullbody has-text-centered">
-          <img src="./static/videos/compare/seed13_noise0.025_obs8_umax0.9_besfm_umax0.3_besfm_trajectory_animation_crowd++.gif"
-               id="baseline-uni-crowdnavpp"
-               alt="CrowdNav++ RL, unicycle"
-               style="max-width: 100%; height: auto;">
-          <div style="margin-top: 0.5rem; font-size: 1rem; font-weight: bold; color: #22336c;">
-            CrowdNav++ (RL)
-          </div>
-        </div>
-        <div class="item item-blueshirt has-text-centered">
-          <img src="./static/videos/compare/seed13_noise0.025_obs8_umax0.9_besfm_umax0.3_besfm_cvar_beta_dt_doubleint_v2_gamma0.1_betaNone_hdist_cone.gif"
-               id="baseline-uni-proposed"
-               alt="Proposed method, unicycle"
-               style="max-width: 100%; height: auto;">
-          <div style="margin-top: 0.5rem; font-size: 1rem; font-weight: bold; color: #22336c;">
-            Proposed method
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
 <section id="sec-baseline-si" class="hero is-light is-small">
   <h2 class="title is-4 has-text-centered">In distribution: obstacle number 20 baselines comparison for single integrator</h2>
   <div class="hero-body">
@@ -477,7 +385,7 @@
         </div>
         <div style="text-align: center;">
           <img src="./static/videos/dataset/rl_cvar_beta_dt_beta0.99_hdist.gif"
-               alt="CrowdNav++ & CVaR-BF (Distance)"
+               alt="CrowdNav++ &amp; CVaR-BF (Distance)"
                style="max-width: 280px; height: auto; border-radius: 10px; border: 1px solid #ddd; box-shadow: 0 2px 8px #eee;">
           <div style="margin-top: 0.5rem; font-size: 1rem; font-weight: bold; color: #22336c;">
             CrowdNav++ &amp; CVaR-BF (Distance) 
@@ -492,126 +400,11 @@
 <section id="sec-sim-rollouts" class="section sim-rollout-section">
   <div class="container is-widescreen mme-wide">
     <h2 class="title is-3 has-text-centered sim-rollout-title">Simulation Rollout Demos</h2>
-    <p class="has-text-centered is-size-6" style="max-width: 40rem; margin: -0.5rem auto 1.25rem;">
-      Interactive comparison layout after <a href="https://robomme.github.io/" target="_blank" rel="noopener">RoboMME</a>: pick suite, episode (where wired), and two methods. Swap GIF paths in <code>static/js/sim-rollout-demos.js</code> for your own rollouts.
+    <p class="has-text-centered sim-rollout-intro">
+      Format adapted from <a href="https://robomme.github.io/" target="_blank" rel="noopener">RoboMME</a>.
+      Switch suites and scenes to inspect your navigation rollouts; controller dropdowns only appear when multiple methods are available on the same reference setup.
     </p>
-
-    <div class="tabs-container sim-suite-tabs-wrap">
-      <div class="sim-suite-tabs" role="tablist">
-        <button type="button" class="sim-suite-tab active" data-sim-suite-tab="suite1">Suite 1: 20 obstacles</button>
-        <button type="button" class="sim-suite-tab" data-sim-suite-tab="suite2">Suite 2: Scenario pairs</button>
-        <button type="button" class="sim-suite-tab" data-sim-suite-tab="suite3">Suite 3: Proposed sweeps</button>
-        <button type="button" class="sim-suite-tab" data-sim-suite-tab="suite4">Suite 4: RL baselines</button>
-      </div>
-    </div>
-
-    <div data-sim-suite-panel="suite1" class="sim-suite-panel active">
-      <div class="sim-rollout-card">
-        <div class="sim-task-header">
-          <span class="demo-task-name">Task: In-distribution (20 obstacles, σ = 0.025)</span>
-          <label class="sim-ep-label">Episode
-            <select class="sim-select sim-episode-select" data-sim-episode aria-label="Episode">
-              <option value="0">Episode 1</option>
-              <option value="1">Episode 2</option>
-              <option value="2">Episode 3</option>
-            </select>
-          </label>
-          <p class="demo-task-goal"><strong>Task goal:</strong> Navigate from start to goal in a crowded planar workspace with stochastic obstacle motion; compare safety filters and planners on the same seed-13 scene (episodes are placeholders until you add more seeds).</p>
-        </div>
-        <div class="sim-compare-row">
-          <div class="sim-compare-col" data-sim-column>
-            <select class="sim-select sim-model-select sim-model-select-wide" aria-label="Left method"></select>
-            <img class="sim-demo-img" src="./static/videos/compare/seed13_noise0.025_obs8_umax0.9_besfm_umax0.3_besfm_rcbf_doubleint_v2_gamma0.1_betaNone_hcone.gif" alt="Left rollout">
-            <span class="result-label success">Success</span>
-          </div>
-          <div class="sim-compare-col" data-sim-column>
-            <select class="sim-select sim-model-select sim-model-select-wide" aria-label="Right method"></select>
-            <img class="sim-demo-img" src="./static/videos/compare/seed13_noise0.025_obs8_umax0.9_besfm_umax0.3_besfm_cvar_beta_dt_doubleint_v2_gamma0.1_betaNone_hdist_cone.gif" alt="Right rollout">
-            <span class="result-label success">Success</span>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div data-sim-suite-panel="suite2" class="sim-suite-panel">
-      <div class="sim-rollout-card">
-        <div class="sim-task-header">
-          <span class="demo-task-name">Task: Proposed-only scenario pairs</span>
-          <label class="sim-ep-label">Episode
-            <select class="sim-select sim-episode-select" data-sim-episode aria-label="Episode">
-              <option value="0">Episode 1</option>
-              <option value="1">Episode 2</option>
-              <option value="2">Episode 3</option>
-            </select>
-          </label>
-          <p class="demo-task-goal"><strong>Task goal:</strong> <span data-sim-task-goal></span></p>
-        </div>
-        <div class="sim-compare-row">
-          <div class="sim-compare-col" data-sim-column>
-            <select class="sim-select sim-model-select sim-model-select-wide" style="display:none" aria-hidden="true"></select>
-            <img class="sim-demo-img" src="./static/videos/seed13_noise0.025_obs8_umax0.9_besfm_umax0.3_besfm_cvar_beta_dt_doubleint_v2_gamma0.1_betaNone_hdist_cone.gif" alt="Left scenario">
-            <span class="result-label success">Success</span>
-          </div>
-          <div class="sim-compare-col" data-sim-column>
-            <select class="sim-select sim-model-select sim-model-select-wide" style="display:none" aria-hidden="true"></select>
-            <img class="sim-demo-img" src="./static/videos/seed14_noise0.05_obs8_umax0.9_besfm_umax0.9_besfm_cvar_beta_dt_doubleint_v2_gamma0.1_betaNone_hdist_cone.gif" alt="Right scenario">
-            <span class="result-label success">Success</span>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div data-sim-suite-panel="suite3" class="sim-suite-panel">
-      <div class="sim-rollout-card">
-        <div class="sim-task-header">
-          <span class="demo-task-name">Task: Proposed controller across seeds</span>
-          <label class="sim-ep-label">Episode
-            <select class="sim-select sim-episode-select" aria-label="Episode" disabled title="Optional: wire episodes in JS">
-              <option>Episode 1</option>
-            </select>
-          </label>
-          <p class="demo-task-goal"><strong>Task goal:</strong> Inspect proposed-method rollouts under different obstacle counts and noise levels (each column picks a seed / scenario).</p>
-        </div>
-        <div class="sim-compare-row">
-          <div class="sim-compare-col" data-sim-column>
-            <select class="sim-select sim-model-select sim-model-select-wide" aria-label="Left scenario"></select>
-            <img class="sim-demo-img" src="./static/videos/seed13_noise0.025_obs8_umax0.9_besfm_umax0.3_besfm_cvar_beta_dt_doubleint_v2_gamma0.1_betaNone_hdist_cone.gif" alt="Left proposed rollout">
-            <span class="result-label success">Success</span>
-          </div>
-          <div class="sim-compare-col" data-sim-column>
-            <select class="sim-select sim-model-select sim-model-select-wide" aria-label="Right scenario"></select>
-            <img class="sim-demo-img" src="./static/videos/seed100_noise0.025_obs6_umax0.9_besfm_umax0.9_besfm_cvar_beta_dt_doubleint_v2_gamma0.1_betaNone_hdist_cone.gif" alt="Right proposed rollout">
-            <span class="result-label success">Success</span>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div data-sim-suite-panel="suite4" class="sim-suite-panel">
-      <div class="sim-rollout-card">
-        <div class="sim-task-header">
-          <span class="demo-task-name">Task: RL + social navigation baselines</span>
-          <label class="sim-ep-label">Episode
-            <select class="sim-select sim-episode-select" aria-label="Episode" disabled title="Uses seed-13 comparison set">
-              <option>Episode 1</option>
-            </select>
-          </label>
-          <p class="demo-task-goal"><strong>Task goal:</strong> Same 20-obstacle seed-13 scene; compare RL policies and the proposed CVaR-BF filter trajectory.</p>
-        </div>
-        <div class="sim-compare-row">
-          <div class="sim-compare-col" data-sim-column>
-            <select class="sim-select sim-model-select sim-model-select-wide" aria-label="Left method"></select>
-            <img class="sim-demo-img" src="./static/videos/compare/seed13_noise0.025_obs8_umax0.9_besfm_umax0.3_besfm_trajectory_animation_crowd++.gif" alt="Left rollout">
-            <span class="result-label success">Success</span>
-          </div>
-          <div class="sim-compare-col" data-sim-column>
-            <select class="sim-select sim-model-select sim-model-select-wide" aria-label="Right method"></select>
-            <img class="sim-demo-img" src="./static/videos/compare/seed13_noise0.025_obs8_umax0.9_besfm_umax0.3_besfm_cvar_beta_dt_doubleint_v2_gamma0.1_betaNone_hdist_cone.gif" alt="Right rollout">
-            <span class="result-label success">Success</span>
-          </div>
-        </div>
-      </div>
-    </div>
+    <div id="simRolloutApp" class="sim-rollout-app" aria-live="polite"></div>
   </div>
 </section>
 
@@ -648,7 +441,7 @@
         </div>
         <div style="text-align: center;">
           <img src="./static/videos/dataset/rl_cvar_beta_dt_beta0.99_hdist.gif"
-               alt="CrowdNav++ & CVaR-BF (Distance)"
+               alt="CrowdNav++ &amp; CVaR-BF (Distance)"
                style="max-width: 360px; width: 100%; height: auto; border-radius: 10px; border: 1px solid #ddd; box-shadow: 0 2px 8px #eee;">
           <div style="margin-top: 0.7rem; font-size: 1.08rem; font-weight: bold; color: #22336c;">
             CrowdNav++ &amp; Proposed
@@ -660,237 +453,100 @@
 </section>
 
 
-<!-- TEMPLATE: same layout as reference figure — replace text/numbers; use tr.rq-major / tr.rq-dash / rq-row-alt for rules & striping -->
 <section id="sec-results" class="section mme-section-muted">
   <div class="container is-max-desktop content">
-    <h2 class="title is-3 has-text-centered">Ablations &amp; research questions</h2>
+    <h2 class="title is-3 has-text-centered">Experiments &amp; Research Questions</h2>
+    <p class="has-text-centered mme-results-intro">
+      Accordion-style framing adapted from <a href="https://robomme.github.io/" target="_blank" rel="noopener">RoboMME</a>, rewritten here for the CVaR-BF story in this paper.
+    </p>
 
     <div class="mme-findings-col">
-    <details class="mme-finding" open>
-      <summary class="mme-finding-summary">
-        <span class="mme-finding-chevron">▶</span>
-        RQ1: Which memory representations and integration mechanisms yield the strongest performance?
-      </summary>
-      <div class="mme-finding-body">
-        <p><b>Across all MME-VLA variants:</b></p>
-        <ul class="rq-takeaways">
-          <li><strong>Memory Representation:</strong> Symbolic &gt; Perceptual &gt; Recurrent.</li>
-          <li><strong>Integration Mechanism:</strong> Oracle &gt; Gemini &gt; QwenVL (example ranking — replace with your results).</li>
-          <li><strong>Recurrent Memory</strong> performs worst likely due to training instability.</li>
-          <li><strong>Overall:</strong> See table below for full breakdown.</li>
-        </ul>
-
-        <div class="rq-table-wrap">
-          <table class="rq-table-paper">
-            <thead>
-              <tr>
-                <th scope="col">Representation</th>
-                <th scope="col">Policy</th>
-                <th scope="col">Integration/VLM</th>
-                <th scope="col" class="rq-split-metrics">Counting</th>
-                <th scope="col">Permanence</th>
-                <th scope="col">Reference</th>
-                <th scope="col">Imitation</th>
-                <th scope="col" class="rq-split-avg">AVG</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr class="rq-baseline">
-                <td class="rq-left" colspan="3">No Memory (<i>π</i><sub>0.5</sub>)</td>
-                <td class="rq-split-metrics rq-num">14.20</td>
-                <td class="rq-num">11.05</td>
-                <td class="rq-num">16.80</td>
-                <td class="rq-num">9.92</td>
-                <td class="rq-split-avg rq-num">12.99 ± 0.52</td>
-              </tr>
-
-              <tr class="rq-major rq-row-alt">
-                <th scope="row" rowspan="6" class="rq-rep">Symbolic</th>
-                <td class="rq-policy" rowspan="3">SIMPLESG</td>
-                <td class="rq-integ">Oracle</td>
-                <td class="rq-split-metrics rq-num">18.40</td>
-                <td class="rq-num rq-best">22.10</td>
-                <td class="rq-num">19.05</td>
-                <td class="rq-num">14.20</td>
-                <td class="rq-split-avg rq-num">18.44 ± 0.48</td>
-              </tr>
-              <tr class="rq-dash">
-                <td class="rq-integ">Gemini</td>
-                <td class="rq-split-metrics rq-num">16.20</td>
-                <td class="rq-num">18.30</td>
-                <td class="rq-num">17.10</td>
-                <td class="rq-num">12.50</td>
-                <td class="rq-split-avg rq-num">16.03 ± 0.41</td>
-              </tr>
-              <tr class="rq-dash">
-                <td class="rq-integ">QwenVL</td>
-                <td class="rq-split-metrics rq-num">15.10</td>
-                <td class="rq-num">17.20</td>
-                <td class="rq-num">15.80</td>
-                <td class="rq-num">11.90</td>
-                <td class="rq-split-avg rq-num">15.00 ± 0.39</td>
-              </tr>
-              <tr class="rq-dash rq-row-alt">
-                <td class="rq-policy" rowspan="3">GROUNDSG</td>
-                <td class="rq-integ">Oracle</td>
-                <td class="rq-split-metrics rq-num">17.50</td>
-                <td class="rq-num">20.40</td>
-                <td class="rq-num">18.20</td>
-                <td class="rq-num">13.60</td>
-                <td class="rq-split-avg rq-num">17.43 ± 0.45</td>
-              </tr>
-              <tr class="rq-dash">
-                <td class="rq-integ">Gemini</td>
-                <td class="rq-split-metrics rq-num">15.80</td>
-                <td class="rq-num">17.90</td>
-                <td class="rq-num">16.40</td>
-                <td class="rq-num">12.10</td>
-                <td class="rq-split-avg rq-num">15.55 ± 0.38</td>
-              </tr>
-              <tr class="rq-dash">
-                <td class="rq-integ">QwenVL</td>
-                <td class="rq-split-metrics rq-num">14.60</td>
-                <td class="rq-num">16.50</td>
-                <td class="rq-num">15.20</td>
-                <td class="rq-num">11.20</td>
-                <td class="rq-split-avg rq-num">14.38 ± 0.36</td>
-              </tr>
-
-              <tr class="rq-major">
-                <th scope="row" rowspan="5" class="rq-rep">Perceptual</th>
-                <td class="rq-policy" rowspan="2">TOKEN DROP</td>
-                <td class="rq-integ">Context</td>
-                <td class="rq-split-metrics rq-num">13.20</td>
-                <td class="rq-num">14.80</td>
-                <td class="rq-num">13.50</td>
-                <td class="rq-num">10.40</td>
-                <td class="rq-split-avg rq-num">12.98 ± 0.33</td>
-              </tr>
-              <tr class="rq-dash rq-row-alt">
-                <td class="rq-integ">Expert</td>
-                <td class="rq-split-metrics rq-num">12.90</td>
-                <td class="rq-num">14.10</td>
-                <td class="rq-num">13.00</td>
-                <td class="rq-num">10.10</td>
-                <td class="rq-split-avg rq-num">12.53 ± 0.31</td>
-              </tr>
-              <tr class="rq-dash">
-                <td class="rq-policy" rowspan="3">FRAME SAMP</td>
-                <td class="rq-integ">Context</td>
-                <td class="rq-split-metrics rq-num">14.00</td>
-                <td class="rq-num">15.60</td>
-                <td class="rq-num">14.20</td>
-                <td class="rq-num">10.80</td>
-                <td class="rq-split-avg rq-num">13.65 ± 0.34</td>
-              </tr>
-              <tr class="rq-dash rq-row-alt">
-                <td class="rq-integ">Modul</td>
-                <td class="rq-split-metrics rq-num">15.30</td>
-                <td class="rq-num">17.10</td>
-                <td class="rq-num">15.90</td>
-                <td class="rq-num">11.50</td>
-                <td class="rq-split-avg rq-num rq-cell-highlight">14.95 ± 0.29</td>
-              </tr>
-              <tr class="rq-dash">
-                <td class="rq-integ">Expert</td>
-                <td class="rq-split-metrics rq-num">13.50</td>
-                <td class="rq-num">15.20</td>
-                <td class="rq-num">14.00</td>
-                <td class="rq-num">10.60</td>
-                <td class="rq-split-avg rq-num">13.33 ± 0.32</td>
-              </tr>
-
-              <tr class="rq-major rq-row-alt">
-                <th scope="row" rowspan="3" class="rq-rep">Recurrent</th>
-                <td class="rq-policy" rowspan="3">LSTM-SEQ</td>
-                <td class="rq-integ">Oracle</td>
-                <td class="rq-split-metrics rq-num">10.20</td>
-                <td class="rq-num">11.40</td>
-                <td class="rq-num">10.80</td>
-                <td class="rq-num">8.60</td>
-                <td class="rq-split-avg rq-num">10.25 ± 0.44</td>
-              </tr>
-              <tr class="rq-dash">
-                <td class="rq-integ">Gemini</td>
-                <td class="rq-split-metrics rq-num">9.50</td>
-                <td class="rq-num">10.60</td>
-                <td class="rq-num">10.10</td>
-                <td class="rq-num">8.10</td>
-                <td class="rq-split-avg rq-num">9.58 ± 0.42</td>
-              </tr>
-              <tr class="rq-dash">
-                <td class="rq-integ">QwenVL</td>
-                <td class="rq-split-metrics rq-num">8.90</td>
-                <td class="rq-num">9.80</td>
-                <td class="rq-num">9.40</td>
-                <td class="rq-num">7.50</td>
-                <td class="rq-split-avg rq-num"><span class="rq-best">8.90 ± 0.51</span></td>
-              </tr>
-            </tbody>
-          </table>
+      <details class="mme-finding" open>
+        <summary class="mme-finding-summary">
+          <span class="mme-finding-chevron">▶</span>
+          RQ1: Why adapt the risk level online instead of fixing one CVaR level?
+        </summary>
+        <div class="mme-finding-body">
+          <p class="mme-key-line">
+            Fixed-risk controllers expose a hard safety-versus-feasibility tradeoff. The proposed controller is designed to move along that tradeoff online instead of committing to one global risk level before the rollout starts.
+          </p>
+          <ul class="mme-insight-list">
+            <li>A conservative fixed risk level can preserve safety margin but may make the optimization infeasible when the crowd closes in quickly.</li>
+            <li>An aggressive fixed risk level can keep the problem solvable, but it accepts unnecessary risk in easier parts of the trajectory.</li>
+            <li>The adaptive controller raises the accepted risk only when needed and relaxes it again once the scene becomes less constrained.</li>
+          </ul>
+          <div class="mme-evidence-row">
+            <a class="mme-evidence-chip" href="#sec-motivation">Motivation</a>
+            <a class="mme-evidence-chip" href="#sec-baseline-si">Matched baselines</a>
+            <a class="mme-evidence-chip" href="#sec-sim-rollouts">Simulation demos</a>
+          </div>
         </div>
-      </div>
-    </details>
+      </details>
 
-    <details class="mme-finding">
-      <summary class="mme-finding-summary">
-        <span class="mme-finding-chevron">▶</span>
-        RQ2: [Your second research question — reuse the same table format as RQ1 and trim rows]
-      </summary>
-      <div class="mme-finding-body">
-        <p>Across all <strong>[your setting]</strong>:</p>
-        <ul class="rq-takeaways">
-          <li><strong>Takeaway one:</strong> A &gt; B &gt; C.</li>
-          <li><strong>Takeaway two:</strong> …</li>
-        </ul>
-        <div class="rq-table-wrap">
-          <table class="rq-table-paper">
-            <thead>
-              <tr>
-                <th scope="col">Representation</th>
-                <th scope="col">Policy</th>
-                <th scope="col">Integration/VLM</th>
-                <th scope="col" class="rq-split-metrics">Counting</th>
-                <th scope="col">Permanence</th>
-                <th scope="col">Reference</th>
-                <th scope="col">Imitation</th>
-                <th scope="col" class="rq-split-avg">AVG</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr class="rq-baseline">
-                <td class="rq-left" colspan="3">Baseline (replace label)</td>
-                <td class="rq-split-metrics rq-num">—</td>
-                <td class="rq-num">—</td>
-                <td class="rq-num">—</td>
-                <td class="rq-num">—</td>
-                <td class="rq-split-avg rq-num">— ± —</td>
-              </tr>
-              <tr class="rq-major rq-row-alt">
-                <th scope="row" rowspan="2" class="rq-rep">Group A</th>
-                <td class="rq-policy" rowspan="2">Policy 1</td>
-                <td class="rq-integ">Variant α</td>
-                <td class="rq-split-metrics rq-num">…</td>
-                <td class="rq-num">…</td>
-                <td class="rq-num">…</td>
-                <td class="rq-num">…</td>
-                <td class="rq-split-avg rq-num">… ± …</td>
-              </tr>
-              <tr class="rq-dash">
-                <td class="rq-integ">Variant β</td>
-                <td class="rq-split-metrics rq-num">…</td>
-                <td class="rq-num">…</td>
-                <td class="rq-num">…</td>
-                <td class="rq-num">…</td>
-                <td class="rq-split-avg rq-num">… ± …</td>
-              </tr>
-            </tbody>
-          </table>
+      <details class="mme-finding">
+        <summary class="mme-finding-summary">
+          <span class="mme-finding-chevron">▶</span>
+          RQ2: What does the dynamic zone-based barrier add in uncertain crowded scenes?
+        </summary>
+        <div class="mme-finding-body">
+          <p class="mme-key-line">
+            The dynamic zone-based barrier uses relative geometry and motion to characterize how threatening an obstacle is before the interaction becomes critical.
+          </p>
+          <ul class="mme-insight-list">
+            <li>By enlarging the admissible adjustment window, the controller has more room to trade risk for feasibility while still respecting the user-defined safety threshold.</li>
+            <li>This makes it easier to react proactively in fast or unpredictable scenes instead of waiting for a last-second correction.</li>
+            <li>In the rollout sweeps, the intended effect is earlier and smoother rerouting when uncertainty or crowd density increases.</li>
+          </ul>
+          <div class="mme-evidence-row">
+            <a class="mme-evidence-chip" href="#sec-method">Method overview</a>
+            <a class="mme-evidence-chip" href="#sec-sim-rollouts">Noise and density sweeps</a>
+          </div>
         </div>
-      </div>
-    </details>
+      </details>
+
+      <details class="mme-finding">
+        <summary class="mme-finding-summary">
+          <span class="mme-finding-chevron">▶</span>
+          RQ3: How does the proposed controller compare with classical filters and learned baselines?
+        </summary>
+        <div class="mme-finding-body">
+          <p class="mme-key-line">
+            The interactive rollout gallery places RCBF, CBF, fixed-risk CVaR, ORCA, CrowdNav, CrowdNav++, and the adaptive controller on shared reference scenes so the tradeoffs are visible without digging through filenames.
+          </p>
+          <ul class="mme-insight-list">
+            <li>Conservative filters can overconstrain motion and sacrifice progress when the scene tightens.</li>
+            <li>Less conservative planners can preserve motion but lose safety margin in dense interactions.</li>
+            <li>The proposed CVaR-BF controller is designed to sit between those extremes by preserving feasibility while keeping the probabilistic safety interpretation explicit.</li>
+          </ul>
+          <div class="mme-evidence-row">
+            <a class="mme-evidence-chip" href="#sec-baseline-si">Baseline carousel</a>
+            <a class="mme-evidence-chip" href="#sec-baseline-si">Baselines (single integrator)</a>
+            <a class="mme-evidence-chip" href="#sec-sim-rollouts">Interactive comparisons</a>
+          </div>
+        </div>
+      </details>
+
+      <details class="mme-finding">
+        <summary class="mme-finding-summary">
+          <span class="mme-finding-chevron">▶</span>
+          RQ4: Does the safety filter still help when attached to a learned policy on real pedestrian trajectories?
+        </summary>
+        <div class="mme-finding-body">
+          <p class="mme-key-line">
+            The dataset validation section treats CVaR-BF as a safety layer on top of CrowdNav++, rather than as a replacement for the learned controller.
+          </p>
+          <ul class="mme-insight-list">
+            <li>The evaluation intentionally stresses out-of-distribution behavior by increasing the robot radius relative to training.</li>
+            <li>This isolates the question of whether the safety filter can recover safer behavior when the nominal policy alone is no longer reliable.</li>
+            <li>The paired Univ-scenario GIFs let visitors inspect the RL-only rollout and the filtered rollout side by side on the same pedestrian trajectory data.</li>
+          </ul>
+          <div class="mme-evidence-row">
+            <a class="mme-evidence-chip" href="#sec-realworld">Real-world dataset validation</a>
+            <a class="mme-evidence-chip" href="#sec-video">Talk video</a>
+          </div>
+        </div>
+      </details>
     </div>
-
   </div>
 </section>
 
@@ -927,7 +583,7 @@
   <div class="container is-max-desktop content">
     <h2 class="title">BibTeX</h2>
     <pre><code>@article{wang2025safe,
-  title={Safe Navigation in Uncertain Crowded Environments Using Risk Adaptive CVaR Barrier Functions},
+  title={Learning to Adapt Risk via Differentiable CVaR Barrier Functions},
   author={Wang, Xinyi and Kim, Taekyung and Hoxha, Bardh and Fainekos, Georgios and Panagou, Dimitra},
   conference={IROS},
   year={2025}
@@ -944,7 +600,7 @@
          href="./static/videos/nerfies_paper.pdf">
         <i class="fas fa-file-pdf"></i>
       </a>
-      <a class="icon-link" href="https://github.com/keunhong" class="external-link" disabled>
+      <a class="icon-link external-link" href="https://github.com/keunhong" aria-disabled="true">
         <i class="fab fa-github"></i>
       </a>
     </div>
@@ -975,7 +631,7 @@
   if (!nav) return;
   var links = nav.querySelectorAll('.section-nav-link');
   var triggerEl = document.getElementById('sec-abstract');
-  var sectionIds = ['sec-abstract', 'sec-motivation', 'sec-method', 'sec-teaser', 'sec-baseline-uni', 'sec-baseline-si', 'sec-sim-rollouts', 'sec-realworld', 'sec-results', 'sec-video', 'sec-bib'];
+  var sectionIds = ['sec-abstract', 'sec-motivation', 'sec-method', 'sec-teaser', 'sec-baseline-si', 'sec-sim-rollouts', 'sec-realworld', 'sec-results', 'sec-video', 'sec-bib'];
   var sections = sectionIds.map(function (id) { return document.getElementById(id); });
   var navHeight = 52;
 
