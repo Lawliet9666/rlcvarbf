@@ -364,6 +364,21 @@ table.rq-table-paper .rq-cell-highlight {
   color: #3c4356;
 }
 
+.rq-figure-panel {
+  padding: 1rem;
+}
+
+.rq-figure {
+  margin: 0;
+}
+
+.rq-figure-image {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 4px;
+}
+
 /* --- RoboMME-style page chrome (https://robomme.github.io/) --- */
 .hero .container.is-max-desktop {
   max-width: 1200px;
