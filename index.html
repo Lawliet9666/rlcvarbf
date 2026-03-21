@@ -1,0 +1,677 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="description"
+        content="Safe Navigation in Uncertain Crowded Environments Using Risk Adaptive CVaR Barrier Functions">
+  <meta name="keywords" content="CVaR, Barrier Functions, Risk Adaptive Control,">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Safe Navigation in Uncertain Crowded Environments Using Risk Adaptive CVaR Barrier Functions
+</title>
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-PYVRSFMDRL"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+
+    gtag('js', new Date());
+
+    gtag('config', 'G-PYVRSFMDRL');
+  </script>
+
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
+        rel="stylesheet">
+
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+  <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="./static/css/index.css">
+  <link rel="icon" href="./static/images/favicon.svg">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="./static/js/fontawesome.all.min.js"></script>
+  <script src="./static/js/bulma-carousel.min.js"></script>
+  <script src="./static/js/bulma-slider.min.js"></script>
+  <script src="./static/js/index.js"></script>
+</head>
+<body>
+
+<nav class="navbar" role="navigation" aria-label="main navigation">
+  <div class="navbar-brand">
+    <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+    </a>
+  </div>
+  <div class="navbar-menu">
+    <div class="navbar-start" style="flex-grow: 1; justify-content: center;">
+      <a class="navbar-item" href="https://lawliet9666.github.io">
+      <span class="icon">
+          <i class="fas fa-home"></i>
+      </span>
+      </a>
+
+      <!-- <div class="navbar-item has-dropdown is-hoverable">
+        <a class="navbar-link">
+          More Research
+        </a>
+        <div class="navbar-dropdown">
+          <a class="navbar-item" href="https://hypernerf.github.io">
+            HyperNeRF
+          </a>
+          <a class="navbar-item" href="https://nerfies.github.io">
+            Nerfies
+          </a>
+          <a class="navbar-item" href="https://latentfusion.github.io">
+            LatentFusion
+          </a>
+          <a class="navbar-item" href="https://photoshape.github.io">
+            PhotoShape
+          </a>
+        </div>
+      </div> -->
+    </div>
+
+  </div>
+</nav>
+
+
+<section class="hero">
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column has-text-centered">
+          <h1 class="title is-1 publication-title">Safe Navigation in Uncertain Crowded Environments Using Risk Adaptive CVaR Barrier Functions
+          </h1>
+          <div class="is-size-5 publication-authors">
+            <span class="author-block">
+              <a href="https://lawliet9666.github.io">Xinyi Wang</a><sup>1</sup>,</span>
+            <span class="author-block">
+              <a href="https://www.taekyung.me">Taekyung Kim</a><sup>1</sup>,</span>
+            <span class="author-block">
+              <a href="https://www.bhoxha.com/">Bardh Hoxha</a><sup>2</sup>,
+            </span>
+            <span class="author-block">
+              <a href="https://www.fainekos.net/">Georgios Fainekos</a><sup>2</sup>,
+            </span>
+            <span class="author-block">
+              <a href="https://websites.umich.edu/~dpanagou/">Dimitra Panagou</a><sup>1</sup>,
+            </span>
+          </div>
+
+          <div class="is-size-5 publication-authors">
+            <span class="author-block"><sup>1</sup>Department of Robotics, University of Michigan,</span>
+            <span class="author-block"><sup>2</sup>Toyota North America Research & Development</span>
+          </div>
+
+          <div class="column has-text-centered">
+            <div class="publication-links">
+              <!-- PDF Link. -->
+              <span class="link-block">
+                <a href="https://arxiv.org/abs/2504.06513"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fas fa-file-pdf"></i>
+                  </span>
+                  <span>Paper</span>
+                </a>
+              </span>
+              <!-- <span class="link-block">
+                <a href="https://arxiv.org/abs/2011.12948"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="ai ai-arxiv"></i>
+                  </span>
+                  <span>arXiv</span>
+                </a>
+              </span> -->
+              <!-- Video Link. -->
+              <span class="link-block">
+                <a href="https://youtu.be/VHRnmXToLN8?si=k4FZuKNiIMhsD3uN"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fab fa-youtube"></i>
+                  </span>
+                  <span>Video</span>
+                </a>
+              </span>
+              <!-- Code Link. -->
+              <span class="link-block">
+                <a href="https://github.com/Lawliet9666/Adaptive-CVaR-Barrier-Function.git"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fab fa-github"></i>
+                  </span>
+                  <span>Code</span>
+                  </a>
+              </span>
+              <!-- Dataset Link. -->
+              <!-- <span class="link-block">
+                <a href="https://github.com/google/nerfies/releases/tag/0.1"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="far fa-images"></i>
+                  </span>
+              <span>Data</span> -->
+                  </a>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+    <!--/ Abstract. -->
+<section id="abstract-section" style="padding: 2.5rem 0;">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Abstract</h2>
+        <div class="content has-text-justified">
+          <p>
+            We propose a 
+            <span style="color: #e74c3c; font-weight: bold;">risk-adaptive approach</span>
+            based on the Conditional Value-at-Risk Barrier Function (CVaR-BF), where the risk level  
+            is automatically adjusted to accept the minimum necessary risk, 
+            ensuring 
+            <span style="color: #e74c3c; font-weight: bold;">CVaR safety is guaranteed</span>
+            at least a pre-defined threshold while improving optimization feasibility under uncertainty.
+            Additionally, we introduce a 
+            <span style="color: #e74c3c; font-weight: bold;">dynamic zone-based barrier function</span>
+            which characterizes the collision likelihood by evaluating the relative state  
+            between the robot and the obstacle. It 
+            <span style="color: #e74c3c; font-weight: bold;">expands the available adjustment space for the risk level</span>
+            while maintaining the desired probabilistic safety guarantee.
+            By integrating risk adaptation with this new function, our approach  
+            enables the robot to proactively avoid obstacles in highly dynamic environments.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <h2 class="title is-3 has-text-centered">Motivation</h2>
+    <div class="columns is-centered">
+      <div class="column">
+        <div class="content">
+          <img src="./static/videos/iros2025_web.gif"
+               alt="Dolly zoom effect"
+               style="max-width: 100%; height: auto;"/>
+        </div>
+      </div>
+      <div class="column">
+        <div class="content">
+          <img src="./static/images/wang2025irosv1.png"
+               alt="Matting example"
+               style="max-width: 100%; height: auto;"/>
+        </div>
+      </div>
+    </div>
+    <div class="columns is-centered">
+      <div class="column is-four-fifths">
+        <p class="has-text-justified" style="margin-top: 1.5rem;">
+          (a) A fixed risk level is not flexible enough: A low risk tolerance enhances safety but can render the optimization infeasible, 
+          whereas a high risk tolerance improves feasibility at the expense of safety. <br/>
+          (b) In highly dynamic scenarios, where obstacles move unpredictably and rapidly, the robot requires sufficient time and space to respond and adjust its
+          risk level. <br/>
+          (c) Our method dynamically adjusts the risk level within an extended risk range to maintain feasibility while ensuring user-defined probabilistic safety. The robot proactively modifies its trajectory before approaching obstacles, but only when necessary, thus avoiding unnecessary conservatism.
+        </p>
+      </div>
+</div>
+
+  </div>
+</section>
+
+<!-- Method Overview Section -->
+<section class="section">
+  <div class="container is-max-desktop">
+    <h2 class="title is-3 has-text-centered">Method Overview</h2>
+    <div class="columns is-centered">
+      <div class="column">
+        <div class="content has-text-centered">
+          <img src="./static/images/IROS2025_Poster_figure.png"
+               alt="Method Overview Figure"
+               style="max-width: 100%; height: auto;" />
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<section class="hero teaser">
+  <div class="container is-max-desktop">
+    <div class="hero-body">
+      <!-- <video id="teaser" autoplay muted loop playsinline height="100%">
+        <source src="./static/videos/wangiros2025v2.gif"
+                type="video/mp4">
+      </video> -->
+      <img
+        id="teaser"
+        src="./static/videos/wang2025irosv2.gif"
+        alt="Teaser GIF"
+        style="max-width: 100%; height: auto;"
+      />
+  <!-- <figcaption class="has-text-centered" style="margin-top: 1.5rem; font-size: 1.15rem;">
+        <b>Figure:</b> Visualization of robot trajectories and associated metrics for the whole trajectory in an environment with 20 uncooperative obstacles.
+      </figcaption> -->
+      <!-- <h2 class="subtitle has-text-centered">
+        <span class="dnerf">Nerfies</span> turns selfie videos from your phone into
+        free-viewpoint
+        portraits.
+      </h2> -->
+    </div>
+  </div>
+</section>
+
+<!-- <body>
+  <img src="./static/videos/dataset/rl_cvar_beta_dt_beta0.99_hdist.gif" style="max-width:100%;height:auto;">
+</body> -->
+
+
+<section class="hero is-light is-small">
+  <h2 class="title is-4 has-text-centered">Animations for different number of obstacles</h2>
+  <div class="hero-body">
+    <div class="container">
+      <div id="results-carousel" class="carousel results-carousel">
+        <div class="item item-steve has-text-centered">
+          <img src="./static/videos/seed100_noise0.025_obs6_umax0.9_besfm_umax0.9_besfm_cvar_beta_dt_doubleint_v2_gamma0.1_betaNone_hdist_cone.gif"
+               id="steve"
+               alt="Steve GIF"
+               style="max-width: 100%; height: auto;">
+            <div style="margin-top: 0.5rem; font-size: 1rem; font-weight: bold; color: #22336c;">
+            # Obs. = 15, σ = 0.025
+            </div>
+        </div>
+        <div class="item item-chair-tp has-text-centered">
+          <img src="./static/videos/seed13_noise0.025_obs8_umax0.9_besfm_umax0.3_besfm_cvar_beta_dt_doubleint_v2_gamma0.1_betaNone_hdist_cone.gif"
+               id="chair-tp"
+               alt="Chair TP GIF"
+               style="max-width: 100%; height: auto;">
+            <div style="margin-top: 0.5rem; font-size: 1rem; font-weight: bold; color: #22336c;">
+            # Obs. = 20, σ = 0.025
+            </div>
+        </div>
+        <div class="item item-shiba has-text-centered">
+          <img src="./static/videos/seed14_noise0.05_obs8_umax0.9_besfm_umax0.9_besfm_cvar_beta_dt_doubleint_v2_gamma0.1_betaNone_hdist_cone.gif"
+               id="shiba"
+               alt="Shiba GIF"
+               style="max-width: 100%; height: auto;">
+          <div style="margin-top: 0.5rem; font-size: 1rem; font-weight: bold; color: #22336c;">
+            # Obs. = 20, σ = 0.05
+          </div>
+        </div>
+        <div class="item item-fullbody has-text-centered">
+          <img src="./static/videos/seed18_noise0.0_obs6_umax0.9_besfm_umax0.9_besfm_cvar_beta_dt_doubleint_v2_gamma0.1_betaNone_hdist_cone.gif"
+               id="fullbody"
+               alt="Fullbody GIF"
+               style="max-width: 100%; height: auto;">
+          <div style="margin-top: 0.5rem; font-size: 1rem; font-weight: bold; color: #22336c;">
+            # Obs. = 15, σ = 0.0
+          </div>
+        </div>
+        <div class="item item-blueshirt has-text-centered">
+          <img src="./static/videos/seed19_noise0.05_obs2_umax0.9_besfm_umax0.9_besfm_cvar_beta_dt_doubleint_v2_gamma0.1_betaNone_hdist_cone.gif"
+               id="blueshirt"
+               alt="Blueshirt GIF"
+               style="max-width: 100%; height: auto;">
+          <div style="margin-top: 0.5rem; font-size: 1rem; font-weight: bold; color: #22336c;">
+            # Obs. = 5, σ = 0.05
+          </div>
+        </div>
+        <div class="item item-mask has-text-centered">
+          <img src="./static/videos/seed20_noise0.05_obs4_umax0.9_besfm_umax0.3_besfm_cvar_beta_dt_doubleint_v2_gamma0.1_betaNone_hdist_cone.gif"
+               id="mask"
+               alt="Mask GIF"
+               style="max-width: 100%; height: auto;">
+          <div style="margin-top: 0.5rem; font-size: 1rem; font-weight: bold; color: #22336c;">
+            # Obs. = 10, σ = 0.05
+          </div>
+        </div>
+        <div class="item item-coffee has-text-centered">
+          <img src="./static/videos/seed21_noise0.075_obs6_umax0.9_besfm_umax0.9_besfm_cvar_beta_dt_doubleint_v2_gamma0.1_betaNone_hdist_cone.gif"
+               id="coffee"
+               alt="Coffee GIF"
+               style="max-width: 100%; height: auto;">
+          <div style="margin-top: 0.5rem; font-size: 1rem; font-weight: bold; color: #22336c;">
+            # Obs. = 15, σ = 0.075
+          </div>
+        </div>
+        <div class="item item-toby has-text-centered">
+          <img src="./static/videos/seed4_noise0.05_obs5_umax0.9_besfm_umax0.9_besfm_cvar_beta_dt_doubleint_v2_gamma0.1_betaNone_hdist_cone.gif"
+               id="toby"
+               alt="Toby GIF"
+               style="max-width: 100%; height: auto;">
+          <div style="margin-top: 0.5rem; font-size: 1rem; font-weight: bold; color: #22336c;">
+            # Obs. = 15, σ = 0.05
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+<section class="hero is-light is-small">
+  <h2 class="title is-4 has-text-centered">Comparison results on 20 obstacles with noise σ=0.025</h2>
+  <div class="hero-body">
+    <div class="container">
+      <div id="results-carousel" class="carousel results-carousel">
+        <div class="item item-chair-tp has-text-centered">
+          <img src="./static/videos/compare/seed13_noise0.025_obs8_umax0.9_besfm_umax0.3_besfm_rcbf_doubleint_v2_gamma0.1_betaNone_hcone.gif"
+               id="chair-tp"
+               alt="Chair TP GIF"
+               style="max-width: 100%; height: auto;">
+            <div style="margin-top: 0.5rem; font-size: 1rem; font-weight: bold; color: #22336c;">
+            RCBF (Collision Cone)
+            </div>
+        </div>
+        <div class="item item-steve has-text-centered">
+          <img src="./static/videos/compare/seed13_noise0.025_obs8_umax0.9_besfm_umax0.3_besfm_cbf_doubleint_v2_gamma0.1_betaNone_hcone.gif"
+               id="steve"
+               alt="Steve GIF"
+               style="max-width: 100%; height: auto;">
+            <div style="margin-top: 0.5rem; font-size: 1rem; font-weight: bold; color: #22336c;">
+            CBF (Collision Cone)
+            </div>
+        </div>
+        <div class="item item-steve has-text-centered">
+          <img src="./static/videos/compare/seed13_noise0.025_obs8_umax0.9_besfm_umax0.3_besfm_cvar_doubleint_v2_gamma0.1_beta0.01_hdist.gif"
+               id="steve"
+               alt="Steve GIF"
+               style="max-width: 100%; height: auto;">
+            <div style="margin-top: 0.5rem; font-size: 1rem; font-weight: bold; color: #22336c;">
+            CVaR (Distance) β = 0.1  
+            </div>
+        </div>
+        <div class="item item-chair-tp has-text-centered">
+          <img src="./static/videos/compare/seed13_noise0.025_obs8_umax0.9_besfm_umax0.3_besfm_cvar_doubleint_v2_gamma0.1_beta0.99_hdist.gif"
+               id="chair-tp"
+               alt="Chair TP GIF"
+               style="max-width: 100%; height: auto;">
+            <div style="margin-top: 0.5rem; font-size: 1rem; font-weight: bold; color: #22336c;">
+            CVaR (Distance) β = 0.99
+            </div>
+        </div>
+        <div class="item item-chair-tp has-text-centered">
+          <img src="./static/videos/compare/seed13_noise0.025_obs8_umax0.9_besfm_umax0.3_besfm_orca_plus_doubleint_v2_gamma0.1_betaNone_hdist.gif"
+               id="chair-tp"
+               alt="Chair TP GIF"
+               style="max-width: 100%; height: auto;">
+            <div style="margin-top: 0.5rem; font-size: 1rem; font-weight: bold; color: #22336c;">
+            ORCA 
+            </div>
+        </div>
+        <div class="item item-shiba has-text-centered">
+          <img src="./static/videos/compare/seed13_noise0.025_obs8_umax0.9_besfm_umax0.3_besfm_trajectory_animation.gif"
+               id="shiba"
+               alt="Shiba GIF"
+               style="max-width: 100%; height: auto;">
+          <div style="margin-top: 0.5rem; font-size: 1rem; font-weight: bold; color: #22336c;">
+            CrowdNav (RL)
+          </div>
+        </div>
+        <div class="item item-fullbody has-text-centered">
+          <img src="./static/videos/compare/seed13_noise0.025_obs8_umax0.9_besfm_umax0.3_besfm_trajectory_animation_crowd++.gif"
+               id="fullbody"
+               alt="Fullbody GIF"
+               style="max-width: 100%; height: auto;">
+          <div style="margin-top: 0.5rem; font-size: 1rem; font-weight: bold; color: #22336c;">
+            CrowdNav++ (RL)
+          </div>
+        </div>
+        <div class="item item-blueshirt has-text-centered">
+          <img src="./static/videos/compare/seed13_noise0.025_obs8_umax0.9_besfm_umax0.3_besfm_cvar_beta_dt_doubleint_v2_gamma0.1_betaNone_hdist_cone.gif"
+               id="blueshirt"
+               alt="Blueshirt GIF"
+               style="max-width: 100%; height: auto;">
+          <div style="margin-top: 0.5rem; font-size: 1rem; font-weight: bold; color: #22336c;">
+            Proposed method 
+          </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- <section class="hero is-light is-small">
+  <h2 class="title is-4 has-text-centered">Real-World Dataset Validation</h2>
+  <div class="hero-body">
+    <div class="container">
+      <div style="display: flex; justify-content: center; align-items: flex-start; gap: 36px; flex-wrap: wrap;">
+        <div style="text-align: center;">
+          <img src="./static/videos/dataset/rl_beta0.99_hdist.gif"
+               alt="CrowdNav++"
+               style="max-width: 280px; height: auto; border-radius: 10px; border: 1px solid #ddd; box-shadow: 0 2px 8px #eee;">
+          <div style="margin-top: 0.5rem; font-size: 1rem; font-weight: bold; color: #22336c;">
+            CrowdNav++
+          </div>
+        </div>
+        <div style="text-align: center;">
+          <img src="./static/videos/dataset/cvar_beta_dt_beta0.99_hdist.gif"
+               alt="CVaR-BF (Distance)"
+               style="max-width: 280px; height: auto; border-radius: 10px; border: 1px solid #ddd; box-shadow: 0 2px 8px #eee;">
+          <div style="margin-top: 0.5rem; font-size: 1rem; font-weight: bold; color: #22336c;">
+            CVaR-BF (Distance)
+          </div>
+        </div>
+        <div style="text-align: center;">
+          <img src="./static/videos/dataset/rl_cvar_beta_dt_beta0.99_hdist.gif"
+               alt="CrowdNav++ & CVaR-BF (Distance)"
+               style="max-width: 280px; height: auto; border-radius: 10px; border: 1px solid #ddd; box-shadow: 0 2px 8px #eee;">
+          <div style="margin-top: 0.5rem; font-size: 1rem; font-weight: bold; color: #22336c;">
+            CrowdNav++ &amp; CVaR-BF (Distance) 
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section> -->
+
+
+<section class="hero is-light is-small">
+  <h2 class="title is-4 has-text-centered">Real-World Dataset Validation</h2>
+  <div class="hero-body">
+    <div class="container">
+      <div style="max-width: 1200px; margin: 0 auto 2rem auto; padding: 1.2rem 2.5rem; background: #f7f8fa; border-radius: 18px; border: 1px solid #e3e5ee; color: #2e3454; font-size: 1.14rem; text-align: center; box-shadow: 0 2px 10px #f1f1f7;">
+        We evaluated the proposed <b>CVaR-BF optimization</b> as a safety filter for RL-based methods, such as <b>CrowdNav++</b> (serving as the nominal controller), on a real-world pedestrian trajectory dataset (Univ Scenario)&nbsp;
+        <a href="https://github.com/CMU-TBD/SocNavBench" target="_blank" style="color:#1a60c6; text-decoration:underline;">[1]</a>.
+        Experimental results demonstrate that the RL agent alone frequently failed to avoid collisions in out-of-distribution (OOD) scenarios, where the robot radius was larger than during training.
+        <b>In contrast, with our safety filter, the RL agent navigated safely even in these challenging OOD settings.</b>
+        <br>
+        <span style="color: #777;">
+          #Obs. = 36 &nbsp; | &nbsp; <i>r</i><sub>robot</sub> = 0.6m, <i>r</i><sub>obs</sub> = 0.2m &nbsp; | &nbsp; <i>v</i><sub>max</sub> = 1 m/s, <i>v</i><sub>max</sub><sup>obs</sup> = 1.7 m/s
+        </span>
+        <br>
+        <span style="font-size:0.98em; color:#aaa; font-style:italic;">
+          [1] Biswas, S. et al., SocNavBench: A Grounded Simulation Testing Framework for Evaluating Social Navigation.
+        </span>
+      </div>
+
+
+        <!-- Larger GIFs (side by side) -->
+      <div style="display: flex; justify-content: center; align-items: flex-start; gap: 48px; flex-wrap: wrap; margin-top: 1.2rem;">
+        <div style="text-align: center;">
+          <img src="./static/videos/dataset/rl_beta0.99_hdist.gif"
+               alt="CrowdNav++"
+               style="max-width: 360px; width: 100%; height: auto; border-radius: 10px; border: 1px solid #ddd; box-shadow: 0 2px 8px #eee;">
+          <div style="margin-top: 0.7rem; font-size: 1.08rem; font-weight: bold; color: #22336c;">
+            CrowdNav++
+          </div>
+        </div>
+        <div style="text-align: center;">
+          <img src="./static/videos/dataset/rl_cvar_beta_dt_beta0.99_hdist.gif"
+               alt="CrowdNav++ & CVaR-BF (Distance)"
+               style="max-width: 360px; width: 100%; height: auto; border-radius: 10px; border: 1px solid #ddd; box-shadow: 0 2px 8px #eee;">
+          <div style="margin-top: 0.7rem; font-size: 1.08rem; font-weight: bold; color: #22336c;">
+            CrowdNav++ &amp; Proposed
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <!-- Paper video. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Video</h2>
+        <div class="publication-video">
+          <iframe src="https://www.youtube.com/embed/VHRnmXToLN8?si=CifUAystyr5iiycB"
+                  frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+        </div>
+      </div>
+    </div>
+    <!--/ Paper video. -->
+  </div>
+</section>
+
+
+<section class="section" id="acknowledgement">
+  <div class="container is-max-desktop content">
+    <h2 class="title">Acknowledgement</h2>
+    <p>
+      This work was supported in part by Toyota Research Institute (TRI) and the University of Michigan Robotics Department. 
+      The authors would like to thank their collaborators, lab members, and Yinpei Dai for their valuable feedback and discussions.
+    </p>
+  </div>
+</section>
+
+    <!-- Animation. -->
+    <!-- <div class="columns is-centered">
+      <div class="column is-full-width">
+        <h2 class="title is-3">Animation</h2> -->
+
+        <!-- Interpolating. -->
+        <!-- <h3 class="title is-4">Interpolating states</h3>
+        <div class="content has-text-justified">
+          <p>
+            We can also animate the scene by interpolating the deformation latent codes of two input
+            frames. Use the slider here to linearly interpolate between the left frame and the right
+            frame.
+          </p>
+        </div>
+        <div class="columns is-vcentered interpolation-panel">
+          <div class="column is-3 has-text-centered">
+            <img src="./static/images/wang2025irosv1.png"
+                 class="interpolation-image"
+                 alt="Interpolate start reference image."/>
+            <p>Start Frame</p>
+          </div>
+          <div class="column interpolation-video-column">
+            <div id="interpolation-image-wrapper">
+              Loading...
+            </div>
+            <input class="slider is-fullwidth is-large is-info"
+                   id="interpolation-slider"
+                   step="1" min="0" max="100" value="0" type="range">
+          </div>
+          <div class="column is-3 has-text-centered">
+            <img src="./static/images/interpolate_end.jpg"
+                 class="interpolation-image"
+                 alt="Interpolation end reference image."/>
+            <p class="is-bold">End Frame</p>
+          </div>
+        </div>
+        <br/> -->
+        <!--/ Interpolating. -->
+      <!-- </div>
+    </div> -->
+    <!--/ Animation. -->
+
+
+    <!-- Concurrent Work. -->
+    <!-- <div class="columns is-centered">
+      <div class="column is-full-width">
+        <h2 class="title is-3">Related Links</h2>
+
+        <div class="content has-text-justified">
+          <p>
+            There's a lot of excellent work that was introduced around the same time as ours.
+          </p>
+          <p>
+            <a href="https://arxiv.org/abs/2104.09125">Progressive Encoding for Neural Optimization</a> introduces an idea similar to our windowed position encoding for coarse-to-fine optimization.
+          </p>
+          <p>
+            <a href="https://www.albertpumarola.com/research/D-NeRF/index.html">D-NeRF</a> and <a href="https://gvv.mpi-inf.mpg.de/projects/nonrigid_nerf/">NR-NeRF</a>
+            both use deformation fields to model non-rigid scenes.
+          </p>
+          <p>
+            Some works model videos with a NeRF by directly modulating the density, such as <a href="https://video-nerf.github.io/">Video-NeRF</a>, <a href="https://www.cs.cornell.edu/~zl548/NSFF/">NSFF</a>, and <a href="https://neural-3d-video.github.io/">DyNeRF</a>
+          </p>
+          <p>
+            There are probably many more by the time you are reading this. Check out <a href="https://dellaert.github.io/NeRF/">Frank Dellart's survey on recent NeRF papers</a>, and <a href="https://github.com/yenchenlin/awesome-NeRF">Yen-Chen Lin's curated list of NeRF papers</a>.
+          </p>
+        </div>
+      </div> -->
+    </div>
+    <!--/ Concurrent Work. -->
+
+  </div>
+</section>
+
+
+<section class="section" id="BibTeX">
+  <div class="container is-max-desktop content">
+    <h2 class="title">BibTeX</h2>
+    <pre><code>@article{wang2025safe,
+  title={Safe Navigation in Uncertain Crowded Environments Using Risk Adaptive CVaR Barrier Functions},
+  author={Wang, Xinyi and Kim, Taekyung and Hoxha, Bardh and Fainekos, Georgios and Panagou, Dimitra},
+  conference={IROS},
+  year={2025}
+}
+</code></pre>
+  </div>
+</section>
+
+
+<footer class="footer">
+  <div class="container">
+    <div class="content has-text-centered">
+      <a class="icon-link"
+         href="./static/videos/nerfies_paper.pdf">
+        <i class="fas fa-file-pdf"></i>
+      </a>
+      <a class="icon-link" href="https://github.com/keunhong" class="external-link" disabled>
+        <i class="fab fa-github"></i>
+      </a>
+    </div>
+    <div class="columns is-centered">
+      <div class="column is-8">
+        <div class="content">
+          <p>
+            This website is licensed under a <a rel="license"
+                                                href="http://creativecommons.org/licenses/by-sa/4.0/">Creative
+            Commons Attribution-ShareAlike 4.0 International License</a>.
+          </p>
+          <p>
+            This means you are free to borrow the <a
+              href="https://github.com/Lawliet9666/rlcvarbf">source code</a> of this website,
+            we just ask that you link back to this page in the footer.
+            Please remember to remove the analytics code included in the header of the website which
+            you do not want on your website.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
