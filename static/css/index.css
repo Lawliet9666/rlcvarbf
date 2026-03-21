@@ -715,12 +715,8 @@ table.rq-table-paper .rq-cell-highlight {
   color: #1d56ae;
 }
 
-.sim-mode-panel {
-  display: none;
-}
-
-.sim-mode-panel.active {
-  display: block;
+.sim-mode-active {
+  width: 100%;
 }
 
 .sim-suite-tabs-wrap {

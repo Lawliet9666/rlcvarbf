@@ -271,18 +271,36 @@
           renderModeTabs(modes, activeModeId) +
         '</div>' +
       '</div>' +
-      '<div class="sim-mode-panels">' +
-        renderModePanels(modes, activeModeId) +
-      '</div>';
+      '<div class="sim-mode-active" data-mode-active-app></div>';
 
-    modes.forEach(function (mode) {
-      var panel = root.querySelector('[data-mode-panel="' + mode.id + '"]');
-      if (!panel) return;
-      var appRoot = panel.querySelector('[data-mode-app="' + mode.id + '"]');
-      renderApp(appRoot, mode.suites);
+    var activeRoot = root.querySelector('[data-mode-active-app]');
+
+    function applyMode(modeId) {
+      var selectedMode = modes[0];
+      for (var i = 0; i < modes.length; i++) {
+        if (modes[i].id === modeId) {
+          selectedMode = modes[i];
+          break;
+        }
+      }
+
+      activeModeId = selectedMode.id;
+      root.querySelectorAll('.sim-mode-tab').forEach(function (item) {
+        var isActive = item.getAttribute('data-mode-id') === activeModeId;
+        item.classList.toggle('active', isActive);
+        item.setAttribute('aria-selected', isActive ? 'true' : 'false');
+      });
+
+      renderApp(activeRoot, selectedMode.suites);
+    }
+
+    root.querySelectorAll('.sim-mode-tab').forEach(function (tab) {
+      tab.addEventListener('click', function () {
+        applyMode(tab.getAttribute('data-mode-id'));
+      });
     });
 
-    wireModeTabs(root);
+    applyMode(activeModeId);
   }
 
   function renderModeTabs(modes, activeModeId) {
@@ -295,35 +313,6 @@
           escapeHtml(mode.label) +
         '</button>';
     }).join('');
-  }
-
-  function renderModePanels(modes, activeModeId) {
-    return modes.map(function (mode) {
-      var isActive = mode.id === activeModeId;
-      return '' +
-        '<div class="sim-mode-panel' + (isActive ? ' active' : '') + '" data-mode-panel="' + escapeHtml(mode.id) + '">' +
-          '<div class="sim-rollout-app" data-mode-app="' + escapeHtml(mode.id) + '"></div>' +
-        '</div>';
-    }).join('');
-  }
-
-  function wireModeTabs(root) {
-    var tabs = root.querySelectorAll('.sim-mode-tab');
-    var panels = root.querySelectorAll('.sim-mode-panel');
-
-    tabs.forEach(function (tab) {
-      tab.addEventListener('click', function () {
-        var modeId = tab.getAttribute('data-mode-id');
-        tabs.forEach(function (item) {
-          var isActive = item === tab;
-          item.classList.toggle('active', isActive);
-          item.setAttribute('aria-selected', isActive ? 'true' : 'false');
-        });
-        panels.forEach(function (panel) {
-          panel.classList.toggle('active', panel.getAttribute('data-mode-panel') === modeId);
-        });
-      });
-    });
   }
 
   function renderSuiteTabs(suites) {
