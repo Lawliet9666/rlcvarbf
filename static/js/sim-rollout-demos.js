@@ -498,13 +498,21 @@
   }
 
   document.addEventListener('DOMContentLoaded', function () {
-    renderApp(
-      document.getElementById('simIdRolloutAppSingle'),
-      buildIdSuites('Single Integrator', 'single-integrator robot')
-    );
-    renderApp(
-      document.getElementById('simIdRolloutAppUnicycle'),
-      buildIdSuites('Unicycle', 'unicycle robot')
+    renderModeApp(
+      document.getElementById('simIdRolloutModeApp'),
+      [
+        {
+          id: 'single-integrator',
+          label: 'Single Integrator',
+          suites: buildIdSuites('Single Integrator', 'single-integrator robot')
+        },
+        {
+          id: 'unicycle',
+          label: 'Unicycle',
+          suites: buildIdSuites('Unicycle', 'unicycle robot')
+        }
+      ],
+      'unicycle'
     );
     renderModeApp(
       document.getElementById('simRolloutModeApp'),
