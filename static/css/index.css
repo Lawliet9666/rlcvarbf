@@ -467,12 +467,55 @@ table.rq-table-paper .rq-cell-highlight {
   margin: 1rem auto 0;
 }
 
+.mme-finding {
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+}
+
+.mme-finding-summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 1.25rem 1.5rem;
+  cursor: pointer;
+  list-style: none;
+}
+
+.mme-finding-summary::-webkit-details-marker {
+  display: none;
+}
+
+.mme-finding-chevron {
+  flex: 0 0 auto;
+  width: 0.7rem;
+  height: 0.7rem;
+  border-right: 2px solid #3273dc;
+  border-bottom: 2px solid #3273dc;
+  transform: rotate(45deg);
+  transition: transform 0.2s ease;
+}
+
+.mme-finding[open] .mme-finding-chevron {
+  transform: rotate(225deg);
+}
+
 .mme-finding-body {
   margin-top: 0.5rem;
   background: #fff;
   border-radius: 8px;
   padding: 1.5rem;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.mme-finding .mme-finding-body {
+  margin-top: 0;
+  background: transparent;
+  border-radius: 0;
+  padding: 0 1.5rem 1.5rem;
+  box-shadow: none;
 }
 
 .mme-finding-panel {
@@ -485,6 +528,11 @@ table.rq-table-paper .rq-cell-highlight {
   font-weight: 700;
   line-height: 1.4;
   color: #3273dc;
+}
+
+.mme-finding-summary .mme-finding-title {
+  flex: 1 1 auto;
+  margin: 0;
 }
 
 .mme-key-line {
