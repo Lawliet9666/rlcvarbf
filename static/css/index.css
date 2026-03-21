@@ -643,10 +643,9 @@ table.rq-table-paper .rq-cell-highlight {
 }
 
 .sim-demo-grid {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 2rem;
-  align-items: start;
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
 }
 
 .sim-demo-column {
@@ -923,10 +922,6 @@ table.rq-table-paper .rq-cell-highlight {
 }
 
 @media screen and (max-width: 768px) {
-  .sim-demo-grid {
-    grid-template-columns: 1fr;
-  }
-
   .sim-suite-tab {
     padding: 0.55rem 0.85rem;
     font-size: 0.9rem;
