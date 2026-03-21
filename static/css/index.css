@@ -400,6 +400,8 @@ table.rq-table-paper .rq-cell-highlight {
 .page-home-row {
   display: flex;
   justify-content: center;
+  width: 100vw;
+  margin-left: calc(50% - 50vw);
   margin-bottom: 1rem;
 }
 
