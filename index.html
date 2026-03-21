@@ -48,8 +48,15 @@
 <div class="section-nav" id="sectionNav">
   <div class="section-nav-inner">
     <a class="section-nav-link" href="#sec-abstract" data-target="sec-abstract">Abstract</a>
+    <a class="section-nav-link" href="#sec-motivation" data-target="sec-motivation">Motivation</a>
+    <a class="section-nav-link" href="#sec-method" data-target="sec-method">Method</a>
+    <a class="section-nav-link" href="#sec-teaser" data-target="sec-teaser">Teaser</a>
+    <a class="section-nav-link" href="#sec-id-demos" data-target="sec-id-demos">ID Demos</a>
+    <a class="section-nav-link" href="#sec-ood-demos" data-target="sec-ood-demos">OOD Demos</a>
     <a class="section-nav-link" href="#sec-results" data-target="sec-results">Statistical Results</a>
     <a class="section-nav-link" href="#sec-video" data-target="sec-video">Video</a>
+    <a class="section-nav-link" href="#acknowledgement" data-target="acknowledgement">Acknowledgement</a>
+    <a class="section-nav-link" href="#sec-bib" data-target="sec-bib">BibTeX</a>
   </div>
 </div>
 
@@ -67,8 +74,15 @@
         <span class="icon"><i class="fas fa-home"></i></span>
       </a>
       <a class="navbar-item" href="#sec-abstract">Abstract</a>
+      <a class="navbar-item" href="#sec-motivation">Motivation</a>
+      <a class="navbar-item" href="#sec-method">Method</a>
+      <a class="navbar-item" href="#sec-teaser">Teaser</a>
+      <a class="navbar-item" href="#sec-id-demos">ID Demos</a>
+      <a class="navbar-item" href="#sec-ood-demos">OOD Demos</a>
       <a class="navbar-item" href="#sec-results">Statistical Results</a>
       <a class="navbar-item" href="#sec-video">Video</a>
+      <a class="navbar-item" href="#acknowledgement">Acknowledgement</a>
+      <a class="navbar-item" href="#sec-bib">BibTeX</a>
     </div>
   </div>
 </nav>
@@ -343,7 +357,7 @@
 <section id="sec-sim-rollouts" class="section demo-parallel-section">
   <div class="container is-widescreen mme-wide">
     <div class="sim-demo-grid">
-      <div class="sim-demo-column">
+      <div id="sec-id-demos" class="sim-demo-column">
         <h2 class="title is-3 has-text-centered sim-rollout-title">ID Demos</h2>
         <p class="has-text-centered sim-rollout-intro">
           In-distribution demos use one shared reference setup per robot, so this side keeps a single comparison case without extra case tabs.
@@ -353,7 +367,7 @@
           <div id="simIdRolloutAppUnicycle" class="sim-rollout-app" aria-live="polite"></div>
         </div>
       </div>
-      <div class="sim-demo-column">
+      <div id="sec-ood-demos" class="sim-demo-column">
         <h2 class="title is-3 has-text-centered sim-rollout-title">OOD Demos</h2>
         <p class="has-text-centered sim-rollout-intro">
           Each browser below repeats the same three OOD cases for both robot models: ORCA-based human policy, high obstacle density, and increased human radius.
@@ -561,7 +575,7 @@
   if (!nav) return;
   var links = nav.querySelectorAll('.section-nav-link');
   var triggerEl = document.getElementById('sec-abstract');
-  var sectionIds = ['sec-abstract', 'sec-results', 'sec-video'];
+  var sectionIds = ['sec-abstract', 'sec-motivation', 'sec-method', 'sec-teaser', 'sec-id-demos', 'sec-ood-demos', 'sec-results', 'sec-video', 'acknowledgement', 'sec-bib'];
   var sections = sectionIds.map(function (id) { return document.getElementById(id); });
   var navHeight = 52;
 
