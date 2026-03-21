@@ -48,13 +48,8 @@
 <div class="section-nav" id="sectionNav">
   <div class="section-nav-inner">
     <a class="section-nav-link" href="#sec-abstract" data-target="sec-abstract">Abstract</a>
-    <a class="section-nav-link" href="#sec-motivation" data-target="sec-motivation">Motivation</a>
-    <a class="section-nav-link" href="#sec-method" data-target="sec-method">Method</a>
-    <a class="section-nav-link" href="#sec-teaser" data-target="sec-teaser">Teaser</a>
-    <a class="section-nav-link" href="#sec-sim-rollouts" data-target="sec-sim-rollouts">Sim rollouts</a>
     <a class="section-nav-link" href="#sec-results" data-target="sec-results">Statistical Results</a>
     <a class="section-nav-link" href="#sec-video" data-target="sec-video">Video</a>
-    <a class="section-nav-link" href="#sec-bib" data-target="sec-bib">BibTeX</a>
   </div>
 </div>
 
@@ -940,7 +935,7 @@
   if (!nav) return;
   var links = nav.querySelectorAll('.section-nav-link');
   var triggerEl = document.getElementById('sec-abstract');
-  var sectionIds = ['sec-abstract', 'sec-motivation', 'sec-method', 'sec-teaser', 'sec-sim-rollouts', 'sec-results', 'sec-video', 'sec-bib'];
+  var sectionIds = ['sec-abstract', 'sec-results', 'sec-video'];
   var sections = sectionIds.map(function (id) { return document.getElementById(id); });
   var navHeight = 52;
 
