@@ -102,6 +102,18 @@
       note: 'Seed 106 in-distribution rollout for the vanilla RL policy.'
     },
     {
+      value: 'Crowdnav_const_vel',
+      label: 'CrowdNav++ const vel',
+      src: SINGLE_INTEGRATOR_ID_SEED106_BASE + 'Crowdnav_const_vel_seed_106_succ_0_coll_1.gif',
+      note: 'Seed 106 in-distribution rollout for the CrowdNav++ const-velocity prior.'
+    },
+    {
+      value: 'Crowdnav_inferred',
+      label: 'CrowdNav++ inferred',
+      src: SINGLE_INTEGRATOR_ID_SEED106_BASE + 'Crowdnav_inferred_seed_106_succ_0_coll_1.gif',
+      note: 'Seed 106 in-distribution rollout for the inferred CrowdNav++ prior.'
+    },
+    {
       value: 'rl_sf',
       label: 'Vanilla RL + Safety Filter',
       src: SINGLE_INTEGRATOR_ID_SEED106_BASE + 'rl_sf_seed_106_succ_0_coll_1.gif',
@@ -163,6 +175,18 @@
       label: 'Vanilla RL',
       src: UNICYCLE_ID_SEED176_BASE + 'rl_seed_176_succ_0_coll_1.gif',
       note: 'Seed 176 in-distribution rollout for the vanilla RL policy.'
+    },
+    {
+      value: 'Crowdnav_const_vel',
+      label: 'CrowdNav++ const vel',
+      src: UNICYCLE_ID_SEED176_BASE + 'Crowdnav_const_vel_seed_176_succ_0_coll_1.gif',
+      note: 'Seed 176 in-distribution rollout for the CrowdNav++ const-velocity prior.'
+    },
+    {
+      value: 'Crowdnav_inferred',
+      label: 'CrowdNav++ inferred',
+      src: UNICYCLE_ID_SEED176_BASE + 'Crowdnav_inferred_seed_176_succ_0_coll_1.gif',
+      note: 'Seed 176 in-distribution rollout for the inferred CrowdNav++ prior.'
     },
     {
       value: 'rl_sf',
