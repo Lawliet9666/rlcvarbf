@@ -461,6 +461,42 @@ table.rq-table-paper .rq-cell-highlight {
   line-height: 1.65;
 }
 
+.exp-baseline-table {
+  width: 100%;
+  margin: 0;
+  border-collapse: separate;
+  border-spacing: 0;
+  border: 1px solid #e2e8f3;
+  border-radius: 14px;
+  overflow: hidden;
+  background: #f8fafd;
+}
+
+.exp-baseline-table th,
+.exp-baseline-table td {
+  padding: 0.55rem 0.7rem;
+  border-bottom: 1px solid #e2e8f3;
+  font-size: 0.94rem;
+  line-height: 1.55;
+  vertical-align: top;
+}
+
+.exp-baseline-table tr:last-child th,
+.exp-baseline-table tr:last-child td {
+  border-bottom: 0;
+}
+
+.exp-baseline-table th {
+  width: 24%;
+  color: #2f4da3;
+  font-weight: 700;
+  background: rgba(50, 115, 220, 0.06);
+}
+
+.exp-baseline-table td {
+  color: #4f5c75;
+}
+
 .exp-settings-points {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -520,6 +556,12 @@ table.rq-table-paper .rq-cell-highlight {
 
   .exp-settings-table tbody th {
     width: 40%;
+  }
+
+  .exp-baseline-table th,
+  .exp-baseline-table td {
+    font-size: 0.9rem;
+    padding: 0.55rem 0.55rem;
   }
 }
 

@@ -279,44 +279,37 @@
               <td>12 m x 12 m workspace with sampling time dt = 0.1 s.</td>
             </tr>
             <tr>
-              <th>Default Crowd</th>
+              <th>Obstacle Models</th>
               <td>20 dynamic circular obstacles, each with radius 0.4 m, speeds sampled in [0.5, 1.5] m/s, and randomized initial positions and velocities.</td>
             </tr>
             <tr>
               <th>Uncertainty Model</th>
-              <td>Obstacle action uncertainty is modeled as a 3-mode GMM with one forward mode and two lateral-deviation modes, using weights [0.6, 0.2, 0.2] and standard deviations [0.1, 0.2, 0.2].</td>
-            </tr>
-            <tr>
-              <th>Uncertainty Interface</th>
-              <td>The simulator provides oracle GMM parameters, which are propagated by constant-velocity rollout over the prediction horizon before CVaR computation.</td>
-            </tr>
-            <tr>
-              <th>Robot Models</th>
-              <td>Both a single-integrator robot and a unicycle robot are evaluated under the same differentiable CVaR-BF-QP safety-layer framework.</td>
+              <td>Obstacle action uncertainty is modeled as a 3-mode GMM with one forward mode and two lateral modes. The weights [0.6, 0.2, 0.2] indicate how likely each mode is, while the standard deviations [0.1, 0.2, 0.2] indicate how spread out each mode is.</td>
             </tr>
             <tr>
               <th>Control Limits</th>
               <td>Single-integrator: ||u|| &lt;= 1.5 m/s. Unicycle: v in [-1.5, 1.5] m/s and w in [-1.5, 1.5] rad/s.</td>
             </tr>
             <tr>
-              <th>Observation</th>
-              <td>The policy observes robot-goal state plus the nearest visible obstacle only (Nobs = 1), yielding a fixed-dimensional input.</td>
-            </tr>
-            <tr>
-              <th>Policy Output</th>
-              <td>The actor outputs nominal control, adaptive risk level beta_t, and adaptive safety margin Delta R_t, which are passed through the differentiable safety layer.</td>
-            </tr>
-            <tr>
-              <th>Reward</th>
-              <td>+10 for reaching the goal, -20 for collision, and otherwise a progress reward; the unicycle additionally uses spin and backward-motion penalties.</td>
-            </tr>
-            <tr>
-              <th>Metrics</th>
-              <td>Success rate (SR), collision rate (CR), average return, and average trajectory length.</td>
-            </tr>
-            <tr>
               <th>Baselines</th>
-              <td>Optimization baselines, pure RL baselines, RL + Safety Filter variants, BarrierNet, and the proposed adaptive CVaR-BF method.</td>
+              <td>
+                <table class="exp-baseline-table">
+                  <tbody>
+                    <tr>
+                      <th>Optimization</th>
+                      <td>ORCA, CBF-QP, CVaR-BF-QP, Adaptive-CVaR-BF</td>
+                    </tr>
+                    <tr>
+                      <th>RL</th>
+                      <td>Vanilla RL, CrowdNav++ (const vel), CrowdNav++ (inferred)</td>
+                    </tr>
+                    <tr>
+                      <th>RL + Opt.</th>
+                      <td>Safety-filtered RL variants, BarrierNet, Proposed adaptive CVaR-BF</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </td>
             </tr>
             <tr>
               <th>Evaluation Protocol</th>
@@ -329,13 +322,13 @@
 
     <div class="exp-settings-points">
       <div class="exp-settings-point">
-        <strong>Why this setup matters:</strong> The multimodal GMM obstacle model creates tail-risk collisions that deterministic safety layers do not capture well.
+        <strong>Why this setup matters:</strong> Multimodal uncertainty creates rare but safety-critical collision cases.
       </div>
       <div class="exp-settings-point">
-        <strong>What is controlled:</strong> The study isolates control-layer behavior by using oracle obstacle uncertainty instead of a learned trajectory predictor.
+        <strong>What is controlled:</strong> Oracle uncertainty isolates controller quality from prediction error.
       </div>
       <div class="exp-settings-point">
-        <strong>What is reported:</strong> Both in-distribution and OOD performance are measured across robot dynamics, obstacle density, and behavior shifts.
+        <strong>What is reported:</strong> Results cover both ID and OOD settings across robot dynamics, density, and behavior shifts.
       </div>
     </div>
 
