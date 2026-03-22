@@ -121,9 +121,9 @@
     },
     {
       value: 'rlcbfgamma',
-      label: 'RL-CBF-gamma',
+      label: 'BarrierNet',
       src: SINGLE_INTEGRATOR_ID_SEED106_BASE + 'rlcbfgamma_seed_106_succ_0_coll_1.gif',
-      note: 'Seed 106 in-distribution rollout for the RL-CBF-gamma baseline.'
+      note: 'Seed 106 in-distribution rollout for the BarrierNet baseline.'
     },
     {
       value: 'rlcvarbetaradius',
@@ -184,9 +184,9 @@
     },
     {
       value: 'rlcbfgamma',
-      label: 'RL-CBF-gamma',
+      label: 'BarrierNet',
       src: UNICYCLE_ID_SEED176_BASE + 'rlcbfgamma_seed_176_succ_0_coll_1.gif',
-      note: 'Seed 176 in-distribution rollout for the RL-CBF-gamma baseline.'
+      note: 'Seed 176 in-distribution rollout for the BarrierNet baseline.'
     },
     {
       value: 'rlcvarbetaradius',
@@ -235,7 +235,7 @@
     },
     {
       value: 'rlcbfgamma',
-      label: 'RL-CBF-gamma',
+      label: 'BarrierNet',
       src: SINGLE_INTEGRATOR_ID_SEED106_BASE + 'rlcbfgamma_seed_106_succ_0_coll_1.gif',
       note: 'Current local single-integrator rollout used as a placeholder while dedicated OOD exports are not checked into this repo yet.'
     },
@@ -286,7 +286,7 @@
     },
     {
       value: 'rlcbfgamma',
-      label: 'RL-CBF-gamma',
+      label: 'BarrierNet',
       src: SINGLE_INTEGRATOR_OOD_ORCA_SEED226_BASE + 'rlcbfgamma_seed_226_succ_0_coll_1.gif',
       note: 'Seed 226 rollout from the single-integrator ORCA-human-policy OOD export.'
     },
@@ -337,7 +337,7 @@
     },
     {
       value: 'rlcbfgamma',
-      label: 'RL-CBF-gamma',
+      label: 'BarrierNet',
       src: SINGLE_INTEGRATOR_OOD_DENSITY_SEED135_BASE + 'rlcbfgamma_seed_135_succ_0_coll_1.gif',
       note: 'Seed 135 rollout from the single-integrator 30-obstacle OOD export.'
     },
@@ -388,7 +388,7 @@
     },
     {
       value: 'rlcbfgamma',
-      label: 'RL-CBF-gamma',
+      label: 'BarrierNet',
       src: UNICYCLE_OOD_ORCA_SEED126_BASE + 'rlcbfgamma_seed_126_succ_0_coll_1.gif',
       note: 'Seed 126 rollout from the ORCA-human-policy OOD export.'
     },
@@ -439,7 +439,7 @@
     },
     {
       value: 'rlcbfgamma',
-      label: 'RL-CBF-gamma',
+      label: 'BarrierNet',
       src: UNICYCLE_ID_SEED176_BASE + 'rlcbfgamma_seed_176_succ_0_coll_1.gif',
       note: 'Current local unicycle rollout used as the higher-density placeholder because a dedicated 30-obstacle export is not checked into this repo yet.'
     },
@@ -490,7 +490,7 @@
     },
     {
       value: 'rlcbfgamma',
-      label: 'RL-CBF-gamma',
+      label: 'BarrierNet',
       src: UNICYCLE_OOD_RADIUS_SEED168_BASE + 'rlcbfgamma_seed_168_succ_0_coll_1.gif',
       note: 'Seed 168 rollout from the increased-human-radius OOD export.'
     },
