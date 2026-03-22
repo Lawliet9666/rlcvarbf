@@ -48,6 +48,7 @@
 <div class="section-nav" id="sectionNav">
   <div class="section-nav-inner">
     <a class="section-nav-link" href="#sec-animations" data-target="sec-animations">Risk Adaptation Demos</a>
+    <a class="section-nav-link" href="#sec-settings" data-target="sec-settings">Settings</a>
     <a class="section-nav-link" href="#sec-id-demos" data-target="sec-id-demos">ID Demos</a>
     <a class="section-nav-link" href="#sec-ood-demos" data-target="sec-ood-demos">OOD Demos</a>
     <a class="section-nav-link" href="#sec-results" data-target="sec-results">Statistical Results</a>
@@ -253,6 +254,94 @@
         </div>
       </div>
     </div>
+  </div>
+</section>
+
+<section id="sec-settings" class="section mme-section-muted exp-settings-section">
+  <div class="container is-widescreen mme-wide">
+    <h2 class="title is-3 has-text-centered">Experimental Settings</h2>
+    <p class="has-text-centered exp-settings-intro">
+      We evaluate the method in a controlled crowd-navigation simulator, using the paper's default 20-obstacle setting together with robot-model, density, and behavior shifts to measure both in-distribution and OOD robustness.
+    </p>
+
+    <div class="exp-settings-card">
+      <div class="table-container">
+        <table class="table is-fullwidth exp-settings-table">
+          <thead>
+            <tr>
+              <th>Aspect</th>
+              <th>Setting</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th>Environment</th>
+              <td>12 m x 12 m workspace with sampling time dt = 0.1 s.</td>
+            </tr>
+            <tr>
+              <th>Default Crowd</th>
+              <td>20 dynamic circular obstacles, each with radius 0.4 m, speeds sampled in [0.5, 1.5] m/s, and randomized initial positions and velocities.</td>
+            </tr>
+            <tr>
+              <th>Uncertainty Model</th>
+              <td>Obstacle action uncertainty is modeled as a 3-mode GMM with one forward mode and two lateral-deviation modes, using weights [0.6, 0.2, 0.2] and standard deviations [0.1, 0.2, 0.2].</td>
+            </tr>
+            <tr>
+              <th>Uncertainty Interface</th>
+              <td>The simulator provides oracle GMM parameters, which are propagated by constant-velocity rollout over the prediction horizon before CVaR computation.</td>
+            </tr>
+            <tr>
+              <th>Robot Models</th>
+              <td>Both a single-integrator robot and a unicycle robot are evaluated under the same differentiable CVaR-BF-QP safety-layer framework.</td>
+            </tr>
+            <tr>
+              <th>Control Limits</th>
+              <td>Single-integrator: ||u|| &lt;= 1.5 m/s. Unicycle: v in [-1.5, 1.5] m/s and w in [-1.5, 1.5] rad/s.</td>
+            </tr>
+            <tr>
+              <th>Observation</th>
+              <td>The policy observes robot-goal state plus the nearest visible obstacle only (Nobs = 1), yielding a fixed-dimensional input.</td>
+            </tr>
+            <tr>
+              <th>Policy Output</th>
+              <td>The actor outputs nominal control, adaptive risk level beta_t, and adaptive safety margin Delta R_t, which are passed through the differentiable safety layer.</td>
+            </tr>
+            <tr>
+              <th>Reward</th>
+              <td>+10 for reaching the goal, -20 for collision, and otherwise a progress reward; the unicycle additionally uses spin and backward-motion penalties.</td>
+            </tr>
+            <tr>
+              <th>Metrics</th>
+              <td>Success rate (SR), collision rate (CR), average return, and average trajectory length.</td>
+            </tr>
+            <tr>
+              <th>Baselines</th>
+              <td>Optimization baselines, pure RL baselines, RL + Safety Filter variants, BarrierNet, and the proposed adaptive CVaR-BF method.</td>
+            </tr>
+            <tr>
+              <th>Evaluation Protocol</th>
+              <td>Main comparisons use 20 obstacles; Table I averages results over 10 random seeds with 50 evaluation episodes per seed. The OOD study evaluates ORCA-based human policy, 30-obstacle density, and increased human radius.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="exp-settings-points">
+      <div class="exp-settings-point">
+        <strong>Why this setup matters:</strong> The multimodal GMM obstacle model creates tail-risk collisions that deterministic safety layers do not capture well.
+      </div>
+      <div class="exp-settings-point">
+        <strong>What is controlled:</strong> The study isolates control-layer behavior by using oracle obstacle uncertainty instead of a learned trajectory predictor.
+      </div>
+      <div class="exp-settings-point">
+        <strong>What is reported:</strong> Both in-distribution and OOD performance are measured across robot dynamics, obstacle density, and behavior shifts.
+      </div>
+    </div>
+
+    <p class="exp-settings-footnote">
+      The manuscript describes actor-critic training and the simulation protocol, but does not list detailed training hyperparameters such as learning rate, batch size, or total training steps.
+    </p>
   </div>
 </section>
 
@@ -567,7 +656,7 @@
   if (!nav) return;
   var links = nav.querySelectorAll('.section-nav-link');
   var triggerEl = document.getElementById('sec-abstract');
-  var sectionIds = ['sec-animations', 'sec-id-demos', 'sec-ood-demos', 'sec-results' /* 'sec-video' */];
+  var sectionIds = ['sec-animations', 'sec-settings', 'sec-id-demos', 'sec-ood-demos', 'sec-results' /* 'sec-video' */];
   var sections = sectionIds.map(function (id) { return document.getElementById(id); });
   var navHeight = 52;
 

@@ -408,6 +408,121 @@ table.rq-table-paper .rq-cell-highlight {
   border-radius: 4px;
 }
 
+.exp-settings-section {
+  padding-top: 2.75rem;
+  padding-bottom: 2.5rem;
+}
+
+.exp-settings-intro {
+  max-width: 1000px;
+  margin: 0 auto 1.4rem;
+  font-size: 1.08rem;
+  line-height: 1.75;
+  color: #58637a;
+}
+
+.exp-settings-card {
+  background: #fff;
+  border: 1px solid #dfe5f1;
+  border-radius: 24px;
+  box-shadow: 0 10px 28px rgba(31, 45, 81, 0.08);
+  padding: 1rem 1.15rem 0.85rem;
+}
+
+.exp-settings-table {
+  margin-bottom: 0;
+  background: transparent;
+}
+
+.exp-settings-table thead th {
+  border-bottom: 2px solid #ccd7eb;
+  color: #22336c;
+  font-size: 0.92rem;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+}
+
+.exp-settings-table tbody th,
+.exp-settings-table tbody td {
+  border-color: #e6ebf5;
+  vertical-align: top;
+  padding: 0.85rem 0.9rem;
+}
+
+.exp-settings-table tbody th {
+  width: 26%;
+  color: #2f4da3;
+  font-weight: 700;
+}
+
+.exp-settings-table tbody td {
+  color: #4f5c75;
+  line-height: 1.65;
+}
+
+.exp-settings-points {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.9rem;
+  margin-top: 1rem;
+}
+
+.exp-settings-point {
+  padding: 1rem 1.1rem;
+  border-radius: 18px;
+  border: 1px solid rgba(50, 115, 220, 0.18);
+  background: rgba(50, 115, 220, 0.06);
+  color: #4d5a74;
+  line-height: 1.7;
+}
+
+.exp-settings-point strong {
+  color: #22336c;
+}
+
+.exp-settings-footnote {
+  max-width: 1050px;
+  margin: 1rem auto 0;
+  font-size: 0.92rem;
+  line-height: 1.7;
+  color: #6a7285;
+  text-align: center;
+}
+
+@media screen and (max-width: 900px) {
+  .exp-settings-points {
+    grid-template-columns: 1fr;
+  }
+
+  .exp-settings-table tbody th {
+    width: 34%;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .exp-settings-card {
+    padding: 0.8rem 0.75rem 0.7rem;
+    border-radius: 18px;
+  }
+
+  .exp-settings-intro {
+    font-size: 1rem;
+    line-height: 1.65;
+  }
+
+  .exp-settings-table thead th,
+  .exp-settings-table tbody th,
+  .exp-settings-table tbody td {
+    font-size: 0.93rem;
+    padding: 0.7rem 0.6rem;
+  }
+
+  .exp-settings-table tbody th {
+    width: 40%;
+  }
+}
+
 /* --- RoboMME-style page chrome (https://robomme.github.io/) --- */
 .hero .container.is-max-desktop {
   max-width: 1200px;
