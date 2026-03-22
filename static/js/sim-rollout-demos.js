@@ -559,8 +559,10 @@
         overview: 'Out-of-distribution generalization performance of the ' + robotPhrase + ' under ORCA-based human policy.',
         cases: [
           {
-            label: 'Case I',
-            goal: 'Compare available local baseline rollouts for the ORCA-based human-policy shift.',
+            label: 'Episode 1',
+            goal: isUnicycle
+              ? 'Compare all methods available in the local seed_126 folder for the unicycle ORCA-human-policy OOD export, shown here as Episode 1.'
+              : 'Compare all methods available in the local seed_226 folder for the single-integrator ORCA-human-policy OOD export, shown here as Episode 1.',
             columns: [
               {
                 kind: 'select',
