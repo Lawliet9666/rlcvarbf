@@ -915,6 +915,7 @@
 
   function renderSelectColumn(column, index) {
     var selected = getSelectedOption(column);
+    var resultStatus = getResultStatus(selected);
     var selectOptions = column.options.map(function (option) {
       return '' +
         '<option value="' + escapeHtml(option.value) + '"' +
@@ -931,6 +932,7 @@
           '</select>' +
         '</div>' +
         '<img class="sim-demo-img" src="' + escapeHtml(selected.src) + '" alt="' + escapeHtml(selected.label) + '" loading="lazy">' +
+        '<div class="result-label ' + escapeHtml(resultStatus.className) + '" data-result-badge>' + escapeHtml(resultStatus.label) + '</div>' +
         '<p class="sim-card-note">' + escapeHtml(selected.note || '') + '</p>' +
       '</article>';
   }
@@ -957,6 +959,14 @@
     return fallback;
   }
 
+  function getResultStatus(option) {
+    var isSuccess = option && option.value === 'rlcvarbetaradius';
+    return {
+      label: isSuccess ? 'Success' : 'Collision',
+      className: isSuccess ? 'success' : 'failure'
+    };
+  }
+
   function wireCaseTabs(panel, suite) {
     var buttons = panel.querySelectorAll('.sim-episode-tab');
     buttons.forEach(function (button) {
@@ -976,6 +986,7 @@
 
       var select = columnEl.querySelector('.sim-model-select');
       var image = columnEl.querySelector('.sim-demo-img');
+      var badge = columnEl.querySelector('[data-result-badge]');
       var note = columnEl.querySelector('.sim-card-note');
 
       function applySelection(value) {
@@ -989,6 +1000,11 @@
         column.defaultValue = selected.value;
         image.src = selected.src;
         image.alt = selected.label;
+        if (badge) {
+          var resultStatus = getResultStatus(selected);
+          badge.textContent = resultStatus.label;
+          badge.className = 'result-label ' + resultStatus.className;
+        }
         note.textContent = selected.note || '';
       }
 

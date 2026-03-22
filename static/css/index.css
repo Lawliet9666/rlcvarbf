@@ -1018,8 +1018,12 @@ table.rq-table-paper .rq-cell-highlight {
   font-size: 0.95rem;
   padding: 0.3rem 0.85rem;
   border-radius: 6px;
-  margin-top: 0.65rem;
-  display: inline-block;
+  margin-top: 0.8rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  align-self: center;
+  min-width: 132px;
 }
 
 .result-label.success {
