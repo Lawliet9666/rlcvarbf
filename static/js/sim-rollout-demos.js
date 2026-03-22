@@ -615,8 +615,10 @@
         overview: 'Out-of-distribution generalization performance of the ' + robotPhrase + ' under increased human radius.',
         cases: [
           {
-            label: 'Case III',
-            goal: 'Compare available local methods for the increased-human-radius shift.',
+            label: isUnicycle ? 'Episode 1' : 'Case III',
+            goal: isUnicycle
+              ? 'Compare all methods available in the local seed_168 folder for the unicycle increased-human-radius OOD export, shown here as Episode 1.'
+              : 'Compare available local methods for the increased-human-radius shift.',
             columns: [
               {
                 kind: 'select',
