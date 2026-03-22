@@ -38,8 +38,24 @@ $(document).ready(function() {
 			autoplaySpeed: 3000,
     }
 
-		// Initialize all div with carousel class
-    var carousels = bulmaCarousel.attach('.carousel', options);
+    var obstacleOptions = {
+      slidesToScroll: 1,
+      slidesToShow: 2,
+      loop: true,
+      infinite: true,
+      autoplay: false,
+      autoplaySpeed: 3000,
+      breakpoints: [
+        { changePoint: 480, slidesToShow: 1, slidesToScroll: 1 },
+        { changePoint: 768, slidesToShow: 2, slidesToScroll: 1 }
+      ]
+    }
+
+    var carousels = [];
+
+		// Initialize general carousels first, excluding the risk-adaptation carousel.
+    carousels = carousels.concat(bulmaCarousel.attach('.carousel:not(#carousel-obstacle-animations)', options));
+    carousels = carousels.concat(bulmaCarousel.attach('#carousel-obstacle-animations', obstacleOptions));
 
     // Loop on each carousel initialized
     for(var i = 0; i < carousels.length; i++) {
