@@ -8,6 +8,7 @@
   var SINGLE_INTEGRATOR_ID_SEED106_BASE = './static/videos/single_integrator_obs_20/eval_seeds_100_1000_n901/seed_106/';
   var UNICYCLE_ID_SEED176_BASE = './static/videos/unicycle_obs_20/eval_seeds_100_1000_n901/seed_176/';
   var SINGLE_INTEGRATOR_OOD_ORCA_SEED226_BASE = './static/videos/si_human_orca/single_integrator_obs_20/eval_seeds_100_1000_n901/seed_226/';
+  var SINGLE_INTEGRATOR_OOD_DENSITY_SEED135_BASE = './static/videos/si_obs_30/single_integrator_obs_30/eval_seeds_100_1000_n901/seed_135/';
   var UNICYCLE_OOD_ORCA_SEED126_BASE = './static/videos/uni_human_orca/unicycle_obs_20/eval_seeds_100_1000_n901/seed_126/';
   var UNICYCLE_OOD_RADIUS_SEED168_BASE = './static/videos/uni_human_radius_0p5/unicycle_obs_20/eval_seeds_100_1000_n901/seed_168/';
 
@@ -297,6 +298,57 @@
     }
   ];
 
+  var SINGLE_INTEGRATOR_OOD_DENSITY_OPTIONS = [
+    {
+      value: 'orca',
+      label: 'ORCA',
+      src: SINGLE_INTEGRATOR_OOD_DENSITY_SEED135_BASE + 'orca_seed_135_succ_0_coll_1.gif',
+      note: 'Seed 135 rollout from the single-integrator 30-obstacle OOD export.'
+    },
+    {
+      value: 'cbfqp',
+      label: 'CBF-QP',
+      src: SINGLE_INTEGRATOR_OOD_DENSITY_SEED135_BASE + 'cbfqp_seed_135_succ_0_coll_1.gif',
+      note: 'Seed 135 rollout from the single-integrator 30-obstacle OOD export.'
+    },
+    {
+      value: 'cvarqp',
+      label: 'CVaR-BF-QP',
+      src: SINGLE_INTEGRATOR_OOD_DENSITY_SEED135_BASE + 'cvarqp_seed_135_succ_0_coll_1.gif',
+      note: 'Seed 135 rollout from the single-integrator 30-obstacle OOD export.'
+    },
+    {
+      value: 'adapcvarqp',
+      label: 'Adaptive-CVaR-BF',
+      src: SINGLE_INTEGRATOR_OOD_DENSITY_SEED135_BASE + 'adapcvarqp_seed_135_succ_0_coll_1.gif',
+      note: 'Seed 135 rollout from the single-integrator 30-obstacle OOD export.'
+    },
+    {
+      value: 'rl',
+      label: 'Vanilla RL',
+      src: SINGLE_INTEGRATOR_OOD_DENSITY_SEED135_BASE + 'rl_seed_135_succ_0_coll_1.gif',
+      note: 'Seed 135 rollout from the single-integrator 30-obstacle OOD export.'
+    },
+    {
+      value: 'rl_sf',
+      label: 'Vanilla RL + Safety Filter',
+      src: SINGLE_INTEGRATOR_OOD_DENSITY_SEED135_BASE + 'rl_sf_seed_135_succ_0_coll_1.gif',
+      note: 'Seed 135 rollout from the single-integrator 30-obstacle OOD export.'
+    },
+    {
+      value: 'rlcbfgamma',
+      label: 'RL-CBF-gamma',
+      src: SINGLE_INTEGRATOR_OOD_DENSITY_SEED135_BASE + 'rlcbfgamma_seed_135_succ_0_coll_1.gif',
+      note: 'Seed 135 rollout from the single-integrator 30-obstacle OOD export.'
+    },
+    {
+      value: 'rlcvarbetaradius',
+      label: 'Proposed adaptive CVaR-BF',
+      src: SINGLE_INTEGRATOR_OOD_DENSITY_SEED135_BASE + 'rlcvarbetaradius_seed_135_succ_1_coll_0.gif',
+      note: 'Seed 135 rollout from the single-integrator 30-obstacle OOD export.'
+    }
+  ];
+
   var UNICYCLE_OOD_ORCA_OPTIONS = [
     {
       value: 'orca',
@@ -496,7 +548,7 @@
   function buildSuites(robotLabel, robotPhrase, robotId) {
     var isUnicycle = robotId === 'unicycle';
     var orcaCaseOptions = isUnicycle ? UNICYCLE_OOD_ORCA_OPTIONS : SINGLE_INTEGRATOR_OOD_ORCA_OPTIONS;
-    var densityCaseOptions = isUnicycle ? UNICYCLE_OOD_DENSITY_OPTIONS : SINGLE_INTEGRATOR_OOD_PLACEHOLDER_OPTIONS;
+    var densityCaseOptions = isUnicycle ? UNICYCLE_OOD_DENSITY_OPTIONS : SINGLE_INTEGRATOR_OOD_DENSITY_OPTIONS;
     var radiusCaseOptions = isUnicycle ? UNICYCLE_OOD_RADIUS_OPTIONS : SINGLE_INTEGRATOR_OOD_PLACEHOLDER_OPTIONS;
 
     return [
@@ -533,10 +585,10 @@
         overview: 'Out-of-distribution generalization performance of the ' + robotPhrase + ' under higher obstacle density.',
         cases: [
           {
-            label: 'Case II',
+            label: isUnicycle ? 'Case II' : 'Episode 1',
             goal: isUnicycle
               ? 'Compare available local methods on the current higher-density placeholder rollout while the dedicated 30-obstacle export is being prepared.'
-              : 'Compare current local single-integrator rollouts on the higher-density placeholder slot while dedicated OOD exports are not checked into this repo yet.',
+              : 'Compare all methods available in the local seed_135 folder for the single-integrator 30-obstacle OOD export, shown here as Episode 1.',
             columns: [
               {
                 kind: 'select',
