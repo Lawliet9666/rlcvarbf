@@ -7,6 +7,9 @@
   var SCENE_BASE = './static/videos/';
   var SINGLE_INTEGRATOR_ID_SEED106_BASE = './static/videos/single_integrator_obs_20/eval_seeds_100_1000_n901/seed_106/';
   var UNICYCLE_ID_SEED176_BASE = './static/videos/unicycle_obs_20/eval_seeds_100_1000_n901/seed_176/';
+  var SINGLE_INTEGRATOR_OOD_ORCA_SEED226_BASE = './static/videos/si_human_orca/single_integrator_obs_20/eval_seeds_100_1000_n901/seed_226/';
+  var UNICYCLE_OOD_ORCA_SEED126_BASE = './static/videos/uni_human_orca/unicycle_obs_20/eval_seeds_100_1000_n901/seed_126/';
+  var UNICYCLE_OOD_RADIUS_SEED168_BASE = './static/videos/uni_human_radius_0p5/unicycle_obs_20/eval_seeds_100_1000_n901/seed_168/';
 
   var METHOD_OPTIONS = [
     {
@@ -192,6 +195,261 @@
     }
   ];
 
+  var SINGLE_INTEGRATOR_OOD_PLACEHOLDER_OPTIONS = [
+    {
+      value: 'orca',
+      label: 'ORCA',
+      src: SINGLE_INTEGRATOR_ID_SEED106_BASE + 'orca_seed_106_succ_0_coll_1.gif',
+      note: 'Current local single-integrator rollout used as a placeholder while dedicated OOD exports are not checked into this repo yet.'
+    },
+    {
+      value: 'cbfqp',
+      label: 'CBF-QP',
+      src: SINGLE_INTEGRATOR_ID_SEED106_BASE + 'cbfqp_seed_106_succ_0_coll_1.gif',
+      note: 'Current local single-integrator rollout used as a placeholder while dedicated OOD exports are not checked into this repo yet.'
+    },
+    {
+      value: 'cvarqp',
+      label: 'CVaR-BF-QP',
+      src: SINGLE_INTEGRATOR_ID_SEED106_BASE + 'cvarqp_seed_106_succ_0_coll_1.gif',
+      note: 'Current local single-integrator rollout used as a placeholder while dedicated OOD exports are not checked into this repo yet.'
+    },
+    {
+      value: 'adapcvarqp',
+      label: 'Adaptive-CVaR-BF',
+      src: SINGLE_INTEGRATOR_ID_SEED106_BASE + 'adapcvarqp_seed_106_succ_0_coll_1.gif',
+      note: 'Current local single-integrator rollout used as a placeholder while dedicated OOD exports are not checked into this repo yet.'
+    },
+    {
+      value: 'rl',
+      label: 'Vanilla RL',
+      src: SINGLE_INTEGRATOR_ID_SEED106_BASE + 'rl_seed_106_succ_0_coll_1.gif',
+      note: 'Current local single-integrator rollout used as a placeholder while dedicated OOD exports are not checked into this repo yet.'
+    },
+    {
+      value: 'rl_sf',
+      label: 'Vanilla RL + Safety Filter',
+      src: SINGLE_INTEGRATOR_ID_SEED106_BASE + 'rl_sf_seed_106_succ_0_coll_1.gif',
+      note: 'Current local single-integrator rollout used as a placeholder while dedicated OOD exports are not checked into this repo yet.'
+    },
+    {
+      value: 'rlcbfgamma',
+      label: 'RL-CBF-gamma',
+      src: SINGLE_INTEGRATOR_ID_SEED106_BASE + 'rlcbfgamma_seed_106_succ_0_coll_1.gif',
+      note: 'Current local single-integrator rollout used as a placeholder while dedicated OOD exports are not checked into this repo yet.'
+    },
+    {
+      value: 'rlcvarbetaradius',
+      label: 'Proposed adaptive CVaR-BF',
+      src: SINGLE_INTEGRATOR_ID_SEED106_BASE + 'rlcvarbetaradius_seed_106_succ_1_coll_0.gif',
+      note: 'Current local single-integrator rollout used as a placeholder while dedicated OOD exports are not checked into this repo yet.'
+    }
+  ];
+
+  var SINGLE_INTEGRATOR_OOD_ORCA_OPTIONS = [
+    {
+      value: 'orca',
+      label: 'ORCA',
+      src: SINGLE_INTEGRATOR_OOD_ORCA_SEED226_BASE + 'orca_seed_226_succ_0_coll_1.gif',
+      note: 'Seed 226 rollout from the single-integrator ORCA-human-policy OOD export.'
+    },
+    {
+      value: 'cbfqp',
+      label: 'CBF-QP',
+      src: SINGLE_INTEGRATOR_OOD_ORCA_SEED226_BASE + 'cbfqp_seed_226_succ_0_coll_1.gif',
+      note: 'Seed 226 rollout from the single-integrator ORCA-human-policy OOD export.'
+    },
+    {
+      value: 'cvarqp',
+      label: 'CVaR-BF-QP',
+      src: SINGLE_INTEGRATOR_OOD_ORCA_SEED226_BASE + 'cvarqp_seed_226_succ_0_coll_1.gif',
+      note: 'Seed 226 rollout from the single-integrator ORCA-human-policy OOD export.'
+    },
+    {
+      value: 'adapcvarqp',
+      label: 'Adaptive-CVaR-BF',
+      src: SINGLE_INTEGRATOR_OOD_ORCA_SEED226_BASE + 'adapcvarqp_seed_226_succ_0_coll_1.gif',
+      note: 'Seed 226 rollout from the single-integrator ORCA-human-policy OOD export.'
+    },
+    {
+      value: 'rl',
+      label: 'Vanilla RL',
+      src: SINGLE_INTEGRATOR_OOD_ORCA_SEED226_BASE + 'rl_seed_226_succ_0_coll_1.gif',
+      note: 'Seed 226 rollout from the single-integrator ORCA-human-policy OOD export.'
+    },
+    {
+      value: 'rl_sf',
+      label: 'Vanilla RL + Safety Filter',
+      src: SINGLE_INTEGRATOR_OOD_ORCA_SEED226_BASE + 'rl_sf_seed_226_succ_0_coll_1.gif',
+      note: 'Seed 226 rollout from the single-integrator ORCA-human-policy OOD export.'
+    },
+    {
+      value: 'rlcbfgamma',
+      label: 'RL-CBF-gamma',
+      src: SINGLE_INTEGRATOR_OOD_ORCA_SEED226_BASE + 'rlcbfgamma_seed_226_succ_0_coll_1.gif',
+      note: 'Seed 226 rollout from the single-integrator ORCA-human-policy OOD export.'
+    },
+    {
+      value: 'rlcvarbetaradius',
+      label: 'Proposed adaptive CVaR-BF',
+      src: SINGLE_INTEGRATOR_OOD_ORCA_SEED226_BASE + 'rlcvarbetaradius_seed_226_succ_1_coll_0.gif',
+      note: 'Seed 226 rollout from the single-integrator ORCA-human-policy OOD export.'
+    }
+  ];
+
+  var UNICYCLE_OOD_ORCA_OPTIONS = [
+    {
+      value: 'orca',
+      label: 'ORCA',
+      src: UNICYCLE_OOD_ORCA_SEED126_BASE + 'orca_seed_126_succ_0_coll_1.gif',
+      note: 'Seed 126 rollout from the ORCA-human-policy OOD export.'
+    },
+    {
+      value: 'cbfqp',
+      label: 'CBF-QP',
+      src: UNICYCLE_OOD_ORCA_SEED126_BASE + 'cbfqp_seed_126_succ_0_coll_1.gif',
+      note: 'Seed 126 rollout from the ORCA-human-policy OOD export.'
+    },
+    {
+      value: 'cvarqp',
+      label: 'CVaR-BF-QP',
+      src: UNICYCLE_OOD_ORCA_SEED126_BASE + 'cvarqp_seed_126_succ_0_coll_1.gif',
+      note: 'Seed 126 rollout from the ORCA-human-policy OOD export.'
+    },
+    {
+      value: 'adapcvarqp',
+      label: 'Adaptive-CVaR-BF',
+      src: UNICYCLE_OOD_ORCA_SEED126_BASE + 'adapcvarqp_seed_126_succ_0_coll_1.gif',
+      note: 'Seed 126 rollout from the ORCA-human-policy OOD export.'
+    },
+    {
+      value: 'rl',
+      label: 'Vanilla RL',
+      src: UNICYCLE_OOD_ORCA_SEED126_BASE + 'rl_seed_126_succ_0_coll_1.gif',
+      note: 'Seed 126 rollout from the ORCA-human-policy OOD export.'
+    },
+    {
+      value: 'rl_sf',
+      label: 'Vanilla RL + Safety Filter',
+      src: UNICYCLE_OOD_ORCA_SEED126_BASE + 'rl_sf_seed_126_succ_0_coll_1.gif',
+      note: 'Seed 126 rollout from the ORCA-human-policy OOD export.'
+    },
+    {
+      value: 'rlcbfgamma',
+      label: 'RL-CBF-gamma',
+      src: UNICYCLE_OOD_ORCA_SEED126_BASE + 'rlcbfgamma_seed_126_succ_0_coll_1.gif',
+      note: 'Seed 126 rollout from the ORCA-human-policy OOD export.'
+    },
+    {
+      value: 'rlcvarbetaradius',
+      label: 'Proposed adaptive CVaR-BF',
+      src: UNICYCLE_OOD_ORCA_SEED126_BASE + 'rlcvarbetaradius_seed_126_succ_1_coll_0.gif',
+      note: 'Seed 126 rollout from the ORCA-human-policy OOD export.'
+    }
+  ];
+
+  var UNICYCLE_OOD_DENSITY_OPTIONS = [
+    {
+      value: 'orca',
+      label: 'ORCA',
+      src: UNICYCLE_ID_SEED176_BASE + 'orca_seed_176_succ_0_coll_1.gif',
+      note: 'Current local unicycle rollout used as the higher-density placeholder because a dedicated 30-obstacle export is not checked into this repo yet.'
+    },
+    {
+      value: 'cbfqp',
+      label: 'CBF-QP',
+      src: UNICYCLE_ID_SEED176_BASE + 'cbfqp_seed_176_succ_0_coll_1.gif',
+      note: 'Current local unicycle rollout used as the higher-density placeholder because a dedicated 30-obstacle export is not checked into this repo yet.'
+    },
+    {
+      value: 'cvarqp',
+      label: 'CVaR-BF-QP',
+      src: UNICYCLE_ID_SEED176_BASE + 'cvarqp_seed_176_succ_0_coll_1.gif',
+      note: 'Current local unicycle rollout used as the higher-density placeholder because a dedicated 30-obstacle export is not checked into this repo yet.'
+    },
+    {
+      value: 'adapcvarqp',
+      label: 'Adaptive-CVaR-BF',
+      src: UNICYCLE_ID_SEED176_BASE + 'adapcvarqp_seed_176_succ_0_coll_1.gif',
+      note: 'Current local unicycle rollout used as the higher-density placeholder because a dedicated 30-obstacle export is not checked into this repo yet.'
+    },
+    {
+      value: 'rl',
+      label: 'Vanilla RL',
+      src: UNICYCLE_ID_SEED176_BASE + 'rl_seed_176_succ_0_coll_1.gif',
+      note: 'Current local unicycle rollout used as the higher-density placeholder because a dedicated 30-obstacle export is not checked into this repo yet.'
+    },
+    {
+      value: 'rl_sf',
+      label: 'Vanilla RL + Safety Filter',
+      src: UNICYCLE_ID_SEED176_BASE + 'rl_sf_seed_176_succ_0_coll_1.gif',
+      note: 'Current local unicycle rollout used as the higher-density placeholder because a dedicated 30-obstacle export is not checked into this repo yet.'
+    },
+    {
+      value: 'rlcbfgamma',
+      label: 'RL-CBF-gamma',
+      src: UNICYCLE_ID_SEED176_BASE + 'rlcbfgamma_seed_176_succ_0_coll_1.gif',
+      note: 'Current local unicycle rollout used as the higher-density placeholder because a dedicated 30-obstacle export is not checked into this repo yet.'
+    },
+    {
+      value: 'rlcvarbetaradius',
+      label: 'Proposed adaptive CVaR-BF',
+      src: UNICYCLE_ID_SEED176_BASE + 'rlcvarbetaradius_seed_176_succ_1_coll_0.gif',
+      note: 'Current local unicycle rollout used as the higher-density placeholder because a dedicated 30-obstacle export is not checked into this repo yet.'
+    }
+  ];
+
+  var UNICYCLE_OOD_RADIUS_OPTIONS = [
+    {
+      value: 'orca',
+      label: 'ORCA',
+      src: UNICYCLE_OOD_RADIUS_SEED168_BASE + 'orca_seed_168_succ_0_coll_1.gif',
+      note: 'Seed 168 rollout from the increased-human-radius OOD export.'
+    },
+    {
+      value: 'cbfqp',
+      label: 'CBF-QP',
+      src: UNICYCLE_OOD_RADIUS_SEED168_BASE + 'cbfqp_seed_168_succ_0_coll_1.gif',
+      note: 'Seed 168 rollout from the increased-human-radius OOD export.'
+    },
+    {
+      value: 'cvarqp',
+      label: 'CVaR-BF-QP',
+      src: UNICYCLE_OOD_RADIUS_SEED168_BASE + 'cvarqp_seed_168_succ_0_coll_1.gif',
+      note: 'Seed 168 rollout from the increased-human-radius OOD export.'
+    },
+    {
+      value: 'adapcvarqp',
+      label: 'Adaptive-CVaR-BF',
+      src: UNICYCLE_OOD_RADIUS_SEED168_BASE + 'adapcvarqp_seed_168_succ_0_coll_1.gif',
+      note: 'Seed 168 rollout from the increased-human-radius OOD export.'
+    },
+    {
+      value: 'rl',
+      label: 'Vanilla RL',
+      src: UNICYCLE_OOD_RADIUS_SEED168_BASE + 'rl_seed_168_succ_0_coll_1.gif',
+      note: 'Seed 168 rollout from the increased-human-radius OOD export.'
+    },
+    {
+      value: 'rl_sf',
+      label: 'Vanilla RL + Safety Filter',
+      src: UNICYCLE_OOD_RADIUS_SEED168_BASE + 'rl_sf_seed_168_succ_0_coll_1.gif',
+      note: 'Seed 168 rollout from the increased-human-radius OOD export.'
+    },
+    {
+      value: 'rlcbfgamma',
+      label: 'RL-CBF-gamma',
+      src: UNICYCLE_OOD_RADIUS_SEED168_BASE + 'rlcbfgamma_seed_168_succ_0_coll_1.gif',
+      note: 'Seed 168 rollout from the increased-human-radius OOD export.'
+    },
+    {
+      value: 'rlcvarbetaradius',
+      label: 'Proposed adaptive CVaR-BF',
+      src: UNICYCLE_OOD_RADIUS_SEED168_BASE + 'rlcvarbetaradius_seed_168_succ_1_coll_0.gif',
+      note: 'Seed 168 rollout from the increased-human-radius OOD export.'
+    }
+  ];
+
   var PROPOSED_SCENES = {
     seed19: {
       label: '2 obstacles, sigma = 0.05',
@@ -235,7 +493,12 @@
     }
   };
 
-  function buildSuites(robotLabel, robotPhrase) {
+  function buildSuites(robotLabel, robotPhrase, robotId) {
+    var isUnicycle = robotId === 'unicycle';
+    var orcaCaseOptions = isUnicycle ? UNICYCLE_OOD_ORCA_OPTIONS : SINGLE_INTEGRATOR_OOD_ORCA_OPTIONS;
+    var densityCaseOptions = isUnicycle ? UNICYCLE_OOD_DENSITY_OPTIONS : SINGLE_INTEGRATOR_OOD_PLACEHOLDER_OPTIONS;
+    var radiusCaseOptions = isUnicycle ? UNICYCLE_OOD_RADIUS_OPTIONS : SINGLE_INTEGRATOR_OOD_PLACEHOLDER_OPTIONS;
+
     return [
       {
         id: 'case-orca-policy',
@@ -250,14 +513,14 @@
               {
                 kind: 'select',
                 heading: 'Method A',
-                options: LEARNED_OPTIONS,
+                options: orcaCaseOptions,
                 defaultValue: 'orca'
               },
               {
                 kind: 'select',
                 heading: 'Method B',
-                options: LEARNED_OPTIONS,
-                defaultValue: 'proposed'
+                options: orcaCaseOptions,
+                defaultValue: 'rlcvarbetaradius'
               }
             ]
           }
@@ -271,10 +534,22 @@
         cases: [
           {
             label: 'Case II',
-            goal: 'Current local rollout slots show the densest comparison scenes available in this repo.',
+            goal: isUnicycle
+              ? 'Compare available local methods on the current higher-density placeholder rollout while the dedicated 30-obstacle export is being prepared.'
+              : 'Compare current local single-integrator rollouts on the higher-density placeholder slot while dedicated OOD exports are not checked into this repo yet.',
             columns: [
-              fixedColumn('Reference density', PROPOSED_SCENES.seed100),
-              fixedColumn('Higher density', PROPOSED_SCENES.seed13)
+              {
+                kind: 'select',
+                heading: 'Method A',
+                options: densityCaseOptions,
+                defaultValue: 'rl'
+              },
+              {
+                kind: 'select',
+                heading: 'Method B',
+                options: densityCaseOptions,
+                defaultValue: 'rlcvarbetaradius'
+              }
             ]
           }
         ]
@@ -292,14 +567,14 @@
               {
                 kind: 'select',
                 heading: 'Method A',
-                options: METHOD_OPTIONS,
-                defaultValue: 'cvar_hi'
+                options: radiusCaseOptions,
+                defaultValue: 'cvarqp'
               },
               {
                 kind: 'select',
                 heading: 'Method B',
-                options: METHOD_OPTIONS,
-                defaultValue: 'proposed'
+                options: radiusCaseOptions,
+                defaultValue: 'rlcvarbetaradius'
               }
             ]
           }
@@ -684,12 +959,12 @@
         {
           id: 'single-integrator',
           label: 'Single Integrator',
-          suites: buildSuites('Single Integrator', 'single-integrator robot')
+          suites: buildSuites('Single Integrator', 'single-integrator robot', 'single-integrator')
         },
         {
           id: 'unicycle',
           label: 'Unicycle',
-          suites: buildSuites('Unicycle', 'unicycle robot')
+          suites: buildSuites('Unicycle', 'unicycle robot', 'unicycle')
         }
       ],
       'unicycle'

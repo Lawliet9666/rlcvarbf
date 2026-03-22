@@ -52,8 +52,6 @@
     <a class="section-nav-link" href="#sec-ood-demos" data-target="sec-ood-demos">OOD Demos</a>
     <a class="section-nav-link" href="#sec-results" data-target="sec-results">Statistical Results</a>
     <!-- <a class="section-nav-link" href="#sec-video" data-target="sec-video">Video</a> -->
-    <a class="section-nav-link" href="#acknowledgement" data-target="acknowledgement">Acknowledgement</a>
-    <a class="section-nav-link" href="#sec-bib" data-target="sec-bib">BibTeX</a>
   </div>
 </div>
 
@@ -209,7 +207,8 @@
         <div class="content has-text-centered">
           <img src="./static/images/overview.png"
                alt="Method Overview Figure"
-               style="max-width: 100%; height: auto;" />
+               class="method-overview-image"
+               style="height: auto;" />
         </div>
       </div>
     </div>
@@ -509,7 +508,7 @@
   <div class="container is-max-desktop content">
     <h2 class="title">Acknowledgement</h2>
     <p>
-      This work was supported in part by Toyota Research Institute (TRI) and the University of Michigan Robotics Department. 
+      This work was supported in part by Toyota Research Institute of North America (TRINA) and the University of Michigan Robotics Department. 
       The authors would like to thank their collaborators, lab members, and Yinpei Dai for their valuable feedback and discussions.
     </p>
   </div>
@@ -568,7 +567,7 @@
   if (!nav) return;
   var links = nav.querySelectorAll('.section-nav-link');
   var triggerEl = document.getElementById('sec-abstract');
-  var sectionIds = ['sec-animations', 'sec-id-demos', 'sec-ood-demos', 'sec-results', /* 'sec-video', */ 'acknowledgement', 'sec-bib'];
+  var sectionIds = ['sec-animations', 'sec-id-demos', 'sec-ood-demos', 'sec-results' /* 'sec-video' */];
   var sections = sectionIds.map(function (id) { return document.getElementById(id); });
   var navHeight = 52;
 
