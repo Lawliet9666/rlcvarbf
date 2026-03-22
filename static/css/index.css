@@ -117,6 +117,38 @@ body {
   margin: 0;
 }
 
+.obstacle-carousel-section {
+  background: #f7f8fb;
+}
+
+.obstacle-carousel-section .hero-body {
+  padding-top: 1.75rem;
+  padding-bottom: 2.5rem;
+}
+
+.obstacle-results-carousel .item {
+  background: #fff;
+  border-color: #cfd5e3;
+  border-radius: 16px;
+  padding: 1rem 1rem 0.85rem;
+  font-size: 1rem;
+  box-shadow: 0 10px 24px rgba(32, 55, 105, 0.08);
+}
+
+.obstacle-carousel-image {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+}
+
+.obstacle-carousel-caption {
+  margin-top: 0.85rem;
+  font-size: 1rem;
+  font-weight: 700;
+  color: #22336c;
+}
+
 
 .interpolation-panel {
   background: #f5f5f5;

@@ -47,6 +47,7 @@
 <!-- Sticky section nav (RoboMME-style); appears after scrolling past the abstract -->
 <div class="section-nav" id="sectionNav">
   <div class="section-nav-inner">
+    <a class="section-nav-link" href="#sec-animations" data-target="sec-animations">Animations</a>
     <a class="section-nav-link" href="#sec-id-demos" data-target="sec-id-demos">ID Demos</a>
     <a class="section-nav-link" href="#sec-ood-demos" data-target="sec-ood-demos">OOD Demos</a>
     <a class="section-nav-link" href="#sec-results" data-target="sec-results">Statistical Results</a>
@@ -209,6 +210,65 @@
           <img src="./static/images/overview.png"
                alt="Method Overview Figure"
                style="max-width: 100%; height: auto;" />
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<section id="sec-animations" class="hero is-light is-small obstacle-carousel-section">
+  <div class="hero-body">
+    <div class="container is-widescreen mme-wide">
+      <h2 class="title is-3 has-text-centered">Animations for Different Numbers of Obstacles</h2>
+      <div id="carousel-obstacle-animations" class="carousel results-carousel obstacle-results-carousel">
+        <div class="item obstacle-carousel-item has-text-centered">
+          <img src="./static/videos/seed100_noise0.025_obs6_umax0.9_besfm_umax0.9_besfm_cvar_beta_dt_doubleint_v2_gamma0.1_betaNone_hdist_cone.gif"
+               alt="Animation with 15 obstacles and sigma 0.025"
+               class="obstacle-carousel-image">
+          <div class="obstacle-carousel-caption"># Obs. = 15, σ = 0.025</div>
+        </div>
+        <div class="item obstacle-carousel-item has-text-centered">
+          <img src="./static/videos/seed13_noise0.025_obs8_umax0.9_besfm_umax0.3_besfm_cvar_beta_dt_doubleint_v2_gamma0.1_betaNone_hdist_cone.gif"
+               alt="Animation with 20 obstacles and sigma 0.025"
+               class="obstacle-carousel-image">
+          <div class="obstacle-carousel-caption"># Obs. = 20, σ = 0.025</div>
+        </div>
+        <div class="item obstacle-carousel-item has-text-centered">
+          <img src="./static/videos/seed14_noise0.05_obs8_umax0.9_besfm_umax0.9_besfm_cvar_beta_dt_doubleint_v2_gamma0.1_betaNone_hdist_cone.gif"
+               alt="Animation with 20 obstacles and sigma 0.05"
+               class="obstacle-carousel-image">
+          <div class="obstacle-carousel-caption"># Obs. = 20, σ = 0.05</div>
+        </div>
+        <div class="item obstacle-carousel-item has-text-centered">
+          <img src="./static/videos/seed18_noise0.0_obs6_umax0.9_besfm_umax0.9_besfm_cvar_beta_dt_doubleint_v2_gamma0.1_betaNone_hdist_cone.gif"
+               alt="Animation with 15 obstacles and sigma 0.0"
+               class="obstacle-carousel-image">
+          <div class="obstacle-carousel-caption"># Obs. = 15, σ = 0.0</div>
+        </div>
+        <div class="item obstacle-carousel-item has-text-centered">
+          <img src="./static/videos/seed19_noise0.05_obs2_umax0.9_besfm_umax0.9_besfm_cvar_beta_dt_doubleint_v2_gamma0.1_betaNone_hdist_cone.gif"
+               alt="Animation with 5 obstacles and sigma 0.05"
+               class="obstacle-carousel-image">
+          <div class="obstacle-carousel-caption"># Obs. = 5, σ = 0.05</div>
+        </div>
+        <div class="item obstacle-carousel-item has-text-centered">
+          <img src="./static/videos/seed20_noise0.05_obs4_umax0.9_besfm_umax0.3_besfm_cvar_beta_dt_doubleint_v2_gamma0.1_betaNone_hdist_cone.gif"
+               alt="Animation with 10 obstacles and sigma 0.05"
+               class="obstacle-carousel-image">
+          <div class="obstacle-carousel-caption"># Obs. = 10, σ = 0.05</div>
+        </div>
+        <div class="item obstacle-carousel-item has-text-centered">
+          <img src="./static/videos/seed21_noise0.075_obs6_umax0.9_besfm_umax0.9_besfm_cvar_beta_dt_doubleint_v2_gamma0.1_betaNone_hdist_cone.gif"
+               alt="Animation with 15 obstacles and sigma 0.075"
+               class="obstacle-carousel-image">
+          <div class="obstacle-carousel-caption"># Obs. = 15, σ = 0.075</div>
+        </div>
+        <div class="item obstacle-carousel-item has-text-centered">
+          <img src="./static/videos/seed4_noise0.05_obs5_umax0.9_besfm_umax0.9_besfm_cvar_beta_dt_doubleint_v2_gamma0.1_betaNone_hdist_cone.gif"
+               alt="Animation with 15 obstacles and sigma 0.05"
+               class="obstacle-carousel-image">
+          <div class="obstacle-carousel-caption"># Obs. = 15, σ = 0.05</div>
         </div>
       </div>
     </div>
@@ -526,7 +586,7 @@
   if (!nav) return;
   var links = nav.querySelectorAll('.section-nav-link');
   var triggerEl = document.getElementById('sec-abstract');
-  var sectionIds = ['sec-id-demos', 'sec-ood-demos', 'sec-results', /* 'sec-video', */ 'acknowledgement', 'sec-bib'];
+  var sectionIds = ['sec-animations', 'sec-id-demos', 'sec-ood-demos', 'sec-results', /* 'sec-video', */ 'acknowledgement', 'sec-bib'];
   var sections = sectionIds.map(function (id) { return document.getElementById(id); });
   var navHeight = 52;
 
