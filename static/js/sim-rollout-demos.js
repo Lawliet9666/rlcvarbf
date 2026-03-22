@@ -5,6 +5,7 @@
 (function () {
   var COMPARE_BASE = './static/videos/compare/';
   var SCENE_BASE = './static/videos/';
+  var SINGLE_INTEGRATOR_ID_SEED106_BASE = './static/videos/single_integrator_obs_20/eval_seeds_100_1000_n901/seed_106/';
 
   var METHOD_OPTIONS = [
     {
@@ -62,6 +63,69 @@
     findMethod('crowdnav'),
     findMethod('crowdnavpp'),
     findMethod('proposed')
+  ];
+
+  var SINGLE_INTEGRATOR_ID_OPTIONS = [
+    {
+      value: 'orca',
+      label: 'ORCA',
+      src: SINGLE_INTEGRATOR_ID_SEED106_BASE + 'orca_seed_106_succ_0_coll_1.gif',
+      note: 'Seed 106 in-distribution rollout for ORCA on the single-integrator robot.'
+    },
+    {
+      value: 'cbfqp',
+      label: 'CBF-QP',
+      src: SINGLE_INTEGRATOR_ID_SEED106_BASE + 'cbfqp_seed_106_succ_0_coll_1.gif',
+      note: 'Seed 106 in-distribution rollout for the CBF-QP controller.'
+    },
+    {
+      value: 'cvarqp',
+      label: 'CVaR-BF-QP',
+      src: SINGLE_INTEGRATOR_ID_SEED106_BASE + 'cvarqp_seed_106_succ_0_coll_1.gif',
+      note: 'Seed 106 in-distribution rollout for the fixed-risk CVaR-BF-QP baseline.'
+    },
+    {
+      value: 'adapcvarqp',
+      label: 'Adaptive-CVaR-BF',
+      src: SINGLE_INTEGRATOR_ID_SEED106_BASE + 'adapcvarqp_seed_106_succ_0_coll_1.gif',
+      note: 'Seed 106 in-distribution rollout for the adaptive optimization-only baseline.'
+    },
+    {
+      value: 'rl',
+      label: 'Vanilla RL',
+      src: SINGLE_INTEGRATOR_ID_SEED106_BASE + 'rl_seed_106_succ_0_coll_1.gif',
+      note: 'Seed 106 in-distribution rollout for the vanilla RL policy.'
+    },
+    {
+      value: 'rl_sf',
+      label: 'Vanilla RL + Safety Filter',
+      src: SINGLE_INTEGRATOR_ID_SEED106_BASE + 'rl_sf_seed_106_succ_0_coll_1.gif',
+      note: 'Seed 106 in-distribution rollout for vanilla RL with the safety filter.'
+    },
+    {
+      value: 'Crowdnav_const_vel_sf',
+      label: 'CrowdNav++ const vel + Safety Filter',
+      src: SINGLE_INTEGRATOR_ID_SEED106_BASE + 'Crowdnav_const_vel_sf_seed_106_succ_0_coll_1.gif',
+      note: 'Seed 106 in-distribution rollout for the CrowdNav++ const-velocity prior with the safety filter.'
+    },
+    {
+      value: 'Crowdnav_inferred_sf',
+      label: 'CrowdNav++ inferred + Safety Filter',
+      src: SINGLE_INTEGRATOR_ID_SEED106_BASE + 'Crowdnav_inferred_sf_seed_106_succ_0_coll_1.gif',
+      note: 'Seed 106 in-distribution rollout for the inferred CrowdNav++ prior with the safety filter.'
+    },
+    {
+      value: 'rlcbfgamma',
+      label: 'RL-CBF-gamma',
+      src: SINGLE_INTEGRATOR_ID_SEED106_BASE + 'rlcbfgamma_seed_106_succ_0_coll_1.gif',
+      note: 'Seed 106 in-distribution rollout for the RL-CBF-gamma baseline.'
+    },
+    {
+      value: 'rlcvarbetaradius',
+      label: 'Proposed adaptive CVaR-BF',
+      src: SINGLE_INTEGRATOR_ID_SEED106_BASE + 'rlcvarbetaradius_seed_106_succ_1_coll_0.gif',
+      note: 'Seed 106 in-distribution rollout for the proposed adaptive CVaR-BF method.'
+    }
   ];
 
   var PROPOSED_SCENES = {
@@ -180,29 +244,40 @@
     ];
   }
 
-  function buildIdSuites(robotLabel, robotPhrase) {
+  function buildIdSuites(robotLabel, robotPhrase, robotId) {
+    var isSingleIntegrator = robotId === 'single-integrator';
+    var idOptions = isSingleIntegrator ? SINGLE_INTEGRATOR_ID_OPTIONS : METHOD_OPTIONS;
+    var caseLabel = isSingleIntegrator ? 'Episode 1' : 'Reference';
+    var suiteLabel = isSingleIntegrator ? 'Episode 1' : 'Reference scene';
+    var overview = isSingleIntegrator
+      ? 'In-distribution comparison for the ' + robotPhrase + ' on seed 106, shown here as Episode 1.'
+      : 'In-distribution comparison for the ' + robotPhrase + ' on the shared reference scene.';
+    var goal = isSingleIntegrator
+      ? 'Compare all methods available in the local seed_106 folder on the same in-distribution single-integrator rollout.'
+      : 'Compare available local baselines on the in-distribution reference rollout.';
+
     return [
       {
         id: 'id-reference',
-        label: 'Reference scene',
+        label: suiteLabel,
         title: robotLabel + ' ID comparison',
-        overview: 'In-distribution comparison for the ' + robotPhrase + ' on the shared reference scene.',
+        overview: overview,
         cases: [
           {
-            label: 'Reference',
-            goal: 'Compare available local baselines on the in-distribution reference rollout.',
+            label: caseLabel,
+            goal: goal,
             columns: [
               {
                 kind: 'select',
                 heading: 'Method A',
-                options: METHOD_OPTIONS,
-                defaultValue: 'rcbf'
+                options: idOptions,
+                defaultValue: isSingleIntegrator ? 'orca' : 'rcbf'
               },
               {
                 kind: 'select',
                 heading: 'Method B',
-                options: METHOD_OPTIONS,
-                defaultValue: 'proposed'
+                options: idOptions,
+                defaultValue: isSingleIntegrator ? 'rlcvarbetaradius' : 'proposed'
               }
             ]
           }
@@ -521,11 +596,11 @@
   document.addEventListener('DOMContentLoaded', function () {
     renderApp(
       document.getElementById('simIdRolloutAppSingle'),
-      buildIdSuites('Single Integrator', 'single-integrator robot')
+      buildIdSuites('Single Integrator', 'single-integrator robot', 'single-integrator')
     );
     renderApp(
       document.getElementById('simIdRolloutAppUnicycle'),
-      buildIdSuites('Unicycle', 'unicycle robot')
+      buildIdSuites('Unicycle', 'unicycle robot', 'unicycle')
     );
     wireStaticModePanels(document.getElementById('simIdRolloutModeApp'));
 
