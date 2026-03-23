@@ -75,73 +75,73 @@
       value: 'orca',
       label: 'ORCA',
       src: SINGLE_INTEGRATOR_ID_SEED106_BASE + 'orca_seed_106_succ_0_coll_1.gif',
-      note: 'Seed 106 in-distribution rollout for ORCA on the single-integrator robot.'
+      note: 'In-distribution rollout for ORCA on the single-integrator robot.'
     },
     {
       value: 'cbfqp',
       label: 'CBF-QP',
       src: SINGLE_INTEGRATOR_ID_SEED106_BASE + 'cbfqp_seed_106_succ_0_coll_1.gif',
-      note: 'Seed 106 in-distribution rollout for the CBF-QP controller.'
+      note: 'In-distribution rollout for the CBF-QP controller.'
     },
     {
       value: 'cvarqp',
       label: 'CVaR-BF-QP',
       src: SINGLE_INTEGRATOR_ID_SEED106_BASE + 'cvarqp_seed_106_succ_0_coll_1.gif',
-      note: 'Seed 106 in-distribution rollout for the fixed-risk CVaR-BF-QP baseline.'
+      note: 'In-distribution rollout for the fixed-risk CVaR-BF-QP baseline.'
     },
     {
       value: 'adapcvarqp',
       label: 'Adaptive-CVaR-BF',
       src: SINGLE_INTEGRATOR_ID_SEED106_BASE + 'adapcvarqp_seed_106_succ_0_coll_1.gif',
-      note: 'Seed 106 in-distribution rollout for the adaptive optimization-only baseline.'
+      note: 'In-distribution rollout for the adaptive optimization-only baseline.'
     },
     {
       value: 'rl',
       label: 'Vanilla RL',
       src: SINGLE_INTEGRATOR_ID_SEED106_BASE + 'rl_seed_106_succ_0_coll_1.gif',
-      note: 'Seed 106 in-distribution rollout for the vanilla RL policy.'
+      note: 'In-distribution rollout for the vanilla RL policy.'
     },
     {
       value: 'Crowdnav_const_vel',
       label: 'CrowdNav++ const vel',
       src: SINGLE_INTEGRATOR_ID_SEED106_BASE + 'Crowdnav_const_vel_seed_106_succ_0_coll_1.gif',
-      note: 'Seed 106 in-distribution rollout for the CrowdNav++ const-velocity prior.'
+      note: 'In-distribution rollout for the CrowdNav++ const-velocity prior.'
     },
     {
       value: 'Crowdnav_inferred',
       label: 'CrowdNav++ inferred',
       src: SINGLE_INTEGRATOR_ID_SEED106_BASE + 'Crowdnav_inferred_seed_106_succ_0_coll_1.gif',
-      note: 'Seed 106 in-distribution rollout for the inferred CrowdNav++ prior.'
+      note: 'In-distribution rollout for the inferred CrowdNav++ prior.'
     },
     {
       value: 'rl_sf',
       label: 'Vanilla RL + Safety Filter',
       src: SINGLE_INTEGRATOR_ID_SEED106_BASE + 'rl_sf_seed_106_succ_0_coll_1.gif',
-      note: 'Seed 106 in-distribution rollout for vanilla RL with the safety filter.'
+      note: 'In-distribution rollout for vanilla RL with the safety filter.'
     },
     {
       value: 'Crowdnav_const_vel_sf',
       label: 'CrowdNav++ const vel + Safety Filter',
       src: SINGLE_INTEGRATOR_ID_SEED106_BASE + 'Crowdnav_const_vel_sf_seed_106_succ_0_coll_1.gif',
-      note: 'Seed 106 in-distribution rollout for the CrowdNav++ const-velocity prior with the safety filter.'
+      note: 'In-distribution rollout for the CrowdNav++ const-velocity prior with the safety filter.'
     },
     {
       value: 'Crowdnav_inferred_sf',
       label: 'CrowdNav++ inferred + Safety Filter',
       src: SINGLE_INTEGRATOR_ID_SEED106_BASE + 'Crowdnav_inferred_sf_seed_106_succ_0_coll_1.gif',
-      note: 'Seed 106 in-distribution rollout for the inferred CrowdNav++ prior with the safety filter.'
+      note: 'In-distribution rollout for the inferred CrowdNav++ prior with the safety filter.'
     },
     {
       value: 'rlcbfgamma',
       label: 'BarrierNet',
       src: SINGLE_INTEGRATOR_ID_SEED106_BASE + 'rlcbfgamma_seed_106_succ_0_coll_1.gif',
-      note: 'Seed 106 in-distribution rollout for the BarrierNet baseline.'
+      note: 'In-distribution rollout for the BarrierNet baseline.'
     },
     {
       value: 'rlcvarbetaradius',
       label: 'Proposed adaptive CVaR-BF',
       src: SINGLE_INTEGRATOR_ID_SEED106_BASE + 'rlcvarbetaradius_seed_106_succ_1_coll_0.gif',
-      note: 'Seed 106 in-distribution rollout for the proposed adaptive CVaR-BF method.'
+      note: 'In-distribution rollout for the proposed adaptive CVaR-BF method.'
     }
   ];
 
@@ -150,73 +150,73 @@
       value: 'orca',
       label: 'ORCA',
       src: UNICYCLE_ID_SEED176_BASE + 'orca_seed_176_succ_0_coll_1.gif',
-      note: 'Seed 176 in-distribution rollout for ORCA on the unicycle robot.'
+      note: 'In-distribution rollout for ORCA on the unicycle robot.'
     },
     {
       value: 'cbfqp',
       label: 'CBF-QP',
       src: UNICYCLE_ID_SEED176_BASE + 'cbfqp_seed_176_succ_0_coll_1.gif',
-      note: 'Seed 176 in-distribution rollout for the CBF-QP controller.'
+      note: 'In-distribution rollout for the CBF-QP controller.'
     },
     {
       value: 'cvarqp',
       label: 'CVaR-BF-QP',
       src: UNICYCLE_ID_SEED176_BASE + 'cvarqp_seed_176_succ_0_coll_1.gif',
-      note: 'Seed 176 in-distribution rollout for the fixed-risk CVaR-BF-QP baseline.'
+      note: 'In-distribution rollout for the fixed-risk CVaR-BF-QP baseline.'
     },
     {
       value: 'adapcvarqp',
       label: 'Adaptive-CVaR-BF',
       src: UNICYCLE_ID_SEED176_BASE + 'adapcvarqp_seed_176_succ_0_coll_1.gif',
-      note: 'Seed 176 in-distribution rollout for the adaptive optimization-only baseline.'
+      note: 'In-distribution rollout for the adaptive optimization-only baseline.'
     },
     {
       value: 'rl',
       label: 'Vanilla RL',
       src: UNICYCLE_ID_SEED176_BASE + 'rl_seed_176_succ_0_coll_1.gif',
-      note: 'Seed 176 in-distribution rollout for the vanilla RL policy.'
+      note: 'In-distribution rollout for the vanilla RL policy.'
     },
     {
       value: 'Crowdnav_const_vel',
       label: 'CrowdNav++ const vel',
       src: UNICYCLE_ID_SEED176_BASE + 'Crowdnav_const_vel_seed_176_succ_0_coll_1.gif',
-      note: 'Seed 176 in-distribution rollout for the CrowdNav++ const-velocity prior.'
+      note: 'In-distribution rollout for the CrowdNav++ const-velocity prior.'
     },
     {
       value: 'Crowdnav_inferred',
       label: 'CrowdNav++ inferred',
       src: UNICYCLE_ID_SEED176_BASE + 'Crowdnav_inferred_seed_176_succ_0_coll_1.gif',
-      note: 'Seed 176 in-distribution rollout for the inferred CrowdNav++ prior.'
+      note: 'In-distribution rollout for the inferred CrowdNav++ prior.'
     },
     {
       value: 'rl_sf',
       label: 'Vanilla RL + Safety Filter',
       src: UNICYCLE_ID_SEED176_BASE + 'rl_sf_seed_176_succ_0_coll_1.gif',
-      note: 'Seed 176 in-distribution rollout for vanilla RL with the safety filter.'
+      note: 'In-distribution rollout for vanilla RL with the safety filter.'
     },
     {
       value: 'Crowdnav_const_vel_sf',
       label: 'CrowdNav++ const vel + Safety Filter',
       src: UNICYCLE_ID_SEED176_BASE + 'Crowdnav_const_vel_sf_seed_176_succ_0_coll_1.gif',
-      note: 'Seed 176 in-distribution rollout for the CrowdNav++ const-velocity prior with the safety filter.'
+      note: 'In-distribution rollout for the CrowdNav++ const-velocity prior with the safety filter.'
     },
     {
       value: 'Crowdnav_inferred_sf',
       label: 'CrowdNav++ inferred + Safety Filter',
       src: UNICYCLE_ID_SEED176_BASE + 'Crowdnav_inferred_sf_seed_176_succ_0_coll_1.gif',
-      note: 'Seed 176 in-distribution rollout for the inferred CrowdNav++ prior with the safety filter.'
+      note: 'In-distribution rollout for the inferred CrowdNav++ prior with the safety filter.'
     },
     {
       value: 'rlcbfgamma',
       label: 'BarrierNet',
       src: UNICYCLE_ID_SEED176_BASE + 'rlcbfgamma_seed_176_succ_0_coll_1.gif',
-      note: 'Seed 176 in-distribution rollout for the BarrierNet baseline.'
+      note: 'In-distribution rollout for the BarrierNet baseline.'
     },
     {
       value: 'rlcvarbetaradius',
       label: 'Proposed adaptive CVaR-BF',
       src: UNICYCLE_ID_SEED176_BASE + 'rlcvarbetaradius_seed_176_succ_1_coll_0.gif',
-      note: 'Seed 176 in-distribution rollout for the proposed adaptive CVaR-BF method.'
+      note: 'In-distribution rollout for the proposed adaptive CVaR-BF method.'
     }
   ];
 
@@ -276,49 +276,49 @@
       value: 'orca',
       label: 'ORCA',
       src: SINGLE_INTEGRATOR_OOD_ORCA_SEED226_BASE + 'orca_seed_226_succ_0_coll_1.gif',
-      note: 'Seed 226 rollout from the single-integrator ORCA-human-policy OOD export.'
+      note: 'Rollout from the single-integrator ORCA-human-policy OOD export.'
     },
     {
       value: 'cbfqp',
       label: 'CBF-QP',
       src: SINGLE_INTEGRATOR_OOD_ORCA_SEED226_BASE + 'cbfqp_seed_226_succ_0_coll_1.gif',
-      note: 'Seed 226 rollout from the single-integrator ORCA-human-policy OOD export.'
+      note: 'Rollout from the single-integrator ORCA-human-policy OOD export.'
     },
     {
       value: 'cvarqp',
       label: 'CVaR-BF-QP',
       src: SINGLE_INTEGRATOR_OOD_ORCA_SEED226_BASE + 'cvarqp_seed_226_succ_0_coll_1.gif',
-      note: 'Seed 226 rollout from the single-integrator ORCA-human-policy OOD export.'
+      note: 'Rollout from the single-integrator ORCA-human-policy OOD export.'
     },
     {
       value: 'adapcvarqp',
       label: 'Adaptive-CVaR-BF',
       src: SINGLE_INTEGRATOR_OOD_ORCA_SEED226_BASE + 'adapcvarqp_seed_226_succ_0_coll_1.gif',
-      note: 'Seed 226 rollout from the single-integrator ORCA-human-policy OOD export.'
+      note: 'Rollout from the single-integrator ORCA-human-policy OOD export.'
     },
     {
       value: 'rl',
       label: 'Vanilla RL',
       src: SINGLE_INTEGRATOR_OOD_ORCA_SEED226_BASE + 'rl_seed_226_succ_0_coll_1.gif',
-      note: 'Seed 226 rollout from the single-integrator ORCA-human-policy OOD export.'
+      note: 'Rollout from the single-integrator ORCA-human-policy OOD export.'
     },
     {
       value: 'rl_sf',
       label: 'Vanilla RL + Safety Filter',
       src: SINGLE_INTEGRATOR_OOD_ORCA_SEED226_BASE + 'rl_sf_seed_226_succ_0_coll_1.gif',
-      note: 'Seed 226 rollout from the single-integrator ORCA-human-policy OOD export.'
+      note: 'Rollout from the single-integrator ORCA-human-policy OOD export.'
     },
     {
       value: 'rlcbfgamma',
       label: 'BarrierNet',
       src: SINGLE_INTEGRATOR_OOD_ORCA_SEED226_BASE + 'rlcbfgamma_seed_226_succ_0_coll_1.gif',
-      note: 'Seed 226 rollout from the single-integrator ORCA-human-policy OOD export.'
+      note: 'Rollout from the single-integrator ORCA-human-policy OOD export.'
     },
     {
       value: 'rlcvarbetaradius',
       label: 'Proposed adaptive CVaR-BF',
       src: SINGLE_INTEGRATOR_OOD_ORCA_SEED226_BASE + 'rlcvarbetaradius_seed_226_succ_1_coll_0.gif',
-      note: 'Seed 226 rollout from the single-integrator ORCA-human-policy OOD export.'
+      note: 'Rollout from the single-integrator ORCA-human-policy OOD export.'
     }
   ];
 
@@ -327,49 +327,49 @@
       value: 'orca',
       label: 'ORCA',
       src: SINGLE_INTEGRATOR_OOD_DENSITY_SEED135_BASE + 'orca_seed_135_succ_0_coll_1.gif',
-      note: 'Seed 135 rollout from the single-integrator 30-obstacle OOD export.'
+      note: 'Rollout from the single-integrator 30-obstacle OOD export.'
     },
     {
       value: 'cbfqp',
       label: 'CBF-QP',
       src: SINGLE_INTEGRATOR_OOD_DENSITY_SEED135_BASE + 'cbfqp_seed_135_succ_0_coll_1.gif',
-      note: 'Seed 135 rollout from the single-integrator 30-obstacle OOD export.'
+      note: 'Rollout from the single-integrator 30-obstacle OOD export.'
     },
     {
       value: 'cvarqp',
       label: 'CVaR-BF-QP',
       src: SINGLE_INTEGRATOR_OOD_DENSITY_SEED135_BASE + 'cvarqp_seed_135_succ_0_coll_1.gif',
-      note: 'Seed 135 rollout from the single-integrator 30-obstacle OOD export.'
+      note: 'Rollout from the single-integrator 30-obstacle OOD export.'
     },
     {
       value: 'adapcvarqp',
       label: 'Adaptive-CVaR-BF',
       src: SINGLE_INTEGRATOR_OOD_DENSITY_SEED135_BASE + 'adapcvarqp_seed_135_succ_0_coll_1.gif',
-      note: 'Seed 135 rollout from the single-integrator 30-obstacle OOD export.'
+      note: 'Rollout from the single-integrator 30-obstacle OOD export.'
     },
     {
       value: 'rl',
       label: 'Vanilla RL',
       src: SINGLE_INTEGRATOR_OOD_DENSITY_SEED135_BASE + 'rl_seed_135_succ_0_coll_1.gif',
-      note: 'Seed 135 rollout from the single-integrator 30-obstacle OOD export.'
+      note: 'Rollout from the single-integrator 30-obstacle OOD export.'
     },
     {
       value: 'rl_sf',
       label: 'Vanilla RL + Safety Filter',
       src: SINGLE_INTEGRATOR_OOD_DENSITY_SEED135_BASE + 'rl_sf_seed_135_succ_0_coll_1.gif',
-      note: 'Seed 135 rollout from the single-integrator 30-obstacle OOD export.'
+      note: 'Rollout from the single-integrator 30-obstacle OOD export.'
     },
     {
       value: 'rlcbfgamma',
       label: 'BarrierNet',
       src: SINGLE_INTEGRATOR_OOD_DENSITY_SEED135_BASE + 'rlcbfgamma_seed_135_succ_0_coll_1.gif',
-      note: 'Seed 135 rollout from the single-integrator 30-obstacle OOD export.'
+      note: 'Rollout from the single-integrator 30-obstacle OOD export.'
     },
     {
       value: 'rlcvarbetaradius',
       label: 'Proposed adaptive CVaR-BF',
       src: SINGLE_INTEGRATOR_OOD_DENSITY_SEED135_BASE + 'rlcvarbetaradius_seed_135_succ_1_coll_0.gif',
-      note: 'Seed 135 rollout from the single-integrator 30-obstacle OOD export.'
+      note: 'Rollout from the single-integrator 30-obstacle OOD export.'
     }
   ];
 
@@ -378,49 +378,49 @@
       value: 'orca',
       label: 'ORCA',
       src: UNICYCLE_OOD_ORCA_SEED126_BASE + 'orca_seed_126_succ_0_coll_1.gif',
-      note: 'Seed 126 rollout from the ORCA-human-policy OOD export.'
+      note: 'Rollout from the ORCA-human-policy OOD export.'
     },
     {
       value: 'cbfqp',
       label: 'CBF-QP',
       src: UNICYCLE_OOD_ORCA_SEED126_BASE + 'cbfqp_seed_126_succ_0_coll_1.gif',
-      note: 'Seed 126 rollout from the ORCA-human-policy OOD export.'
+      note: 'Rollout from the ORCA-human-policy OOD export.'
     },
     {
       value: 'cvarqp',
       label: 'CVaR-BF-QP',
       src: UNICYCLE_OOD_ORCA_SEED126_BASE + 'cvarqp_seed_126_succ_0_coll_1.gif',
-      note: 'Seed 126 rollout from the ORCA-human-policy OOD export.'
+      note: 'Rollout from the ORCA-human-policy OOD export.'
     },
     {
       value: 'adapcvarqp',
       label: 'Adaptive-CVaR-BF',
       src: UNICYCLE_OOD_ORCA_SEED126_BASE + 'adapcvarqp_seed_126_succ_0_coll_1.gif',
-      note: 'Seed 126 rollout from the ORCA-human-policy OOD export.'
+      note: 'Rollout from the ORCA-human-policy OOD export.'
     },
     {
       value: 'rl',
       label: 'Vanilla RL',
       src: UNICYCLE_OOD_ORCA_SEED126_BASE + 'rl_seed_126_succ_0_coll_1.gif',
-      note: 'Seed 126 rollout from the ORCA-human-policy OOD export.'
+      note: 'Rollout from the ORCA-human-policy OOD export.'
     },
     {
       value: 'rl_sf',
       label: 'Vanilla RL + Safety Filter',
       src: UNICYCLE_OOD_ORCA_SEED126_BASE + 'rl_sf_seed_126_succ_0_coll_1.gif',
-      note: 'Seed 126 rollout from the ORCA-human-policy OOD export.'
+      note: 'Rollout from the ORCA-human-policy OOD export.'
     },
     {
       value: 'rlcbfgamma',
       label: 'BarrierNet',
       src: UNICYCLE_OOD_ORCA_SEED126_BASE + 'rlcbfgamma_seed_126_succ_0_coll_1.gif',
-      note: 'Seed 126 rollout from the ORCA-human-policy OOD export.'
+      note: 'Rollout from the ORCA-human-policy OOD export.'
     },
     {
       value: 'rlcvarbetaradius',
       label: 'Proposed adaptive CVaR-BF',
       src: UNICYCLE_OOD_ORCA_SEED126_BASE + 'rlcvarbetaradius_seed_126_succ_1_coll_0.gif',
-      note: 'Seed 126 rollout from the ORCA-human-policy OOD export.'
+      note: 'Rollout from the ORCA-human-policy OOD export.'
     }
   ];
 
@@ -480,49 +480,49 @@
       value: 'orca',
       label: 'ORCA',
       src: UNICYCLE_OOD_RADIUS_SEED168_BASE + 'orca_seed_168_succ_0_coll_1.gif',
-      note: 'Seed 168 rollout from the increased-human-radius OOD export.'
+      note: 'Rollout from the increased-human-radius OOD export.'
     },
     {
       value: 'cbfqp',
       label: 'CBF-QP',
       src: UNICYCLE_OOD_RADIUS_SEED168_BASE + 'cbfqp_seed_168_succ_0_coll_1.gif',
-      note: 'Seed 168 rollout from the increased-human-radius OOD export.'
+      note: 'Rollout from the increased-human-radius OOD export.'
     },
     {
       value: 'cvarqp',
       label: 'CVaR-BF-QP',
       src: UNICYCLE_OOD_RADIUS_SEED168_BASE + 'cvarqp_seed_168_succ_0_coll_1.gif',
-      note: 'Seed 168 rollout from the increased-human-radius OOD export.'
+      note: 'Rollout from the increased-human-radius OOD export.'
     },
     {
       value: 'adapcvarqp',
       label: 'Adaptive-CVaR-BF',
       src: UNICYCLE_OOD_RADIUS_SEED168_BASE + 'adapcvarqp_seed_168_succ_0_coll_1.gif',
-      note: 'Seed 168 rollout from the increased-human-radius OOD export.'
+      note: 'Rollout from the increased-human-radius OOD export.'
     },
     {
       value: 'rl',
       label: 'Vanilla RL',
       src: UNICYCLE_OOD_RADIUS_SEED168_BASE + 'rl_seed_168_succ_0_coll_1.gif',
-      note: 'Seed 168 rollout from the increased-human-radius OOD export.'
+      note: 'Rollout from the increased-human-radius OOD export.'
     },
     {
       value: 'rl_sf',
       label: 'Vanilla RL + Safety Filter',
       src: UNICYCLE_OOD_RADIUS_SEED168_BASE + 'rl_sf_seed_168_succ_0_coll_1.gif',
-      note: 'Seed 168 rollout from the increased-human-radius OOD export.'
+      note: 'Rollout from the increased-human-radius OOD export.'
     },
     {
       value: 'rlcbfgamma',
       label: 'BarrierNet',
       src: UNICYCLE_OOD_RADIUS_SEED168_BASE + 'rlcbfgamma_seed_168_succ_0_coll_1.gif',
-      note: 'Seed 168 rollout from the increased-human-radius OOD export.'
+      note: 'Rollout from the increased-human-radius OOD export.'
     },
     {
       value: 'rlcvarbetaradius',
       label: 'Proposed adaptive CVaR-BF',
       src: UNICYCLE_OOD_RADIUS_SEED168_BASE + 'rlcvarbetaradius_seed_168_succ_1_coll_0.gif',
-      note: 'Seed 168 rollout from the increased-human-radius OOD export.'
+      note: 'Rollout from the increased-human-radius OOD export.'
     }
   ];
 
@@ -585,8 +585,8 @@
           {
             label: 'Episode 1',
             goal: isUnicycle
-              ? 'Compare all methods available in the local seed_126 folder for the unicycle ORCA-human-policy OOD export, shown here as Episode 1.'
-              : 'Compare all methods available in the local seed_226 folder for the single-integrator ORCA-human-policy OOD export, shown here as Episode 1.',
+              ? 'Compare all methods available in the local unicycle ORCA-human-policy OOD export, shown here as Episode 1.'
+              : 'Compare all methods available in the local single-integrator ORCA-human-policy OOD export, shown here as Episode 1.',
             columns: [
               {
                 kind: 'select',
@@ -614,7 +614,7 @@
             label: isUnicycle ? 'Case II' : 'Episode 1',
             goal: isUnicycle
               ? 'Compare available local methods on the current higher-density placeholder rollout while the dedicated 30-obstacle export is being prepared.'
-              : 'Compare all methods available in the local seed_135 folder for the single-integrator 30-obstacle OOD export, shown here as Episode 1.',
+              : 'Compare all methods available in the local single-integrator 30-obstacle OOD export, shown here as Episode 1.',
             columns: [
               {
                 kind: 'select',
@@ -641,7 +641,7 @@
           {
             label: isUnicycle ? 'Episode 1' : 'Case III',
             goal: isUnicycle
-              ? 'Compare all methods available in the local seed_168 folder for the unicycle increased-human-radius OOD export, shown here as Episode 1.'
+              ? 'Compare all methods available in the local unicycle increased-human-radius OOD export, shown here as Episode 1.'
               : 'Compare available local methods for the increased-human-radius shift.',
             columns: [
               {
