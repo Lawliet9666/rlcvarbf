@@ -157,7 +157,7 @@
         <h2 class="title is-3">Abstract</h2>
         <div class="content has-text-justified" style="font-size: 1.1rem;">
           <p>
-            In dense dynamic crowds, robots navigate in real time under uncertain obstacle motion. The main challenge is handling dense, uncertain interactions while preserving safety without becoming overly conservative or sacrificing efficiency. To solve this challenge, we propose an end-to-end risk-adaptive framework that integrates reinforcement learning with a differentiable CVaR-BF-QP safety layer under Gaussian-mixture motion uncertainty. The policy jointly outputs nominal control, risk level, and safety margin, while the safety layer enforces probabilistic constraints and remains differentiable for gradient-based training. This joint design lets the robot act cautiously in advance when interactions tighten, and relax conservatism only when needed to keep the QP feasible. We evaluate both single-integrator and unicycle robots in dynamic crowd simulations with up to 20 moving obstacles, and assess generalization under out-of-distribution crowd shifts. Compared with three type of policy: optimization, RL, and RL with optimization policies, the proposed method achieves higher safety and efficiency with more robust performance.
+            Planning through crowded environments under uncertain obstacle motion remains difficult, as stochastic interactions often induce overly conservative behavior or reduced efficiency. To address this challenge, we propose an end-to-end risk-adaptive framework for crowd navigation under obstacle-motion uncertainty modeled by a Gaussian mixture model. The framework combines reinforcement learning with a differentiable quadratic-program safety layer based on Conditional Value-at-Risk barrier functions, jointly learning nominal control, risk level, and safety margin while enforcing explicit probabilistic safety constraints. This design enables context-aware adaptation of conservatism, allowing the controller to respond cautiously in challenging interactions while maintaining efficient progress whenever necessary. We conduct extensive evaluations in challenging dynamic crowd environments across varying obstacle densities and robot models, and further assess generalization under out-of-distribution crowd shifts. 
           </p>
         </div>
       </div>
@@ -289,6 +289,10 @@
             <tr>
               <th>Control Limits</th>
               <td>Single-integrator: ||u|| &lt;= 1.5 m/s. Unicycle: v in [-1.5, 1.5] m/s and w in [-1.5, 1.5] rad/s.</td>
+            </tr>
+            <tr>
+              <th>Policy Action</th>
+              <td>The learned action is a_t = (u_nom,t, &beta;_t, &Delta;R_t) &isin; R<sup>4</sup>. The nominal-control component u_nom,t follows the control bounds above, the adaptive risk level satisfies &beta;_t &isin; (0, 1), and the safety-margin offset satisfies &Delta;R_t &gt;= 0.</td>
             </tr>
             <tr>
               <th>Baselines</th>
