@@ -260,9 +260,6 @@
 <section id="sec-settings" class="section mme-section-muted exp-settings-section">
   <div class="container is-widescreen mme-wide">
     <h2 class="title is-3 has-text-centered">Experimental Settings</h2>
-    <p class="has-text-centered exp-settings-intro">
-      We evaluate the method in a controlled crowd-navigation simulator, using the paper's default 20-obstacle setting together with robot-model, density, and behavior shifts to measure both in-distribution and OOD robustness.
-    </p>
 
     <div class="exp-settings-card">
       <div class="table-container">
@@ -274,10 +271,6 @@
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <th>Environment</th>
-              <td>12 m x 12 m workspace with sampling time dt = 0.1 s.</td>
-            </tr>
             <tr>
               <th>Obstacle Models</th>
               <td>20 dynamic circular obstacles, each with radius 0.4 m, speeds sampled in [0.5, 1.5] m/s, and randomized initial positions and velocities.</td>
@@ -326,13 +319,13 @@
 
     <div class="exp-settings-points">
       <div class="exp-settings-point">
-        <strong>Why this setup matters:</strong> Multimodal uncertainty creates rare but safety-critical collision cases.
+        <strong>Stochastic environment:</strong> multimodal obstacle uncertainty.
       </div>
       <div class="exp-settings-point">
-        <strong>What is controlled:</strong> Oracle uncertainty isolates controller quality from prediction error.
+        <strong>Uncooperative obstacles:</strong> dense dynamic interactions.
       </div>
       <div class="exp-settings-point">
-        <strong>What is reported:</strong> Results cover both ID and OOD settings across robot dynamics, density, and behavior shifts.
+        <strong>Constrained robot models:</strong> single-integrator and unicycle.
       </div>
     </div>
 
