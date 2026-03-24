@@ -664,25 +664,22 @@
   }
 
   function buildIdSuites(robotLabel, robotPhrase, robotId) {
-    var seedLabel = '';
     var idOptions = METHOD_OPTIONS;
 
     if (robotId === 'single-integrator') {
-      seedLabel = '106';
       idOptions = SINGLE_INTEGRATOR_ID_OPTIONS;
     } else if (robotId === 'unicycle') {
-      seedLabel = '176';
       idOptions = UNICYCLE_ID_OPTIONS;
     }
 
-    var hasLocalSeedEpisode = !!seedLabel;
+    var hasLocalSeedEpisode = robotId === 'single-integrator' || robotId === 'unicycle';
     var caseLabel = hasLocalSeedEpisode ? 'Episode 1' : 'Reference';
     var suiteLabel = hasLocalSeedEpisode ? 'Episode 1' : 'Reference scene';
     var overview = hasLocalSeedEpisode
-      ? 'In-distribution comparison for the ' + robotPhrase + ' on seed ' + seedLabel + ', shown here as Episode 1.'
+      ? 'In-distribution comparison for the ' + robotPhrase + ', shown here as Episode 1.'
       : 'In-distribution comparison for the ' + robotPhrase + ' on the shared reference scene.';
     var goal = hasLocalSeedEpisode
-      ? 'Compare all methods available in the local seed_' + seedLabel + ' folder on the same in-distribution ' + robotPhrase + ' rollout.'
+      ? 'Compare all available methods on the same in-distribution ' + robotPhrase + ' rollout.'
       : 'Compare available local baselines on the in-distribution reference rollout.';
 
     return [
