@@ -70,6 +70,7 @@
             <span class="publication-title-line">Learning to Adapt Risk via</span>
             <span class="publication-title-line">Differentiable CVaR Barrier Functions</span>
           </h1>
+          <!--
           <div class="is-size-5 publication-authors">
             <span class="author-block">
               <a href="https://lawliet9666.github.io">Xinyi Wang</a><sup>1</sup>,</span>
@@ -89,6 +90,15 @@
           <div class="is-size-5 publication-authors">
             <span class="author-block"><sup>1</sup>Department of Robotics, University of Michigan,</span>
             <span class="author-block"><sup>2</sup>Toyota North America Research &amp; Development</span>
+          </div>
+          -->
+
+          <div class="is-size-5 publication-authors">
+            <span class="author-block">匿名</span>
+          </div>
+
+          <div class="is-size-5 publication-authors">
+            <span class="author-block">匿名</span>
           </div>
 
           <div class="has-text-centered" style="margin-top: 1.25rem;">
@@ -474,10 +484,16 @@
         </summary>
         <div class="mme-finding-body">
           <p class="mme-key-line">
-            Optimization-based methods generally struggle in highly dynamic environments due to frequent infeasibility of the underlying control problems, resulting in lower success rates.
+            Hybrid RL + optimization methods provide the strongest overall balance of safety and task performance.
           </p>
           <p class="mme-body-copy">
-            In contrast, pure RL methods improve task performance in some cases but still exhibit relatively high collision rates without explicit safety mechanisms, indicating that efficiency alone is insufficient. Hybrid RL with optimization approaches leverage the strengths of both types of methods and achieve more reliable performance overall, highlighting the benefit of combining learning with explicit safety mechanisms.
+            <strong>Optimization:</strong> lower success due to infeasibility in dynamic scenes.
+          </p>
+          <p class="mme-body-copy">
+            <strong>Pure RL:</strong> better efficiency, but higher collision rates.
+          </p>
+          <p class="mme-body-copy">
+            <strong>Hybrid RL + optimization:</strong> more reliable and consistently safer.
           </p>
           <div class="mme-evidence-row">
             <a class="mme-evidence-chip" href="#exp-table-i">Table I</a>
@@ -546,13 +562,16 @@
         </summary>
         <div class="mme-finding-body">
           <p class="mme-key-line">
-            Under OOD shifts, vanilla RL exhibits a noticeable degradation in performance, often performing worse than optimization-based methods such as CVaR-BF-QP. This suggests that optimization-based approaches provide greater robustness to environmental variations compared to purely learned policies.
+            OOD shifts hurt pure RL the most; adaptive safety improves robustness.
           </p>
           <p class="mme-body-copy">
-            At the same time, incorporating optimization-based safety mechanisms into RL, such as RL + Safety Filter, significantly mitigates this degradation, recovering much of the lost performance and bringing it closer to that of optimization-based methods, although a performance gap still remains.
+            <strong>Vanilla RL:</strong> largest performance drop under OOD changes.
           </p>
           <p class="mme-body-copy">
-            To further address this gap, the proposed method consistently outperforms the safety-filtered baseline, achieving higher success rates and returns while maintaining competitive safety. This robustness arises from the end-to-end learning of adaptive risk parameters, which enables the policy to adjust its behavior in response to changing scenarios.
+            <strong>RL + Safety Filter:</strong> recovers much of the lost robustness, but still trails.
+          </p>
+          <p class="mme-body-copy">
+            <strong>Proposed method:</strong> best OOD performance with competitive safety.
           </p>
           <div class="mme-evidence-row">
             <a class="mme-evidence-chip" href="#exp-table-iii">Table III</a>
