@@ -248,9 +248,14 @@
           <p class="risk-adaptation-copy">Defines an adaptive spatial buffer that expands when extra caution is needed.</p>
         </div>
       </div>
-      <p class="risk-adaptation-equation">
-        <strong>Safety layer:</strong> solve <code>min 1/2 ||u - u<sub>nom</sub>||<sup>2</sup></code> subject to <code>CVaR<sub>&beta;</sub>(H<sub>m</sub>(&Delta;R)) &gt;= 0</code>, so unsafe actions are filtered while preserving as much efficiency as possible.
-      </p>
+      <div class="risk-adaptation-layer">
+        <div class="risk-adaptation-card risk-adaptation-card-layer">
+          <div class="risk-adaptation-symbol risk-adaptation-symbol-layer">Differentiable CVaR-BF-QP Layer</div>
+          <p class="risk-adaptation-copy risk-adaptation-layer-copy">
+            Solves <code>min 1/2 ||u - u<sub>nom</sub>||<sup>2</sup></code> subject to <code>CVaR<sub>&beta;</sub>(H<sub>m</sub>(&Delta;R)) &gt;= 0</code>, keeping the executed action close to <strong>u<sub>nom</sub></strong> while filtering unsafe controls.
+          </p>
+        </div>
+      </div>
       <div id="carousel-obstacle-animations" class="carousel results-carousel obstacle-results-carousel">
         <div class="item obstacle-carousel-item has-text-centered">
           <img src="./static/videos/20260322_092244_ckpt_10000000_seeds_n18_176_989_beta_rsafe_u/eval_ep_11_seed_634_succ_1_coll_0.gif"

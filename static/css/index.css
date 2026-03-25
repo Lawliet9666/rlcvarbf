@@ -189,25 +189,42 @@ body {
   line-height: 1.65;
 }
 
-.risk-adaptation-equation {
-  max-width: 1060px;
+.risk-adaptation-layer {
   margin: 0 auto 1.35rem;
-  padding: 0.95rem 1.1rem;
-  border-radius: 16px;
-  border: 1px solid rgba(180, 141, 210, 0.4);
-  background: rgba(180, 141, 210, 0.12);
-  color: #4c5670;
-  font-size: 1rem;
-  line-height: 1.7;
-  text-align: center;
 }
 
-.risk-adaptation-equation strong {
+.risk-adaptation-card-layer {
+  width: 100%;
+  border-color: #dfe5f1;
+  border-radius: 24px;
+  box-shadow: 0 10px 28px rgba(31, 45, 81, 0.08);
+  padding: 1.15rem 1.2rem 1.2rem;
+}
+
+.risk-adaptation-symbol-layer {
+  min-width: 260px;
+  min-height: 88px;
+  padding: 0.85rem 1.25rem;
+  font-size: 1.16rem;
+  line-height: 1.35;
+  text-align: center;
+  color: #6a459b;
+  border: 2px solid rgba(180, 141, 210, 0.78);
+  background: rgba(180, 141, 210, 0.12);
+}
+
+.risk-adaptation-layer-copy {
+  max-width: 980px;
+  margin: 0 auto;
+  font-size: 1rem;
+}
+
+.risk-adaptation-layer-copy strong {
   color: #22336c;
 }
 
-.risk-adaptation-equation code {
-  background: rgba(255, 255, 255, 0.76);
+.risk-adaptation-layer-copy code {
+  background: #f5f7fb;
   color: #2e3550;
   padding: 0.12rem 0.3rem;
   border-radius: 6px;
@@ -808,10 +825,20 @@ table.rq-table-paper .rq-cell-highlight {
     font-size: 2.1rem;
   }
 
-  .risk-adaptation-equation {
+  .risk-adaptation-card-layer {
+    padding: 1rem 0.85rem 1.05rem;
+  }
+
+  .risk-adaptation-symbol-layer {
+    min-width: 100%;
+    min-height: 76px;
+    font-size: 1rem;
+    padding: 0.75rem 0.95rem;
+  }
+
+  .risk-adaptation-layer-copy {
     font-size: 0.94rem;
     line-height: 1.65;
-    padding: 0.85rem 0.85rem;
   }
 
   .tldr-wrap {
