@@ -523,11 +523,39 @@ table.rq-table-paper .rq-cell-highlight {
   margin: 0;
 }
 
+.rq-figure-frame {
+  position: relative;
+  display: block;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
 .rq-figure-image {
   display: block;
   width: 100%;
   height: auto;
   border-radius: 4px;
+}
+
+/* Bottom-left label, aligned with evidence chips in Q blocks */
+.rq-figure-caption {
+  position: absolute;
+  left: 0.75rem;
+  bottom: 0.75rem;
+  margin: 0;
+  max-width: calc(100% - 1.5rem);
+  padding: 0.4rem 0.8rem;
+  border-radius: 999px;
+  border: 1px solid #c9d8f5;
+  background: rgba(237, 244, 255, 0.94);
+  backdrop-filter: blur(6px);
+  color: #245cb4;
+  font-size: 0.92rem;
+  font-weight: 600;
+  line-height: 1.25;
+  text-align: left;
+  box-shadow: 0 1px 2px rgba(36, 92, 180, 0.08);
+  pointer-events: none;
 }
 
 .exp-settings-section {
