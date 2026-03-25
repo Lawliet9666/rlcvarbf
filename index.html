@@ -47,7 +47,7 @@
 <!-- Sticky section nav (RoboMME-style); appears after scrolling past the abstract -->
 <div class="section-nav" id="sectionNav">
   <div class="section-nav-inner">
-    <a class="section-nav-link" href="#sec-animations" data-target="sec-animations">Risk Adaptation Demos</a>
+    <a class="section-nav-link" href="#sec-animations" data-target="sec-animations">How Does Risk Adaptation Work?</a>
     <a class="section-nav-link" href="#sec-settings" data-target="sec-settings">Settings</a>
     <a class="section-nav-link" href="#sec-id-demos" data-target="sec-id-demos">In-Distribution Demos</a>
     <a class="section-nav-link" href="#sec-ood-demos" data-target="sec-ood-demos">Out-of-Distribution Demos</a>
@@ -162,16 +162,12 @@
 </section> -->
 
 <section id="sec-abstract" class="section" style="padding-top: 0;">
-  <div class="container is-max-desktop">
-    <div class="columns is-centered has-text-centered">
-      <div class="column is-four-fifths">
-        <h2 class="title is-3">Abstract</h2>
-        <div class="content has-text-justified" style="font-size: 1.1rem;">
-          <p>
-            Planning through crowded environments under uncertain obstacle motion remains difficult, as stochastic interactions often induce overly conservative behavior or reduced efficiency. To address this challenge, we propose an end-to-end risk-adaptive framework for crowd navigation under obstacle-motion uncertainty modeled by a Gaussian mixture model. The framework combines reinforcement learning with a differentiable quadratic-program safety layer based on Conditional Value-at-Risk barrier functions, jointly learning nominal control, risk level, and safety margin while enforcing explicit probabilistic safety constraints. This design enables context-aware adaptation of conservatism, allowing the controller to respond cautiously in challenging interactions while maintaining efficient progress whenever necessary. We conduct extensive evaluations in challenging dynamic crowd environments across varying obstacle densities and robot models, and further assess generalization under out-of-distribution crowd shifts. 
-          </p>
-        </div>
-      </div>
+  <div class="container is-widescreen mme-wide">
+    <div class="abstract-summary-card">
+      <h2 class="title is-2 has-text-centered abstract-summary-title">TL;DR</h2>
+      <p class="abstract-summary-copy">
+        <strong>Learning to adapt risk online</strong> is critical for navigation in uncertain crowds. We present an <strong>end-to-end risk-adaptive framework</strong> that combines <strong>reinforcement learning with a differentiable CVaR barrier-function safety layer</strong>, jointly learning nominal control, risk level, and safety margin while enforcing <strong>probabilistic safety guarantees</strong>. This lets the robot stay cautious in difficult interactions without becoming unnecessarily conservative, and it performs strongly across varying obstacle densities, robot models, and <strong>OOD crowd shifts</strong>.
+      </p>
     </div>
   </div>
 </section>
@@ -231,7 +227,7 @@
 <section id="sec-animations" class="hero is-light is-small obstacle-carousel-section">
   <div class="hero-body">
     <div class="container is-widescreen mme-wide">
-      <h2 class="title is-3 has-text-centered">Risk Adaptation Demos</h2>
+      <h2 class="title is-3 has-text-centered">How Does Risk Adaptation Work?</h2>
       <div id="carousel-obstacle-animations" class="carousel results-carousel obstacle-results-carousel">
         <div class="item obstacle-carousel-item has-text-centered">
           <img src="./static/videos/20260322_092244_ckpt_10000000_seeds_n18_176_989_beta_rsafe_u/eval_ep_11_seed_634_succ_1_coll_0.gif"
@@ -319,10 +315,10 @@
                 </table>
               </td>
             </tr>
-            <tr>
+            <!-- <tr>
               <th>Evaluation Protocol</th>
               <td>Main comparisons use 20 obstacles; Table I averages results over 10 random seeds with 50 evaluation episodes per seed. The OOD study evaluates ORCA-based human policy, 30-obstacle density, and increased human radius.</td>
-            </tr>
+            </tr> -->
           </tbody>
         </table>
       </div>
