@@ -90,19 +90,38 @@
     { value: 'rlcvarbetaradius', label: 'Proposed', noteKey: 'proposed' }
   ];
 
-  var ID_NOTE_SNIPPETS = {
-    orca: 'ORCA',
-    cbfqp: 'the CBF-QP controller',
-    cvarqp: 'the fixed-risk CVaR-BF-QP baseline',
-    adapcvarqp: 'the adaptive optimization-only baseline',
-    rl: 'the vanilla RL policy',
-    crowdnav_cv: 'the CrowdNav++ const-velocity prior',
-    crowdnav_inf: 'the inferred CrowdNav++ prior',
-    rl_sf: 'vanilla RL with the safety filter',
-    crowdnav_cv_sf: 'the CrowdNav++ const-velocity prior with the safety filter',
-    crowdnav_inf_sf: 'the inferred CrowdNav++ prior with the safety filter',
-    barriernet: 'the BarrierNet baseline',
-    proposed: 'the proposed method'
+  /**
+   * In-distribution card notes (match pre-episode-refactor wording; only ORCA includes the robot phrase).
+   */
+  var ID_ROLLOUT_NOTES = {
+    'single-integrator': {
+      orca: 'In-distribution rollout for ORCA on the single-integrator robot.',
+      cbfqp: 'In-distribution rollout for the CBF-QP controller.',
+      cvarqp: 'In-distribution rollout for the fixed-risk CVaR-BF-QP baseline.',
+      adapcvarqp: 'In-distribution rollout for the adaptive optimization-only baseline.',
+      rl: 'In-distribution rollout for the vanilla RL policy.',
+      crowdnav_cv: 'In-distribution rollout for the CrowdNav++ const-velocity prior.',
+      crowdnav_inf: 'In-distribution rollout for the inferred CrowdNav++ prior.',
+      rl_sf: 'In-distribution rollout for vanilla RL with the safety filter.',
+      crowdnav_cv_sf: 'In-distribution rollout for the CrowdNav++ const-velocity prior with the safety filter.',
+      crowdnav_inf_sf: 'In-distribution rollout for the inferred CrowdNav++ prior with the safety filter.',
+      barriernet: 'In-distribution rollout for the BarrierNet baseline.',
+      proposed: 'In-distribution rollout for the proposed method.'
+    },
+    unicycle: {
+      orca: 'In-distribution rollout for ORCA on the unicycle robot.',
+      cbfqp: 'In-distribution rollout for the CBF-QP controller.',
+      cvarqp: 'In-distribution rollout for the fixed-risk CVaR-BF-QP baseline.',
+      adapcvarqp: 'In-distribution rollout for the adaptive optimization-only baseline.',
+      rl: 'In-distribution rollout for the vanilla RL policy.',
+      crowdnav_cv: 'In-distribution rollout for the CrowdNav++ const-velocity prior.',
+      crowdnav_inf: 'In-distribution rollout for the inferred CrowdNav++ prior.',
+      rl_sf: 'In-distribution rollout for vanilla RL with the safety filter.',
+      crowdnav_cv_sf: 'In-distribution rollout for the CrowdNav++ const-velocity prior with the safety filter.',
+      crowdnav_inf_sf: 'In-distribution rollout for the inferred CrowdNav++ prior with the safety filter.',
+      barriernet: 'In-distribution rollout for the BarrierNet baseline.',
+      proposed: 'In-distribution rollout for the proposed method.'
+    }
   };
 
   function idEvalSeedBase(robotId, seed) {
@@ -122,14 +141,13 @@
 
   function buildInDistributionIdOptions(robotId, seed) {
     var base = idEvalSeedBase(robotId, seed);
-    var phrase = robotId === 'unicycle' ? 'unicycle robot' : 'single-integrator robot';
+    var notesForRobot = ID_ROLLOUT_NOTES[robotId] || ID_ROLLOUT_NOTES.unicycle;
     return ID_METHOD_DEFS.map(function (def) {
-      var snippet = ID_NOTE_SNIPPETS[def.noteKey] || def.label;
       return {
         value: def.value,
         label: def.label,
         src: base + idGifFilename(def.value, seed, robotId),
-        note: 'In-distribution rollout for ' + snippet + ' (' + phrase + ', seed ' + seed + ').'
+        note: notesForRobot[def.noteKey] || ('In-distribution rollout for ' + def.label + '.')
       };
     });
   }
