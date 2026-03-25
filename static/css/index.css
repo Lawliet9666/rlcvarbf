@@ -126,6 +126,93 @@ body {
   padding-bottom: 2.5rem;
 }
 
+.obstacle-carousel-intro {
+  max-width: 980px;
+  margin: 0 auto 1.25rem;
+  font-size: 1.08rem;
+  line-height: 1.75;
+  color: #56627c;
+}
+
+.risk-adaptation-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1rem;
+  margin: 0 auto 1rem;
+}
+
+.risk-adaptation-card {
+  background: #fff;
+  border: 1px solid #d9e3f2;
+  border-radius: 18px;
+  box-shadow: 0 10px 24px rgba(32, 55, 105, 0.08);
+  padding: 1rem 1rem 1.05rem;
+  text-align: center;
+}
+
+.risk-adaptation-symbol {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 120px;
+  min-height: 82px;
+  padding: 0.6rem 1rem;
+  margin-bottom: 0.85rem;
+  border-radius: 16px;
+  font-size: 2.6rem;
+  font-weight: 700;
+  line-height: 1;
+  background: #f8fafc;
+}
+
+.risk-adaptation-symbol-policy {
+  border: 2px solid rgba(132, 198, 99, 0.75);
+  background: rgba(132, 198, 99, 0.14);
+}
+
+.risk-adaptation-symbol-risk,
+.risk-adaptation-symbol-margin {
+  border: 2px solid rgba(244, 162, 97, 0.75);
+  background: rgba(244, 162, 97, 0.12);
+}
+
+.risk-adaptation-heading {
+  margin: 0 0 0.35rem;
+  font-size: 1.12rem;
+  font-weight: 700;
+  color: #22336c;
+}
+
+.risk-adaptation-copy {
+  margin: 0;
+  color: #556178;
+  line-height: 1.65;
+}
+
+.risk-adaptation-equation {
+  max-width: 1060px;
+  margin: 0 auto 1.35rem;
+  padding: 0.95rem 1.1rem;
+  border-radius: 16px;
+  border: 1px solid rgba(180, 141, 210, 0.4);
+  background: rgba(180, 141, 210, 0.12);
+  color: #4c5670;
+  font-size: 1rem;
+  line-height: 1.7;
+  text-align: center;
+}
+
+.risk-adaptation-equation strong {
+  color: #22336c;
+}
+
+.risk-adaptation-equation code {
+  background: rgba(255, 255, 255, 0.76);
+  color: #2e3550;
+  padding: 0.12rem 0.3rem;
+  border-radius: 6px;
+}
+
 .obstacle-results-carousel .item {
   background: #fff;
   border-color: #cfd5e3;
@@ -714,6 +801,32 @@ table.rq-table-paper .rq-cell-highlight {
 }
 
 @media screen and (max-width: 768px) {
+  .obstacle-carousel-intro {
+    font-size: 0.98rem;
+    line-height: 1.68;
+  }
+
+  .risk-adaptation-grid {
+    grid-template-columns: 1fr;
+    gap: 0.85rem;
+  }
+
+  .risk-adaptation-card {
+    padding: 0.9rem 0.85rem 0.95rem;
+  }
+
+  .risk-adaptation-symbol {
+    min-width: 104px;
+    min-height: 72px;
+    font-size: 2.1rem;
+  }
+
+  .risk-adaptation-equation {
+    font-size: 0.94rem;
+    line-height: 1.65;
+    padding: 0.85rem 0.85rem;
+  }
+
   .abstract-summary-card {
     padding: 1.35rem 1.2rem 1.3rem 1.45rem;
     border-radius: 16px;

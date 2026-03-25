@@ -228,6 +228,29 @@
   <div class="hero-body">
     <div class="container is-widescreen mme-wide">
       <h2 class="title is-3 has-text-centered">How Does Risk Adaptation Work?</h2>
+      <p class="has-text-centered obstacle-carousel-intro">
+        Our framework first proposes a nominal action <strong>u<sub>nom</sub></strong> to maximize task efficiency, then adapts the <strong>risk level &beta;</strong> and <strong>safety margin &Delta;R</strong> to respond to tail-risk interactions before the safety layer enforces probabilistic collision avoidance.
+      </p>
+      <div class="risk-adaptation-grid">
+        <div class="risk-adaptation-card">
+          <div class="risk-adaptation-symbol risk-adaptation-symbol-policy">u<sub>nom</sub></div>
+          <h3 class="risk-adaptation-heading">Policy</h3>
+          <p class="risk-adaptation-copy">Drives maximum efficiency by proposing the task-oriented nominal action.</p>
+        </div>
+        <div class="risk-adaptation-card">
+          <div class="risk-adaptation-symbol risk-adaptation-symbol-risk">&beta;</div>
+          <h3 class="risk-adaptation-heading">Risk Level</h3>
+          <p class="risk-adaptation-copy">Adjusts sensitivity to high-risk interactions when the scene becomes uncertain.</p>
+        </div>
+        <div class="risk-adaptation-card">
+          <div class="risk-adaptation-symbol risk-adaptation-symbol-margin">&Delta;R</div>
+          <h3 class="risk-adaptation-heading">Safety Margin</h3>
+          <p class="risk-adaptation-copy">Defines an adaptive spatial buffer that expands when extra caution is needed.</p>
+        </div>
+      </div>
+      <p class="risk-adaptation-equation">
+        <strong>Safety layer:</strong> solve <code>min 1/2 ||u - u<sub>nom</sub>||<sup>2</sup></code> subject to <code>CVaR<sub>&beta;</sub>(H<sub>m</sub>(&Delta;R)) &gt;= 0</code>, so unsafe actions are filtered while preserving as much efficiency as possible.
+      </p>
       <div id="carousel-obstacle-animations" class="carousel results-carousel obstacle-results-carousel">
         <div class="item obstacle-carousel-item has-text-centered">
           <img src="./static/videos/20260322_092244_ckpt_10000000_seeds_n18_176_989_beta_rsafe_u/eval_ep_11_seed_634_succ_1_coll_0.gif"
