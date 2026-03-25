@@ -304,11 +304,11 @@
           </thead>
           <tbody>
             <tr>
-              <th>Obstacle &amp; Uncertainty Models</th>
+              <th>Obstacle Uncertainty Models</th>
               <td>
                 <div class="exp-setting-stack">
                   <div class="exp-setting-item">
-                    <strong>Obstacle model:</strong> 20 dynamic circular obstacles, each with radius 0.4 m, speeds sampled in [0.5, 1.5] m/s, and randomized initial positions and velocities.
+                    <strong class="exp-setting-label-muted">Obstacle model:</strong> 20 dynamic circular obstacles, each with radius 0.4 m, speeds sampled in [0.5, 1.5] m/s, and randomized initial positions and velocities.
                   </div>
                   <div class="exp-setting-item">
                     <strong>Uncertainty model:</strong> obstacle action uncertainty is modeled as a 3-mode GMM with one forward mode and two lateral modes. The weights [0.6, 0.2, 0.2] indicate how likely each mode is, while the standard deviations [0.1, 0.2, 0.2] indicate how spread out each mode is.
@@ -320,7 +320,6 @@
               <th>Control Limits</th>
               <td>
                 <div class="exp-setting-stack">
-                  <div class="exp-setting-item">We consider two robot models: single-integrator and unicycle.</div>
                   <div class="exp-setting-item"><strong>Single-integrator:</strong> ||u|| &lt;= 1.5 m/s.</div>
                   <div class="exp-setting-item"><strong>Unicycle:</strong> v &isin; [-1.5, 1.5] m/s and &omega; &isin; [-1.5, 1.5] rad/s.</div>
                 </div>

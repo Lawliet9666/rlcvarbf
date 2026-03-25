@@ -590,6 +590,10 @@ table.rq-table-paper .rq-cell-highlight {
   color: #22336c;
 }
 
+.exp-setting-label-muted {
+  color: #444;
+}
+
 .exp-baseline-table {
   width: 100%;
   margin: 0;
