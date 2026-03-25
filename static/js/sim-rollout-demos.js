@@ -6,7 +6,12 @@
   var COMPARE_BASE = './static/videos/compare/';
   var SCENE_BASE = './static/videos/';
   var SINGLE_INTEGRATOR_ID_SEED106_BASE = './static/videos/single_integrator_obs_20/eval_seeds_100_1000_n901/seed_106/';
+  /** Default ID reference for OOD placeholders that still point at a unicycle in-distribution seed. */
   var UNICYCLE_ID_SEED176_BASE = './static/videos/unicycle_obs_20/eval_seeds_100_1000_n901/seed_176/';
+  /** First five eval seeds under unicycle_obs_20/eval_seeds_100_1000_n901 (Episode 1–5). */
+  var UNICYCLE_ID_EPISODE_SEEDS = [176, 203, 315, 472, 504];
+  /** Matches unicycle episode seed numbers; SI folders are populated (some may be placeholders). */
+  var SINGLE_INTEGRATOR_ID_EPISODE_SEEDS = [106, 203, 315, 472, 504];
   var SINGLE_INTEGRATOR_OOD_ORCA_SEED226_BASE = './static/videos/si_human_orca/single_integrator_obs_20/eval_seeds_100_1000_n901/seed_226/';
   var SINGLE_INTEGRATOR_OOD_DENSITY_SEED135_BASE = './static/videos/si_obs_30/single_integrator_obs_30/eval_seeds_100_1000_n901/seed_135/';
   var UNICYCLE_OOD_ORCA_SEED126_BASE = './static/videos/uni_human_orca/unicycle_obs_20/eval_seeds_100_1000_n901/seed_126/';
@@ -70,155 +75,64 @@
     findMethod('proposed')
   ];
 
-  var SINGLE_INTEGRATOR_ID_OPTIONS = [
-    {
-      value: 'orca',
-      label: 'ORCA',
-      src: SINGLE_INTEGRATOR_ID_SEED106_BASE + 'orca_seed_106_succ_0_coll_1.gif',
-      note: 'In-distribution rollout for ORCA on the single-integrator robot.'
-    },
-    {
-      value: 'cbfqp',
-      label: 'CBF-QP',
-      src: SINGLE_INTEGRATOR_ID_SEED106_BASE + 'cbfqp_seed_106_succ_0_coll_1.gif',
-      note: 'In-distribution rollout for the CBF-QP controller.'
-    },
-    {
-      value: 'cvarqp',
-      label: 'CVaR-BF-QP',
-      src: SINGLE_INTEGRATOR_ID_SEED106_BASE + 'cvarqp_seed_106_succ_0_coll_1.gif',
-      note: 'In-distribution rollout for the fixed-risk CVaR-BF-QP baseline.'
-    },
-    {
-      value: 'adapcvarqp',
-      label: 'Adaptive-CVaR-BF',
-      src: SINGLE_INTEGRATOR_ID_SEED106_BASE + 'adapcvarqp_seed_106_succ_0_coll_1.gif',
-      note: 'In-distribution rollout for the adaptive optimization-only baseline.'
-    },
-    {
-      value: 'rl',
-      label: 'Vanilla RL',
-      src: SINGLE_INTEGRATOR_ID_SEED106_BASE + 'rl_seed_106_succ_0_coll_1.gif',
-      note: 'In-distribution rollout for the vanilla RL policy.'
-    },
-    {
-      value: 'Crowdnav_const_vel',
-      label: 'CrowdNav++ const vel',
-      src: SINGLE_INTEGRATOR_ID_SEED106_BASE + 'Crowdnav_const_vel_seed_106_succ_0_coll_1.gif',
-      note: 'In-distribution rollout for the CrowdNav++ const-velocity prior.'
-    },
-    {
-      value: 'Crowdnav_inferred',
-      label: 'CrowdNav++ inferred',
-      src: SINGLE_INTEGRATOR_ID_SEED106_BASE + 'Crowdnav_inferred_seed_106_succ_0_coll_1.gif',
-      note: 'In-distribution rollout for the inferred CrowdNav++ prior.'
-    },
-    {
-      value: 'rl_sf',
-      label: 'Vanilla RL + Safety Filter',
-      src: SINGLE_INTEGRATOR_ID_SEED106_BASE + 'rl_sf_seed_106_succ_0_coll_1.gif',
-      note: 'In-distribution rollout for vanilla RL with the safety filter.'
-    },
-    {
-      value: 'Crowdnav_const_vel_sf',
-      label: 'CrowdNav++ const vel + Safety Filter',
-      src: SINGLE_INTEGRATOR_ID_SEED106_BASE + 'Crowdnav_const_vel_sf_seed_106_succ_0_coll_1.gif',
-      note: 'In-distribution rollout for the CrowdNav++ const-velocity prior with the safety filter.'
-    },
-    {
-      value: 'Crowdnav_inferred_sf',
-      label: 'CrowdNav++ inferred + Safety Filter',
-      src: SINGLE_INTEGRATOR_ID_SEED106_BASE + 'Crowdnav_inferred_sf_seed_106_succ_0_coll_1.gif',
-      note: 'In-distribution rollout for the inferred CrowdNav++ prior with the safety filter.'
-    },
-    {
-      value: 'rlcbfgamma',
-      label: 'BarrierNet',
-      src: SINGLE_INTEGRATOR_ID_SEED106_BASE + 'rlcbfgamma_seed_106_succ_0_coll_1.gif',
-      note: 'In-distribution rollout for the BarrierNet baseline.'
-    },
-    {
-      value: 'rlcvarbetaradius',
-      label: 'Proposed',
-      src: SINGLE_INTEGRATOR_ID_SEED106_BASE + 'rlcvarbetaradius_seed_106_succ_1_coll_0.gif',
-      note: 'In-distribution rollout for the proposed method.'
-    }
+  var ID_METHOD_DEFS = [
+    { value: 'orca', label: 'ORCA', noteKey: 'orca' },
+    { value: 'cbfqp', label: 'CBF-QP', noteKey: 'cbfqp' },
+    { value: 'cvarqp', label: 'CVaR-BF-QP', noteKey: 'cvarqp' },
+    { value: 'adapcvarqp', label: 'Adaptive-CVaR-BF', noteKey: 'adapcvarqp' },
+    { value: 'rl', label: 'Vanilla RL', noteKey: 'rl' },
+    { value: 'Crowdnav_const_vel', label: 'CrowdNav++ const vel', noteKey: 'crowdnav_cv' },
+    { value: 'Crowdnav_inferred', label: 'CrowdNav++ inferred', noteKey: 'crowdnav_inf' },
+    { value: 'rl_sf', label: 'Vanilla RL + Safety Filter', noteKey: 'rl_sf' },
+    { value: 'Crowdnav_const_vel_sf', label: 'CrowdNav++ const vel + Safety Filter', noteKey: 'crowdnav_cv_sf' },
+    { value: 'Crowdnav_inferred_sf', label: 'CrowdNav++ inferred + Safety Filter', noteKey: 'crowdnav_inf_sf' },
+    { value: 'rlcbfgamma', label: 'BarrierNet', noteKey: 'barriernet' },
+    { value: 'rlcvarbetaradius', label: 'Proposed', noteKey: 'proposed' }
   ];
 
-  var UNICYCLE_ID_OPTIONS = [
-    {
-      value: 'orca',
-      label: 'ORCA',
-      src: UNICYCLE_ID_SEED176_BASE + 'orca_seed_176_succ_0_coll_1.gif',
-      note: 'In-distribution rollout for ORCA on the unicycle robot.'
-    },
-    {
-      value: 'cbfqp',
-      label: 'CBF-QP',
-      src: UNICYCLE_ID_SEED176_BASE + 'cbfqp_seed_176_succ_0_coll_1.gif',
-      note: 'In-distribution rollout for the CBF-QP controller.'
-    },
-    {
-      value: 'cvarqp',
-      label: 'CVaR-BF-QP',
-      src: UNICYCLE_ID_SEED176_BASE + 'cvarqp_seed_176_succ_0_coll_1.gif',
-      note: 'In-distribution rollout for the fixed-risk CVaR-BF-QP baseline.'
-    },
-    {
-      value: 'adapcvarqp',
-      label: 'Adaptive-CVaR-BF',
-      src: UNICYCLE_ID_SEED176_BASE + 'adapcvarqp_seed_176_succ_0_coll_1.gif',
-      note: 'In-distribution rollout for the adaptive optimization-only baseline.'
-    },
-    {
-      value: 'rl',
-      label: 'Vanilla RL',
-      src: UNICYCLE_ID_SEED176_BASE + 'rl_seed_176_succ_0_coll_1.gif',
-      note: 'In-distribution rollout for the vanilla RL policy.'
-    },
-    {
-      value: 'Crowdnav_const_vel',
-      label: 'CrowdNav++ const vel',
-      src: UNICYCLE_ID_SEED176_BASE + 'Crowdnav_const_vel_seed_176_succ_0_coll_1.gif',
-      note: 'In-distribution rollout for the CrowdNav++ const-velocity prior.'
-    },
-    {
-      value: 'Crowdnav_inferred',
-      label: 'CrowdNav++ inferred',
-      src: UNICYCLE_ID_SEED176_BASE + 'Crowdnav_inferred_seed_176_succ_0_coll_1.gif',
-      note: 'In-distribution rollout for the inferred CrowdNav++ prior.'
-    },
-    {
-      value: 'rl_sf',
-      label: 'Vanilla RL + Safety Filter',
-      src: UNICYCLE_ID_SEED176_BASE + 'rl_sf_seed_176_succ_0_coll_1.gif',
-      note: 'In-distribution rollout for vanilla RL with the safety filter.'
-    },
-    {
-      value: 'Crowdnav_const_vel_sf',
-      label: 'CrowdNav++ const vel + Safety Filter',
-      src: UNICYCLE_ID_SEED176_BASE + 'Crowdnav_const_vel_sf_seed_176_succ_0_coll_1.gif',
-      note: 'In-distribution rollout for the CrowdNav++ const-velocity prior with the safety filter.'
-    },
-    {
-      value: 'Crowdnav_inferred_sf',
-      label: 'CrowdNav++ inferred + Safety Filter',
-      src: UNICYCLE_ID_SEED176_BASE + 'Crowdnav_inferred_sf_seed_176_succ_0_coll_1.gif',
-      note: 'In-distribution rollout for the inferred CrowdNav++ prior with the safety filter.'
-    },
-    {
-      value: 'rlcbfgamma',
-      label: 'BarrierNet',
-      src: UNICYCLE_ID_SEED176_BASE + 'rlcbfgamma_seed_176_succ_0_coll_1.gif',
-      note: 'In-distribution rollout for the BarrierNet baseline.'
-    },
-    {
-      value: 'rlcvarbetaradius',
-      label: 'Proposed',
-      src: UNICYCLE_ID_SEED176_BASE + 'rlcvarbetaradius_seed_176_succ_1_coll_0.gif',
-      note: 'In-distribution rollout for the proposed method.'
+  var ID_NOTE_SNIPPETS = {
+    orca: 'ORCA',
+    cbfqp: 'the CBF-QP controller',
+    cvarqp: 'the fixed-risk CVaR-BF-QP baseline',
+    adapcvarqp: 'the adaptive optimization-only baseline',
+    rl: 'the vanilla RL policy',
+    crowdnav_cv: 'the CrowdNav++ const-velocity prior',
+    crowdnav_inf: 'the inferred CrowdNav++ prior',
+    rl_sf: 'vanilla RL with the safety filter',
+    crowdnav_cv_sf: 'the CrowdNav++ const-velocity prior with the safety filter',
+    crowdnav_inf_sf: 'the inferred CrowdNav++ prior with the safety filter',
+    barriernet: 'the BarrierNet baseline',
+    proposed: 'the proposed method'
+  };
+
+  function idEvalSeedBase(robotId, seed) {
+    var folder = robotId === 'unicycle' ? 'unicycle_obs_20' : 'single_integrator_obs_20';
+    return './static/videos/' + folder + '/eval_seeds_100_1000_n901/seed_' + seed + '/';
+  }
+
+  function idGifFilename(methodValue, seed, robotId) {
+    if (methodValue === 'rlcvarbetaradius') {
+      return 'rlcvarbetaradius_seed_' + seed + '_succ_1_coll_0.gif';
     }
-  ];
+    if (methodValue === 'rl_sf' && seed === 203 && robotId === 'unicycle') {
+      return 'rl_sf_seed_203_succ_1_coll_0.gif';
+    }
+    return methodValue + '_seed_' + seed + '_succ_0_coll_1.gif';
+  }
+
+  function buildInDistributionIdOptions(robotId, seed) {
+    var base = idEvalSeedBase(robotId, seed);
+    var phrase = robotId === 'unicycle' ? 'unicycle robot' : 'single-integrator robot';
+    return ID_METHOD_DEFS.map(function (def) {
+      var snippet = ID_NOTE_SNIPPETS[def.noteKey] || def.label;
+      return {
+        value: def.value,
+        label: def.label,
+        src: base + idGifFilename(def.value, seed, robotId),
+        note: 'In-distribution rollout for ' + snippet + ' (' + phrase + ', seed ' + seed + ').'
+      };
+    });
+  }
 
   var SINGLE_INTEGRATOR_OOD_PLACEHOLDER_OPTIONS = [
     {
@@ -664,50 +578,68 @@
   }
 
   function buildIdSuites(robotLabel, robotPhrase, robotId) {
-    var idOptions = METHOD_OPTIONS;
-
-    if (robotId === 'single-integrator') {
-      idOptions = SINGLE_INTEGRATOR_ID_OPTIONS;
-    } else if (robotId === 'unicycle') {
-      idOptions = UNICYCLE_ID_OPTIONS;
+    var hasLocalSeedEpisode = robotId === 'single-integrator' || robotId === 'unicycle';
+    if (!hasLocalSeedEpisode) {
+      return [
+        {
+          id: 'id-reference',
+          label: 'Reference scene',
+          title: robotLabel + ' ID comparison',
+          overview: 'In-distribution ' + robotPhrase + ', reference scene.',
+          cases: [
+            {
+              label: 'Reference',
+              goal: 'Compare baselines on the reference ID rollout.',
+              columns: [
+                {
+                  kind: 'select',
+                  heading: 'Method A',
+                  options: METHOD_OPTIONS,
+                  defaultValue: 'rcbf'
+                },
+                {
+                  kind: 'select',
+                  heading: 'Method B',
+                  options: METHOD_OPTIONS,
+                  defaultValue: 'proposed'
+                }
+              ]
+            }
+          ]
+        }
+      ];
     }
 
-    var hasLocalSeedEpisode = robotId === 'single-integrator' || robotId === 'unicycle';
-    var caseLabel = hasLocalSeedEpisode ? 'Episode 1' : 'Reference';
-    var suiteLabel = hasLocalSeedEpisode ? 'Episode 1' : 'Reference scene';
-    var overview = hasLocalSeedEpisode
-      ? 'In-distribution ' + robotPhrase + ', Episode 1.'
-      : 'In-distribution ' + robotPhrase + ', reference scene.';
-    var goal = hasLocalSeedEpisode
-      ? 'Same ID rollout; compare all methods.'
-      : 'Compare baselines on the reference ID rollout.';
+    var seeds = robotId === 'unicycle' ? UNICYCLE_ID_EPISODE_SEEDS : SINGLE_INTEGRATOR_ID_EPISODE_SEEDS;
+    var cases = seeds.map(function (seed, index) {
+      var options = buildInDistributionIdOptions(robotId, seed);
+      return {
+        label: 'Episode ' + (index + 1),
+        goal: 'Same ID rollout; compare all methods (seed ' + seed + ').',
+        columns: [
+          {
+            kind: 'select',
+            heading: 'Method A',
+            options: options,
+            defaultValue: 'orca'
+          },
+          {
+            kind: 'select',
+            heading: 'Method B',
+            options: options,
+            defaultValue: 'rlcvarbetaradius'
+          }
+        ]
+      };
+    });
 
     return [
       {
         id: 'id-reference',
-        label: suiteLabel,
+        label: 'In-distribution',
         title: robotLabel + ' ID comparison',
-        overview: overview,
-        cases: [
-          {
-            label: caseLabel,
-            goal: goal,
-            columns: [
-              {
-                kind: 'select',
-                heading: 'Method A',
-                options: idOptions,
-                defaultValue: hasLocalSeedEpisode ? 'orca' : 'rcbf'
-              },
-              {
-                kind: 'select',
-                heading: 'Method B',
-                options: idOptions,
-                defaultValue: hasLocalSeedEpisode ? 'rlcvarbetaradius' : 'proposed'
-              }
-            ]
-          }
-        ]
+        overview: 'In-distribution ' + robotPhrase + ' (Episodes 1–5).',
+        cases: cases
       }
     ];
   }
