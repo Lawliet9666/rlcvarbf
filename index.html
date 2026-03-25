@@ -327,7 +327,14 @@
             </tr>
             <tr>
               <th>Policy Action</th>
-              <td>The RL policy outputs nominal control input u<sub>nom,t</sub> &isin; R<sup>2</sup>, where u<sub>nom,t</sub> = [u<sub>x</sub>, u<sub>y</sub>]<sup>T</sup> for the single-integrator and u<sub>nom,t</sub> = [v<sub>t</sub>, &omega;<sub>t</sub>]<sup>T</sup> for the unicycle. We set &beta;<sub>t</sub> &isin; [0, 0.5] and &Delta;R<sub>t</sub> &isin; [0, 1.5(R<sub>r</sub> + R<sub>o</sub>)] at each step, where &beta;<sub>t</sub> is the adaptive CVaR risk level, and R<sub>r</sub> and R<sub>o</sub> are the robot and obstacle radii.</td>
+              <td>
+                <div class="exp-setting-stack">
+                  <div class="exp-setting-item"><strong>Action form:</strong> a<sub>t</sub> = (u<sub>nom,t</sub>, &beta;<sub>t</sub>, &Delta;R<sub>t</sub>).</div>
+                  <div class="exp-setting-item"><strong>Single-integrator:</strong> u<sub>nom,t</sub> = [u<sub>x</sub>, u<sub>y</sub>]<sup>T</sup> &isin; R<sup>2</sup>.</div>
+                  <div class="exp-setting-item"><strong>Unicycle:</strong> u<sub>nom,t</sub> = [v<sub>t</sub>, &omega;<sub>t</sub>]<sup>T</sup> &isin; R<sup>2</sup>.</div>
+                  <div class="exp-setting-item"><strong>Adaptive parameters:</strong> &beta;<sub>t</sub> &isin; [0, 0.5] is the CVaR risk level, and &Delta;R<sub>t</sub> &isin; [0, 1.5(R<sub>r</sub> + R<sub>o</sub>)] is the adaptive safety margin, where R<sub>r</sub> and R<sub>o</sub> are the robot and obstacle radii.</div>
+                </div>
+              </td>
             </tr>
             <tr>
               <th>Baselines</th>
@@ -343,7 +350,7 @@
                       <td>Vanilla RL, CrowdNav++ (const vel), CrowdNav++ (inferred)</td>
                     </tr>
                     <tr>
-                      <th>RL + Opt.</th>
+                      <th>RL + Optimization</th>
                       <td>Safety-filtered RL variants, BarrierNet, Proposed adaptive CVaR-BF</td>
                     </tr>
                   </tbody>
@@ -361,13 +368,13 @@
 
     <div class="exp-settings-points">
       <div class="exp-settings-point">
-        <strong>Stochastic &amp; unpredictable:</strong> multimodal obstacle uncertainty.
+        <strong>Stochastic &amp; unpredictable</strong>
       </div>
       <div class="exp-settings-point">
-        <strong>Uncooperative &amp; Dense:</strong> dense dynamic interactions.
+        <strong>Uncooperative &amp; Dense</strong>
       </div>
       <div class="exp-settings-point">
-        <strong>Constrained &amp; diverse models:</strong> single-integrator and unicycle.
+        <strong>Constrained &amp; diverse models</strong>
       </div>
     </div>
   </div>
@@ -516,7 +523,7 @@
         </summary>
         <div class="mme-finding-body">
           <p class="mme-key-line">
-            RL+Optimization methods provide the strongest overall balance of safety and task performance.
+            RL + Optimization methods provide the strongest overall balance of safety and task performance.
           </p>
           <p class="mme-body-copy">
             <strong>Optimization:</strong> lower success due to infeasibility in dynamic scenes.
@@ -525,7 +532,7 @@
             <strong>Pure RL:</strong> better efficiency, but higher collision rates.
           </p>
           <p class="mme-body-copy">
-            <strong>RL+Optimization:</strong> more reliable and consistently safer.
+            <strong>RL + Optimization:</strong> more reliable and consistently safer.
           </p>
           <div class="mme-evidence-row">
             <a class="mme-evidence-chip" href="#exp-table-i">Table I</a>
@@ -567,7 +574,7 @@
             The relative performance ordering remains largely consistent across robot models. As obstacle density grows, all methods exhibit a clear decline in success rate, reflecting the increased difficulty of navigation in dense environments.
           </p>
           <p class="mme-body-copy">
-            However, the rate of degradation varies across methods: RL+Optimization approaches are comparatively more stable, while other methods degrade more rapidly. Notably, the proposed method consistently outperforms all baselines across both robot models and varying obstacle densities, demonstrating strong robustness.
+            However, the rate of degradation varies across methods: RL + Optimization approaches are comparatively more stable, while other methods degrade more rapidly. Notably, the proposed method consistently outperforms all baselines across both robot models and varying obstacle densities, demonstrating strong robustness.
           </p>
           <div class="mme-evidence-row">
             <a class="mme-evidence-chip" href="#exp-table-i">Table I</a>
