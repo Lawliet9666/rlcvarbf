@@ -516,9 +516,7 @@
         cases: [
           {
             label: 'Episode 1',
-            goal: isUnicycle
-              ? 'Compare all methods available in the local unicycle ORCA-obstacle-policy OOD export, shown here as Episode 1.'
-              : 'Compare all methods available in the local single-integrator ORCA-obstacle-policy OOD export, shown here as Episode 1.',
+            goal: '',
             columns: [
               {
                 kind: 'select',
@@ -544,9 +542,7 @@
         cases: [
           {
             label: isUnicycle ? 'Case II' : 'Episode 1',
-            goal: isUnicycle
-              ? 'Compare available local methods on the current higher-density placeholder rollout while the dedicated 30-obstacle export is being prepared.'
-              : 'Compare all methods available in the local single-integrator 30-obstacle OOD export, shown here as Episode 1.',
+            goal: '',
             columns: [
               {
                 kind: 'select',
@@ -572,9 +568,7 @@
         cases: [
           {
             label: isUnicycle ? 'Episode 1' : 'Case III',
-            goal: isUnicycle
-              ? 'Compare all methods available in the local unicycle increased-obstacle-radius OOD export, shown here as Episode 1.'
-              : 'Compare available local methods for the increased-obstacle-radius shift.',
+            goal: '',
             columns: [
               {
                 kind: 'select',
@@ -607,7 +601,7 @@
           cases: [
             {
               label: 'Reference',
-              goal: 'Compare baselines on the reference ID rollout.',
+              goal: '',
               columns: [
                 {
                   kind: 'select',
@@ -633,7 +627,7 @@
       var options = buildInDistributionIdOptions(robotId, seed);
       return {
         label: 'Episode ' + (index + 1),
-        goal: 'Same ID rollout; compare all methods (seed ' + seed + ').',
+        goal: '',
         columns: [
           {
             kind: 'select',
@@ -836,13 +830,17 @@
 
   function renderSuitePanel(panel, suite) {
     var currentCase = suite.cases[suite.activeCaseIndex] || suite.cases[0];
+    var goalText = (currentCase.goal && String(currentCase.goal).trim()) || '';
+    var goalBlock = goalText
+      ? '<p class="demo-task-goal"><strong>Rollout setup:</strong> ' + escapeHtml(goalText) + '</p>'
+      : '';
     panel.innerHTML =
       '<div class="sim-rollout-card">' +
         '<div class="sim-task-header">' +
           '<div class="sim-task-copy">' +
             '<span class="demo-task-name">' + escapeHtml(suite.title) + '</span>' +
             '<p class="sim-suite-overview">' + escapeHtml(suite.overview) + '</p>' +
-            '<p class="demo-task-goal"><strong>Rollout setup:</strong> ' + escapeHtml(currentCase.goal) + '</p>' +
+            goalBlock +
           '</div>' +
           renderCaseTabs(suite) +
         '</div>' +
