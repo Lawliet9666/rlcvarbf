@@ -253,6 +253,18 @@ body {
   color: #22336c;
 }
 
+.method-overview-section {
+  background: #fff;
+}
+
+.method-overview-card {
+  background: #fff;
+  border: 1px solid #dfe5f1;
+  border-radius: 24px;
+  box-shadow: 0 10px 28px rgba(31, 45, 81, 0.08);
+  padding: 1.2rem 1rem;
+}
+
 .method-overview-image {
   display: block;
   width: 88%;
@@ -839,6 +851,11 @@ table.rq-table-paper .rq-cell-highlight {
   .risk-adaptation-layer-copy {
     font-size: 0.94rem;
     line-height: 1.65;
+  }
+
+  .method-overview-card {
+    padding: 0.95rem 0.75rem;
+    border-radius: 18px;
   }
 
   .tldr-wrap {
