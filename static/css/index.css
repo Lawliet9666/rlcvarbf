@@ -1202,15 +1202,20 @@ table.rq-table-paper .rq-cell-highlight {
 .sim-suite-tabs {
   display: flex;
   justify-content: center;
-  gap: 0.5rem;
-  flex-wrap: wrap;
+  align-items: stretch;
+  gap: 0.35rem;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: thin;
   border-bottom: 2px solid #e0e0e0;
   padding-bottom: 0;
 }
 
 .sim-suite-tab {
-  padding: 0.75rem 1.25rem;
-  font-size: 1.05rem;
+  flex: 0 0 auto;
+  padding: 0.65rem 0.85rem;
+  font-size: 0.95rem;
   font-weight: 600;
   color: #666;
   background: transparent;
@@ -1220,6 +1225,8 @@ table.rq-table-paper .rq-cell-highlight {
   transition: all 0.2s ease;
   margin-bottom: -2px;
   border-radius: 6px 6px 0 0;
+  white-space: nowrap;
+  text-align: center;
 }
 
 .sim-suite-tab:hover {
