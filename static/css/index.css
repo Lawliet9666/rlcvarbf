@@ -203,10 +203,10 @@ body {
 
 .risk-adaptation-symbol-layer {
   min-width: 220px;
-  min-height: 72px;
-  padding: 0.7rem 1rem;
-  font-size: 1rem;
-  line-height: 1.35;
+  min-height: 82px;
+  padding: 0.8rem 1rem;
+  font-size: 1.45rem;
+  line-height: 1.25;
   text-align: center;
   color: #22336c;
   border: 2px solid rgba(50, 115, 220, 0.28);
@@ -843,9 +843,9 @@ table.rq-table-paper .rq-cell-highlight {
 
   .risk-adaptation-symbol-layer {
     min-width: 100%;
-    min-height: 68px;
-    font-size: 0.95rem;
-    padding: 0.65rem 0.85rem;
+    min-height: 76px;
+    font-size: 1.15rem;
+    padding: 0.7rem 0.85rem;
   }
 
   .risk-adaptation-layer-copy {
