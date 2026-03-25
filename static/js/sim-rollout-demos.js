@@ -57,7 +57,7 @@
     },
     {
       value: 'proposed',
-      label: 'Proposed adaptive CVaR-BF',
+      label: 'Proposed',
       src: COMPARE_BASE + 'seed13_noise0.025_obs8_umax0.9_besfm_umax0.3_besfm_cvar_beta_dt_doubleint_v2_gamma0.1_betaNone_hdist_cone.gif',
       note: 'Risk-adaptive CVaR barrier function on the shared reference scene.'
     }
@@ -139,9 +139,9 @@
     },
     {
       value: 'rlcvarbetaradius',
-      label: 'Proposed adaptive CVaR-BF',
+      label: 'Proposed',
       src: SINGLE_INTEGRATOR_ID_SEED106_BASE + 'rlcvarbetaradius_seed_106_succ_1_coll_0.gif',
-      note: 'In-distribution rollout for the proposed adaptive CVaR-BF method.'
+      note: 'In-distribution rollout for the proposed method.'
     }
   ];
 
@@ -214,9 +214,9 @@
     },
     {
       value: 'rlcvarbetaradius',
-      label: 'Proposed adaptive CVaR-BF',
+      label: 'Proposed',
       src: UNICYCLE_ID_SEED176_BASE + 'rlcvarbetaradius_seed_176_succ_1_coll_0.gif',
-      note: 'In-distribution rollout for the proposed adaptive CVaR-BF method.'
+      note: 'In-distribution rollout for the proposed method.'
     }
   ];
 
@@ -265,7 +265,7 @@
     },
     {
       value: 'rlcvarbetaradius',
-      label: 'Proposed adaptive CVaR-BF',
+      label: 'Proposed',
       src: SINGLE_INTEGRATOR_ID_SEED106_BASE + 'rlcvarbetaradius_seed_106_succ_1_coll_0.gif',
       note: 'Current local single-integrator rollout used as a placeholder while dedicated OOD exports are not checked into this repo yet.'
     }
@@ -316,7 +316,7 @@
     },
     {
       value: 'rlcvarbetaradius',
-      label: 'Proposed adaptive CVaR-BF',
+      label: 'Proposed',
       src: SINGLE_INTEGRATOR_OOD_ORCA_SEED226_BASE + 'rlcvarbetaradius_seed_226_succ_1_coll_0.gif',
       note: 'Rollout from the single-integrator ORCA-obstacle-policy OOD export.'
     }
@@ -367,7 +367,7 @@
     },
     {
       value: 'rlcvarbetaradius',
-      label: 'Proposed adaptive CVaR-BF',
+      label: 'Proposed',
       src: SINGLE_INTEGRATOR_OOD_DENSITY_SEED135_BASE + 'rlcvarbetaradius_seed_135_succ_1_coll_0.gif',
       note: 'Rollout from the single-integrator 30-obstacle OOD export.'
     }
@@ -418,7 +418,7 @@
     },
     {
       value: 'rlcvarbetaradius',
-      label: 'Proposed adaptive CVaR-BF',
+      label: 'Proposed',
       src: UNICYCLE_OOD_ORCA_SEED126_BASE + 'rlcvarbetaradius_seed_126_succ_1_coll_0.gif',
       note: 'Rollout from the ORCA-obstacle-policy OOD export.'
     }
@@ -469,7 +469,7 @@
     },
     {
       value: 'rlcvarbetaradius',
-      label: 'Proposed adaptive CVaR-BF',
+      label: 'Proposed',
       src: UNICYCLE_ID_SEED176_BASE + 'rlcvarbetaradius_seed_176_succ_1_coll_0.gif',
       note: 'Current local unicycle rollout used as the higher-density placeholder because a dedicated 30-obstacle export is not checked into this repo yet.'
     }
@@ -520,7 +520,7 @@
     },
     {
       value: 'rlcvarbetaradius',
-      label: 'Proposed adaptive CVaR-BF',
+      label: 'Proposed',
       src: UNICYCLE_OOD_RADIUS_SEED168_BASE + 'rlcvarbetaradius_seed_168_succ_1_coll_0.gif',
       note: 'Rollout from the increased-obstacle-radius OOD export.'
     }

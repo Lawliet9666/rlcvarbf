@@ -648,16 +648,23 @@ table.rq-table-paper .rq-cell-highlight {
 }
 
 .exp-settings-point {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   padding: 1rem 1.1rem;
   border-radius: 18px;
   border: 1px solid rgba(50, 115, 220, 0.18);
   background: rgba(50, 115, 220, 0.06);
   color: #4d5a74;
   line-height: 1.7;
+  text-align: center;
 }
 
 .exp-settings-point strong {
+  display: block;
+  width: 100%;
   color: #22336c;
+  text-align: center;
 }
 
 .exp-settings-footnote {
