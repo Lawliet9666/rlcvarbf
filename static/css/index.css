@@ -577,6 +577,19 @@ table.rq-table-paper .rq-cell-highlight {
   line-height: 1.65;
 }
 
+.exp-setting-stack {
+  display: grid;
+  gap: 0.7rem;
+}
+
+.exp-setting-item {
+  padding: 0.05rem 0;
+}
+
+.exp-setting-item strong {
+  color: #22336c;
+}
+
 .exp-baseline-table {
   width: 100%;
   margin: 0;

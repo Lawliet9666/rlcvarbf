@@ -304,20 +304,31 @@
           </thead>
           <tbody>
             <tr>
-              <th>Obstacle Models</th>
-              <td>20 dynamic circular obstacles, each with radius 0.4 m, speeds sampled in [0.5, 1.5] m/s, and randomized initial positions and velocities.</td>
-            </tr>
-            <tr>
-              <th>Uncertainty Model</th>
-              <td>Obstacle action uncertainty is modeled as a 3-mode GMM with one forward mode and two lateral modes. The weights [0.6, 0.2, 0.2] indicate how likely each mode is, while the standard deviations [0.1, 0.2, 0.2] indicate how spread out each mode is.</td>
+              <th>Obstacle &amp; Uncertainty Models</th>
+              <td>
+                <div class="exp-setting-stack">
+                  <div class="exp-setting-item">
+                    <strong>Obstacle model:</strong> 20 dynamic circular obstacles, each with radius 0.4 m, speeds sampled in [0.5, 1.5] m/s, and randomized initial positions and velocities.
+                  </div>
+                  <div class="exp-setting-item">
+                    <strong>Uncertainty model:</strong> obstacle action uncertainty is modeled as a 3-mode GMM with one forward mode and two lateral modes. The weights [0.6, 0.2, 0.2] indicate how likely each mode is, while the standard deviations [0.1, 0.2, 0.2] indicate how spread out each mode is.
+                  </div>
+                </div>
+              </td>
             </tr>
             <tr>
               <th>Control Limits</th>
-              <td>Single-integrator: ||u|| &lt;= 1.5 m/s. Unicycle: v in [-1.5, 1.5] m/s and w in [-1.5, 1.5] rad/s.</td>
+              <td>
+                <div class="exp-setting-stack">
+                  <div class="exp-setting-item">We consider two robot models: single-integrator and unicycle.</div>
+                  <div class="exp-setting-item"><strong>Single-integrator:</strong> ||u|| &lt;= 1.5 m/s.</div>
+                  <div class="exp-setting-item"><strong>Unicycle:</strong> v &isin; [-1.5, 1.5] m/s and &omega; &isin; [-1.5, 1.5] rad/s.</div>
+                </div>
+              </td>
             </tr>
             <tr>
               <th>Policy Action</th>
-              <td>The learned action is a_t = (u_nom,t, &beta;_t, &Delta;R_t) &isin; R<sup>4</sup>. The nominal-control component u_nom,t follows the control bounds above, the adaptive risk level satisfies &beta;_t &isin; (0, 1), and the safety-margin offset satisfies &Delta;R_t &gt;= 0.</td>
+              <td>The RL policy outputs nominal control input u<sub>nom,t</sub> &isin; R<sup>2</sup>, where u<sub>nom,t</sub> = [u<sub>x</sub>, u<sub>y</sub>]<sup>T</sup> for the single-integrator and u<sub>nom,t</sub> = [v<sub>t</sub>, &omega;<sub>t</sub>]<sup>T</sup> for the unicycle. We set &beta;<sub>t</sub> &isin; [0, 0.5] and &Delta;R<sub>t</sub> &isin; [0, 1.5(R<sub>r</sub> + R<sub>o</sub>)] at each step, where &beta;<sub>t</sub> is the adaptive CVaR risk level, and R<sub>r</sub> and R<sub>o</sub> are the robot and obstacle radii.</td>
             </tr>
             <tr>
               <th>Baselines</th>
