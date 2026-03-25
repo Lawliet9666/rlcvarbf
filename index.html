@@ -236,7 +236,7 @@
         <div class="risk-adaptation-card">
           <div class="risk-adaptation-symbol risk-adaptation-symbol-risk">&beta;</div>
           <h3 class="risk-adaptation-heading">Risk Level</h3>
-          <p class="risk-adaptation-copy">Adjusts sensitivity to high-risk interactions when the scene becomes uncertain.</p>
+          <p class="risk-adaptation-copy">Adjusts sensitivity to high-risk interactions, with the CVaR risk level &beta;<sub>t</sub> adapted within [0, &beta;<sub>u</sub>] and user-defined upper bound &beta;<sub>u</sub> = 0.5.</p>
         </div>
         <div class="risk-adaptation-card">
           <div class="risk-adaptation-symbol risk-adaptation-symbol-margin">&Delta;R</div>
@@ -352,7 +352,7 @@
                     </tr>
                     <tr>
                       <th>Adaptive parameters</th>
-                      <td>&beta;<sub>t</sub> &isin; [0, 0.5] is the CVaR risk level, and &Delta;R<sub>t</sub> &isin; [0, 1.5(R<sub>r</sub> + R<sub>o</sub>)] is the adaptive safety margin, where R<sub>r</sub> and R<sub>o</sub> are the robot and obstacle radii.</td>
+                      <td>&beta;<sub>t</sub> &isin; [0, &beta;<sub>u</sub>] is the adaptive CVaR risk level, with user-defined upper bound &beta;<sub>u</sub> = 0.5. &Delta;R<sub>t</sub> &isin; [0, 1.5(R<sub>r</sub> + R<sub>o</sub>)] is the adaptive safety margin, where R<sub>r</sub> and R<sub>o</sub> are the robot and obstacle radii.</td>
                     </tr>
                   </tbody>
                 </table>
