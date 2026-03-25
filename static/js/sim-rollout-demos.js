@@ -676,11 +676,11 @@
     var caseLabel = hasLocalSeedEpisode ? 'Episode 1' : 'Reference';
     var suiteLabel = hasLocalSeedEpisode ? 'Episode 1' : 'Reference scene';
     var overview = hasLocalSeedEpisode
-      ? 'In-distribution comparison for the ' + robotPhrase + ', shown here as Episode 1.'
-      : 'In-distribution comparison for the ' + robotPhrase + ' on the shared reference scene.';
+      ? 'In-distribution ' + robotPhrase + ', Episode 1.'
+      : 'In-distribution ' + robotPhrase + ', reference scene.';
     var goal = hasLocalSeedEpisode
-      ? 'Compare all available methods on the same in-distribution ' + robotPhrase + ' rollout.'
-      : 'Compare available local baselines on the in-distribution reference rollout.';
+      ? 'Same ID rollout; compare all methods.'
+      : 'Compare baselines on the reference ID rollout.';
 
     return [
       {
