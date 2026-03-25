@@ -276,49 +276,49 @@
       value: 'orca',
       label: 'ORCA',
       src: SINGLE_INTEGRATOR_OOD_ORCA_SEED226_BASE + 'orca_seed_226_succ_0_coll_1.gif',
-      note: 'Rollout from the single-integrator ORCA-human-policy OOD export.'
+      note: 'Rollout from the single-integrator ORCA-obstacle-policy OOD export.'
     },
     {
       value: 'cbfqp',
       label: 'CBF-QP',
       src: SINGLE_INTEGRATOR_OOD_ORCA_SEED226_BASE + 'cbfqp_seed_226_succ_0_coll_1.gif',
-      note: 'Rollout from the single-integrator ORCA-human-policy OOD export.'
+      note: 'Rollout from the single-integrator ORCA-obstacle-policy OOD export.'
     },
     {
       value: 'cvarqp',
       label: 'CVaR-BF-QP',
       src: SINGLE_INTEGRATOR_OOD_ORCA_SEED226_BASE + 'cvarqp_seed_226_succ_0_coll_1.gif',
-      note: 'Rollout from the single-integrator ORCA-human-policy OOD export.'
+      note: 'Rollout from the single-integrator ORCA-obstacle-policy OOD export.'
     },
     {
       value: 'adapcvarqp',
       label: 'Adaptive-CVaR-BF',
       src: SINGLE_INTEGRATOR_OOD_ORCA_SEED226_BASE + 'adapcvarqp_seed_226_succ_0_coll_1.gif',
-      note: 'Rollout from the single-integrator ORCA-human-policy OOD export.'
+      note: 'Rollout from the single-integrator ORCA-obstacle-policy OOD export.'
     },
     {
       value: 'rl',
       label: 'Vanilla RL',
       src: SINGLE_INTEGRATOR_OOD_ORCA_SEED226_BASE + 'rl_seed_226_succ_0_coll_1.gif',
-      note: 'Rollout from the single-integrator ORCA-human-policy OOD export.'
+      note: 'Rollout from the single-integrator ORCA-obstacle-policy OOD export.'
     },
     {
       value: 'rl_sf',
       label: 'Vanilla RL + Safety Filter',
       src: SINGLE_INTEGRATOR_OOD_ORCA_SEED226_BASE + 'rl_sf_seed_226_succ_0_coll_1.gif',
-      note: 'Rollout from the single-integrator ORCA-human-policy OOD export.'
+      note: 'Rollout from the single-integrator ORCA-obstacle-policy OOD export.'
     },
     {
       value: 'rlcbfgamma',
       label: 'BarrierNet',
       src: SINGLE_INTEGRATOR_OOD_ORCA_SEED226_BASE + 'rlcbfgamma_seed_226_succ_0_coll_1.gif',
-      note: 'Rollout from the single-integrator ORCA-human-policy OOD export.'
+      note: 'Rollout from the single-integrator ORCA-obstacle-policy OOD export.'
     },
     {
       value: 'rlcvarbetaradius',
       label: 'Proposed adaptive CVaR-BF',
       src: SINGLE_INTEGRATOR_OOD_ORCA_SEED226_BASE + 'rlcvarbetaradius_seed_226_succ_1_coll_0.gif',
-      note: 'Rollout from the single-integrator ORCA-human-policy OOD export.'
+      note: 'Rollout from the single-integrator ORCA-obstacle-policy OOD export.'
     }
   ];
 
@@ -378,49 +378,49 @@
       value: 'orca',
       label: 'ORCA',
       src: UNICYCLE_OOD_ORCA_SEED126_BASE + 'orca_seed_126_succ_0_coll_1.gif',
-      note: 'Rollout from the ORCA-human-policy OOD export.'
+      note: 'Rollout from the ORCA-obstacle-policy OOD export.'
     },
     {
       value: 'cbfqp',
       label: 'CBF-QP',
       src: UNICYCLE_OOD_ORCA_SEED126_BASE + 'cbfqp_seed_126_succ_0_coll_1.gif',
-      note: 'Rollout from the ORCA-human-policy OOD export.'
+      note: 'Rollout from the ORCA-obstacle-policy OOD export.'
     },
     {
       value: 'cvarqp',
       label: 'CVaR-BF-QP',
       src: UNICYCLE_OOD_ORCA_SEED126_BASE + 'cvarqp_seed_126_succ_0_coll_1.gif',
-      note: 'Rollout from the ORCA-human-policy OOD export.'
+      note: 'Rollout from the ORCA-obstacle-policy OOD export.'
     },
     {
       value: 'adapcvarqp',
       label: 'Adaptive-CVaR-BF',
       src: UNICYCLE_OOD_ORCA_SEED126_BASE + 'adapcvarqp_seed_126_succ_0_coll_1.gif',
-      note: 'Rollout from the ORCA-human-policy OOD export.'
+      note: 'Rollout from the ORCA-obstacle-policy OOD export.'
     },
     {
       value: 'rl',
       label: 'Vanilla RL',
       src: UNICYCLE_OOD_ORCA_SEED126_BASE + 'rl_seed_126_succ_0_coll_1.gif',
-      note: 'Rollout from the ORCA-human-policy OOD export.'
+      note: 'Rollout from the ORCA-obstacle-policy OOD export.'
     },
     {
       value: 'rl_sf',
       label: 'Vanilla RL + Safety Filter',
       src: UNICYCLE_OOD_ORCA_SEED126_BASE + 'rl_sf_seed_126_succ_0_coll_1.gif',
-      note: 'Rollout from the ORCA-human-policy OOD export.'
+      note: 'Rollout from the ORCA-obstacle-policy OOD export.'
     },
     {
       value: 'rlcbfgamma',
       label: 'BarrierNet',
       src: UNICYCLE_OOD_ORCA_SEED126_BASE + 'rlcbfgamma_seed_126_succ_0_coll_1.gif',
-      note: 'Rollout from the ORCA-human-policy OOD export.'
+      note: 'Rollout from the ORCA-obstacle-policy OOD export.'
     },
     {
       value: 'rlcvarbetaradius',
       label: 'Proposed adaptive CVaR-BF',
       src: UNICYCLE_OOD_ORCA_SEED126_BASE + 'rlcvarbetaradius_seed_126_succ_1_coll_0.gif',
-      note: 'Rollout from the ORCA-human-policy OOD export.'
+      note: 'Rollout from the ORCA-obstacle-policy OOD export.'
     }
   ];
 
@@ -480,49 +480,49 @@
       value: 'orca',
       label: 'ORCA',
       src: UNICYCLE_OOD_RADIUS_SEED168_BASE + 'orca_seed_168_succ_0_coll_1.gif',
-      note: 'Rollout from the increased-human-radius OOD export.'
+      note: 'Rollout from the increased-obstacle-radius OOD export.'
     },
     {
       value: 'cbfqp',
       label: 'CBF-QP',
       src: UNICYCLE_OOD_RADIUS_SEED168_BASE + 'cbfqp_seed_168_succ_0_coll_1.gif',
-      note: 'Rollout from the increased-human-radius OOD export.'
+      note: 'Rollout from the increased-obstacle-radius OOD export.'
     },
     {
       value: 'cvarqp',
       label: 'CVaR-BF-QP',
       src: UNICYCLE_OOD_RADIUS_SEED168_BASE + 'cvarqp_seed_168_succ_0_coll_1.gif',
-      note: 'Rollout from the increased-human-radius OOD export.'
+      note: 'Rollout from the increased-obstacle-radius OOD export.'
     },
     {
       value: 'adapcvarqp',
       label: 'Adaptive-CVaR-BF',
       src: UNICYCLE_OOD_RADIUS_SEED168_BASE + 'adapcvarqp_seed_168_succ_0_coll_1.gif',
-      note: 'Rollout from the increased-human-radius OOD export.'
+      note: 'Rollout from the increased-obstacle-radius OOD export.'
     },
     {
       value: 'rl',
       label: 'Vanilla RL',
       src: UNICYCLE_OOD_RADIUS_SEED168_BASE + 'rl_seed_168_succ_0_coll_1.gif',
-      note: 'Rollout from the increased-human-radius OOD export.'
+      note: 'Rollout from the increased-obstacle-radius OOD export.'
     },
     {
       value: 'rl_sf',
       label: 'Vanilla RL + Safety Filter',
       src: UNICYCLE_OOD_RADIUS_SEED168_BASE + 'rl_sf_seed_168_succ_0_coll_1.gif',
-      note: 'Rollout from the increased-human-radius OOD export.'
+      note: 'Rollout from the increased-obstacle-radius OOD export.'
     },
     {
       value: 'rlcbfgamma',
       label: 'BarrierNet',
       src: UNICYCLE_OOD_RADIUS_SEED168_BASE + 'rlcbfgamma_seed_168_succ_0_coll_1.gif',
-      note: 'Rollout from the increased-human-radius OOD export.'
+      note: 'Rollout from the increased-obstacle-radius OOD export.'
     },
     {
       value: 'rlcvarbetaradius',
       label: 'Proposed adaptive CVaR-BF',
       src: UNICYCLE_OOD_RADIUS_SEED168_BASE + 'rlcvarbetaradius_seed_168_succ_1_coll_0.gif',
-      note: 'Rollout from the increased-human-radius OOD export.'
+      note: 'Rollout from the increased-obstacle-radius OOD export.'
     }
   ];
 
@@ -578,15 +578,15 @@
     return [
       {
         id: 'case-orca-policy',
-        label: 'Case I: ORCA-based human policy',
+        label: 'Case I: ORCA-based obstacle policy',
         title: robotLabel + ' OOD generalization',
-        overview: 'Out-of-distribution generalization performance of the ' + robotPhrase + ' under ORCA-based human policy.',
+        overview: 'Out-of-distribution generalization performance of the ' + robotPhrase + ' under ORCA-based obstacle policy.',
         cases: [
           {
             label: 'Episode 1',
             goal: isUnicycle
-              ? 'Compare all methods available in the local unicycle ORCA-human-policy OOD export, shown here as Episode 1.'
-              : 'Compare all methods available in the local single-integrator ORCA-human-policy OOD export, shown here as Episode 1.',
+              ? 'Compare all methods available in the local unicycle ORCA-obstacle-policy OOD export, shown here as Episode 1.'
+              : 'Compare all methods available in the local single-integrator ORCA-obstacle-policy OOD export, shown here as Episode 1.',
             columns: [
               {
                 kind: 'select',
@@ -634,15 +634,15 @@
       },
       {
         id: 'case-increased-radius',
-        label: 'Case III: Increased human radius (0.5 m)',
+        label: 'Case III: Increased obstacle radius (0.5 m)',
         title: robotLabel + ' OOD generalization',
-        overview: 'Out-of-distribution generalization performance of the ' + robotPhrase + ' under increased human radius.',
+        overview: 'Out-of-distribution generalization performance of the ' + robotPhrase + ' under increased obstacle radius.',
         cases: [
           {
             label: isUnicycle ? 'Episode 1' : 'Case III',
             goal: isUnicycle
-              ? 'Compare all methods available in the local unicycle increased-human-radius OOD export, shown here as Episode 1.'
-              : 'Compare available local methods for the increased-human-radius shift.',
+              ? 'Compare all methods available in the local unicycle increased-obstacle-radius OOD export, shown here as Episode 1.'
+              : 'Compare available local methods for the increased-obstacle-radius shift.',
             columns: [
               {
                 kind: 'select',

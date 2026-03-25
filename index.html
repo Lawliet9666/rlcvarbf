@@ -306,14 +306,18 @@
             <tr>
               <th>Obstacle Uncertainty Models</th>
               <td>
-                <div class="exp-setting-stack">
-                  <div class="exp-setting-item">
-                    <strong class="exp-setting-label-muted">Obstacle model:</strong> 20 dynamic circular obstacles, each with radius R<sub>o</sub> = 0.4 m, speeds sampled in [0.5, 1.5] m/s, and randomized initial positions and velocities.
-                  </div>
-                  <div class="exp-setting-item">
-                    <strong>Uncertainty model:</strong> obstacle action uncertainty is modeled as a 3-mode GMM with one forward mode and two lateral modes. The weights [0.6, 0.2, 0.2] indicate how likely each mode is, while the standard deviations [0.1, 0.2, 0.2] indicate how spread out each mode is.
-                  </div>
-                </div>
+                <table class="exp-baseline-table exp-detail-table">
+                  <tbody>
+                    <tr>
+                      <th>Obstacle model</th>
+                      <td>20 dynamic circular obstacles, each with radius R<sub>o</sub> = 0.4 m, speeds sampled in [0.5, 1.5] m/s, and randomized initial positions and velocities.</td>
+                    </tr>
+                    <tr>
+                      <th>Uncertainty model</th>
+                      <td>Obstacle action uncertainty is modeled as a 3-mode GMM with one forward mode and two lateral modes. The weights [0.6, 0.2, 0.2] indicate how likely each mode is, while the standard deviations [0.1, 0.2, 0.2] indicate how spread out each mode is.</td>
+                    </tr>
+                  </tbody>
+                </table>
               </td>
             </tr>
             <tr>
@@ -381,7 +385,7 @@
             </tr>
             <!-- <tr>
               <th>Evaluation Protocol</th>
-              <td>Main comparisons use 20 obstacles; Table I averages results over 10 random seeds with 50 evaluation episodes per seed. The OOD study evaluates ORCA-based human policy, 30-obstacle density, and increased human radius.</td>
+              <td>Main comparisons use 20 obstacles; Table I averages results over 10 random seeds with 50 evaluation episodes per seed. The OOD study evaluates ORCA-based obstacle policy, 30-obstacle density, and increased obstacle radius.</td>
             </tr> -->
           </tbody>
         </table>
@@ -513,7 +517,7 @@
       <div id="sec-ood-demos" class="sim-demo-column">
         <h2 class="title is-3 has-text-centered sim-rollout-title">Out-of-Distribution Demos</h2>
         <p class="has-text-centered sim-rollout-intro">
-          Choose the robot mode below. The default view shows the unicycle OOD cases: ORCA-based human policy, high obstacle density, and increased human radius.
+          Choose the robot mode below. The default view shows the unicycle OOD cases: ORCA-based obstacle policy, high obstacle density, and increased obstacle radius.
         </p>
         <div id="simRolloutModeApp" class="sim-rollout-app" aria-live="polite"></div>
       </div>
@@ -533,6 +537,17 @@
             class="rq-figure-image"
             src="./static/images/id_data.png"
             alt="Table I baseline comparison in 20-obstacle environments"
+            loading="lazy"
+          >
+        </figure>
+      </div>
+
+      <div id="exp-fig-success-rate-unicycle-obs" class="mme-finding-body mme-finding-panel rq-figure-panel">
+        <figure class="rq-figure">
+          <img
+            class="rq-figure-image"
+            src="./static/images/success_rate_vs_obstacles_unicycle.png"
+            alt="Success rate versus obstacle count for the unicycle model"
             loading="lazy"
           >
         </figure>
@@ -605,12 +620,12 @@
         </div>
       </details>
 
-      <div id="exp-table-iii" class="mme-finding-body mme-finding-panel rq-figure-panel">
+      <div id="exp-table-ii" class="mme-finding-body mme-finding-panel rq-figure-panel">
         <figure class="rq-figure">
           <img
             class="rq-figure-image"
             src="./static/images/ood_data.png"
-            alt="Table III out-of-distribution generalization under environment shifts"
+            alt="Table II out-of-distribution generalization under environment shifts"
             loading="lazy"
           >
         </figure>
@@ -635,7 +650,7 @@
             <strong>Proposed method:</strong> best OOD performance with competitive safety.
           </p>
           <div class="mme-evidence-row">
-            <a class="mme-evidence-chip" href="#exp-table-iii">Table III</a>
+            <a class="mme-evidence-chip" href="#exp-table-ii">Table II</a>
           </div>
         </div>
       </details>
