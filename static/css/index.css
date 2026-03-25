@@ -154,12 +154,12 @@ body {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  min-width: 120px;
-  min-height: 82px;
-  padding: 0.6rem 1rem;
-  margin-bottom: 0.85rem;
+  min-width: 108px;
+  min-height: 72px;
+  padding: 0.5rem 0.85rem;
+  margin-bottom: 0.75rem;
   border-radius: 16px;
-  font-size: 2.6rem;
+  font-size: 2.2rem;
   font-weight: 700;
   line-height: 1;
   background: #f8fafc;
@@ -172,8 +172,8 @@ body {
 
 .risk-adaptation-symbol-risk,
 .risk-adaptation-symbol-margin {
-  border: 2px solid rgba(244, 162, 97, 0.75);
-  background: rgba(244, 162, 97, 0.12);
+  border: 2px solid rgba(132, 198, 99, 0.75);
+  background: rgba(132, 198, 99, 0.14);
 }
 
 .risk-adaptation-heading {
@@ -202,15 +202,15 @@ body {
 }
 
 .risk-adaptation-symbol-layer {
-  min-width: 260px;
-  min-height: 88px;
-  padding: 0.85rem 1.25rem;
-  font-size: 1.16rem;
+  min-width: 220px;
+  min-height: 72px;
+  padding: 0.7rem 1rem;
+  font-size: 1rem;
   line-height: 1.35;
   text-align: center;
-  color: #6a459b;
-  border: 2px solid rgba(180, 141, 210, 0.78);
-  background: rgba(180, 141, 210, 0.12);
+  color: #22336c;
+  border: 2px solid rgba(50, 115, 220, 0.28);
+  background: rgba(50, 115, 220, 0.08);
 }
 
 .risk-adaptation-layer-copy {
@@ -820,9 +820,9 @@ table.rq-table-paper .rq-cell-highlight {
   }
 
   .risk-adaptation-symbol {
-    min-width: 104px;
-    min-height: 72px;
-    font-size: 2.1rem;
+    min-width: 96px;
+    min-height: 66px;
+    font-size: 1.9rem;
   }
 
   .risk-adaptation-card-layer {
@@ -831,9 +831,9 @@ table.rq-table-paper .rq-cell-highlight {
 
   .risk-adaptation-symbol-layer {
     min-width: 100%;
-    min-height: 76px;
-    font-size: 1rem;
-    padding: 0.75rem 0.95rem;
+    min-height: 68px;
+    font-size: 0.95rem;
+    padding: 0.65rem 0.85rem;
   }
 
   .risk-adaptation-layer-copy {
