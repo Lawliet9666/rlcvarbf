@@ -630,6 +630,10 @@ table.rq-table-paper .rq-cell-highlight {
   color: #4f5c75;
 }
 
+.exp-detail-table th {
+  width: 30%;
+}
+
 .exp-settings-points {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -695,6 +699,10 @@ table.rq-table-paper .rq-cell-highlight {
   .exp-baseline-table td {
     font-size: 0.9rem;
     padding: 0.55rem 0.55rem;
+  }
+
+  .exp-detail-table th {
+    width: 38%;
   }
 }
 

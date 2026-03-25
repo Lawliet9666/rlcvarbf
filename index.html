@@ -47,7 +47,7 @@
 <!-- Sticky section nav (RoboMME-style); appears after scrolling past the abstract -->
 <div class="section-nav" id="sectionNav">
   <div class="section-nav-inner">
-    <a class="section-nav-link" href="#sec-animations" data-target="sec-animations">How Does Risk Adaptation Work?</a>
+    <a class="section-nav-link" href="#sec-animations" data-target="sec-animations">Risk Adaptation</a>
     <a class="section-nav-link" href="#sec-settings" data-target="sec-settings">Settings</a>
     <a class="section-nav-link" href="#sec-id-demos" data-target="sec-id-demos">In-Distribution Demos</a>
     <a class="section-nav-link" href="#sec-ood-demos" data-target="sec-ood-demos">Out-of-Distribution Demos</a>
@@ -319,21 +319,43 @@
             <tr>
               <th>Control Limits</th>
               <td>
-                <div class="exp-setting-stack">
-                  <div class="exp-setting-item"><strong>Single-integrator:</strong> ||u|| &lt;= 1.5 m/s.</div>
-                  <div class="exp-setting-item"><strong>Unicycle:</strong> v &isin; [-1.5, 1.5] m/s and &omega; &isin; [-1.5, 1.5] rad/s.</div>
-                </div>
+                <table class="exp-baseline-table exp-detail-table">
+                  <tbody>
+                    <tr>
+                      <th>Single-integrator</th>
+                      <td>||u|| &lt;= 1.5 m/s.</td>
+                    </tr>
+                    <tr>
+                      <th>Unicycle</th>
+                      <td>v &isin; [-1.5, 1.5] m/s and &omega; &isin; [-1.5, 1.5] rad/s.</td>
+                    </tr>
+                  </tbody>
+                </table>
               </td>
             </tr>
             <tr>
               <th>Policy Action</th>
               <td>
-                <div class="exp-setting-stack">
-                  <div class="exp-setting-item"><strong>Action form:</strong> a<sub>t</sub> = (u<sub>nom,t</sub>, &beta;<sub>t</sub>, &Delta;R<sub>t</sub>).</div>
-                  <div class="exp-setting-item"><strong>Single-integrator:</strong> u<sub>nom,t</sub> = [u<sub>x</sub>, u<sub>y</sub>]<sup>T</sup> &isin; R<sup>2</sup>.</div>
-                  <div class="exp-setting-item"><strong>Unicycle:</strong> u<sub>nom,t</sub> = [v<sub>t</sub>, &omega;<sub>t</sub>]<sup>T</sup> &isin; R<sup>2</sup>.</div>
-                  <div class="exp-setting-item"><strong>Adaptive parameters:</strong> &beta;<sub>t</sub> &isin; [0, 0.5] is the CVaR risk level, and &Delta;R<sub>t</sub> &isin; [0, 1.5(R<sub>r</sub> + R<sub>o</sub>)] is the adaptive safety margin, where R<sub>r</sub> and R<sub>o</sub> are the robot and obstacle radii.</div>
-                </div>
+                <table class="exp-baseline-table exp-detail-table">
+                  <tbody>
+                    <tr>
+                      <th>Action form</th>
+                      <td>a<sub>t</sub> = (u<sub>nom,t</sub>, &beta;<sub>t</sub>, &Delta;R<sub>t</sub>).</td>
+                    </tr>
+                    <tr>
+                      <th>Single-integrator</th>
+                      <td>u<sub>nom,t</sub> = [u<sub>x</sub>, u<sub>y</sub>]<sup>T</sup> &isin; R<sup>2</sup>.</td>
+                    </tr>
+                    <tr>
+                      <th>Unicycle</th>
+                      <td>u<sub>nom,t</sub> = [v<sub>t</sub>, &omega;<sub>t</sub>]<sup>T</sup> &isin; R<sup>2</sup>.</td>
+                    </tr>
+                    <tr>
+                      <th>Adaptive parameters</th>
+                      <td>&beta;<sub>t</sub> &isin; [0, 0.5] is the CVaR risk level, and &Delta;R<sub>t</sub> &isin; [0, 1.5(R<sub>r</sub> + R<sub>o</sub>)] is the adaptive safety margin, where R<sub>r</sub> and R<sub>o</sub> are the robot and obstacle radii.</td>
+                    </tr>
+                  </tbody>
+                </table>
               </td>
             </tr>
             <tr>
