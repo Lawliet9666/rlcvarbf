@@ -584,13 +584,16 @@
         </summary>
         <div class="mme-finding-body">
           <p class="mme-key-line">
-            Incorporating safety into RL policies generally improves performance compared to pure RL methods. These results indicate that post-hoc safety filtering is effective in enhancing policy reliability.
+            Jointly training RL with safety constraints significantly outperforms decoupled post-hoc filtering.
           </p>
           <p class="mme-body-copy">
-            However, such decoupled approaches remain suboptimal compared to methods that integrate safety directly into the training process. In contrast, the proposed method and BarrierNet jointly optimize the policy and safety constraints through a differentiable safety layer, enabling adaptive risk-aware behavior.
+            <strong>Post-hoc Filtering:</strong> improves reliability over pure RL, but remains decoupled and suboptimal.
           </p>
           <p class="mme-body-copy">
-            Unlike BarrierNet, which employs a deterministic differentiable safety layer, the proposed method explicitly models stochastic uncertainty and learns adaptive risk parameters, leading to improved performance in dynamic and uncertain environments.
+            <strong>Joint Optimization:</strong> end-to-end training via differentiable safety layers (Proposed, BarrierNet) enables adaptive risk-aware behavior.
+          </p>
+          <p class="mme-body-copy">
+            <strong>Stochastic Uncertainty:</strong> explicitly modeling uncertainty and learning adaptive risk parameters (Proposed) yields better dynamic performance than deterministic barriers (BarrierNet).
           </p>
           <div class="mme-evidence-row">
             <a class="mme-evidence-chip" href="#exp-table-i">Table I</a>
@@ -605,13 +608,16 @@
         </summary>
         <div class="mme-finding-body">
           <p class="mme-key-line">
-            Similar performance trends are observed for both the single-integrator and unicycle models. While all methods experience some degradation under the more challenging unicycle dynamics, this is expected due to its more constrained control dynamics.
+            The proposed method maintains strong performance despite more constrained dynamics and denser crowds.
           </p>
           <p class="mme-body-copy">
-            The relative performance ordering remains largely consistent across robot models. As obstacle density grows, all methods exhibit a clear decline in success rate, reflecting the increased difficulty of navigation in dense environments.
+            <strong>Robot Models:</strong> trends remain consistent; unicycle dynamics naturally reduce overall success compared to single-integrator due to stricter constraints.
           </p>
           <p class="mme-body-copy">
-            However, the rate of degradation varies across methods: RL + Optimization approaches are comparatively more stable, while other methods degrade more rapidly. Notably, the proposed method consistently outperforms all baselines across both robot models and varying obstacle densities, demonstrating strong robustness.
+            <strong>Obstacle Density:</strong> navigation success drops in denser crowds, but RL + Optimization approaches degrade more gracefully.
+          </p>
+          <p class="mme-body-copy">
+            <strong>Proposed Method:</strong> consistently outperforms all baselines across both varying robot models and obstacle densities.
           </p>
           <div class="mme-evidence-row">
             <a class="mme-evidence-chip" href="#exp-table-i">Table I</a>

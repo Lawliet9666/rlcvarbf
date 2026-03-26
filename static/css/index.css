@@ -537,12 +537,11 @@ table.rq-table-paper .rq-cell-highlight {
   border-radius: 4px;
 }
 
-/* Bottom-left label, aligned with evidence chips in Q blocks */
+/* Figure caption, displayed below the plot as a styled badge */
 .rq-figure-caption {
-  position: absolute;
-  left: 0.75rem;
-  bottom: 0.75rem;
-  margin: 0;
+  display: inline-block;
+  margin-top: 0.75rem;
+  margin-bottom: 0.25rem;
   max-width: calc(100% - 1.5rem);
   padding: 0.4rem 0.8rem;
   border-radius: 999px;
