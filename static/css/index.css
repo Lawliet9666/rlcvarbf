@@ -1139,6 +1139,9 @@ table.rq-table-paper .rq-cell-highlight {
 }
 
 .sim-mode-tabs-wrap {
+  display: flex;
+  justify-content: center;
+  width: 100%;
   margin: 0 auto 1.1rem;
 }
 
