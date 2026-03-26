@@ -168,34 +168,34 @@
       orca: {
         base: './static/videos/si_human_orca/single_integrator_obs_20/eval_seeds_100_1000_n901/',
         seeds: [226, 266, 313, 338, 358],
-        note: 'Rollout from the single-integrator ORCA-obstacle-policy OOD export.'
+        note: ''
       },
       density: {
         base: './static/videos/si_obs_30/single_integrator_obs_30/eval_seeds_100_1000_n901/',
         seeds: [135, 147, 158, 170, 175],
-        note: 'Rollout from the single-integrator 30-obstacle OOD export.'
+        note: ''
       },
       radius: {
         base: './static/videos/si_human_radius_0p5/single_integrator_obs_20/eval_seeds_100_1000_n901/',
         seeds: [124, 130, 133, 136, 142],
-        note: 'Rollout from the single-integrator increased-radius OOD export.'
+        note: ''
       }
     },
     unicycle: {
       orca: {
         base: './static/videos/uni_human_orca/unicycle_obs_20/eval_seeds_100_1000_n901/',
         seeds: [126, 128, 143, 148, 168],
-        note: 'Rollout from the ORCA-obstacle-policy OOD export.'
+        note: ''
       },
       density: {
         base: './static/videos/uni_obs_30/unicycle_obs_30/eval_seeds_100_1000_n901/',
         seeds: [176, 186, 214, 233, 250],
-        note: 'Rollout from the 30-obstacle OOD export.'
+        note: ''
       },
       radius: {
         base: './static/videos/uni_human_radius_0p5/unicycle_obs_20/eval_seeds_100_1000_n901/',
         seeds: [168, 245, 246, 276, 296],
-        note: 'Rollout from the increased-radius OOD export.'
+        note: ''
       }
     }
   };
