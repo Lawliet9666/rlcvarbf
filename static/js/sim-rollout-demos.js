@@ -933,7 +933,6 @@
         '</div>' +
         '<img class="sim-demo-img" src="' + escapeHtml(selected.src) + '" alt="' + escapeHtml(selected.label) + '" loading="lazy">' +
         '<div class="result-label ' + escapeHtml(resultStatus.className) + '" data-result-badge>' + escapeHtml(resultStatus.label) + '</div>' +
-        '<p class="sim-card-note">' + escapeHtml(selected.note || '') + '</p>' +
       '</article>';
   }
 
@@ -945,7 +944,6 @@
           '<span class="sim-static-pill">' + escapeHtml(column.asset.label) + '</span>' +
         '</div>' +
         '<img class="sim-demo-img" src="' + escapeHtml(column.asset.src) + '" alt="' + escapeHtml(column.asset.label) + '" loading="lazy">' +
-        '<p class="sim-card-note">' + escapeHtml(column.asset.note || '') + '</p>' +
       '</article>';
   }
 
