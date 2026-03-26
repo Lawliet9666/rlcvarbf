@@ -650,7 +650,6 @@
         id: 'id-reference',
         label: 'In-distribution',
         title: robotLabel + ' ID comparison',
-        overview: 'In-distribution ' + robotPhrase + ' (Episodes 1–5).',
         cases: cases
       }
     ];
