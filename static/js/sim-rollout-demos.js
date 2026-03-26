@@ -95,32 +95,32 @@
    */
   var ID_ROLLOUT_NOTES = {
     'single-integrator': {
-      orca: 'In-distribution rollout for ORCA on the single-integrator robot.',
-      cbfqp: 'In-distribution rollout for the CBF-QP controller.',
-      cvarqp: 'In-distribution rollout for the fixed-risk CVaR-BF-QP baseline.',
-      adapcvarqp: 'In-distribution rollout for the adaptive optimization-only baseline.',
-      rl: 'In-distribution rollout for the vanilla RL policy.',
-      crowdnav_cv: 'In-distribution rollout for the CrowdNav++ const-velocity prior.',
-      crowdnav_inf: 'In-distribution rollout for the inferred CrowdNav++ prior.',
-      rl_sf: 'In-distribution rollout for vanilla RL with the safety filter.',
-      crowdnav_cv_sf: 'In-distribution rollout for the CrowdNav++ const-velocity prior with the safety filter.',
-      crowdnav_inf_sf: 'In-distribution rollout for the inferred CrowdNav++ prior with the safety filter.',
-      barriernet: 'In-distribution rollout for the BarrierNet baseline.',
-      proposed: 'In-distribution rollout for the proposed method.'
+      orca: '',
+      cbfqp: '',
+      cvarqp: '',
+      adapcvarqp: '',
+      rl: '',
+      crowdnav_cv: '',
+      crowdnav_inf: '',
+      rl_sf: '',
+      crowdnav_cv_sf: '',
+      crowdnav_inf_sf: '',
+      barriernet: '',
+      proposed: ''
     },
     unicycle: {
-      orca: 'In-distribution rollout for ORCA on the unicycle robot.',
-      cbfqp: 'In-distribution rollout for the CBF-QP controller.',
-      cvarqp: 'In-distribution rollout for the fixed-risk CVaR-BF-QP baseline.',
-      adapcvarqp: 'In-distribution rollout for the adaptive optimization-only baseline.',
-      rl: 'In-distribution rollout for the vanilla RL policy.',
-      crowdnav_cv: 'In-distribution rollout for the CrowdNav++ const-velocity prior.',
-      crowdnav_inf: 'In-distribution rollout for the inferred CrowdNav++ prior.',
-      rl_sf: 'In-distribution rollout for vanilla RL with the safety filter.',
-      crowdnav_cv_sf: 'In-distribution rollout for the CrowdNav++ const-velocity prior with the safety filter.',
-      crowdnav_inf_sf: 'In-distribution rollout for the inferred CrowdNav++ prior with the safety filter.',
-      barriernet: 'In-distribution rollout for the BarrierNet baseline.',
-      proposed: 'In-distribution rollout for the proposed method.'
+      orca: '',
+      cbfqp: '',
+      cvarqp: '',
+      adapcvarqp: '',
+      rl: '',
+      crowdnav_cv: '',
+      crowdnav_inf: '',
+      rl_sf: '',
+      crowdnav_cv_sf: '',
+      crowdnav_inf_sf: '',
+      barriernet: '',
+      proposed: ''
     }
   };
 
@@ -147,7 +147,7 @@
         value: def.value,
         label: def.label,
         src: base + idGifFilename(def.value, seed, robotId),
-        note: notesForRobot[def.noteKey] || ('In-distribution rollout for ' + def.label + '.')
+        note: notesForRobot[def.noteKey] || ''
       };
     });
   }
