@@ -624,7 +624,7 @@
         {
           id: 'id-reference',
           label: 'Reference scene',
-          title: robotLabel + ' ID comparison',
+          title: '',
           overview: 'In-distribution ' + robotPhrase + ', reference scene.',
           cases: [
             {
@@ -677,7 +677,7 @@
       {
         id: 'id-reference',
         label: 'In-distribution',
-        title: robotLabel + ' ID comparison',
+        title: '',
         cases: cases
       }
     ];
