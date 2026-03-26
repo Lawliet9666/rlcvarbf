@@ -152,6 +152,99 @@
     });
   }
 
+  var OOD_METHOD_DEFS = [
+    { value: 'orca', label: 'ORCA' },
+    { value: 'cbfqp', label: 'CBF-QP' },
+    { value: 'cvarqp', label: 'CVaR-BF-QP' },
+    { value: 'adapcvarqp', label: 'Adaptive-CVaR-BF' },
+    { value: 'rl', label: 'Vanilla RL' },
+    { value: 'rl_sf', label: 'Vanilla RL + Safety Filter' },
+    { value: 'rlcbfgamma', label: 'BarrierNet' },
+    { value: 'rlcvarbetaradius', label: 'Proposed' }
+  ];
+
+  var OOD_CASE_CONFIG = {
+    'single-integrator': {
+      orca: {
+        base: './static/videos/si_human_orca/single_integrator_obs_20/eval_seeds_100_1000_n901/',
+        seeds: [226, 266, 313, 338, 358],
+        note: 'Rollout from the single-integrator ORCA-obstacle-policy OOD export.'
+      },
+      density: {
+        base: './static/videos/si_obs_30/single_integrator_obs_30/eval_seeds_100_1000_n901/',
+        seeds: [135, 147, 158, 170, 175],
+        note: 'Rollout from the single-integrator 30-obstacle OOD export.'
+      },
+      radius: {
+        base: './static/videos/si_human_radius_0p5/single_integrator_obs_20/eval_seeds_100_1000_n901/',
+        seeds: [124, 130, 133, 136, 142],
+        note: 'Rollout from the single-integrator increased-radius OOD export.'
+      }
+    },
+    unicycle: {
+      orca: {
+        base: './static/videos/uni_human_orca/unicycle_obs_20/eval_seeds_100_1000_n901/',
+        seeds: [126, 128, 143, 148, 168],
+        note: 'Rollout from the ORCA-obstacle-policy OOD export.'
+      },
+      density: {
+        base: './static/videos/uni_obs_30/unicycle_obs_30/eval_seeds_100_1000_n901/',
+        seeds: [176, 186, 214, 233, 250],
+        note: 'Rollout from the 30-obstacle OOD export.'
+      },
+      radius: {
+        base: './static/videos/uni_human_radius_0p5/unicycle_obs_20/eval_seeds_100_1000_n901/',
+        seeds: [168, 245, 246, 276, 296],
+        note: 'Rollout from the increased-radius OOD export.'
+      }
+    }
+  };
+
+  function oodGifFilename(methodValue, seed) {
+    if (methodValue === 'rlcvarbetaradius') {
+      return 'rlcvarbetaradius_seed_' + seed + '_succ_1_coll_0.gif';
+    }
+    return methodValue + '_seed_' + seed + '_succ_0_coll_1.gif';
+  }
+
+  function buildOodOptions(robotId, caseKey, seed) {
+    var caseConfig = OOD_CASE_CONFIG[robotId][caseKey];
+    var base = caseConfig.base + 'seed_' + seed + '/';
+    return OOD_METHOD_DEFS.map(function (def) {
+      return {
+        value: def.value,
+        label: def.label,
+        src: base + oodGifFilename(def.value, seed),
+        note: caseConfig.note
+      };
+    });
+  }
+
+  function buildOodCases(robotId, caseKey, defaultA, defaultB) {
+    var caseConfig = OOD_CASE_CONFIG[robotId][caseKey];
+    return caseConfig.seeds.map(function (seed, index) {
+      var options = buildOodOptions(robotId, caseKey, seed);
+      return {
+        label: 'Episode ' + (index + 1),
+        goal: '',
+        columns: [
+          {
+            kind: 'select',
+            heading: 'Method A',
+            options: options,
+            defaultValue: defaultA
+          },
+          {
+            kind: 'select',
+            heading: 'Method B',
+            options: options,
+            defaultValue: defaultB
+          }
+        ]
+      };
+    });
+  }
+
   var SINGLE_INTEGRATOR_OOD_PLACEHOLDER_OPTIONS = [
     {
       value: 'orca',
@@ -502,89 +595,27 @@
   };
 
   function buildSuites(robotLabel, robotPhrase, robotId) {
-    var isUnicycle = robotId === 'unicycle';
-    var orcaCaseOptions = isUnicycle ? UNICYCLE_OOD_ORCA_OPTIONS : SINGLE_INTEGRATOR_OOD_ORCA_OPTIONS;
-    var densityCaseOptions = isUnicycle ? UNICYCLE_OOD_DENSITY_OPTIONS : SINGLE_INTEGRATOR_OOD_DENSITY_OPTIONS;
-    var radiusCaseOptions = isUnicycle ? UNICYCLE_OOD_RADIUS_OPTIONS : SINGLE_INTEGRATOR_OOD_PLACEHOLDER_OPTIONS;
-
     return [
       {
         id: 'case-orca-policy',
         label: 'Case I: ORCA-based obstacle policy',
         title: robotLabel + ' OOD generalization',
         overview: 'Out-of-distribution generalization performance of the ' + robotPhrase + ' under ORCA-based obstacle policy.',
-        cases: [
-          {
-            label: 'Episode 1',
-            goal: '',
-            columns: [
-              {
-                kind: 'select',
-                heading: 'Method A',
-                options: orcaCaseOptions,
-                defaultValue: 'orca'
-              },
-              {
-                kind: 'select',
-                heading: 'Method B',
-                options: orcaCaseOptions,
-                defaultValue: 'rlcvarbetaradius'
-              }
-            ]
-          }
-        ]
+        cases: buildOodCases(robotId, 'orca', 'orca', 'rlcvarbetaradius')
       },
       {
         id: 'case-high-density',
         label: 'Case II: High obstacle density (30 obstacles)',
         title: robotLabel + ' OOD generalization',
         overview: 'Out-of-distribution generalization performance of the ' + robotPhrase + ' under higher obstacle density.',
-        cases: [
-          {
-            label: isUnicycle ? 'Case II' : 'Episode 1',
-            goal: '',
-            columns: [
-              {
-                kind: 'select',
-                heading: 'Method A',
-                options: densityCaseOptions,
-                defaultValue: 'rl'
-              },
-              {
-                kind: 'select',
-                heading: 'Method B',
-                options: densityCaseOptions,
-                defaultValue: 'rlcvarbetaradius'
-              }
-            ]
-          }
-        ]
+        cases: buildOodCases(robotId, 'density', 'rl', 'rlcvarbetaradius')
       },
       {
         id: 'case-increased-radius',
         label: 'Case III: Increased obstacle radius (0.5 m)',
         title: robotLabel + ' OOD generalization',
         overview: 'Out-of-distribution generalization performance of the ' + robotPhrase + ' under increased obstacle radius.',
-        cases: [
-          {
-            label: isUnicycle ? 'Episode 1' : 'Case III',
-            goal: '',
-            columns: [
-              {
-                kind: 'select',
-                heading: 'Method A',
-                options: radiusCaseOptions,
-                defaultValue: 'cvarqp'
-              },
-              {
-                kind: 'select',
-                heading: 'Method B',
-                options: radiusCaseOptions,
-                defaultValue: 'rlcvarbetaradius'
-              }
-            ]
-          }
-        ]
+        cases: buildOodCases(robotId, 'radius', 'cvarqp', 'rlcvarbetaradius')
       }
     ];
   }
