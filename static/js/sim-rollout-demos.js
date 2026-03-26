@@ -600,21 +600,18 @@
         id: 'case-orca-policy',
         label: 'Case I: ORCA-based obstacle policy',
         title: robotLabel + ' OOD generalization',
-        overview: 'Out-of-distribution generalization performance of the ' + robotPhrase + ' under ORCA-based obstacle policy.',
         cases: buildOodCases(robotId, 'orca', 'orca', 'rlcvarbetaradius')
       },
       {
         id: 'case-high-density',
         label: 'Case II: High obstacle density (30 obstacles)',
         title: robotLabel + ' OOD generalization',
-        overview: 'Out-of-distribution generalization performance of the ' + robotPhrase + ' under higher obstacle density.',
         cases: buildOodCases(robotId, 'density', 'rl', 'rlcvarbetaradius')
       },
       {
         id: 'case-increased-radius',
         label: 'Case III: Increased obstacle radius (0.5 m)',
         title: robotLabel + ' OOD generalization',
-        overview: 'Out-of-distribution generalization performance of the ' + robotPhrase + ' under increased obstacle radius.',
         cases: buildOodCases(robotId, 'radius', 'cvarqp', 'rlcvarbetaradius')
       }
     ];
@@ -860,6 +857,10 @@
 
   function renderSuitePanel(panel, suite) {
     var currentCase = suite.cases[suite.activeCaseIndex] || suite.cases[0];
+    var overviewText = (suite.overview && String(suite.overview).trim()) || '';
+    var overviewBlock = overviewText
+      ? '<p class="sim-suite-overview">' + escapeHtml(overviewText) + '</p>'
+      : '';
     var goalText = (currentCase.goal && String(currentCase.goal).trim()) || '';
     var goalBlock = goalText
       ? '<p class="demo-task-goal"><strong>Rollout setup:</strong> ' + escapeHtml(goalText) + '</p>'
@@ -869,7 +870,7 @@
         '<div class="sim-task-header">' +
           '<div class="sim-task-copy">' +
             '<span class="demo-task-name">' + escapeHtml(suite.title) + '</span>' +
-            '<p class="sim-suite-overview">' + escapeHtml(suite.overview) + '</p>' +
+            overviewBlock +
             goalBlock +
           '</div>' +
           renderCaseTabs(suite) +
