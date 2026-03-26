@@ -525,9 +525,11 @@ table.rq-table-paper .rq-cell-highlight {
 
 .rq-figure-frame {
   position: relative;
-  display: block;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
   border-radius: 4px;
-  overflow: hidden;
+  overflow: visible;
 }
 
 .rq-figure-image {
@@ -537,23 +539,17 @@ table.rq-table-paper .rq-cell-highlight {
   border-radius: 4px;
 }
 
-/* Figure caption, displayed below the plot as a styled badge */
+/* Figure caption, displayed below the plot without covering plot content */
 .rq-figure-caption {
-  display: inline-block;
   margin-top: 0.75rem;
-  margin-bottom: 0.25rem;
-  max-width: calc(100% - 1.5rem);
-  padding: 0.4rem 0.8rem;
-  border-radius: 999px;
-  border: 1px solid #c9d8f5;
-  background: rgba(237, 244, 255, 0.94);
-  backdrop-filter: blur(6px);
-  color: #245cb4;
-  font-size: 0.92rem;
+  margin-bottom: 0;
+  padding: 0;
+  color: #566176;
+  font-size: 0.95rem;
   font-weight: 600;
   line-height: 1.25;
   text-align: left;
-  box-shadow: 0 1px 2px rgba(36, 92, 180, 0.08);
+  font-style: italic;
   pointer-events: none;
 }
 
