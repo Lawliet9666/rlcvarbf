@@ -134,6 +134,57 @@ body {
   color: #56627c;
 }
 
+.risk-adaptation-takeaways {
+  max-width: 980px;
+  margin: 0 auto 1.5rem;
+}
+
+.risk-adaptation-subtitle {
+  margin-bottom: 1rem;
+}
+
+.risk-adaptation-points {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.risk-adaptation-point {
+  position: relative;
+  margin: 0 0 1.2rem;
+  padding-left: 1.4rem;
+}
+
+.risk-adaptation-point:last-child {
+  margin-bottom: 0;
+}
+
+.risk-adaptation-point::before {
+  content: '';
+  position: absolute;
+  top: 0.7rem;
+  left: 0;
+  width: 0.58rem;
+  height: 0.58rem;
+  border-radius: 999px;
+  background: #3273dc;
+}
+
+.risk-adaptation-point-title {
+  margin: 0 0 0.25rem;
+  font-size: 1.02rem;
+  font-weight: 700;
+  line-height: 1.5;
+  color: #1f2740;
+}
+
+.risk-adaptation-point-copy {
+  margin: 0;
+  font-size: 1rem;
+  line-height: 1.7;
+  color: #44506a;
+}
+
 .risk-adaptation-grid {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -881,6 +932,25 @@ table.rq-table-paper .rq-cell-highlight {
   .obstacle-carousel-intro {
     font-size: 0.98rem;
     line-height: 1.68;
+  }
+
+  .risk-adaptation-point {
+    padding-left: 1.15rem;
+  }
+
+  .risk-adaptation-point::before {
+    top: 0.62rem;
+    width: 0.5rem;
+    height: 0.5rem;
+  }
+
+  .risk-adaptation-point-title {
+    font-size: 0.98rem;
+  }
+
+  .risk-adaptation-point-copy {
+    font-size: 0.95rem;
+    line-height: 1.65;
   }
 
   .risk-adaptation-grid {
