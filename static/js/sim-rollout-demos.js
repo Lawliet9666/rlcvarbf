@@ -9,7 +9,7 @@
   /** Default ID reference for OOD placeholders that still point at a unicycle in-distribution seed. */
   var UNICYCLE_ID_SEED176_BASE = './static/videos/unicycle_obs_20/eval_seeds_100_1000_n901/seed_176/';
   /** First five eval seeds under unicycle_obs_20/eval_seeds_100_1000_n901 (Episode 1–5). */
-  var UNICYCLE_ID_EPISODE_SEEDS = [176, 203, 315, 472, 587];
+  var UNICYCLE_ID_EPISODE_SEEDS = [176, 203, 315, 472, 634];
   /** Matches unicycle episode seed numbers; SI folders are populated (some may be placeholders). */
   var SINGLE_INTEGRATOR_ID_EPISODE_SEEDS = [106, 203, 315, 472, 504];
   var SINGLE_INTEGRATOR_OOD_ORCA_SEED226_BASE = './static/videos/si_human_orca/single_integrator_obs_20/eval_seeds_100_1000_n901/seed_226/';
