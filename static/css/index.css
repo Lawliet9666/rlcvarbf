@@ -432,7 +432,7 @@ table.rq-table {
   width: 100%;
   min-width: 640px;
   border-collapse: collapse;
-  font-size: 0.88rem;
+  font-size: 0.95rem;
   color: #1e293b;
 }
 
@@ -1218,7 +1218,7 @@ table.rq-table-paper .rq-cell-highlight {
   margin: 0 auto;
 }
 
-.gmm-figure {
+.gmm-figure-grid > figure.gmm-figure {
   margin: 0;
   padding: 0.55rem 0.55rem 0.7rem;
   border: 1px solid #dbe3ee;
@@ -1239,7 +1239,7 @@ table.rq-table-paper .rq-cell-highlight {
 .gmm-figure figcaption {
   margin-top: 0.55rem;
   color: #3c4356;
-  font-size: 0.88rem;
+  font-size: 0.95rem;
   line-height: 1.35;
   text-align: center;
 }
