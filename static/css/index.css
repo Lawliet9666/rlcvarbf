@@ -1773,3 +1773,9 @@ table.rq-table-paper .rq-cell-highlight {
     width: 100%;
   }
 }
+.content pre.citation-bibtex,
+.content pre.citation-bibtex code {
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+  word-break: break-word;
+}
